@@ -1,0 +1,95 @@
+.navigation {
+    box-shadow: 0px 3px 5px -3px black !important;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-2 {
+    padding: 0;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-5 {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0px;
+}
+
+.main-section {
+    
+padding-top: 80px;
+    
+padding-bottom: 80px;
+}
+
+.profile-btn {
+    background-color: #ffc10e;
+    padding: 12px 30px 12px 30px;
+    margin: 19px 2px 2px 2px;
+    color: white;
+    border-radius: 0px;
+    font-weight: 800;
+    font-size: 11px;
+}
+#addtocalen-btn {
+    background: #7acdf0;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 3.3;
+    float: right;
+    padding: 0px 62px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1.5px solid #bfbfbf;
+}
+
+.documents-sec {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.level-heading {
+color: #036893;
+padding-bottom: 15px;
+}
+
+button.btn.btn-primary.active{
+    color: #fff;
+    background-color: #ffc10e !important;
+    border-color: #ffc10e !important;
+    padding: 10px 40px 10px 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    float: right;
+    margin: 24px 0px;
+  }
+
+  .card-inner{
+    margin-left: 4rem;
+}
+
+.level-heading-courses{
+    
+text-align: center;
+    
+color: #036893;
+}
+
+#donate-register-btn-div{
+
+display: flex;
+}
+
+.main-slider-btn2{
+    
+background-color: #ffc10e;
+}
+
+#course-part{
+    
+padding-bottom: 26px;
+}

@@ -1,0 +1,52 @@
+#teachers-part #container{
+
+border: 1px solid #dcdcdc;
+
+}
+
+.section-title h2{
+    border-bottom: 7px solid #ffc10e;
+}
+
+.section-title.mt-50.d-flex.justify-content-center{
+    margin-top: 0px;
+}
+
+#payment-pics {
+    padding-top: 18px;
+    padding-left: 17px;
+}
+
+#payment-radios {
+    padding-top: 15px;
+}
+
+#donation-para {
+    padding-left: 16px;
+    padding-top: 24px;
+    font-weight: 600;
+}
+
+.donation-btns {
+    background-color: #ffc10e;
+    padding: 12px 40px 12px 40px;
+    margin: 19px 2px 2px 2px;
+    color: white;
+    border-radius: 0px;
+    width: 7em;
+    text-align: center;
+}
+
+.section-title.mt-50 .donation-sec-heading {
+    border: none !important;
+}
+
+#donate-register-btn{
+    float: right;
+    margin: 24px 0px 0px 0px;
+    border-radius: 17px;
+}
+
+#donate-register-btn-div{
+    display: flex;
+}

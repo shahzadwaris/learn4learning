@@ -1,0 +1,516 @@
+.navigation {
+    box-shadow: 0px 3px 5px -3px black !important;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-2 {
+    padding: 0;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-5 {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0px;
+}
+
+.main-section {
+    
+padding-top: 80px;
+    
+padding-bottom: 80px;
+}
+
+.profile-btn {
+    background-color: #ffc10e;
+    padding: 12px 30px 12px 30px;
+    margin: 19px 2px 2px 2px;
+    color: white;
+    border-radius: 0px;
+    font-weight: 800;
+    font-size: 11px;
+}
+#addtocalen-btn {
+    background: #7acdf0;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 3.3;
+    float: right;
+    padding: 0px 62px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1.5px solid #bfbfbf;
+} */
+
+.documents-sec {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.level-heading {
+color: #036893;
+padding-bottom: 15px;
+}
+
+button.btn.btn-primary.active{
+    color: #fff;
+    background-color: #ffc10e !important;
+    border-color: #ffc10e !important;
+    padding: 10px 40px 10px 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    float: right;
+    margin: 24px 0px;
+  }
+
+  .card-inner{
+    margin-left: 4rem;
+}
+
+.level-heading-courses{
+    
+text-align: center;
+    
+color: #036893;
+}
+
+#donate-register-btn-div{
+
+display: flex;
+}
+
+.main-slider-btn2{
+    
+background-color: #ffc10e;
+}
+
+#course-part{
+    
+padding-bottom: 26px;
+}
+
+.slider-cont.slider-cont-4.text-center .input-group .form-control {
+    height: 57px;
+}
+
+.single-slider {
+    padding-bottom: 186px;
+}
+
+.row.justify-content-center {
+    display: block;
+}
+
+.schedules{
+    
+padding-top: 70px;
+    
+padding-bottom: 70px;
+}
+
+.rounded-bottom.mdb-color.lighten-3.text-center.pt-3 {
+    padding-top: 11px !important;
+    PADDING-BOTTOM: 8px;
+    background-color: #facd5f!important;
+}
+
+.rounded-bottom.mdb-color.lighten-3.text-center.pt-3 a {
+    color: white;
+}
+
+.card {
+    text-align: center;
+}
+
+h4.card-title {
+    color: #036893;
+}
+
+section#about-part {
+    background-color: #f6f6f6;
+}
+
+section.admission-row.pb-120 {
+    background-color: #f6f6f6;
+}
+
+section#filter-search-form {
+    background-color: white;
+}
+
+section#filter-search-head {
+    padding-top: 10px;
+}
+
+section#filter-search-form {
+    padding-bottom: 0px;
+}
+
+section#course-part {
+    padding-top: 13px;
+    background-color: #036893;
+}
+
+.stu-home-dash-head-div{
+
+}
+
+.stu-home-dash-head-head{
+
+font-weight: 700;
+
+color: white;
+
+font-size: 22px;
+
+letter-spacing: 2px;
+
+text-align: center;
+}
+
+.stu-home-dash-head-div hr {
+
+border-top: 2px solid white;
+
+margin-top: inherit;
+
+width: 278px;
+}
+
+#std-dashboard-left{
+    
+background-color: #036893;
+    
+padding-bottom: 31px;
+    
+padding-top: 20px;
+}
+
+#stud-profile-pic{
+    
+border-radius: 100%;
+    
+margin-top: 15px;
+    
+border: 5px solid white;
+    
+object-fit: cover;
+    
+width: 215px !important;
+    
+height: 215px !important;
+}
+
+.stud-name{
+
+color: white;
+
+font-weight: 800;
+
+font-size: 23px;
+
+letter-spacing: 3px;
+
+text-align: left;
+}
+
+.stud-date{
+    
+color: white;
+    
+text-align: left;
+}
+
+.stu-fav-subj-link{
+    
+color: white;
+    
+text-decoration: underline;
+}
+
+.stu-fav-subj-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.stu-fav-subj-list{
+    
+color: white;
+}
+
+
+.dashboard-section .container .row {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: -15px !important;
+}
+
+
+#std-dashboard-left{
+    margin-top: initial;
+    margin-bottom: initial;
+}
+
+#std-dashboard-right{    
+    margin-top: auto;    
+    margin-bottom: auto;
+}
+
+.dashboard-section{
+
+padding-bottom: 31px;
+
+margin-top: -430px;
+}
+
+.points-para{    
+    color: white;    
+    font-weight: 700;    
+    font-size: 21px;    
+    letter-spacing: 2px;    
+    padding-top: 35px;
+}
+
+#achieve-div{
+
+    background-color: #009fe3;
+}
+
+#schedule-div{
+    
+    background-color: #efefef;
+}
+
+
+#grades-div{
+    
+    background-color: #efefef;
+}
+
+#homework-div{
+    
+    background-color: #facd5f;
+}
+
+.std-welcome-msg{    
+    color: white;    
+    text-align: left;    
+    padding-bottom: 23px;
+}
+
+.teacher-exper-head{
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    font-weight: 500;
+    text-align: left;
+}
+
+.teacher-measages{
+    
+font-weight: 600;
+    
+color: white;
+}
+
+#schedule-div p {
+    font-weight: 600;
+    color: #909090;
+}
+
+#grades-div p {
+    color: #909090;
+    font-weight: 600;
+}
+
+.schedule-heading-teacher-homepage{
+    text-align: center;
+    color: #006796;
+    font-size: 28px;
+    letter-spacing: 5px;
+    padding-bottom: 28px;
+}
+
+.teacher-home-schedule-hr{
+    border-top: 1px solid #006796;
+    margin-top: -22px;
+    width: 328px;
+}
+
+.teach-shed-card-content{
+    font-weight: 600;    
+    padding-top: 10px;    
+    padding-bottom: 10px;
+}
+
+.schedules .container .row div #donate-register-btn{
+    margin-top: 60px;
+}
+
+#carousel-achieve .container hr {
+    border-top: 1.5px solid #006796;
+    margin-top: inherit;
+    width: 412px;
+}
+
+.teacher-homework-dash-head {
+    font-weight: 700;
+    color: white;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.teacher-homework-dash-head-div hr{    
+    border-top: 1px solid white;
+    width: 219px;
+    margin-top: 1px;
+}
+
+.teacher-homework-dash-div{
+    
+}
+
+.teacher-homework-dash-div hr{
+
+}
+
+/* Carousel */
+
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div {text-align: center;padding:10px;margin:10px;background: #f1f1f100;color:#666;}
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+    .MultiCarousel .leftLst { left:0; }
+    .MultiCarousel .rightLst { right:0; }
+    
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+
+button.btn.btn-secondary {
+    padding: 0px 33px;
+}
+
+.card-img-overlay {
+    background-color: rgba(#000, 0.4);
+  }
+
+  .topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0px;
+  }
+
+  #exclamation-icon {
+    background-color: #ff0000;
+    padding: 20px 27px;
+    border-radius: 33px;
+}
+
+.exclamation-para{
+    
+font-weight: 800;
+    
+font-size: 15px;
+    
+color: red;
+    
+background-color: white;
+    
+padding: 8px 15px 5px 12px;
+    
+margin-right: -9px;
+}
+
+h6.card-subtitle.mb-2 {
+    COLOR: WHITE;
+    FONT-SIZE: 29px;
+}
+
+p.card-subtitle.mb-3{
+    COLOR: WHITE;
+    FONT-SIZE: 19px;
+    font-weight: 600;
+}
+
+#schedule-btn-teach{
+    background: white;
+    color: black;
+    border-radius: 0px !important;
+}
+
+#tick-icon{
+    background-color: #1a882c;
+    padding: 20px 20px;
+    border-radius: 33px;
+}
+
+.rounded-bottom.mdb-color.lighten-3.text-center.pt-3 {
+    color: white;
+}
+
+
+.exclamation-para-checked{
+    font-weight: 800;
+    font-size: 15px;
+    color: #1a882c;
+    background-color: white;
+    padding: 8px 15px 5px 12px;
+    margin-right: -9px;
+}
+
+.exclamation-para-due{
+    font-weight: 800;
+    font-size: 15px;
+    color: black;
+    background-color: white;
+    padding: 8px 21px 5px 21px;
+    margin-right: -9px;
+    margin-top: 10px;
+}
+
+div#donate-register-btn-div {
+    padding-left: 0px;
+}
+
+
+.single-slider.slider-4.bg_cover.pt-150.slick-slide.slick-current.slick-active {
+    padding-top: 350px;
+    padding-bottom: 350px;
+    background-position: top left !important;
+}
+
+.col-md-8.col-sm-8.col-xs-12.justify-content-center.text-center {
+    padding-top: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .single-slider.slider-4.bg_cover.pt-150.slick-slide.slick-current.slick-active {
+        padding-top: 0px;
+        background-position: top left !important;
+        background-position: top !important;
+    }
+
+    .dashboard-section {
+        padding-bottom: 0px;
+        margin-top: 0px;
+    }
+
+  }
+
+  @media (max-width: 768px){
+.container {
+    max-width: 100%;
+}
+}

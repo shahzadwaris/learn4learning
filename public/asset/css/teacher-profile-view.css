@@ -1,0 +1,143 @@
+#teachers-part .container {
+  background: white;
+}
+#teachers-part .container .row .col-lg-6{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.single-slider.slider-4.bg_cover.pt-150.slick-slide.slick-current.slick-active {
+  background-repeat: no-repeat;
+  background:linear-gradient( rgba(0, 0, 0, 0.5) 100%,
+  rgba(0, 0, 0, 0.5)100%),
+  url('../images/slider/banner.jpg');
+}
+
+.content-form{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-heading{
+  color: #036893;
+  padding-bottom: 26px;
+  letter-spacing: 4px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.col-md-6 {
+  /* margin: auto auto;     */
+}
+
+.main-cont .row {
+  margin-right: 0px !important;
+  box-shadow: 0px 0px 10px -3px black;
+  background: white;
+  margin-top: -283px;
+  position: relative;
+  margin-left: auto;
+}
+.submit-button{
+  text-align: end;    
+  padding-top: 57px;
+}
+
+button.btn.btn-primary.active{
+  color: #fff;
+  background-color: #ffc10e !important;
+  border-color: #ffc10e !important;
+  padding: 10px 40px 10px 40px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.nice-select.selectpicker{
+  width: -webkit-fill-available;
+}
+
+.main-section{
+  padding-bottom: 79px;
+}
+
+input:focus{
+  outline: none;
+}
+
+form{
+  margin-left:auto;
+  margin-right:auto;
+  padding:50px;
+  border-radius:5px;
+  position:relative;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+form > div {
+  float:left;margin-bottom:30px;
+}
+form > div > p{
+  font-size: 12px;margin-bottom: 3px;
+}
+form > div > input{
+  font-size:12px;letter-spacing:1px;padding:  5px;border: 0;border-bottom: 2px solid black !important;;width: 100%;color: gray;
+}
+
+form > p:last-of-type{
+  text-align: center;padding-top: 50px;display:  table;width: 100%;color:white;
+}
+
+form > p:last-of-type > a{
+  cursor:pointer;border:0;
+  padding: 10px 25px;
+  background:  silver;
+  border-radius:  28px;
+  font-size: 12px; 
+}
+
+.term{
+  padding-top:40px;display: flex;width:  100%;align-items:  center;
+}
+
+.term > i{
+  cursor:pointer;width:20px;
+}
+
+.term > span{
+  font-size:12px;
+}
+
+/* delete */
+form > a:last-of-type{
+  position:absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size:  10px;
+  letter-spacing:  1px;
+  font-style: italic;
+}
+
+.nice-select.mdb-select {
+  padding-left: 0px;
+  border-bottom: 2px solid black !important;
+}
+
+.nice-select{
+  border:0px;
+  width: inherit;
+  border-radius: 0px;
+}
+
+.btn-light-blue {
+  background-color: #626262;
+}
+
+button.btn.btn-primary.active{
+  background-color: #ffc10e !important;
+  float: right;
+}
+
+.file-path-wrapper{
+  width: 0px;
+}

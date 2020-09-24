@@ -1,0 +1,61 @@
+#teachers-part .container {
+  background: white;
+}
+#teachers-part .container .row .col-lg-6{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.single-slider.slider-4.bg_cover.pt-150.slick-slide.slick-current.slick-active {
+  background-repeat: no-repeat;
+  background:linear-gradient( rgba(0, 0, 0, 0.5) 100%,
+  rgba(0, 0, 0, 0.5)100%),
+  url('../images/slider/banner.jpg');
+}
+
+.content-form{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-heading{
+  color: #036893;
+  padding-bottom: 26px;
+  letter-spacing: 4px;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 54px;
+}
+
+.col-md-6 {
+  margin: auto auto;
+  margin-top: 0px;
+}
+
+.main-cont .row {
+  margin-right: 0px !important;
+  box-shadow: 0px 0px 10px -3px black;
+  background: white;
+  margin-top: -283px;
+  position: relative;
+  margin-left: auto;
+  padding-bottom: 50px;
+}
+.submit-button{
+  text-align: end;    
+  padding-top: 57px;
+}
+
+button.btn.btn-primary.active{
+  color: #fff;
+  background-color: #ffc10e !important;
+  border-color: #ffc10e !important;
+  padding: 10px 40px 10px 40px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.form-parts {
+  width: 398px;
+}

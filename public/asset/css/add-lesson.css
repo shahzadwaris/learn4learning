@@ -1,0 +1,95 @@
+.navigation {
+    box-shadow: 0px 3px 5px -3px black !important;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-2 {
+    padding: 0;
+}
+
+.col-md-9.col-sm-12.col-xs-12 .row .col-md-5 {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0px;
+}
+
+.add-lesson-heading {
+    color: #036893;
+    padding-bottom: 15px;
+    text-align: center;
+    padding-top: 15px;
+    }
+
+.level-heading {
+    color: #8e8e8e;
+    padding-bottom: 15px;
+    text-align: left;
+    padding-top: 15px;
+    font-weight: 700;
+    font-size: 17px;
+    }
+
+    #add-lesson-sec{
+        margin-bottom: 15px;
+        background-color: #eeeeee;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    #add-lesson-left{        
+        border-right: 1px solid #8e8e8e;
+    }
+    
+    #add-lesson-para{        
+        text-decoration: underline;
+    }
+
+    .add-documents-heading-div{
+        background-color: #ffc10e;
+
+    }
+
+    .add-documents-heading-heading{        
+        color: white;
+        padding-top: 6px;
+        padding-left: 14px;
+        padding-bottom: 6px;
+    }
+
+    .image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+}
+
+.addfiles-add-lesson{
+    text-align: center;
+}
+
+.col-12.d-flex.justify-content-center {
+    border: 1px solid black;
+    margin-top: 21px;
+    margin-bottom: 21px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.profile-btn {
+    background-color: #ffc10e;
+    padding: 12px 30px 12px 30px;
+    margin: 19px 2px 2px 2px;
+    color: white;
+    border-radius: 0px;
+    font-weight: 800;
+    font-size: 11px;
+    text-align: center;
+}
+
+button.btn.btn-primary.active {
+    margin-bottom: 18px;
+    background-color: #006795 !important;
+}
