@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
@@ -14,54 +15,51 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'fname' => 'admin',
-            'lname' => 'admin',
-            'email' => 'admin@gmail.com',
+            'fname'             => 'admin',
+            'lname'             => 'admin',
+            'email'             => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'type' => 'admin',
-            'password' =>Hash::make('123123123'),
-            'approved_at' =>now(),
-            'country' => 'Pakistan',
-            'thumbnail' => '1594109446.jpg',
-            'description' => 'Good person heaving grate knowledge',
-            'created_at' =>Carbon::now(),
-            'updated_at' =>Carbon::now(),
+            'type'              => 'admin',
+            'password'          => Hash::make('123123123'),
+            'approved_at'       => now(),
+            'country'           => 'Pakistan',
+            'thumbnail'         => '1594109446.jpg',
+            'description'       => 'Good person heaving grate knowledge',
+            'created_at'        => Carbon::now(),
+            'updated_at'        => Carbon::now(),
         ]);
-
 
         DB::table('users')->insert([
-            'fname' => 'teacher',
-            'lname' => 'teacher',
-            'email' => 'teacher@gmail.com',
+            'fname'             => 'teacher',
+            'lname'             => 'teacher',
+            'email'             => 'teacher@gmail.com',
             'email_verified_at' => now(),
-            'type' => 'teacher',
-            'approved_at' =>now(),
-            'country' => 'Pakistan',
-            'user_contact' => '13123122123',
-            'thumbnail' => '1594109446.jpg',
-            'description' => 'Good person heaving grate knowledge',
-            'password' =>Hash::make('123123123'),
-            'created_at' =>Carbon::now(),
-            'updated_at' =>Carbon::now(),
+            'type'              => 'teacher',
+            'approved_at'       => now(),
+            'country'           => 'Pakistan',
+            'user_contact'      => '13123122123',
+            'thumbnail'         => '1594109446.jpg',
+            'description'       => 'Good person heaving grate knowledge',
+            'password'          => Hash::make('123123123'),
+            'created_at'        => Carbon::now(),
+            'updated_at'        => Carbon::now(),
         ]);
-
 
         DB::table('users')->insert([
-            'fname' => 'student',
-            'lname' => 'student',
-            'email' => 'student@gmail.com',
+            'fname'             => 'student',
+            'lname'             => 'student',
+            'email'             => 'student@gmail.com',
             'email_verified_at' => now(),
-            'type' => 'student',
-            'approved_at' =>now(),
-            'country' => 'Pakistan',
-            'user_contact' => '13123122123',
-            'thumbnail' => '1594109446.jpg',
-            'description' => 'Good person heaving grate knowledge',
-            'password' =>Hash::make('123123123'),
-            'created_at' =>Carbon::now(),
-            'updated_at' =>Carbon::now(),
+            'type'              => 'student',
+            'approved_at'       => now(),
+            'country'           => 'Pakistan',
+            'user_contact'      => '13123122123',
+            'thumbnail'         => '1594109446.jpg',
+            'description'       => 'Good person heaving grate knowledge',
+            'password'          => Hash::make('123123123'),
+            'created_at'        => Carbon::now(),
+            'updated_at'        => Carbon::now(),
         ]);
-
 
 //        DB::table('users')->insert([
 //
@@ -99,11 +97,5 @@ class UsersTableSeeder extends Seeder
 //            'created_at' =>Carbon::now(),
 //            'updated_at' =>Carbon::now(),
 //            ]);
-
-
-
-
-
-
     }
 }
