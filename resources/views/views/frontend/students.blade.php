@@ -150,7 +150,7 @@
     </section>
 
     <!--====== REGISTER PART START======-->
-
+    
     <section id="teachers-part" class="pt-70 pb-120">
         <div class="">
             <div class="row">
