@@ -115,11 +115,10 @@ class UserController extends Controller
 
         $level    = DB::table('levels')->get();
         $subjects = DB::table('subjects')
-            ->join('lessons', 'lessons.subject_id', 'subjects.id')
-            ->select('subjects.*')
-            ->get();
+                        ->join('lessons', 'lessons.subject_id', 'subjects.id')
+                        ->select('subjects.*')
+                        ->get();
         $Date = DB::table('lessons')->get();
-
         return view('welcome')->with(['getuserimg' => $getuserimg, 'lesson' => $lesson, 'level' => $level, 'subjects' => $subjects, 'Date' => $Date]);
     }
 
