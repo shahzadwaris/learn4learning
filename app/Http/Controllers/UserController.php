@@ -8,6 +8,9 @@ use App\Models\levels;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
@@ -42,22 +45,34 @@ class UserController extends Controller
         return view('');
     }
 
+    public function checkMail(Request $request)
+    {
+        $check = User::where('email', $request->email)->first();
+        if ($check) {
+            return response()->json(['found' => 'y']);
+        }
+        return response()->json(['found' => 'n']);
+    }
+
     protected function add_user(CreateUserRequest $request)
     {
-        $this->validate(request(), [
-            'email'    => 'required|email|unique:users',
-            'password' => 'required|string|min:6',
+        $u = User::create([
+            'fname'    => $request->fname,
+            'lname'    => $request->lname,
+            'email'    => $request->email,
+            'type'     => $request->type,
+            'password' => Hash::make($request->password),
         ]);
+        Auth::login($u);
+        event(new Registered($u));
 
-        $response = $this->user->addUser($request);
-        $user_id  = $response['id'];
-        $level    = levels::all();
-
-        if ($response['type'] == 'teacher') {
+        $data       =['msg'=>' please verify your self', 'userId'=>$u->id];
+        $level      = levels::all();
+        $user_id    = $u->id;
+        if ($u->type == 'teacher') {
             $subjects    = Subject::all();
             $no_of_chunk = $subjects->count() / 2;
             $subjects    = $subjects->chunk($no_of_chunk);
-
             return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
         } else {
             return view('auth.students.student-level', compact('level', 'user_id'));

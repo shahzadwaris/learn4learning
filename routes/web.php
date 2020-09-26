@@ -17,7 +17,7 @@ Route::group(['Public'], function () {
             \Stripe\Charge::create([
                 'amount'      => 300 * 100,
                 'currency'    => 'usd',
-                'source'      => $request->input('stripeToken'), // obtained with Stripe.js
+                'source'      => $request->input('stripeToken'),
                 'description' => 'Test payment.',
             ]);
             Session::flash('success-message', 'Payment done successfully !');
@@ -29,7 +29,7 @@ Route::group(['Public'], function () {
     });
 
     Route::get('/tst', function () {
-        event(new App\Events\MyEvent('Someone'));
+        // event(new App\Events\MyEvent('Someone'));
         return 'Event has been sent!';
     });
 
@@ -77,6 +77,8 @@ Route::group(['Public'], function () {
         return view('auth.students.student-subject');
     })->name('studentsubject');
 
+    Route::get('/register/check/{email}', 'UserController@checkMail');
+
     /**
      * register pages for teachers
      */
@@ -105,13 +107,13 @@ Route::group(['Public'], function () {
 
 Route::get('/teacher-subjects', '@saveNewSubject')->name('save-new-subject');
 
-//Auth::routes();
+// Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::group(['private'], function () {
     //*********** if call inAuthorized route*************
     Route::get('/denied', function () {
-        return view('404');
+        return 'denied';
     })->name('denied');
 
     Route::group(['Admin', 'middleware' => 'CheckUserType:' . 'admin'], function () {
@@ -160,7 +162,7 @@ Route::group(['private'], function () {
 //            });
     });
 
-    Route::group(['Admin', 'middleware' => 'CheckUserType:' . 'student'], function () {
+    Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {
         Route::get('/students/lesssn', 'StudentController@studentLessson')->name('studentLessson');
         Route::get('/students/Home', 'StudentController@studentHome')->name('studentHome');
         Route::get('/add-to-calender{lessonsId}/{user_id}/{subjects_id}', 'StudentController@addToCalender')->name('addToCalender');
@@ -184,7 +186,7 @@ Route::group(['private'], function () {
         // })->name('student_home_works');
     });
 
-    Route::group(['Admin', 'middleware' => 'CheckUserType:' . 'teacher'], function () {
+    Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'teacher', 'verified']], function () {
         Route::get('/teacher-add-lesson', 'TescherController@teacherAddLesson')->name('teacherAddLesson');
         Route::get('/teacher-home', 'TescherController@teacherHome')->name('teacherHome');
         Route::get('/update-teachere-profile', 'TescherController@_EditTeacherProfile');

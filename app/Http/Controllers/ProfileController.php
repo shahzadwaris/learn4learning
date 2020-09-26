@@ -66,6 +66,7 @@ class ProfileController extends Controller
     public function admin_Block($id)
     {
         $user_data=DB::table('users')->select('users.*')->where('users.id', $id)->update(['users.role'=>1]);
+        
 
         if ($user_data) {
             $user_data   =DB::table('users')->select('users.*')->where('users.type', 'teacher')->get();
