@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <!-- Mirrored from thepixelcurve.com/html/edubin/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jun 2020 12:44:03 GMT -->
+
 <head>
 
     <!--====== Required meta tags ======-->
@@ -48,10 +49,11 @@
 
 
 </head>
+
 <body>
-<!--====== PRELOADER PART START ======-->
-<!--====== PRELOADER PART START ======-->
-<!--====== HEADER PART START ======-->
+    <!--====== PRELOADER PART START ======-->
+    <!--====== PRELOADER PART START ======-->
+    <!--====== HEADER PART START ======-->
 
     <header id="header-part" class="header-two">
         <div class="header-top d-none d-lg-block">
@@ -61,14 +63,14 @@
                         <div class="header-contact">
 
 
-          
 
-                                </div> <!-- header contact -->
+
+                        </div> <!-- header contact -->
                     </div>
                     <div class="col-md-6">
                         <div class="header-right d-flex justify-content-end">
-                                 @if(!Auth::check())
-                        
+                            @if(!Auth::check())
+
 
                             <div class="social d-flex">
                                 <ul>
@@ -85,42 +87,50 @@
                             </div> <!-- social -->
                             <div class="login-register">
                                 <ul>
-                                    <li><a href="{{ route('login') }}" style="background: none !important;color:black;">SIGN IN</a></li>
+                                    <li><a href="{{ route('login') }}"
+                                            style="background: none !important;color:black;">SIGN IN</a></li>
                                     <li><a href="{{ route('register') }}">SIGN UP</a></li>
                                 </ul>
                             </div>
                             @endif
-                                 @if(Auth::check())
-                 <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="    margin-top:px;
+                            @if(Auth::check())
+                            <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="    margin-top:px;
 ">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" style="color: black" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @lang('home.Language') <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/locale/en') }}"><img src="{{asset('asset/images/flag/us.png')}}" width="30px" height="20x"> English</a>
-                                <a class="dropdown-item" href="{{ url('/locale/fr') }}"><img src="{{asset('asset/images/flag/fr.png')}}" width="30px" height="20x"> French</a>
-                                                   </div>
-                        </li>
-                    </ul>
-        
-        </nav>
-                                <div class="login-register" style="margin-top: 10px">
+                                <!-- Right Side Of Navbar -->
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" style="color: black" class="nav-link dropdown-toggle"
+                                            href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
+                                            @lang('home.Language') <span class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ url('/locale/en') }}"><img
+                                                    src="{{asset('asset/images/flag/us.png')}}" width="30px"
+                                                    height="20x"> English</a>
+                                            <a class="dropdown-item" href="{{ url('/locale/fr') }}"><img
+                                                    src="{{asset('asset/images/flag/fr.png')}}" width="30px"
+                                                    height="20x"> French</a>
+                                        </div>
+                                    </li>
+                                </ul>
 
-                                    <ul>
+                            </nav>
+                            <div class="login-register" style="margin-top: 10px">
 
-                                        <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a></li>
-                                              <li>
-                                                <form method="post" action="{{route('logout')}}">
-                                                    @csrf
-                                                    <button class="btn-sm btn-outline-primary">logout</button>
-                                                </form>
-                                              </li>
-                                    </ul>
-                                </div>
+                                <ul>
+
+                                    <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a>
+                                    </li>
+                                    <li>
+                                        <form method="post" action="{{route('logout')}}">
+                                            @csrf
+                                            <button class="btn-sm btn-outline-primary">logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
 
                             @endif
                         </div> <!-- header right -->
@@ -128,7 +138,7 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- header top -->
-{{----}}
+        {{----}}
         <div class="navigation">
             <div class="container">
                 <div class="row">
@@ -137,12 +147,14 @@
                             <a class="navbar-brand" href="{{route('homee')}}">
                                 <img src="{{asset('asset/images/logo1.png')}}" alt="Logo">
                             </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-{{----}}                          <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            {{----}} <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
                                         <a class="active" href="{{route('teacherHome')}}">@lang('home.home_menu')</a>
@@ -150,31 +162,32 @@
                                     <li class="nav-item">
                                         <a href="{{route('teacherSchedule')}}">SCHEDULE</a>
                                     </li>
-                   
-                             
 
-                                             <li class="nav-item">
+
+
+                                    <li class="nav-item">
                                         <a href="{{route('Students')}}">STUDENT</a>
                                     </li>
-<!-- 
+                                    <!-- 
                         <li class="nav-item">
                                         <a href="{{route('getdataofstudent')}}">STUDDENTS</a>
                           </li> -->
 
 
-                               
+
                                     <li class="nav-item">
                                         <a href="{{route('teacherHomeWork')}}">HOMEWORK</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{route('MYaccount')}}">Account</a>
                                     </li>
-                                        <li class="nav-item">
+                                    <li class="nav-item">
                                         <a href="{{route('Students')}}">MESSAGES</a>
                                     </li>
-                  
+
                                     <li class="nav-item">
-                                        <a href="{{route('donate')}}" style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
+                                        <a href="{{route('donate')}}"
+                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
                             </div>
@@ -184,14 +197,14 @@
             </div> <!-- container -->
         </div>
     </header>
-{{--content--}}
+    {{--content--}}
 
-@yield('content')
-{{--content--}}
+    @yield('content')
+    {{--content--}}
 
-<!--====== COURSE PART ENDS ======-->
+    <!--====== COURSE PART ENDS ======-->
 
-<!--====== FOOTER PART START ======-->
+    <!--====== FOOTER PART START ======-->
 
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
@@ -201,164 +214,168 @@
                         <div class="footer-section-wrap footer-link mt-40">
                             <div class="logo" style="float: left;">
 
-                                <a href="{{route('homee')}}"><img src="{{asset('asset/images/footerlogo.png')}}" alt="Logo"></a>
+                                <a href="{{route('homee')}}"><img src="{{asset('asset/images/footerlogo.png')}}"
+                                        alt="Logo"></a>
                             </div>
 
-                          <div class="right-inner-div ml-3">
-                        
-                            <ul style="margin-left: 23px">
-                                  <li><a href="#">Teachers</a></li>
-                                  <li><a href="#">About US</a></li>
-                                  <li><a href="#">Subjects</a></li>
-                          
-                            </ul>
-                            
-                        </div>
-                  
+                            <div class="right-inner-div ml-3">
+
+                                <ul style="margin-left: 23px">
+                                    <li><a href="#">Teachers</a></li>
+                                    <li><a href="#">About US</a></li>
+                                    <li><a href="#">Subjects</a></li>
+
+                                </ul>
+
+                            </div>
+
                         </div>
                     </div>
-        
+
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link mt-40">
-                        
-                            <ul>
-                               <li><a href="#">Teachers</a></li>
-                                <li><a href="#">About US</a></li>
-                                <li><a href="#">Subjects</a></li>
-                      
-                            </ul>
-                            
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="footer-link support mt-40">
-                      
+
                             <ul>
                                 <li><a href="#">Teachers</a></li>
                                 <li><a href="#">About US</a></li>
                                 <li><a href="#">Subjects</a></li>
-                 
+
+                            </ul>
+
+                        </div> <!-- footer link -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="footer-link support mt-40">
+
+                            <ul>
+                                <li><a href="#">Teachers</a></li>
+                                <li><a href="#">About US</a></li>
+                                <li><a href="#">Subjects</a></li>
+
                             </ul>
                         </div> <!-- support -->
                     </div>
-                     <div class="col-lg-2 col-md-6 col-sm-12">
+                    <div class="col-lg-2 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
-                          
+
                             <ul>
                                 <li><a href="#">Levels</a></li>
                                 <li><a href="#">Contact US</a></li>
                                 <li><a href="#">Login</a></li>
-                     
+
                             </ul>
                         </div> <!-- support -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer top -->
-{{----}}
+        {{----}}
         <div class="footer-copyright pt-10 pb-25">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="copyright  text-center pt-15">
                             <p>&copy;@lang('footer.footer_info')
-                            &nbsp; - &nbsp; @lang('footer.Designed_by') <span>Rkixtech</span> 
-                             </p>
+                                &nbsp; - &nbsp; @lang('footer.Designed_by') <span>Rkixtech</span>
+                            </p>
                         </div>
                     </div>
-     
+
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer copyright -->
     </footer>
-<!--====== FOOTER PART ENDS ======-->
+    <!--====== FOOTER PART ENDS ======-->
 
-<!--====== BACK TO TP PART START ======-->
+    <!--====== BACK TO TP PART START ======-->
 
-<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-<!--====== jquery js ======-->
-<script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script>
-<script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+    <!--====== jquery js ======-->
+    <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+    <script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script>
 
-<!--====== Bootstrap js ======-->
-<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
 
-<!--====== Slick js ======-->
-<script src="{{asset('asset/js/slick.min.js')}}"></script>
+    <!--====== Slick js ======-->
+    <script src="{{asset('asset/js/slick.min.js')}}"></script>
 
-<!--====== Magnific Popup js ======-->
-<script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
+    <!--====== Magnific Popup js ======-->
+    <script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
 
-<!--====== Counter Up js ======-->
-<script src="{{asset('asset/js/waypoints.min.js')}}"></script>
-<script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
+    <!--====== Counter Up js ======-->
+    <script src="{{asset('asset/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
 
-<!--====== Nice Select js ======-->
-<script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
+    <!--====== Nice Select js ======-->
+    <script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
 
-<!--====== Nice Number js ======-->
-<script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
+    <!--====== Nice Number js ======-->
+    <script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
 
-<!--====== Count Down js ======-->
-<script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
+    <!--====== Count Down js ======-->
+    <script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
 
-<!--====== Validator js ======-->
-<script src="{{asset('asset/js/validator.min.js')}}"></script>
+    <!--====== Validator js ======-->
+    <script src="{{asset('asset/js/validator.min.js')}}"></script>
 
-<!--====== Ajax Contact js ======-->
-<script src="{{asset('asset/js/ajax-contact.js')}}"></script>
+    <!--====== Ajax Contact js ======-->
+    <script src="{{asset('asset/js/ajax-contact.js')}}"></script>
 
-<!--====== Main js ======-->
-<script src="{{asset('asset/js/main.js')}}"></script>
+    <!--====== Main js ======-->
+    <script src="{{asset('asset/js/main.js')}}"></script>
 
-<!--====== Map js ======-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
-<script src="{{asset('asset/js/map-script.js')}}"></script>
+    <!--====== Map js ======-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
+    <script src="{{asset('asset/js/map-script.js')}}"></script>
 
-<script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
-@yield('js')
-<script>
-    // Material Select Initialization
+    <script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
+    @yield('js')
+    <script>
+        // Material Select Initialization
     $(document).ready(function() {
         $('.mdb-select').materialSelect();
     });
-</script>
+    </script>
 </body>
 
 
 <!-- Mirrored from thepixelcurve.com/html/edubin/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jun 2020 12:44:37 GMT -->
-</html>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-          <form  method="post" action="{{route('Add_experience')}}" id="form">
-            @csrf
 
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-                                   <div class="form-group">
-                                       
-                                       <input type="text" name="exp" placeholder="Enter Experience" class="form-control" required="true">
-                                   </div>
-<!--                                     <div class="form-group">
+</html>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" action="{{route('Add_experience')}}" id="form">
+                @csrf
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+
+                        <input type="text" name="exp" placeholder="Enter Experience" class="form-control"
+                            required="true">
+                    </div>
+                    <!--                                     <div class="form-group">
                                        
     <input class="form-control" name="date" id="registration-date" type="date" required="true">                                   </div> -->
 
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Submit</button>
 
-      </div>
-                                      </form>
+                </div>
+            </form>
 
+        </div>
     </div>
-  </div>
 </div>

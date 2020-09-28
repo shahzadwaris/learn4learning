@@ -88,11 +88,13 @@ Route::group(['Public'], function () {
     Route::get('register/teachers/subjects', function () {
         return view('auth.teachers.teacher-subjects');
     })->name('studentsubject');
+    Route::get('/skip', 'UserController@skip')->name('skip');
 
     Route::group(['Auth'], function () {
         Route::post('/login', 'Auth/LoginController@login')->name('login');
         Route::get('/register', 'UserController@registerview')->name('register');
         Route::post('/signup', 'UserController@add_user');
+        Route::get('/show-form', 'UserController@showForm');
         Route::get('/select-Subjects', 'StudentController@selectSubjects')->name('selectSubjects');
         Route::get('/save-new-subject', 'StudentController@saveNewSubject')->name('save-new-subject');
         Route::post('/get-subjects', 'StudentController@getSubjects')->name('getSubjects');
@@ -160,6 +162,10 @@ Route::group(['private'], function () {
         Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
         Route::post('profile/password', 'ProfileController@password')->name('profile.passwordss');
 //            });
+        Route::get('/mail-configuration', 'Admin\EmailConfigurationController@index')->name('email-config');
+        Route::post('/mail-configuration-store', 'Admin\EmailConfigurationController@store')->name('email-config.store');
+        Route::post('/mail-configuration-update/{email}', 'Admin\EmailConfigurationController@update')->name('email-config.update');
+        Route::get('/mail-configuration-edit/{email}', 'Admin\EmailConfigurationController@edit')->name('email-config.edit');
     });
 
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {

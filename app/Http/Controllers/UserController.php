@@ -45,6 +45,15 @@ class UserController extends Controller
         return view('');
     }
 
+    public function skip()
+    {
+        if (Auth::check()) {
+            Auth::logout();
+        }
+
+        return redirect()->route('login');
+    }
+
     public function checkMail(Request $request)
     {
         $check = User::where('email', $request->email)->first();
@@ -76,6 +85,18 @@ class UserController extends Controller
             return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
         } else {
             return view('auth.students.student-level', compact('level', 'user_id'));
+        }
+    }
+
+    public function showForm()
+    {
+        $user    = Auth::user();
+        $user_id = $user->id;
+        if ($user->type == 'teacher') {
+            $subjects    = Subject::all();
+            $no_of_chunk = $subjects->count() / 2;
+            $subjects    = $subjects->chunk($no_of_chunk);
+            return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
         }
     }
 

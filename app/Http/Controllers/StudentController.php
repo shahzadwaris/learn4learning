@@ -210,7 +210,7 @@ class StudentController extends Controller
                         ->join('homework', 'homework.id', '=', 'achivnments.homework_id')
                         ->join('users', 'users.id', 'achivnments.Student_id')
                         ->where('homework.user_id', $user->id)
-                        ->select('subjects.name as Subject_name', 'homeWork.title as H_title', 'homework.discription as homeworkDescriptions', 'users.fname as username', 'achivnments.*')
+                        ->select('subjects.name as Subject_name', 'homework.title as H_title', 'homework.discription as homeworkDescriptions', 'users.fname as username', 'achivnments.*')
                         ->OrderBy('achivnments.id', 'DESC', 'achivnments.img')
                         ->get();
 

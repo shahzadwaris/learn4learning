@@ -27,42 +27,38 @@ class TescherController extends Controller
 
     public function teacherSubjects(Request $request)
     {
-        $user_id    = $request->user_id;
-        $allSubjects=Subject::all();
+        // dd($request->all());
+        $user_id     = $request->user_id;
+        $allSubjects = Subject::all();
 
         foreach ($request->subject as $subject) {
+            if (!$subject) {
+                continue;
+            }
             $subLevelArr='subject_' . $subject . '_level';
-            if ($subject == '00_other_id') {
-                if ($request->field != '' || $request->field != null) {
-                    $createSubjects = SubjectLevelDetail::create([
-                        'user_id'    => $request->user_id,
-                        'subject_id' => 0,
-                        'field'      => $request->field,
-                        'level_id'   => 0,
-                    ]);
-                }
-
-                if (!empty($request->field_name)) {
-                    foreach ($request->field_name as $fn) {
-                        $createSubjects = SubjectLevelDetail::create([
-                            'user_id'    => $request->user_id,
-                            'subject_id' => 0,
-                            'field'      => $fn,
-                            'level_id'   => 0,
-                        ]);
-                    }
-                }
-            } else {
-                foreach ($request[$subLevelArr] as $SL) {
-                    $createSubjects = SubjectLevelDetail::create([
-                        'user_id'    => $request->user_id,
-                        'subject_id' => $subject,
-                        'field'      => 0,
-                        'level_id'   => $SL,
-                    ]);
-                }
+            // dump($subLevelArr);
+            foreach ($request->$subLevelArr as $SL) {
+                $createSubjects = SubjectLevelDetail::create([
+                    'user_id'    => $user_id,
+                    'subject_id' => $subject,
+                    'field'      => 0,
+                    'level_id'   => $SL,
+                ]);
             }
         }
+        // die();
+        if ($request->others) {
+            foreach ($request->others as $key => $subject) {
+                $n              = $key + 1;
+                $createSubjects = SubjectLevelDetail::create([
+                    'user_id'    => $user_id,
+                    'subject_id' => 0,
+                    'field'      => $subject,
+                    'level_id'   => $request->subject_level_other_ . $n,
+                ]);
+            }
+        }
+
         return view('auth.teachers.teacher-profile', compact('user_id', 'allSubjects'));
     }
 
@@ -86,7 +82,7 @@ class TescherController extends Controller
             'experience'       => $request['experience'],
             'thumbnail'        => $imageDbPath,
         ]);
-        return redirect()->route('studentHome');
+        return redirect()->route('teacherHome');
     }
 
     public function teacherAddLesson()
