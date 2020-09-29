@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -26,11 +26,36 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = ;
 
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token'    => 'required',
+            'email'    => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ];
+    }
 
-
-
-
-
+    protected function redirectTo()
+    {
+        $user = Auth::user();
+        if ($user->type == 'teacher') {
+            session()->flash('alert-success', 'Password has been reset successfully!');
+            return route('teacherHome');
+        }
+        if ($user->type == 'student') {
+            session()->flash('alert-success', 'Password has been reset successfully!');
+            return route('studentHome');
+        }
+        if ($user->type == 'admin') {
+            session()->flash('alert-success', 'Password has been reset successfully!');
+            return route('home');
+        }
+    }
 }

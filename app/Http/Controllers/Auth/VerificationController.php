@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
@@ -35,7 +36,23 @@ class VerificationController extends Controller
      * @return void
      */
 
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
+    protected function redirectTo()
+    {
+        $user = Auth::user();
+        if ($user->type == 'teacher') {
+            session()->flash('alert-success', 'Email verified successfully!');
+            return route('teacherHome');
+        }
+        if ($user->type == 'student') {
+            session()->flash('alert-success', 'Email verified successfully!');
+            return route('studentHome');
+        }
+        if ($user->type == 'admin') {
+            session()->flash('alert-success', 'Email verified successfully!');
+            return route('home');
+        }
+    }
 
     public function __construct()
     {

@@ -78,6 +78,8 @@ class UserController extends Controller
         $data       =['msg'=>' please verify your self', 'userId'=>$u->id];
         $level      = levels::all();
         $user_id    = $u->id;
+        session()->flash('alert-success', "Please verify your email We've sent you a link.");
+
         if ($u->type == 'teacher') {
             $subjects    = Subject::all();
             $no_of_chunk = $subjects->count() / 2;

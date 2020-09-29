@@ -282,7 +282,21 @@
         </div>
     </header>
     {{--content--}}
+    <div class="row p-0 m-0">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="flash-message mt-5" id='success-alert'>
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
 
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
+                        data-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+                @endforeach
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
     @yield('content')
     {{--content--}}
 
@@ -416,6 +430,9 @@
     <script>
         // Material Select Initialization
     $(document).ready(function() {
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        });
         $('.navbar-nav').on('click', 'li', function(){
         $('.navbar-nav li.active').removeClass('active');
         $(this).addClass('active');

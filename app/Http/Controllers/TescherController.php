@@ -87,8 +87,12 @@ class TescherController extends Controller
 
     public function teacherAddLesson()
     {
-        $user_ids=Auth::User()->id;
-        $levels  =DB::table('subject_level_details')->where('subject_level_details.user_id', $user_ids)->select('level_id')->get();
+        $user = Auth::user();
+        if (count($user->subject_level_details) <= 0) {
+            session()->flash('alert-danger', 'Please complete your profile first!');
+            return redirect()->back();
+        }
+        $levels  =DB::table('subject_level_details')->where('subject_level_details.user_id', $user->id)->select('level_id')->get();
 
         $ll=$levels[0]->level_id;
 
@@ -471,6 +475,7 @@ class TescherController extends Controller
 
     public function createLesson(Request $request)
     {
+        dd($request->all());
         $addLesson=$this->lesson->saveLesson($request);
         if ($addLesson) {
             return redirect()->back()->with('message', 'Lesson Added Successfully');
@@ -822,8 +827,7 @@ class TescherController extends Controller
 
     public function mystudents()
     {
-        print_r($teacher_id);
-        exit();
+        $teacher_id        = Auth::user()->id;
         $getmystydentrecord=DB::table('student_lessons')
                                      ->join('users', 'student_lessons.user_id', '=', 'users.id')
                                      ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')

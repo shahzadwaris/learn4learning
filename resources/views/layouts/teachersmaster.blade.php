@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<!-- Mirrored from thepixelcurve.com/html/edubin/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jun 2020 12:44:03 GMT -->
 
 <head>
 
@@ -198,6 +197,21 @@
         </div>
     </header>
     {{--content--}}
+    <div class="row p-0 m-0">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="flash-message mt-5" id='success-alert'>
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
+
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
+                        data-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+                @endforeach
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
 
     @yield('content')
     {{--content--}}
@@ -292,7 +306,8 @@
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
     <!--====== jquery js ======-->
     <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script>
-    <script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    {{-- <script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script> --}}
+    <script src="{{asset('asset/js/jquery.min.js')}}"></script>
 
     <!--====== Bootstrap js ======-->
     <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
@@ -334,6 +349,8 @@
     <script>
         // Material Select Initialization
     $(document).ready(function() {
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
         $('.mdb-select').materialSelect();
     });
     </script>
