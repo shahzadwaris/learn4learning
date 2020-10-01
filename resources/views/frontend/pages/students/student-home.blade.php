@@ -84,7 +84,7 @@
                         <p class="stud-date">23/01/2012</p><br><br>
                         <a href="#" class="stu-fav-subj-link w-100 text-left" style="">My Favourite
                             Subjects</a>
-                        <p class="stu-fav-subj-list w-100 text-left">Maths, Geography, English</p>
+                        <p class="stu-fav-subj-list w-100 text-left">{{Auth::user()->favorite_subject}}</p>
                         <p class="points-para w-100 text-left">5000 points</p>
                     </div>
                 </div>

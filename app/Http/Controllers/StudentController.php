@@ -105,6 +105,7 @@ class StudentController extends Controller
 
     public function getProfile(Request $request)
     {
+        // dd($request->all());
         if ($request->hasFile('thumbnail')) {
             $image     = $request->file('thumbnail');
             $imageName = time() . '.' . $image->extension();
@@ -116,7 +117,7 @@ class StudentController extends Controller
         User::where('id', $request['user_id'])->update([
             'Description'     => $request['Description'],
             'country'         => $request['country'],
-            'favorite_subject'=> $request['favourit_subjects'],
+            'favorite_subject'=> implode(',', $request->favorite_subject),
             'fof_session'     => $request['fof_session'],
             'thumbnail'       => $imageDbPath,
             'parentEmail'     => $request->parentEmail,

@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('title','level')
 @section('content')
 
@@ -95,11 +98,8 @@
                                 <div class="input-group mb-3" style="width:100%;">
                                     <span class="mr-2 mt-2 text-muted" style="">Birthday</span>
                                     <input type="date" class="form-control" name="dob" id="registration-date"
-                                        placeholder="date of birth" required="" style="max-width: 266px">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" style="background-color: #045375;color: #fff"><i
-                                                class="fas fa-chevron-down"></i></span>
-                                    </div>
+                                        placeholder="date of birth" required="" style="max-width: 280px">
+
                                 </div>
                                 <div style="width:100%;">
                                     <input class="_inputwidth" name="parentEmail" autofocus required="true"
@@ -116,14 +116,19 @@
                                         <option value="Japan">Japan</option>
                                     </select>
                                 </div>
-                                <div style="width:100%;">
-                                    <select class="mdb-select _inputwidth" name="favorite_subject"
+                                <div class="w-100">
+                                    {{-- <select class="mdb-select _inputwidth" name="favorite_subject"
                                         searchable="Search here.." required="true">
-                                        <option value="" disabled selected>My Favourite Subjects</option>
+
+                                    </select> --}}
+                                    <select class="form-control tags" name="favorite_subject[]" multiple="multiple"
+                                        style="width: 100%">
                                         @foreach($allSubjects as $subjects)
-                                        <option value="{{$subjects->id}}">{{$subjects->name}}</option>
+                                        <option value="{{$subjects->name}}">{{$subjects->name}}</option>
                                         @endforeach
                                     </select>
+
+
                                 </div>
                                 {{-- <div style="width:100%;">
                                         <select class="mdb-select _inputwidth" name="fof_session" searchable="Search here.." required="true">
@@ -184,7 +189,8 @@
 @endsection
 
 
-
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
     function readURL(input) {
             if (input.files && input.files[0]) {
@@ -197,4 +203,10 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        $(".tags").select2({
+        tags: true,
+        width: 'resolve',
+        placeholder: "Select Favourite Subject",
+        });
 </script>
+@endsection
