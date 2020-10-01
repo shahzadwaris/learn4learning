@@ -21,7 +21,7 @@
         "merujan99/laravel-video-embed": "dev-master",
         "omnipay/stripe": "^3.1",
         "pusher/pusher-php-server": "^4.1",
-        "stripe/stripe-php": "^7.44"
+        "stripe/stripe-php": "^7.56"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

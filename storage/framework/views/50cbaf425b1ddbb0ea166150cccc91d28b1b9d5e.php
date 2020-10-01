@@ -1,6 +1,6 @@
-@extends('layouts.master')
-@section('title','level')
-@section('content')
+
+<?php $__env->startSection('title','level'); ?>
+<?php $__env->startSection('content'); ?>
 
 <style>
     #img_url {
@@ -34,8 +34,8 @@
 </style>
 
 <!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/teachers-profile.css')}}">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/teachers-profile.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -44,15 +44,15 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
                         <h1 data-animation="fadeInUp" data-delay="1s">Thanks for registering!</h1>
-                        {{--  <p data-animation="fadeInUp" data-delay="1.5s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> --}}
+                        
                     </div>
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
     </div> <!-- single slider -->
 </section>
-{{----}}
-{{----}}
+
+
 
 <section class="main-section">
     <div class="container">
@@ -62,8 +62,8 @@
                     <div class="form-parts">
                         <h3 class="level-heading">Let's Build your Profile</h3>
                         <div style="display:flex;width:100%;">
-                            <form action="{{ url('/get-profile') }}" method="post" enctype="multipart/form-data">
-                                @csrf
+                            <form action="<?php echo e(url('/get-profile')); ?>" method="post" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
 
                                 <div style="padding-right: 50px">
                                     <p class="gray_font">Profile Picture</p>
@@ -120,18 +120,12 @@
                                     <select class="mdb-select _inputwidth" name="favorite_subject"
                                         searchable="Search here.." required="true">
                                         <option value="" disabled selected>My Favourite Subjects</option>
-                                        @foreach($allSubjects as $subjects)
-                                        <option value="{{$subjects->id}}">{{$subjects->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $allSubjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subjects): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($subjects->id); ?>"><?php echo e($subjects->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
-                                {{-- <div style="width:100%;">
-                                        <select class="mdb-select _inputwidth" name="fof_session" searchable="Search here.." required="true">
-                                            <option value="" disabled selected>Available for 1:1</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">NO</option>
-                                        </select>
-                                    </div> --}}
+                                
                                 <div class="d-flex" style="width: 100%">
                                     <p class="gray_font">Open 1:1 Tuition </p>
                                     <div class="custom-control custom-radio ml-3">
@@ -163,10 +157,10 @@
                                     style="box-shadow: unset;">SAVE</button>
                                 <button type="button" class="btn btn-primary active _skip_btn"
                                     style=" background-color: #ff000000!important;box-shadow: unset;">
-                                    <a href="{{route('skip')}}"
+                                    <a href="<?php echo e(route('skip')); ?>"
                                         style="color: gray;text-decoration: underline;"><b>SKIP</b></a></button>
 
-                                <input type="hidden" name="user_id" value="{{$user_id}}">
+                                <input type="hidden" name="user_id" value="<?php echo e($user_id); ?>">
                             </form>
                         </div>
                     </div>
@@ -174,14 +168,14 @@
                 </div>
                 <div class="col-lg-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img src="{{asset('asset/images/students/registration-banner.png')}}">
+                        <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
@@ -198,3 +192,4 @@
             }
         }
 </script>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/auth/students/student-profile.blade.php ENDPATH**/ ?>

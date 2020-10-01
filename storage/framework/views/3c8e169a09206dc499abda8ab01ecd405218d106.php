@@ -1,9 +1,9 @@
-@extends('layouts.master')
+
 <!--====== HEADER PART ENDS ======-->
 
 <!--====== SEARCH BOX PART START ======-->
-@section('content')
-<link rel="stylesheet" href="{{asset('asset/css/donate.css')}}">
+<?php $__env->startSection('content'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/donate.css')); ?>">
 <style>
     .section-title h5::before {
         /* left: 12px; */
@@ -40,7 +40,7 @@
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
-        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/donate/banner.jpg')}}">
+        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/donate/banner.jpg')); ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
@@ -72,20 +72,20 @@
 
             <h2>Donate Here</h2>
         </div> <!-- section title -->
-        <form action="{{route('stirpepaymentgatway')}}" id="paymentForm" method="post">
-            @csrf
+        <form action="<?php echo e(route('stirpepaymentgatway')); ?>" id="paymentForm" method="post">
+            <?php echo csrf_field(); ?>
             <div class="row" id="row">
-                @if(count($errors))
+                <?php if(count($errors)): ?>
                 <div class="form-group">
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
-                @endif
+                <?php endif; ?>
                 <div class="col-lg-12" id="payment-radios">
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" id="defaultInline1" name="type" value="1">
@@ -135,8 +135,7 @@
             </div>
 
             <div class="row" id="payment-pics">
-                {{-- <div class="col-md-4"><button type="submit" style="border:none; cursor:pointer"> <img
-                            src="{{asset('asset/images/donate/visa.jpg')}}" /></button></div> --}}
+                
             <div class="col-4">
                 <div class="form-group">
                     <label for="">Card Holder Name</label>
@@ -185,7 +184,7 @@
                 </div> <!-- teachers cont -->
             </div>
             <div class="col-lg-6 offset-lg-1 donate-sec1-right">
-                <img src="{{asset('asset/images/donate/cheap-bastard.jpg')}}" alt="">
+                <img src="<?php echo e(asset('asset/images/donate/cheap-bastard.jpg')); ?>" alt="">
             </div>
         </div> <!-- row -->
     </div> <!-- container -->
@@ -216,7 +215,7 @@
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
-        style="background-repeat: no-repeat; padding-bottom: 50px; padding-top: 40px; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/slider/banner.jpg')}}">
+        style="background-repeat: no-repeat; padding-bottom: 50px; padding-top: 40px; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/slider/banner.jpg')); ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
@@ -241,14 +240,14 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 <script
     src="https://www.paypal.com/sdk/js?client-id=Af_hkAJriAisK0jqeXxt1FjssUB-vYNqW8pAkvp1RFMPkpu_mKjT29aNZxj4Yvn1Mq1K4N78zIwuTvJI">
 </script>
 <script src="https://js.stripe.com/v3/"></script>
-<script src="{{asset('asset/js/stripe.js')}}"></script>
+<script src="<?php echo e(asset('asset/js/stripe.js')); ?>"></script>
 <script>
     $(function() {
     $('form.require-validation').bind('submit', function(e) {
@@ -293,4 +292,5 @@
             }
           }).render('#paypal-button-container'); // Display payment options on your web page
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/frontend/pages/donate.blade.php ENDPATH**/ ?>

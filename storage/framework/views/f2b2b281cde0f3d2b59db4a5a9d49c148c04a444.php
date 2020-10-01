@@ -1,13 +1,13 @@
-@extends('layouts.teachersmaster')
-@section('title','Teacher Homepage')
-@section('content')
+
+<?php $__env->startSection('title','Teacher Homepage'); ?>
+<?php $__env->startSection('content'); ?>
 
 <!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/teacher-homepage.css')); ?>">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min-for-teacher-homepage.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min-for-teacher-homepage.css')); ?>">
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
@@ -129,14 +129,14 @@
 </style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
-        style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url({{asset('asset/images/teacher-homepage/teaching_banner.jpg')}}">
+        style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url(<?php echo e(asset('asset/images/teacher-homepage/teaching_banner.jpg')); ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
-                        <h3 class="std-welcome-msg">Hi-{{Auth::user()->fname}}<br>
+                        <h3 class="std-welcome-msg">Hi-<?php echo e(Auth::user()->fname); ?><br>
 
-                            @lang('teacherhome.Welcome_back')</h3>
+                            <?php echo app('translator')->get('teacherhome.Welcome_back'); ?></h3>
 
                     </div>
                 </div>
@@ -146,39 +146,34 @@
 </section>
 <!-- Card -->
 
-{{-- dashboard section --}}
+
 
 <section class="dashboard-section">
     <div class="container">
         <div class="row d-flex justify-content-center text-center h-100">
             <div class="col-lg-6 col-sm-12 col-xs-12" id="std-dashboard-left">
                 <div class="stu-home-dash-head-div px-4">
-                    <p class="stu-home-dash-head-head">@lang('teacherhome.DASHBOARD')</p>
+                    <p class="stu-home-dash-head-head"><?php echo app('translator')->get('teacherhome.DASHBOARD'); ?></p>
                     <hr>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
-                        <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
+                        <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
                             alt="stud-profile-pic">
                     </div>
                     <div class="col-lg-8 col-sm-12 col-xs-12">
 
-                        <p class="stud-name pb-3">{{Auth::user()->fname}}-{{Auth::user()->lname}}</p>
-                        {{-- <p class="stud-name" style="font-size:15px">Level:  {{ $favsubject->count() > 0 ? $favsubject[0]->level_name : '' }}
-                        </p> --}}
+                        <p class="stud-name pb-3"><?php echo e(Auth::user()->fname); ?>-<?php echo e(Auth::user()->lname); ?></p>
+                        
 
-                        {{-- <p class="stud-name" style="font-size:15px"> {{ $favsubject->count() > 0 ? $favsubject[0]->field : '' }}
-                        </p> --}}
+                        
 
-                        <p class="stud-date">{{Auth::user()->description}}</p>
-                        <p class="teacher-exper-head pb-3 pt-3">@lang('teacherhome.EXPERIENCE')
-                            {{-- <a href="#" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-plus"></i></a></p> --}}
-                            {{--  @foreach($experices as $experices)
-                       <p class="stud-date">Title: &nbsp;&nbsp;{{$experices->title}}</p>
+                        <p class="stud-date"><?php echo e(Auth::user()->description); ?></p>
+                        <p class="teacher-exper-head pb-3 pt-3"><?php echo app('translator')->get('teacherhome.EXPERIENCE'); ?>
+                            
+                            
 
-                        @endforeach --}}
-
-                        <p class="text-white text-left">{{ Auth::user()->experience }}</p>
+                        <p class="text-white text-left"><?php echo e(Auth::user()->experience); ?></p>
 
 
                         <p class="stud-date ">
@@ -190,27 +185,27 @@
             <div class="col-lg-6 col-sm-12 col-xs-12" id="std-dashboard-right">
                 <div class="row">
                     <div class="col-lg-6 col-sm-6 col-xs-12" id="achieve-div">
-                        <a href="{{route('MyAchevemnt')}}">
-                            <img src="{{asset('asset/images/teacher-homepage/teacher-messages.png')}}" alt="">
-                            <p class="teacher-measages">@lang('teacherhome.MY')<br>@lang('teacherhome.ACHIEVEMENTS')</p>
+                        <a href="<?php echo e(route('MyAchevemnt')); ?>">
+                            <img src="<?php echo e(asset('asset/images/teacher-homepage/teacher-messages.png')); ?>" alt="">
+                            <p class="teacher-measages"><?php echo app('translator')->get('teacherhome.MY'); ?><br><?php echo app('translator')->get('teacherhome.ACHIEVEMENTS'); ?></p>
                         </a>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12" id="schedule-div">
-                        <a href="{{route('teacherSchedule')}}"><img
-                                src="{{asset('asset/images/student-homepage/schedule.png')}}" alt=""></a>
-                        <p>@lang('teacherhome.MY')<br>@lang('teacherhome.SCHEDULE')</p>
+                        <a href="<?php echo e(route('teacherSchedule')); ?>"><img
+                                src="<?php echo e(asset('asset/images/student-homepage/schedule.png')); ?>" alt=""></a>
+                        <p><?php echo app('translator')->get('teacherhome.MY'); ?><br><?php echo app('translator')->get('teacherhome.SCHEDULE'); ?></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-sm-6 col-xs-12" id="grades-div">
-                        <a href="{{route('teacherAddLesson')}}"><img
-                                src="{{asset('asset/images/teacher-homepage/add-lesson-teacher.png')}}" alt=""></a>
+                        <a href="<?php echo e(route('teacherAddLesson')); ?>"><img
+                                src="<?php echo e(asset('asset/images/teacher-homepage/add-lesson-teacher.png')); ?>" alt=""></a>
                         <p>Add<br>Lesson</p>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12" id="homework-div">
-                        <a href="{{route('teacherHomeWork')}}"><img
-                                src="{{asset('asset/images/student-homepage/homework.png')}}" alt=""></a>
-                        <p class="teacher-measages">@lang('teacherhome.MY')<br>@lang('teacherhome.MY_HOMEWORK')</p>
+                        <a href="<?php echo e(route('teacherHomeWork')); ?>"><img
+                                src="<?php echo e(asset('asset/images/student-homepage/homework.png')); ?>" alt=""></a>
+                        <p class="teacher-measages"><?php echo app('translator')->get('teacherhome.MY'); ?><br><?php echo app('translator')->get('teacherhome.MY_HOMEWORK'); ?></p>
                     </div>
                 </div>
             </div>
@@ -221,7 +216,7 @@
 
 <!--Carousel Wrapper-->
 
-{{-- end-dashboard section --}}
+
 
 
 <section class="schedules">
@@ -275,16 +270,17 @@ $sepbookingss=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbookingss as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbookingss; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -335,16 +331,17 @@ $sepbooking2=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbooking2 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -392,15 +389,16 @@ $sepbooking2=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
-                        @foreach($sepbooking2 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -461,16 +459,17 @@ $sepbookingss4=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbookingss4 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbookingss4; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -521,16 +520,17 @@ $sepbooking4=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbooking4 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking4; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -577,15 +577,16 @@ $sepbooking5=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
-                        @foreach($sepbooking5 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking5; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -647,16 +648,17 @@ $sepbookings6=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbookings6 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbookings6; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -707,16 +709,17 @@ $sepbooking7=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($sepbooking7 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking7; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -763,15 +766,16 @@ $sepbooking8=DB::table('lessons')
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$books2[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($books2[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
-                        @foreach($sepbooking8 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $sepbooking8; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -816,7 +820,7 @@ $sepbooking8=DB::table('lessons')
 
 
         <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div" style="margin-top: 10px">
-            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="{{ url('teacher-schedule') }}"
+            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="<?php echo e(url('teacher-schedule')); ?>"
                 id="donate-register-btn">SEE ALL</a>
         </div>
 
@@ -829,36 +833,36 @@ $sepbooking8=DB::table('lessons')
         style="background-image: url(images/course/course-shape.png)">
         <div class="container">
             <div class="teacher-homework-dash-head-div">
-                <p class="teacher-homework-dash-head">@lang('teacherhome.MY_HOMEWORK')</p>
+                <p class="teacher-homework-dash-head"><?php echo app('translator')->get('teacherhome.MY_HOMEWORK'); ?></p>
                 <hr>
             </div>
             <div class="row">
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
-                        @foreach($teacherhomeworkdetail as $teacherhomeworkdetail)
+                        <?php $__currentLoopData = $teacherhomeworkdetail; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teacherhomeworkdetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="item">
                             <div class="pad15">
                                 <div class="card postion-relative">
                                     <img class="card-img"
-                                        src="  {{url('/storage/images/'.$teacherhomeworkdetail->lesson_thum)}}"
+                                        src="  <?php echo e(url('/storage/images/'.$teacherhomeworkdetail->lesson_thum)); ?>"
                                         alt="Bologna" height="100%">
                                     <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
                                         <div class="topright"><span
-                                                class="exclamation-para">{{$teacherhomeworkdetail->Duedate}}</span><i
+                                                class="exclamation-para"><?php echo e($teacherhomeworkdetail->Duedate); ?></span><i
                                                 class="fa fa-exclamation" aria-hidden="true" id="exclamation-icon"></i>
                                         </div>
                                         <div style="margin-bottom: 217px;">
-                                            <h6 class="card-subtitle mb-2">{{$teacherhomeworkdetail->subjectname}}</h6>
-                                            <p class="card-subtitle mb-3">{{$teacherhomeworkdetail->fname}}</p>
+                                            <h6 class="card-subtitle mb-2"><?php echo e($teacherhomeworkdetail->subjectname); ?></h6>
+                                            <p class="card-subtitle mb-3"><?php echo e($teacherhomeworkdetail->fname); ?></p>
                                         </div>
                                     </div>
                                     <a data-animation="fadeInUp" data-delay="2s"
                                         class="main-slider-btn2 postion-absolute" id="schedule-btn-teach" href="#"
-                                        style="bottom:0px;width: 100%;position:absolute;">@lang('teacherhome.LEARN_MORE')</a>
+                                        style="bottom:0px;width: 100%;position:absolute;"><?php echo app('translator')->get('teacherhome.LEARN_MORE'); ?></a>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -884,4 +888,5 @@ $sepbooking8=DB::table('lessons')
 
 
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.teachersmaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/frontend/pages/teachers/teacher-homepage.blade.php ENDPATH**/ ?>

@@ -1,14 +1,14 @@
-@extends('layouts.masterStudent')
-@section('title','Student Homepage')
-@section('content')
+
+<?php $__env->startSection('title','Student Homepage'); ?>
+<?php $__env->startSection('content'); ?>
 
 <!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
-<link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homepage.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/teacher-homepage.css')); ?>">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
@@ -27,7 +27,7 @@
 </style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
-        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/student-lesson-search/banner.jpg')}}">
+        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12">
@@ -36,7 +36,7 @@
 
                             Welcome back!</h3>
                         <div class="row">
-                            {{-- <div class="c"></div> --}}
+                            
                             <div class="col-7 ml-5 pl-5">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="What are you looking for?">
@@ -58,7 +58,7 @@
 </section>
 <!-- Card -->
 
-{{-- dashboard section --}}
+
 
 <section class="dashboard-section" style="margin-top: -10%;">
     <div class="container">
@@ -74,13 +74,12 @@
  $auth=Auth::User()->id;
                           $usersimgg=DB::table('users')->where('users.id', $auth)->select('users.*')->get();
  ?>
-                        {{-- <img src="{{url('/storage/images/'.$usersimgg[0]->thumbnail)}}" alt="stud-profile-pic">
-                        --}}
-                        <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
+                        
+                        <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
                             alt="stud-profile-pic">
                     </div>
                     <div class="col-lg-8 col-sm-12 col-xs-12">
-                        <p class="stud-name">Hi-{{Auth::user()->fname}}</p>
+                        <p class="stud-name">Hi-<?php echo e(Auth::user()->fname); ?></p>
                         <p class="stud-date">23/01/2012</p><br><br>
                         <a href="#" class="stu-fav-subj-link w-100 text-left" style="">My Favourite
                             Subjects</a>
@@ -92,12 +91,12 @@
             <div class="col-6" id="std-dashboard-right">
                 <div class="row">
                     <div class="col-6 p-3" id="achieve-div">
-                        <img src="{{asset('asset/images/student-homepage/achievement.png')}}" alt="">
+                        <img src="<?php echo e(asset('asset/images/student-homepage/achievement.png')); ?>" alt="">
                         <p>MY<br>ACHIEVEMENTS</p>
                     </div>
                     <div class="col-6 p-3" id="schedule-div">
-                        <a href="{{ route('student_schedule') }}">
-                            <img src="{{asset('asset/images/student-homepage/schedule.png')}}" alt="">
+                        <a href="<?php echo e(route('student_schedule')); ?>">
+                            <img src="<?php echo e(asset('asset/images/student-homepage/schedule.png')); ?>" alt="">
                             <p>MY<br>SCHEDULE</p>
                         </a>
                     </div>
@@ -105,13 +104,13 @@
                 </div>
                 <div class="row">
                     <div class="col-6 p-3" id="grades-div">
-                        <img src="{{asset('asset/images/student-homepage/grades.png')}}" alt="">
+                        <img src="<?php echo e(asset('asset/images/student-homepage/grades.png')); ?>" alt="">
                         <p>MY<br>GRADES</p>
                     </div>
 
                     <div class="col-6 p-3" id="homework-div">
-                        <a href="{{ route('studetnsHomeWork') }}">
-                            <img src="{{asset('asset/images/student-homepage/homework.png')}}" alt="">
+                        <a href="<?php echo e(route('studetnsHomeWork')); ?>">
+                            <img src="<?php echo e(asset('asset/images/student-homepage/homework.png')); ?>" alt="">
                             <p>MY<br>HOMEWORK</p>
                         </a>
                     </div>
@@ -140,7 +139,7 @@
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
 
-                @foreach($MyAchivment as $MyAchivment)
+                <?php $__currentLoopData = $MyAchivment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $MyAchivment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                 <!--First slide-->
 
@@ -149,7 +148,7 @@
 
                 <div class="carousel-item active">
                     <div class="col-md-2">
-                        <img class="card-img-top" src="{{url('/storage/images/'.$MyAchivment->img)}}"
+                        <img class="card-img-top" src="<?php echo e(url('/storage/images/'.$MyAchivment->img)); ?>"
                             alt="Card image cap">
 
                     </div>
@@ -159,7 +158,7 @@
                 <!--/.Third slide-->
 
 
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
             <!--/.Slides-->
 
@@ -172,7 +171,7 @@
 
 <!--Carousel Wrapper-->
 
-{{-- end-dashboard section --}}
+
 
 
 <section class="schedules">
@@ -230,16 +229,17 @@ $dateid=$Book0[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book0[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book0[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book1 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -291,16 +291,17 @@ $dateid=$Book1[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book1[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book1[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book2 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -355,16 +356,17 @@ $dateid=$Book3[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book3[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book3[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book4 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book4; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -423,16 +425,17 @@ $dateid=$Book03[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book03[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book03[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book03 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book03; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -484,16 +487,17 @@ $dateid=$Book04[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book04[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book04[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book004 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book004; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -548,16 +552,17 @@ $dateid=$Book3[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book05[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book05[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book005 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book005; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -618,16 +623,17 @@ $dateid=$Book06[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book06[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book06[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book06 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book06; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -679,16 +685,17 @@ $dateid=$Book07[0]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book07[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book07[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book007 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book007; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -743,16 +750,17 @@ $dateid=$Book3[8]->date;
                     <!-- Card image -->
                     <a href="#">
                         <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                            <h4 class="card-title">{{$Book08[0]->date}}</h4>
+                            <h4 class="card-title"><?php echo e($Book08[0]->date); ?></h4>
                         </div>
                     </a>
                     <!-- Card content -->
                     <div class="card-body">
                         <!-- Title -->
-                        @foreach($Book008 as $bookingg)
-                        <p class="teach-shed-card-content"> {{$bookingg->time}}&nbsp;&nbsp;&nbsp;{{$bookingg->sub_name}}
+                        <?php $__currentLoopData = $Book008; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bookingg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <p class="teach-shed-card-content"> <?php echo e($bookingg->time); ?>&nbsp;&nbsp;&nbsp;<?php echo e($bookingg->sub_name); ?>
+
                         </p>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <br>
 
 
@@ -779,7 +787,7 @@ $dateid=$Book3[8]->date;
 </section>
 
 
-<!-- <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url(images/c)"> <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url({{asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')}}">
+<!-- <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url(images/c)"> <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url(<?php echo e(asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')); ?>">
             <div class="container">   
                 <div class="teacher-grade-dash-head-div">
                     <p class="teacher-grade-dash-head">MY GRADES</p>
@@ -910,4 +918,5 @@ $dateid=$Book3[8]->date;
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.masterStudent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/frontend/pages/students/student-home.blade.php ENDPATH**/ ?>

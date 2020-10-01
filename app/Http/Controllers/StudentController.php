@@ -113,12 +113,15 @@ class StudentController extends Controller
             $imageDbPath = $imageName;
         }
 
-        $Data=User::where('id', $request['user_id'])->update([
+        User::where('id', $request['user_id'])->update([
             'Description'     => $request['Description'],
             'country'         => $request['country'],
             'favorite_subject'=> $request['favourit_subjects'],
             'fof_session'     => $request['fof_session'],
             'thumbnail'       => $imageDbPath,
+            'parentEmail'     => $request->parentEmail,
+            'dob'             => $request->dob,
+            'marketing'       => $request->marketing,
         ]);
 
         return redirect()->route('studentHome');
