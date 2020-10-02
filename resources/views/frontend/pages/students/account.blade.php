@@ -70,7 +70,8 @@
                     <div class="form-parts">
                         <h3 class="level-heading">Let's Build your Profile</h3>
                         <div style="display:flex;width:100%;">
-                            <form action="{{route('student.account.update')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('student.account.update')}}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <div style="padding-right: 50px">
@@ -91,8 +92,8 @@
                                             accept="image/x-png,image/gif,image/jpeg">
                                         <div id="blah">
                                             @if( !empty($user->thumbnail) )
-                                            <img src="http://127.0.0.1:8000/storage/images/{{ $user->thumbnail }}"
-                                                style="height:50px;" alt="your image" />
+                                            <img src="/storage/images/{{ $user->thumbnail }}" style="height:50px;"
+                                                alt="your image" />
                                             @endif
 
                                         </div>

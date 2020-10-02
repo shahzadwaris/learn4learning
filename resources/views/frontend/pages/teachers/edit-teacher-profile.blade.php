@@ -88,7 +88,7 @@
                                             accept="image/x-png,image/gif,image/jpeg">
                                         <div id="blah">
                                             @if( !empty($teacherdata->thumbnail) )
-                                            <img src="http://127.0.0.1:8000/storage/images/{{ $teacherdata->thumbnail }}"
+                                            <img src="/storage/images/{{ $teacherdata->thumbnail }}"
                                                 style="height:50px;" alt="your image" />
                                             @endif
 
