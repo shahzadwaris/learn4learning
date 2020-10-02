@@ -73,7 +73,7 @@ class TescherController extends Controller
             $imageDbPath = $imageName;
         }
 
-        $Data=User::where('id', $request['user_id'])->update([
+        $data=User::where('id', $request['user_id'])->update([
             'description'      => $request['description'],
             'country'          => $request['country'],
             'fof_session'      => $request['fof_session'],
@@ -1067,7 +1067,7 @@ class TescherController extends Controller
 
     public function MYaccount()
     {
-        $teacherdata=User::with('subject_level_details')->where('id', auth::user()->id)->first();
+        $teacherdata=User::with('subject_level_details')->where('id', Auth::user()->id)->first();
 
         return view('frontend.pages.teachers.account', compact('teacherdata'));
     }

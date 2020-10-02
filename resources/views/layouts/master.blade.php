@@ -318,10 +318,10 @@
 
                             <div class="right-inner-div ml-3">
 
-                                <ul style="margin-left: 23px">
-                                    <li><a href="#">Teachers</a></li>
-                                    <li><a href="#">About US</a></li>
-                                    <li><a href="#">Subjects</a></li>
+                                <ul style="margin-left: 23px" class="text-center">
+                                    <li><a href="#">Powered by Hot Dog Solutions</a></li>
+                                    <li><a href="#">Contact US</a></li>
+                                    <li><a href="#">Visit our Website</a></li>
 
                                 </ul>
 
@@ -333,10 +333,10 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link mt-40">
 
-                            <ul>
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">About US</a></li>
-                                <li><a href="#">Subjects</a></li>
+                            <ul class="text-center">
+                                <li><a href="#">Terms and Conditions </a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Cookies Policy</a></li>
 
                             </ul>
 
@@ -345,10 +345,10 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
 
-                            <ul>
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">About US</a></li>
-                                <li><a href="#">Subjects</a></li>
+                            <ul class="text-center">
+                                <li><a href="{{route('howitworks')}}">How it Works</a></li>
+                                <li><a href="{{route('teachers')}}">For Teachers</a></li>
+                                <li><a href="{{route('students')}}">For Students</a></li>
 
                             </ul>
                         </div> <!-- support -->
@@ -356,10 +356,10 @@
                     <div class="col-lg-2 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
 
-                            <ul>
-                                <li><a href="#">Levels</a></li>
-                                <li><a href="#">Contact US</a></li>
-                                <li><a href="#">Login</a></li>
+                            <ul class="text-center">
+                                <li><a href="{{route('parents')}}">For Parents </a></li>
+                                <li><a href="{{route('donate')}}">Donate</a></li>
+                                <li><a href="#">Contact Us</a></li>
 
                             </ul>
                         </div> <!-- support -->
@@ -368,67 +368,51 @@
             </div> <!-- container -->
         </div> <!-- footer top -->
         {{----}}
-        <div class="footer-copyright pt-10 pb-25">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright  text-center pt-15">
-                            <p>&copy;@lang('footer.footer_info')
-                                &nbsp; - &nbsp; @lang('footer.Designed_by') <span>Rkixtech</span>
-                            </p>
-                        </div>
-                    </div>
-                    =
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- footer copyright -->
-    </footer>
+        <!--====== FOOTER PART ENDS ======-->
 
-    <!--====== FOOTER PART ENDS ======-->
+        <!--====== BACK TO TP PART START ======-->
 
-    <!--====== BACK TO TP PART START ======-->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+        <!--====== jquery js ======-->
+        <script src="{{asset('asset/js/jquery.min.js')}}"></script>
+        {{-- <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script> --}}
 
-    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-    <!--====== jquery js ======-->
-    <script src="{{asset('asset/js/jquery.min.js')}}"></script>
-    {{-- <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script> --}}
+        <!--====== Bootstrap js ======-->
+        <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
 
-    <!--====== Bootstrap js ======-->
-    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+        <!--====== Slick js ======-->
+        <script src="{{asset('asset/js/slick.min.js')}}"></script>
 
-    <!--====== Slick js ======-->
-    <script src="{{asset('asset/js/slick.min.js')}}"></script>
+        <!--====== Magnific Popup js ======-->
+        <script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
 
-    <!--====== Magnific Popup js ======-->
-    <script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
+        <!--====== Counter Up js ======-->
+        {{-- <script src="{{asset('asset/js/waypoints.min.js')}}"></script> --}}
+        <script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
 
-    <!--====== Counter Up js ======-->
-    {{-- <script src="{{asset('asset/js/waypoints.min.js')}}"></script> --}}
-    <script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
+        <!--====== Nice Select js ======-->
+        <script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
 
-    <!--====== Nice Select js ======-->
-    <script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
+        <!--====== Nice Number js ======-->
+        <script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
 
-    <!--====== Nice Number js ======-->
-    <script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
+        <!--====== Count Down js ======-->
+        <script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
 
-    <!--====== Count Down js ======-->
-    <script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
+        <!--====== Ajax Contact js ======-->
+        <script src="{{asset('asset/js/ajax-contact.js')}}"></script>
 
-    <!--====== Ajax Contact js ======-->
-    <script src="{{asset('asset/js/ajax-contact.js')}}"></script>
+        <!--====== Main js ======-->
+        <script src="{{asset('asset/js/main.js')}}"></script>
 
-    <!--====== Main js ======-->
-    <script src="{{asset('asset/js/main.js')}}"></script>
+        <!--====== Map js ======-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
+        <script src="{{asset('asset/js/map-script.js')}}"></script>
 
-    <!--====== Map js ======-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
-    <script src="{{asset('asset/js/map-script.js')}}"></script>
-
-    <script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
-    @yield('js')
-    <script>
-        // Material Select Initialization
+        <script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
+        @yield('js')
+        <script>
+            // Material Select Initialization
     $(document).ready(function() {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
@@ -459,7 +443,7 @@
             }
             }
             }
-    </script>
+        </script>
 </body>
 
 </html>

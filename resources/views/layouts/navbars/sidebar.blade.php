@@ -87,6 +87,12 @@
                     <p>{{ __('Mail Configuration') }}</p>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('pages.index') }}">
+                    <i class="tim-icons icon-settings"></i>
+                    <p>{{ __('Pages') }}</p>
+                </a>
+            </li>
 
 
 

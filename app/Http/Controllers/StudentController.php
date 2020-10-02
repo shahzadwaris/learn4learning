@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\levels;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Homework;
@@ -17,6 +18,8 @@ class StudentController extends Controller
 {
     public function selectSubjects(Request $request)
     {
+        $user    = Auth::user();
+        $user->update(['educational_level' => $request->level]);
         $user_id = $request->user_id;
         $subjects=Subject::all();
 
@@ -103,6 +106,34 @@ class StudentController extends Controller
         $viewMysubject=DB::table('');
     }
 
+    public function updateProfile(Request $request)
+    {
+        // dd($request->all());
+        if ($request->hasFile('thumbnail')) {
+            $image     = $request->file('thumbnail');
+            $imageName = time() . '.' . $image->extension();
+            $imagePath = public_path() . '/storage/images';
+            $image->move($imagePath, $imageName);
+            $imageDbPath = $imageName;
+        }
+
+        User::where('id', $request['user_id'])->update([
+            'Description'       => $request['Description'],
+            'country'           => $request['country'],
+            'fof_session'       => $request['fof_session'],
+            'thumbnail'         => $imageDbPath,
+            'educational_level' => $request->educational_level,
+        ]);
+
+        return redirect()->route('studentHome');
+    }
+
+    public function myAccount()
+    {
+        $levels = levels::all();
+        return view('frontend.pages.students.account', compact('levels'));
+    }
+
     public function getProfile(Request $request)
     {
         // dd($request->all());
@@ -115,14 +146,12 @@ class StudentController extends Controller
         }
 
         User::where('id', $request['user_id'])->update([
-            'Description'     => $request['Description'],
-            'country'         => $request['country'],
-            'favorite_subject'=> implode(',', $request->favorite_subject),
-            'fof_session'     => $request['fof_session'],
-            'thumbnail'       => $imageDbPath,
-            'parentEmail'     => $request->parentEmail,
-            'dob'             => $request->dob,
-            'marketing'       => $request->marketing,
+            'Description'       => $request['Description'],
+            'country'           => $request['country'],
+            'favorite_subject'  => implode(',', $request->favorite_subject),
+            'fof_session'       => $request['fof_session'],
+            'thumbnail'         => $imageDbPath,
+            'helpSubjects'      => implode(',', $request->subjects),
         ]);
 
         return redirect()->route('studentHome');

@@ -234,10 +234,10 @@
 
                             <div class="right-inner-div ml-3">
 
-                                <ul style="margin-left: 23px">
-                                    <li><a href="#">Teachers</a></li>
-                                    <li><a href="#">About US</a></li>
-                                    <li><a href="#">Subjects</a></li>
+                                <ul style="margin-left: 23px" class="text-center">
+                                    <li><a href="#">Powered by Hot Dog Solutions</a></li>
+                                    <li><a href="#">Contact US</a></li>
+                                    <li><a href="#">Visit our Website</a></li>
 
                                 </ul>
 
@@ -249,10 +249,10 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link mt-40">
 
-                            <ul>
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">About US</a></li>
-                                <li><a href="#">Subjects</a></li>
+                            <ul class="text-center">
+                                <li><a href="#">Terms and Conditions </a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Cookies Policy</a></li>
 
                             </ul>
 
@@ -261,10 +261,10 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
 
-                            <ul>
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">About US</a></li>
-                                <li><a href="#">Subjects</a></li>
+                            <ul class="text-center">
+                                <li><a href="{{route('howitworks')}}">How it Works</a></li>
+                                <li><a href="{{route('teachers')}}">For Teachers</a></li>
+                                <li><a href="{{route('students')}}">For Students</a></li>
 
                             </ul>
                         </div> <!-- support -->
@@ -272,10 +272,10 @@
                     <div class="col-lg-2 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
 
-                            <ul>
-                                <li><a href="#">Levels</a></li>
-                                <li><a href="#">Contact US</a></li>
-                                <li><a href="#">Login</a></li>
+                            <ul class="text-center">
+                                <li><a href="{{route('parents')}}">For Parents </a></li>
+                                <li><a href="{{route('donate')}}">Donate</a></li>
+                                <li><a href="#">Contact Us</a></li>
 
                             </ul>
                         </div> <!-- support -->

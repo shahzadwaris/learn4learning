@@ -38,6 +38,7 @@ class PageController extends Controller
      */
     public function schedulePoster()
     {
+        // dd('here');
         $data=ShedulePagePoster::all();
 //       dd($data);
         return view('pages.schedule-poster', compact('data'));

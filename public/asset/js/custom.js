@@ -1,5 +1,5 @@
 $(function () {
-    $('#email').on('blur', function () {
+    $('#email').on('keypress', function () {
         var email = $('#email').val();
         $.ajax({
             url: "/register/check/" + email,

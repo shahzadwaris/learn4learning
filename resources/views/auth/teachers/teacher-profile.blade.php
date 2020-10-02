@@ -101,6 +101,7 @@
                                 </div>
                                 <div style="width:100%;">
                                     <input class="_inputwidth" name="educational_level" placeholder="Educational Level">
+
                                 </div>
                                 <div style="width:100%;">
                                     <select class="mdb-select _inputwidth" name="country" searchable="Search here.."

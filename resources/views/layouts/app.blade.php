@@ -20,6 +20,7 @@
     <!-- CSS -->
     <link href="{{ asset('black/css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
     <link href="{{ asset('black/css/theme.css') }}" rel="stylesheet" />
+    @yield('css')
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -206,6 +207,7 @@
             });
     </script>
     @stack('js')
+    @yield('js')
 </body>
 
 </html>

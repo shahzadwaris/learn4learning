@@ -95,7 +95,7 @@
                                     <input class="_inputwidth" name="description" autofocus required="true"
                                         placeholder="Description">
                                 </div>
-                                <div class="input-group mb-3" style="width:100%;">
+                                {{-- <div class="input-group mb-3" style="width:100%;">
                                     <span class="mr-2 mt-2 text-muted" style="">Birthday</span>
                                     <input type="date" class="form-control" name="dob" id="registration-date"
                                         placeholder="date of birth" required="" style="max-width: 280px">
@@ -104,7 +104,7 @@
                                 <div style="width:100%;">
                                     <input class="_inputwidth" name="parentEmail" autofocus required="true"
                                         placeholder="Enter parent email">
-                                </div>
+                                </div> --}}
                                 <div style="width:100%;">
                                     <select class="mdb-select _inputwidth" name="country" searchable="Search here.."
                                         required="true">
@@ -117,18 +117,20 @@
                                     </select>
                                 </div>
                                 <div class="w-100">
-                                    {{-- <select class="mdb-select _inputwidth" name="favorite_subject"
-                                        searchable="Search here.." required="true">
-
-                                    </select> --}}
                                     <select class="form-control tags" name="favorite_subject[]" multiple="multiple"
                                         style="width: 100%">
                                         @foreach($allSubjects as $subjects)
                                         <option value="{{$subjects->name}}">{{$subjects->name}}</option>
                                         @endforeach
                                     </select>
-
-
+                                </div>
+                                <div class="w-100">
+                                    <select class="form-control tags" name="subjects[]" multiple="multiple"
+                                        style="width: 100%">
+                                        @foreach($allSubjects as $subjects)
+                                        <option value="{{$subjects->name}}">{{$subjects->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 {{-- <div style="width:100%;">
                                         <select class="mdb-select _inputwidth" name="fof_session" searchable="Search here.." required="true">
@@ -150,7 +152,7 @@
                                         <label class="custom-control-label gray_font" for="defaultChecked">No</label>
                                     </div>
                                 </div>
-                                <div class="d-flex" style="width: 100%">
+                                {{-- <div class="d-flex" style="width: 100%">
                                     <p class="gray_font">Marketing Preference </p>
                                     <div class="custom-control custom-radio ml-3">
                                         <input type="radio" class="custom-control-input" value="1" id="marketing"
@@ -162,7 +164,7 @@
                                             name="marketing" checked="">
                                         <label class="custom-control-label gray_font" for="markingNot">No</label>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <button type="submit" class="btn btn-primary active"
                                     style="box-shadow: unset;">SAVE</button>
