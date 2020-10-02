@@ -109,15 +109,18 @@ class StudentController extends Controller
     public function updateProfile(Request $request)
     {
         // dd($request->all());
+        $user = User::where('id', $request['user_id'])->first();
         if ($request->hasFile('thumbnail')) {
             $image     = $request->file('thumbnail');
             $imageName = time() . '.' . $image->extension();
             $imagePath = public_path() . '/storage/images';
             $image->move($imagePath, $imageName);
             $imageDbPath = $imageName;
+        } else {
+            $imageDbPath = $user->thumbnail;
         }
 
-        User::where('id', $request['user_id'])->update([
+        $user->update([
             'Description'       => $request['Description'],
             'country'           => $request['country'],
             'fof_session'       => $request['fof_session'],
