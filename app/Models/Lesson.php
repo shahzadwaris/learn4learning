@@ -14,6 +14,11 @@ class Lesson extends Model
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
+    protected $dates = [
+        'date',
+        'time',
+    ];
+
     public function saveLesson($request)
     {
         if ($request->hasFile('photo')) {

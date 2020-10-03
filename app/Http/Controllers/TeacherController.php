@@ -484,44 +484,12 @@ class TeacherController extends Controller
     public function teacherSchedule()
     {
         $levels = levels::all();
-        //     $levels=DB::table('levels')
-        //   ->get();
-
-        //     $Date=DB::table('lessons')->where('lessons.user_id', $auth)->select('lessons.date', 'lessons.id')
-        //   ->get();
-
-        //     $subjects=DB::table('subjects')
-        //     ->join('lessons', 'lessons.subject_id', 'subjects.id')
-        //     ->select('subjects.*')
-        //     ->where('lessons.user_id', $auth)
-        //     ->get();
-
-        //     $Book=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
-        //             ->join('subjects', 'subjects.id', 'lessons.subject_id')
-        //             ->join('users', 'users.id', 'lessons.user_id')
-
-        //             ->where('users.id', $auth)
-        //             ->select('users.*', 'lessons.id as lessonsid', 'lessons.*', 'lessons.date as Lesson_date', 'lessons.time as Lesson_time', 'users.thumbnail as USerthumbnail', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
-
-        //             ->get();
-        //     $uid    =Auth::user()->id;
-        //     $teacher=Teacher::where('user_id', Auth::id())->get();
-
-        //     $teacher_id=$teacher->pluck('id');
-
-        // $exp=Experience::where('teacher_id',$teacher_id)->get();
-        // $schedules= Lesson::where('user_id' ,Auth::id())->get();
-//         foreach ($schedules as $key=>$schedule){
-//             $schedules[$key]['teacher_fname']=User::where('id',$schedule['user_id'])->pluck("fname")->first();
-//             $schedules[$key]['teacher_lname']=User::where('id',$schedule['user_id'])->pluck("lname")->first();
-//             $schedules[$key]['teacher_thumbnail']=User::where('id',$schedule['user_id'])->pluck("thumbnail")->first();
-
-        // dd(['Book'=>$Book, 'levels'=>$levels, 'Date'=>$Date,  'subjects'=>$subjects]);
         return view('frontend.pages.teachers.teacher-schedule', compact('levels'));
     }
 
     public function SearchSchedule(Request $request)
     {
+        dd($request->all());
         $auth=Auth::User()->id;
 
         $Book=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
