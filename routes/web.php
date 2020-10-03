@@ -66,10 +66,10 @@ Route::group(['Public'], function () {
         Route::get('/save-new-subject', 'StudentController@saveNewSubject')->name('save-new-subject');
         Route::post('/get-subjects', 'StudentController@getSubjects')->name('getSubjects');
         Route::post('/get-profile', 'StudentController@getProfile')->name('getProfile');
-        Route::post('/teacher-subjects', 'TescherController@teacherSubjects')->name('teacherSubjects');
+        Route::post('/teacher-subjects', 'TeacherController@teacherSubjects')->name('teacherSubjects');
 
-        Route::post('/get-teacher-profile', 'TescherController@getteacherProfile')->name('getteacherProfile');
-        Route::get('/view-teacher-profile', 'TescherController@viewTeacherProfile')->name('viewTeacherProfile');
+        Route::post('/get-teacher-profile', 'TeacherController@getteacherProfile')->name('getteacherProfile');
+        Route::get('/view-teacher-profile', 'TeacherController@viewTeacherProfile')->name('viewTeacherProfile');
         Route::get('view.subject', 'StudentController@viewSubjects')->name('view_Mysubjects');
     });
 });
@@ -171,51 +171,51 @@ Route::group(['private'], function () {
     });
 
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'teacher', 'verified']], function () {
-        Route::get('/teacher-add-lesson', 'TescherController@teacherAddLesson')->name('teacherAddLesson');
-        Route::get('/teacher-home', 'TescherController@teacherHome')->name('teacherHome');
-        Route::get('/update-teachere-profile', 'TescherController@_EditTeacherProfile');
-        Route::post('/create-lesson', 'TescherController@createLesson')->name('createLesson');
-        Route::get('/teacher-schedule', 'TescherController@teacherSchedule')->name('teacherSchedule');
-        Route::get('/add/subject', 'TescherController@teachersubject')->name('teacherssubject');
-        Route::get('/Add/homework', 'TescherController@teacherHomeWork')->name('teacherHomeWork');
-        Route::get('/view/student', 'TescherController@mystudents')->name('mystudents');
-        Route::get('/view/my-student', 'TescherController@getdataofstudent')->name('getdataofstudent');
+        Route::get('/teacher-add-lesson', 'TeacherController@teacherAddLesson')->name('teacherAddLesson');
+        Route::get('/teacher-home', 'TeacherController@teacherHome')->name('teacherHome');
+        Route::get('/update-teachere-profile', 'TeacherController@_EditTeacherProfile');
+        Route::post('/create-lesson', 'TeacherController@createLesson')->name('createLesson');
+        Route::get('/teacher-schedule', 'TeacherController@teacherSchedule')->name('teacherSchedule');
+        Route::get('/add/subject', 'TeacherController@teachersubject')->name('teacherssubject');
+        Route::get('/Add/homework', 'TeacherController@teacherHomeWork')->name('teacherHomeWork');
+        Route::get('/view/student', 'TeacherController@mystudents')->name('mystudents');
+        Route::get('/view/my-student', 'TeacherController@getdataofstudent')->name('getdataofstudent');
 
-        Route::get('/view/stu/{id}/', 'TescherController@viewSeperateStu')->name('viewSeperateStu');
-        Route::get('/message/stu/{id}/', 'TescherController@messages')->name('messages');
-        Route::post('/Search/Subject', 'TescherController@search_subjects_level')->name('search_subjects_level');
-        Route::get('/Edit/Lesson{lessonsid}', 'TescherController@EditLesson')->name('EditLesson');
-        Route::post('/update/Lesson', 'TescherController@EditLessons')->name('teacher.Edit.lesson');
-        Route::get('/view-student-profile/{id}', 'TescherController@View_student_profile')->name('View.student.profile');
-        Route::get('/message/{id}', 'TescherController@messageStudent')->name('Contact.Student');
-        Route::post('/live/message/', 'TescherController@teacherSideMesages')->name('teacherSideMesages');
-        Route::get('/Upload/homework/{id}', 'TescherController@addsubjecthomework')->name('addsubjecthomework');
-        Route::post('/Add/homework', 'TescherController@teacheraddHomework')->name('teacher.addHomework');
-        // Route::get('/view/homework', 'TescherController@ViewStudentHomeWork')->name('ViewStudentHomeWork');
-        Route::get('view/our/student', 'TescherController@MySubStudents')->name('Students');
-        Route::get('view/Subject', 'TescherController@MYSubjects')->name('SubjectMy');
-        Route::get('View/homeWork', 'TescherController@ViewStudentsHomeWork')->name('ViewStudentsHomeWork');
-        Route::get('View/MyAchevemnt', 'TescherController@MyAchevemntss')->name('MyAchevemnt');
-        Route::get('View/Acheivment', 'TescherController@AssignStudentAchevemnt')->name('AssignStudentAchevemnt');
+        Route::get('/view/stu/{id}/', 'TeacherController@viewSeperateStu')->name('viewSeperateStu');
+        Route::get('/message/stu/{id}/', 'TeacherController@messages')->name('messages');
+        Route::post('/Search/Subject', 'TeacherController@search_subjects_level')->name('search_subjects_level');
+        Route::get('/Edit/Lesson{lessonsid}', 'TeacherController@EditLesson')->name('EditLesson');
+        Route::post('/update/Lesson', 'TeacherController@EditLessons')->name('teacher.Edit.lesson');
+        Route::get('/view-student-profile/{id}', 'TeacherController@View_student_profile')->name('View.student.profile');
+        Route::get('/message/{id}', 'TeacherController@messageStudent')->name('Contact.Student');
+        Route::post('/live/message/', 'TeacherController@teacherSideMesages')->name('teacherSideMesages');
+        Route::get('/Upload/homework/{id}', 'TeacherController@addsubjecthomework')->name('addsubjecthomework');
+        Route::post('/Add/homework', 'TeacherController@teacheraddHomework')->name('teacher.addHomework');
+        // Route::get('/view/homework', 'TeacherController@ViewStudentHomeWork')->name('ViewStudentHomeWork');
+        Route::get('view/our/student', 'TeacherController@MySubStudents')->name('Students');
+        Route::get('view/Subject', 'TeacherController@MYSubjects')->name('SubjectMy');
+        Route::get('View/homeWork', 'TeacherController@ViewStudentsHomeWork')->name('ViewStudentsHomeWork');
+        Route::get('View/MyAchevemnt', 'TeacherController@MyAchevemntss')->name('MyAchevemnt');
+        Route::get('View/Acheivment', 'TeacherController@AssignStudentAchevemnt')->name('AssignStudentAchevemnt');
         Route::get(
             'View/assingachevment/{sub_id}/{User_id}/{homeworkid}',
-            'TescherController@assingachevment'
+            'TeacherController@assingachevment'
         )->name('assingachevment');
 
-        Route::post('Assign/Grade', 'TescherController@AssignGrade')->name('AssignGrade');
-        Route::post('Add/Grade', 'TescherController@assigngradeforstudent')->name('assigngradeforstudent');
-        Route::get('Edit/profile', 'TescherController@teacher_edit_profile')->name('teacher_edit_profile');
-        Route::post('update/profile', 'TescherController@editteacherprofile')->name('editteacherprofile');
+        Route::post('Assign/Grade', 'TeacherController@AssignGrade')->name('AssignGrade');
+        Route::post('Add/Grade', 'TeacherController@assigngradeforstudent')->name('assigngradeforstudent');
+        Route::get('Edit/profile', 'TeacherController@teacher_edit_profile')->name('teacher_edit_profile');
+        Route::post('update/profile', 'TeacherController@editteacherprofile')->name('editteacherprofile');
 
-        Route::post('update/experience', 'TescherController@Add_experience')->name('Add_experience');
-        Route::get('/Search/Homeworks', 'TescherController@SearchHomeworks')->name('SearchHomeworks');
+        Route::post('update/experience', 'TeacherController@Add_experience')->name('Add_experience');
+        Route::get('/Search/Homeworks', 'TeacherController@SearchHomeworks')->name('SearchHomeworks');
 
-        Route::get('/Search/Schedule', 'TescherController@SearchSchedule')->name('SearchSchedule');
-        Route::post('/search-studetns', 'TescherController@searchstudetns')->name('searchstudetns');
-        Route::post('/Assign/Grade', 'TescherController@Assign_Acivement')->name('Assign_Acivement');
-        Route::get('/Account', 'TescherController@MYaccount')->name('MYaccount');
-        Route::get('/Edit/{id}', 'TescherController@teacher_dashboard_editprofile')->name('teacher-dashboard-editprofile');
-        Route::post('/Edit/tacher', 'TescherController@edit_teacher_dashboard')->name('edit.form.teacher.dashboard');
+        Route::get('/Search/Schedule', 'TeacherController@SearchSchedule')->name('SearchSchedule');
+        Route::post('/search-studetns', 'TeacherController@searchstudetns')->name('searchstudetns');
+        Route::post('/Assign/Grade', 'TeacherController@Assign_Acivement')->name('Assign_Acivement');
+        Route::get('/Account', 'TeacherController@MYaccount')->name('MYaccount');
+        Route::get('/Edit/{id}', 'TeacherController@teacher_dashboard_editprofile')->name('teacher-dashboard-editprofile');
+        Route::post('/Edit/tacher', 'TeacherController@edit_teacher_dashboard')->name('edit.form.teacher.dashboard');
     });
 });
 

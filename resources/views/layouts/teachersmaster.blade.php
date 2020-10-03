@@ -45,6 +45,7 @@
 
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
+    @yield('css')
 
 
 </head>

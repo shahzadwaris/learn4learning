@@ -6,12 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubjectLevelDetail extends Model
 {
-    protected $fillable=['subject','level','user_id','subject_id','level_id' , 'field'];
+    protected $fillable=['subject', 'level', 'user_id', 'subject_id', 'level_id', 'field'];
 
-    function Getsubject(){
-        return $this->belongsTo(\App\Models\Subject::class,'subject_id');
+    public function Getsubject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
     }
-    function Getlevel(){
-        return $this->belongsTo(\App\Models\levels::class,'level_id');
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(levels::class, 'level_id');
+    }
+
+    public function Getlevel()
+    {
+        return $this->belongsTo(levels::class, 'level_id');
     }
 }

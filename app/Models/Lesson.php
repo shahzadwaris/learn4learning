@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $guard = [];
+    protected $guarded = [];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
 
     public function saveLesson($request)
     {
@@ -27,20 +31,23 @@ class Lesson extends Model
             $document->move($documentPath, $documentName);
             $documentDbPath = $documentName;
         }
+        $subject  = explode(' ', $request->subject);
+
         $addlesson = Lesson::create([
-            'subject_id'  => $request['subject'],
+            'subject_id'  => $subject[0],
             'user_id'     => Auth::id(),
             'title'       => $request['title'],
             'description' => $request['description'],
-            'type'        => $request['inlineRadioOptions'],
+            'type'        => $request['lessonType'],
             'date'        => $request['registration_date'],
             'time'        => $request['registration_time'],
             'frequency'   => $request['frequency'],
             'link'        => $request['video'],
-            'level_id'    => $request['level_id'],
+            'level_id'    => $subject[1],
             'document'    => $documentDbPath,
             'thumbnail'   => $imageDbPath,
         ]);
+        // dd($addlesson);
         if ($addlesson) {
             return $addlesson;
         }

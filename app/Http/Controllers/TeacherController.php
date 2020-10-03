@@ -15,8 +15,9 @@ use Illuminate\Http\Request;
 use App\Models\SubjectLevelDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CreateLessonRequest;
 
-class TescherController extends Controller
+class TeacherController extends Controller
 {
     private $lesson;
 
@@ -27,34 +28,35 @@ class TescherController extends Controller
 
     public function teacherSubjects(Request $request)
     {
-        // dd($request->all());
         $user_id     = $request->user_id;
         $allSubjects = Subject::all();
-
+        $subjects    = $allSubjects->pluck('name')->toArray();
+        if ($request->others) {
+            foreach ($request->others as $key => $subject) {
+                if (!in_array($subject, $subjects)) {
+                    $s = Subject::create([
+                        'name' => $subject,
+                    ]);
+                    $createSubjects = SubjectLevelDetail::create([
+                        'user_id'    => $user_id,
+                        'subject_id' => $s->id,
+                        'field'      => 0,
+                        'level_id'   => $request->subject_level_other_ . $key,
+                    ]);
+                }
+            }
+        }
         foreach ($request->subject as $subject) {
             if (!$subject) {
                 continue;
             }
             $subLevelArr='subject_' . $subject . '_level';
-            // dump($subLevelArr);
             foreach ($request->$subLevelArr as $SL) {
                 $createSubjects = SubjectLevelDetail::create([
                     'user_id'    => $user_id,
                     'subject_id' => $subject,
                     'field'      => 0,
                     'level_id'   => $SL,
-                ]);
-            }
-        }
-        // die();
-        if ($request->others) {
-            foreach ($request->others as $key => $subject) {
-                $n              = $key + 1;
-                $createSubjects = SubjectLevelDetail::create([
-                    'user_id'    => $user_id,
-                    'subject_id' => 0,
-                    'field'      => $subject,
-                    'level_id'   => $request->subject_level_other_ . $n,
                 ]);
             }
         }
@@ -88,17 +90,13 @@ class TescherController extends Controller
     public function teacherAddLesson()
     {
         $user = Auth::user();
+        // dd($user->getSubjects);
         if (count($user->subject_level_details) <= 0) {
             session()->flash('alert-danger', 'Please complete your profile first!');
             return redirect()->back();
         }
-        $levels  =DB::table('subject_level_details')->where('subject_level_details.user_id', $user->id)->select('level_id')->get();
-
-        $ll=$levels[0]->level_id;
-
-        $subject=Subject::all() ;
-        $level  = levels::all();
-        return view('frontend.pages.teachers.add-lesson')->with(['subject'=>$subject, 'levels'=>$ll]);
+        $subjects = $user->getSubjects;
+        return view('frontend.pages.teachers.add-lesson')->with('subjects', $subjects);
     }
 
     public function teacherHome()
@@ -445,37 +443,38 @@ class TescherController extends Controller
         $auth=Auth::User()->id;
 
         $Lessens=DB::table('lessons')->where('lessons.user_id', $auth)
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-->join('levels', 'levels.id', 'lessons.level_id')
-->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
-->OrderBy('lessons.id', 'DESC')
-->get();
+                    ->join('subjects', 'subjects.id', 'lessons.subject_id')
+                    ->join('levels', 'levels.id', 'lessons.level_id')
+                    ->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
+                    ->OrderBy('lessons.id', 'DESC')
+                    ->get();
 
         $level=DB::table('lessons')->where('lessons.user_id', $auth)
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-->join('levels', 'levels.id', 'lessons.level_id')
-->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
-->OrderBy('lessons.id', 'DESC')
-->get();
+                    ->join('subjects', 'subjects.id', 'lessons.subject_id')
+                    ->join('levels', 'levels.id', 'lessons.level_id')
+                    ->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
+                    ->OrderBy('lessons.id', 'DESC')
+                    ->get();
         $date=DB::table('lessons')->where('lessons.user_id', $auth)
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-->join('levels', 'levels.id', 'lessons.level_id')
-->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
-->OrderBy('lessons.id', 'DESC')
-->get();
+                    ->join('subjects', 'subjects.id', 'lessons.subject_id')
+                    ->join('levels', 'levels.id', 'lessons.level_id')
+                    ->select('lessons.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
+                    ->OrderBy('lessons.id', 'DESC')
+                    ->get();
         $Lessonss=DB::table('lessons')->where('lessons.user_id', $auth)
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-->join('levels', 'levels.id', 'lessons.level_id')
-->select('lessons.*', 'subjects.id as sub_id', 'lessons.id as lesson_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
-->OrderBy('lessons.id', 'DESC')
-->get();
+                    ->join('subjects', 'subjects.id', 'lessons.subject_id')
+                    ->join('levels', 'levels.id', 'lessons.level_id')
+                    ->select('lessons.*', 'subjects.id as sub_id', 'lessons.id as lesson_id', 'subjects.name as sub_name', 'subjects.id as idd', 'levels.name as levelname', 'levels.id as Level_id')
+                    ->OrderBy('lessons.id', 'DESC')
+                    ->get();
 
-        return view('frontend.pages.teachers.teacher-Achievemtn')->with(['Lessens'=>$Lessens, 'level'=>$level, 'date'=>$date, 'Lessonss'=>$Lessonss]);
+        return view('frontend.pages.teachers.teacher-Achievemtn')->with([
+            'Lessens'=> $Lessens, 'level'=>$level, 'date'=>$date, 'Lessonss'=>$Lessonss,
+        ]);
     }
 
-    public function createLesson(Request $request)
+    public function createLesson(CreateLessonRequest $request)
     {
-        dd($request->all());
         $addLesson=$this->lesson->saveLesson($request);
         if ($addLesson) {
             return redirect()->back()->with('message', 'Lesson Added Successfully');
@@ -484,35 +483,31 @@ class TescherController extends Controller
 
     public function teacherSchedule()
     {
-        $auth=Auth::User()->id;
+        $levels = levels::all();
+        //     $levels=DB::table('levels')
+        //   ->get();
 
-        $levels=DB::table('levels')
-      ->get();
+        //     $Date=DB::table('lessons')->where('lessons.user_id', $auth)->select('lessons.date', 'lessons.id')
+        //   ->get();
 
-        $Date=DB::table('lessons')->where('lessons.user_id', $auth)->select('lessons.date', 'lessons.id')
-      ->get();
+        //     $subjects=DB::table('subjects')
+        //     ->join('lessons', 'lessons.subject_id', 'subjects.id')
+        //     ->select('subjects.*')
+        //     ->where('lessons.user_id', $auth)
+        //     ->get();
 
-        $subjects=DB::table('subjects')
-    ->join('lessons', 'lessons.subject_id', 'subjects.id')
-    ->select('subjects.*')
-    ->where('lessons.user_id', $auth)
-    ->get();
+        //     $Book=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
+        //             ->join('subjects', 'subjects.id', 'lessons.subject_id')
+        //             ->join('users', 'users.id', 'lessons.user_id')
 
-        $Book=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-->join('users', 'users.id', 'lessons.user_id')
-  // ->join('lessons', function($join){
-  //                    $join->on('subjects', '=', 'lessons.subject_id' , 'subjects.id');
-  //                    })
+        //             ->where('users.id', $auth)
+        //             ->select('users.*', 'lessons.id as lessonsid', 'lessons.*', 'lessons.date as Lesson_date', 'lessons.time as Lesson_time', 'users.thumbnail as USerthumbnail', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
 
-->where('users.id', $auth)
-->select('users.*', 'lessons.id as lessonsid', 'lessons.*', 'lessons.date as Lesson_date', 'lessons.time as Lesson_time', 'users.thumbnail as USerthumbnail', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
+        //             ->get();
+        //     $uid    =Auth::user()->id;
+        //     $teacher=Teacher::where('user_id', Auth::id())->get();
 
-->get();
-        $uid    =Auth::user()->id;
-        $teacher=Teacher::where('user_id', Auth::id())->get();
-
-        $teacher_id=$teacher->pluck('id');
+        //     $teacher_id=$teacher->pluck('id');
 
         // $exp=Experience::where('teacher_id',$teacher_id)->get();
         // $schedules= Lesson::where('user_id' ,Auth::id())->get();
@@ -521,7 +516,8 @@ class TescherController extends Controller
 //             $schedules[$key]['teacher_lname']=User::where('id',$schedule['user_id'])->pluck("lname")->first();
 //             $schedules[$key]['teacher_thumbnail']=User::where('id',$schedule['user_id'])->pluck("thumbnail")->first();
 
-        return view('frontend.pages.teachers.teacher-schedule')->with(['Book'=>$Book, 'levels'=>$levels, 'Date'=>$Date,  'subjects'=>$subjects]);
+        // dd(['Book'=>$Book, 'levels'=>$levels, 'Date'=>$Date,  'subjects'=>$subjects]);
+        return view('frontend.pages.teachers.teacher-schedule', compact('levels'));
     }
 
     public function SearchSchedule(Request $request)
