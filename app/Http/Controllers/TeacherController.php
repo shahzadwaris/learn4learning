@@ -483,66 +483,35 @@ class TeacherController extends Controller
 
     public function teacherSchedule()
     {
-        $levels = levels::all();
+        $levels  = levels::all();
         return view('frontend.pages.teachers.teacher-schedule', compact('levels'));
     }
 
     public function SearchSchedule(Request $request)
     {
-        dd($request->all());
-        $auth=Auth::User()->id;
-
-        $Book=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
-      ->join('subjects', 'subjects.id', 'lessons.subject_id')
-      ->join('users', 'users.id', 'lessons.user_id');
-
-        $Book = $Book->where('users.id', $auth);
-
+        // dd($request->all());
+        $teacher = $request->user();
+        if (!$this->checkTeacherHasSchedule($teacher)) {
+            return redirect()->back();
+        }
+        $results = $teacher->lessons();
         if (!empty($request->subject_id)) {
-            $Book = $Book->where('subjects.id', $request->subject_id);
+            $results->where('subject_id', $request->subject_id);
         }
         if (!empty($request->level_id)) {
-            $Book = $Book->where('level_id', $request->level_id);
+            $results->where('level_id', $request->level_id);
         }
         if (!empty($request->date_id)) {
-            $Book = $Book->where('date', $request->date_id);
+            $results->whereDate('date', $request->date_id);
         }
+        $results = $results->get();
+        $levels  = levels::all();
+        return view('frontend.pages.teachers.teacher-schedule', compact('levels', 'results'));
+    }
 
-        $Book = $Book->select(
-            'users.*',
-            'lessons.id as lessonsid',
-            'lessons.*',
-            'lessons.date as Lesson_date',
-            'lessons.time as Lesson_time',
-            'users.thumbnail as USerthumbnail',
-            'subjects.id as subjects_id',
-            'subjects.name as sub_name',
-            'levels.id as levelid',
-            'levels.name as level_name'
-        )
-
-      ->get();
-        $levels=DB::table('levels')
-      ->get();
-
-        $Date=DB::table('lessons')->where('lessons.user_id', $auth)->select('lessons.date', 'lessons.id')
-      ->get();
-
-        $subjects=DB::table('subjects')
-    ->join('lessons', 'lessons.subject_id', 'subjects.id')
-    ->select('subjects.*')
-    ->where('lessons.user_id', $auth)
-    ->get();
-
-        $countschedle=count($Book);
-
-        if ($countschedle >= 1) {
-            // dd($levels);
-            return view('frontend.pages.teachers.teacher-schedule')->with(['Book'=>$Book, 'levels'=>$levels, 'Date'=>$Date,  'subjects'=>$subjects]);
-        } else {
-            // return redirect()->back();
-            return view('frontend.pages.teachers.teacher-schedule')->with(['Book'=>$Book, 'levels'=>$levels, 'Date'=>$Date,  'subjects'=>$subjects]);
-        }
+    public function checkTeacherHasSchedule($teacher)
+    {
+        return count($teacher->lessons) > 0 ? $teacher->lessons : false;
     }
 
     public function EditLesson($id)
@@ -633,6 +602,7 @@ class TeacherController extends Controller
 
     public function MySubStudents()
     {
+        dd('teacher');
         $teacher_id=Auth::User()->id;
 
         $getmystydentrecord=DB::table('student_lessons')

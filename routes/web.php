@@ -147,7 +147,7 @@ Route::group(['private'], function () {
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {
         Route::get('/students/lesssn', 'StudentController@studentLessson')->name('studentLessson');
         Route::get('/students/Home', 'StudentController@studentHome')->name('studentHome');
-        Route::get('/add-to-calender{lessonsId}/{user_id}/{subjects_id}', 'StudentController@addToCalender')->name('addToCalender');
+        Route::get('/add-to-calender/{lesson}', 'StudentController@addToCalender')->name('addToCalender');
         Route::get('student/schedule', 'StudentController@student_schedule')->name('student_schedule');
         Route::get('student/homework', 'StudentController@studetnsHomeWorks')->name('studetnsHomeWork');
         Route::get('/view/teacher/{id}/', 'StudentController@viewSeperatetea')->name('viewSeperatetea');
@@ -164,10 +164,7 @@ Route::group(['private'], function () {
         Route::get('/student-account', 'StudentController@myAccount')->name('student.account');
         Route::post('/student-account-update', 'StudentController@updateProfile')->name('student.account.update');
 
-        // Route::get('student/schedule', function(){
-
-        //     return view('frontend.pages.students.student-homework');
-        // })->name('student_home_works');
+        Route::get('/search-subject-lessons', 'SearchController@search')->name('subjects.search');
     });
 
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'teacher', 'verified']], function () {

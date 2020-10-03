@@ -124,9 +124,18 @@
                                     <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a>
                                     </li>
                                     <li>
-                                        <form method="post" action="{{route('logout')}}">
+                                        {{-- <form method="post" action="{{route('logout')}}">
+                                        @csrf
+                                        <button class="btn-sm btn-outline-primary">logout</button>
+                                        </form> --}}
+                                        <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
                                             @csrf
-                                            <button class="btn-sm btn-outline-primary">logout</button>
                                         </form>
                                     </li>
                                 </ul>

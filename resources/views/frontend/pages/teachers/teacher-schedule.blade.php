@@ -45,14 +45,16 @@ $teacher = Auth::user();
     <div class="container cfiltercontainer">
         <div class="row justify-content-center">
             <form action="{{route('SearchSchedule')}}" method="get">
-                @csrf
+                {{-- @csrf --}}
                 <div class="row">
                     <div class="col-md-3" style="padding: 18px;">
                         <select class="selectpicker" name="level_id" required="true">
                             <optgroup label="Picnic">
                                 <option value="">@lang('welcome.Find_A_Course')</option>
                                 @foreach($levels as $level)
-                                <option value="{{$level->id}}">{{$level->name}}</option>
+                                <option value="{{$level->id}}"
+                                    {{request()->level_id != '' && request()->level_id == $level->id  ? 'selected' : ''  }}>
+                                    {{$level->name}}</option>
                                 @endforeach
                             </optgroup>
                         </select>
@@ -63,7 +65,9 @@ $teacher = Auth::user();
                             <optgroup label="Picnic">
                                 <option value="">Find Subjects</option>
                                 @foreach($teacher->getSubjects as $subject)
-                                <option value="{{$subject->subject->id}}">{{$subject->subject->name}}</option>
+                                <option value="{{$subject->subject->id}}"
+                                    {{request()->subject_id != '' && request()->subject_id == $subject->subject->id ? 'selected' : ''  }}>
+                                    {{$subject->subject->name}}</option>
                                 @endforeach
                             </optgroup>
                         </select>
@@ -75,7 +79,8 @@ $teacher = Auth::user();
                             <optgroup label="Picnic">
                                 <option value="">Find Date</option>
                                 @foreach($teacher->lessons as $lesson)
-                                <option value="{{$lesson->id}}">{{$lesson->date->format('d M, Y')}}</option>
+                                <option value="{{$lesson->date}}">
+                                    {{$lesson->date->format('d M, Y')}}</option>
                                 @endforeach
                         </select>
 
@@ -91,12 +96,6 @@ $teacher = Auth::user();
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
-
-{{-- line break --}}
-
-
-
-{{-- documents section --}}
 <section id="course-part" class="pt-115 pb-115 bg_cover" style="background-image: url(images/course/course-shape.png)">
     <div class="container ccontainer">
         <div class="row">
@@ -111,10 +110,19 @@ $teacher = Auth::user();
 
 
         <div class="row">
-            @foreach($teacher->lessons as $lesson)
+            @php
+            if(isset($results))
+            {
+            $lessons = $results;
+            }else{
+            $lessons = $teacher->lessons;
+            }
+
+            @endphp
+            @foreach($lessons as $lesson)
             <div class="col-lg-4 col-md-6 col-12 position-relatiove justify-content-center d-flex">
                 <div class="_profile_image"
-                    style="{{ !empty($teacher->thumbnail) ? 'background-image: url(http://127.0.0.1:8000/storage/images/'.$teacher->thumbnail.');background-size: cover;' : '' }}">
+                    style="{{ !empty($teacher->thumbnail) ? 'background-image: url(/storage/images/'.$teacher->thumbnail.');background-size: cover;' : '' }}">
 
 
                 </div>
@@ -201,7 +209,7 @@ $teacher = Auth::user();
         width: 80px;
         border-radius: 50%;
         position: absolute;
-        z-index: 999;
+        z-index: 1;
         background: white;
     }
 

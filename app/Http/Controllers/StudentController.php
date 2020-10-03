@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Lesson;
 use App\Models\levels;
 use App\Models\Student;
 use App\Models\Subject;
@@ -324,58 +325,42 @@ class StudentController extends Controller
         );
     }
 
-    public function addToCalender($lessonsId, $user_id, $subjects_id)
+    public function addToCalender(Lesson $lesson)
     {
-        $check=DB::table('student_lessons')->where('student_lessons.lesson_id', $lessonsId)->select('student_lessons.lesson_id')->get();
-
-        $countlesson=count($check);
-        if ($countlesson >= 1) {
-            return back()->with('status', 'Sorry! You have already register this subject');
-        } else {
-            $auth=Auth::User()->id;
-
-            $Lesson             = new StudentLesson();
-            $Lesson->user_id    =$auth;
-            $Lesson->techer_id  =$user_id;
-            $Lesson->lesson_id  =$lessonsId;
-            $Lesson->subjects_id=$subjects_id;
-
-            $Lesson->save();
-
-            return redirect()->back();
+        $student = Auth::user();
+        $check   = StudentLesson::where(['lesson_id' => $lesson->id, 'user_id' => $student->id])->first();
+        if (!$check) {
+            StudentLesson::create([
+                'user_id'      => $student->id,
+                'techer_id'    => $lesson->user_id,
+                'lesson_id'    => $lesson->id,
+                'subjects_id'  => $lesson->subject_id,
+            ]);
+            session()->flash('alert-success', 'Lesson added to list successfully!');
         }
+        session()->flash('alert-warning', 'Sorry! You have already added this Lesson to your calendar!');
+
+        return redirect()->back();
     }
 
     public function student_schedule()
     {
-        $auth=Auth::User()->id;
+        $student     = Auth::user();
+        $subjects    = $student->helpSubjects;
+        $subjects    = explode(',', $subjects);
+        $myLessons   = StudentLesson::with('lesson')->where('user_id', $student->id)->where('created_at', '>=', now())->get();
+        $allSubjects = Subject::all();
+        $levels      = levels::all();
 
-        $sepbooking=DB::table('lessons')->join('levels', 'levels.id', '=', 'lessons.level_id')
-->join('subjects', 'subjects.id', 'lessons.subject_id', 'lessons.id ')
-   ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
-  // ->join('lessons', function($join){
-  //                    $join->on('subjects', '=', 'lessons.subject_id' , 'subjects.id');
-  //                    })
+        $subjects = Subject::whereIn('name', $subjects)->get()->pluck('id')->toArray();
+        $lessons  = Lesson::with('teacher')->whereIn('subject_id', $subjects)->whereDate('date', '>=', now()->format('Y-m-d'))->whereTime('time', '>=', now()->format('H:i:s a'))->get();
 
-->where('student_lessons.user_id', $auth)
-->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
-
-->get();
-        $Book=DB::table('lessons')
-->join('subjects', 'subjects.id', 'lessons.subject_id')
-// ->join('users', 'users.id', 'lessons.user_id')
-->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
-// ->where('users.id', $auth)
-->select('lessons.*', 'subjects.name as sub_name', 'student_lessons.id as student_lessons_id')
-->where('student_lessons.user_id', $auth)
-
-->get();
-        ;
-        return view('frontend.pages.students.student-schedule')->with(['Book'=> $Book, 'sepbooking'=>$sepbooking]);
+        return view('frontend.pages.students.student-schedule', compact('student', 'subjects', 'lessons', 'myLessons', 'allSubjects', 'levels'));
     }
 
     public function My_subjects()
     {
+        // dd('here');
         $auth   =Auth::User()->id;
         $subject=DB::table('student_lessons')
     ->where('student_lessons.user_id', $auth)

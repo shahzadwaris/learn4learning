@@ -152,29 +152,35 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{{route('studentHome')}}">Home</a>
+                                        <a class="{{Request::routeIs('studentHome') ? 'active' : ''}}"
+                                            href="{{route('studentHome')}}">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('student_schedule')}}  ">MY SCHEDULE</a>
+                                        <a class="{{Request::routeIs('student_schedule') ? 'active' : ''}}"
+                                            href="{{route('student_schedule')}}">MY SCHEDULE</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('My_subjects')}}">MY SUBJECTS</a>
+                                        <a class="{{Request::routeIs('My_subjects') ? 'active' : ''}}"
+                                            href="{{route('My_subjects')}}">MY SUBJECTS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('studetnsHomeWork')}}">MY HOMEWORK</a>
+                                        <a class="{{Request::routeIs('studetnsHomeWork') ? 'active' : ''}}"
+                                            href="{{route('studetnsHomeWork')}}">MY HOMEWORK</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">MY ACHIEVEMENT</a>
+                                        <a class="" href="#">MY ACHIEVEMENT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">MY MESSAGES</a>
+                                        <a class="" href=" #">MY MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('student.account')}}">MY ACCOUNT</a>
+                                        <a class="{{Request::routeIs('tudent.account') ? 'active' : ''}}"
+                                            href="{{route('student.account')}}">MY ACCOUNT</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="{{route('donate')}}"
+                                        <a class="{{Request::routeIs('donate') ? 'active' : ''}}"
+                                            href="{{route('donate')}}"
                                             style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
@@ -283,7 +289,6 @@
                             </p>
                         </div>
                     </div>
-                    =
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer copyright -->

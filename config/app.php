@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -227,7 +227,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Stripe'       => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
-
+        'Image'        => Intervention\Image\Facades\Image::class,
         //        'LaravelVideoEmbed' => Merujan99\LaravelVideoEmbed\Facades\LaravelVideoEmbed::class,
         //        'Embed' => Arcanedev\EmbedVideo\Facades\Embed::class
     ],

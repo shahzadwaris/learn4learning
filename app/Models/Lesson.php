@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
@@ -14,19 +16,30 @@ class Lesson extends Model
         return $this->belongsTo(Subject::class, 'subject_id');
     }
 
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     protected $dates = [
         'date',
         'time',
     ];
 
+    public function resizeImage($image)
+    {
+        $thumbnailImage     = Image::make($image);
+        $imagePath          = public_path() . '/storage/images/';
+        $imageName          = time() . '.' . $image->getClientOriginalName();
+        $thumbnailImage->resize(250, 250);
+        $thumbnailImage->save($imagePath . $imageName);
+        return $imageName;
+    }
+
     public function saveLesson($request)
     {
         if ($request->hasFile('photo')) {
-            $image     = $request->file('photo');
-            $imageName = time() . '.' . $image->extension();
-            $imagePath = public_path() . '/storage/images';
-            $image->move($imagePath, $imageName);
-            $imageDbPath = $imageName;
+            $imageDbPath = $this->resizeImage($request->file('photo'));
         }
 
         if ($request->hasFile('document')) {
