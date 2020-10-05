@@ -19,18 +19,9 @@ class StudentController extends Controller
 {
     public function selectSubjects(Request $request)
     {
-        $user    = Auth::user();
-        $user->update(['educational_level' => $request->level]);
+        $user    =Auth::user()->update(['educational_level' => $request->level]);
         $user_id = $request->user_id;
         $subjects=Subject::all();
-
-        // $subjects=Subject::get();
-
-        // foreach ($subjects as $key=>$sub){
-        // $subjects[$key]['name']=Subject::where('id',$sub['subject_id'])->pluck('name')->first();
-        // $subjects[$key]['level_id']=$request->level;;
-
-        // };
 
         return view('auth.students.student-subject', compact('subjects', 'user_id'));
     }
@@ -40,7 +31,7 @@ class StudentController extends Controller
         $user_id=$request['user_id'];
         $count  = Subject::where('name', $request->subject)->where('level_id', $request->level_id)->count();
         if ($count == 0) {
-            $subject = Subject::create([
+            Subject::create([
                 'name'    => $request->subject,
                 'level_id'=> $request->level_id,
             ]);
@@ -50,62 +41,40 @@ class StudentController extends Controller
         }
     }
 
+    public function createStudentSubject($student, $subject)
+    {
+        SubjectLevelDetail::create([
+            'user_id'    => $student,
+            'subject_id' => 0,
+            'field'      => $subject,
+            'level_id'   => 0,
+        ]);
+    }
+
     public function getSubjects(Request $request)
     {
-        // dd($request->all());
-
-//     $user_id= $request->user_id;
-//     $allSubjects=Subject::all();
-//     foreach($request->subjects as $subject) {
-//         $createSubjects = SubjectLevelDetail::create([
-//             'user_id' => $request->user_id,
-//             'subject_id' => $subject,
-//             'level_id' => $request->level_id,
-//         ]);
-//     }
-        // //    dd($createSubjects);
-
-        $user_id    = $request->user_id;
-        $allSubjects=Subject::all();
-
+        $user_id     = $request->user_id;
         foreach ($request->subjects as $subject) {
             if ($subject == '00_other_id') {
-                if ($request->field != '' || $request->field != null) {
-                    $createSubjects = SubjectLevelDetail::create([
-                        'user_id'    => $request->user_id,
-                        'subject_id' => 0,
-                        'field'      => $request->field[0],
-                        'level_id'   => 0,
-                    ]);
-                }
-
-                if (!empty($request->field_name)) {
-                    foreach ($request->field_name as $fn) {
-                        $createSubjects = SubjectLevelDetail::create([
-                            'user_id'    => $request->user_id,
-                            'subject_id' => 0,
-                            'field'      => $fn,
-                            'level_id'   => 0,
-                        ]);
+                foreach ($request->field as $s) {
+                    if ($s != '' || $s != null) {
+                        $newSubject     = Subject::create(['name' => $s]);
+                        $this->createStudentSubject($user_id, $subject['id']);
                     }
                 }
-            } else {
-                $createSubjects = SubjectLevelDetail::create([
-                    'user_id'    => $request->user_id,
-                    'subject_id' => $subject,
-                    'field'      => 0,
-                    'level_id'   => 0,
-                ]);
+                continue;
             }
+            $this->createStudentSubject($user_id, $subject);
         }
+        $allSubjects = Subject::all();
 
         return view('auth.students.student-profile', compact('user_id', 'allSubjects'));
     }
 
-    public function viewSubjects()
-    {
-        $viewMysubject=DB::table('');
-    }
+    // public function viewSubjects()
+    // {
+    //     $viewMysubject=DB::table('');
+    // }
 
     public function updateProfile(Request $request)
     {
@@ -168,36 +137,19 @@ class StudentController extends Controller
 
     public function student_edit_profile()
     {
-        $authid   =Auth::User()->id;
-        $getrecord=DB::table('users')->select('users.*')->where('users.id', $authid)->get();
-
-        return view('frontend.pages.editstudetnsProfile')->with('getrecord', $getrecord);
+        $user   =Auth::User();
+        return view('frontend.pages.editstudetnsProfile')->with('getrecord', $user);
     }
 
     public function editstudenterprofile(Request $request)
     {
-        $iid=Auth::User()->id;
         $this->validate(request(), [
             'fname' => 'required',
-
             'lname' => 'required',
             'email' => 'required',
-            // 'img' => 'required',
         ]);
-
-        // if ($request->hasFile('img')) {
-
-        //     $image = $request->file('photo');
-        //     $imageName = time().".".$image->extension();
-        //     $imagePath = public_path().'/storage/images';
-        //     $image->move($imagePath, $imageName);
-        //     $imageDbPath = $imageName;
-        // }
-
-        $update=DB::table('users')->where('users.id', $iid)->select('users.*')->update(['users.fname'=>$request->fname, 'lname'=>$request->lname]);
-        if ($update) {
-            return redirect()->route('studentHome');
-        }
+        Auth::user()->update(['users.fname'=>$request->fname, 'lname'=>$request->lname]);
+        return redirect()->route('studentHome');
     }
 
     public function studentHome()
@@ -236,6 +188,7 @@ class StudentController extends Controller
                         ->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
 
                         ->get();
+        // dd($sepbooking);
 
         $getdata=DB::table('users')
                     ->join('student_lessons', 'users.id', 'student_lessons.techer_id')
@@ -268,49 +221,10 @@ class StudentController extends Controller
                             'lessons.user_id as teacher_id'
                         )->get();
 
-        $counthomework=DB::table('homework')
-                            ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
-                            ->join('lessons', function ($join) {
-                                $join->on('subjects.id', '=', 'lessons.subject_id');
-                            })
-                            ->where('homework.user_id', $user->id)
-                            ->OrderBy('homework.id', 'DESC')
-                            ->select(
-                                'subjects.id as subject_id',
-                                'subjects.name as subjectname',
-                                'lessons.id as lessons_id',
-                                'lessons.title as lessons_title',
-                                'lessons.description as lessons_des',
-                                'homework.*',
-                                'homework.date as Duedate',
-                                'lessons.thumbnail as lesson_thum',
-                                'lessons.document as lessonsDoc'
-                            )
-                            ->limit(10)
-                            ->get();
-
-        $countlessons=count($counthomework);
-
-        $teacherhomeworkdetail=DB::table('homework')
-                               ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
-                               ->join('lessons', function ($join) {
-                                   $join->on('subjects.id', '=', 'lessons.subject_id');
-                               })
-                                ->where('homework.user_id', $user->id)
-                                ->OrderBy('homework.id', 'DESC')
-                                ->select(
-                                    'subjects.id as subject_id',
-                                    'subjects.name as subjectname',
-                                    'lessons.id as lessons_id',
-                                    'lessons.title as lessons_title',
-                                    'lessons.description as lessons_des',
-                                    'homework.*',
-                                    'homework.date as Duedate',
-                                    'lessons.thumbnail as lesson_thum',
-                                    'lessons.document as lessonsDoc'
-                                )
-                                ->limit(10)
-                                ->get();
+        $studentLessons          = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
+        $studentHomeWork         = Homework::whereIn('Sub_id', $studentLessons)->get()->pluck('Sub_id')->toArray();
+        $studentHomeWorkSubjects = Lesson::with('teacher', 'subject')->whereIn('subject_id', $studentHomeWork)->get();
+        $countlessons            =count($studentLessons);
 
         return view('frontend.pages.students.student-home')->with(
             [
@@ -319,7 +233,7 @@ class StudentController extends Controller
                 'getdata'               => $getdata,
                 'MyAchivment'           => $MyAchivment,
                 'sepbooking'            => $sepbooking,
-                'teacherhomeworkdetail' => $teacherhomeworkdetail,
+                'studentHomeworks'      => $studentHomeWorkSubjects,
                 'countlessons'          => $countlessons,
             ]
         );

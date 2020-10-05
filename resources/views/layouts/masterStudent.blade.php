@@ -46,7 +46,7 @@
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
 
-
+    @yield('css')
 </head>
 
 <body>
@@ -84,8 +84,10 @@
                             <div class="login-register">
                                 <ul>
                                     <li><a href="{{ route('login') }}"
+                                            class="{{Request::routeIs('login') ? 'active' : ''}}"
                                             style="background: none !important;color:black;">SIGN IN</a></li>
-                                    <li><a href="{{ route('register') }}">SIGN UP</a></li>
+                                    <li><a href="{{ route('register') }}"
+                                            class="{{Request::routeIs('register') ? 'active' : ''}}">SIGN UP</a></li>
                                 </ul>
                             </div>
                             @endif
@@ -119,9 +121,19 @@
                                     <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a>
                                     </li>
                                     <li>
-                                        <form method="post" action="{{route('logout')}}">
+                                        {{-- <form method="post" action="{{route('logout')}}">
+                                        @csrf
+                                        <button class="btn-sm btn-outline-primary">logout</button>
+                                        </form> --}}
+                                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
                                             @csrf
-                                            <button class="btn-sm btn-outline-primary">logout</button>
                                         </form>
                                     </li>
                                 </ul>

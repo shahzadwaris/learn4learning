@@ -135,9 +135,12 @@
                             <div class="login-register">
                                 <ul>
                                     <li><a href="{{ route('login') }}"
+                                            class="{{Request::routeIs('login') ? 'active' : ''}}"
                                             style="background: none !important;color:black;">@lang('home.SIGN_IN')</a>
                                     </li>
-                                    <li><a href="{{ route('register') }}">@lang('home.SIGN_UP')</a></li>
+                                    <li><a href="{{ route('register') }}"
+                                            class="{{Request::routeIs('register') ? 'active' : ''}}">@lang('home.SIGN_UP')</a>
+                                    </li>
                                 </ul>
                             </div>
                             @endif
@@ -194,19 +197,29 @@
                                                                    
                               case 'student':?>
                                 <ul>
-                                    <li><a style="background: none !important;color:black;">
+                                    <li>
+                                        <a style="background: none !important;color:black;">
                                             <span><a class="no-styleing" href="{{route('studentHome')}}">
                                                     {{Auth::user()->fname}}</span></a></li>
-                                    <div class="dropdown">
+                                    <div class="dropdown ml-auto">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <div class="dropdown-content">
-                                            <p><a style="color: black"
-                                                    href="{{route('student_edit_profile')}}">@lang('home.Edit_Profile')</a>
-                                            </p>
-                                            <form method="post" action="{{route('logout')}}">
+                                            <a class="dropdown-item" style="color: black"
+                                                href="{{route('student_edit_profile')}}">@lang('home.Edit_Profile')</a>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
                                                 @csrf
-                                                <button class="btn-sm btn-outline-primary">logout</button>
                                             </form>
+                                            {{-- <form method="post" action="{{route('logout')}}">
+                                            @csrf
+                                            <button class="btn-sm btn-outline-primary">logout</button>
+                                            </form> --}}
 
                                         </div>
                                     </div>
@@ -252,25 +265,32 @@
 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{{route('homee')}}">@lang('home.home_menu')</a>
+                                        <a class="{{Request::routeIs('homee') ? 'active' : ''}}"
+                                            href="{{route('homee')}}">@lang('home.home_menu')</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('howitworks')}}">@lang('home.HOW_IT_WORKS')</a>
+                                        <a href="{{route('howitworks')}}"
+                                            class="{{Request::routeIs('howitworks') ? 'active' : ''}}">@lang('home.HOW_IT_WORKS')</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('students')}}">@lang('home.FOR_STUDENTS')</a>
+                                        <a href="{{route('students')}}"
+                                            class="{{Request::routeIs('students') ? 'active' : ''}}">@lang('home.FOR_STUDENTS')</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('teachers')}}">@lang('home.FOR_Teachers')</a>
+                                        <a href="{{route('teachers')}}"
+                                            class="{{Request::routeIs('teachers') ? 'active' : ''}}">@lang('home.FOR_Teachers')</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('parents')}}">@lang('home.FOR_PARENTS')</a>
+                                        <a href="{{route('parents')}}"
+                                            class="{{Request::routeIs('parents') ? 'active' : ''}}">@lang('home.FOR_PARENTS')</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('mockupschedule')}}">@lang('home.SCHEDULE')</a>
+                                        <a href="{{route('mockupschedule')}}"
+                                            class="{{Request::routeIs('mockupschedule') ? 'active' : ''}}">@lang('home.SCHEDULE')</a>
                                     </li>
                                     <li>
                                         <a href="{{route('donate')}}"
+                                            class="{{Request::routeIs('donate') ? 'active' : ''}}"
                                             style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;color:#000000;">Donate</a>
                                     </li>
                                 </ul>

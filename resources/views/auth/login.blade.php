@@ -21,7 +21,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
-                        <h1 data-animation="fadeInUp" data-delay="1s">REGISTER</h1>
+                        <h1 data-animation="fadeInUp" data-delay="1s">LOGIN</h1>
                         <p data-animation="fadeInUp" data-delay="1.5s">Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

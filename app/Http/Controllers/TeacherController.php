@@ -90,7 +90,6 @@ class TeacherController extends Controller
     public function teacherAddLesson()
     {
         $user = Auth::user();
-        // dd($user->getSubjects);
         if (count($user->subject_level_details) <= 0) {
             session()->flash('alert-danger', 'Please complete your profile first!');
             return redirect()->back();
@@ -151,6 +150,8 @@ class TeacherController extends Controller
 
                                   ->where('lessons.user_id', $auth)
                                   ->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name')
+                                  ->orderBy('lessons.date')
+                                  ->orderBy('lessons.time')
 
                                   ->get();
 
@@ -160,16 +161,12 @@ class TeacherController extends Controller
                                   ->limit(5)
                                   ->get();
 
-        $uid    =Auth::user()->id;
-        $teacher=Teacher::where('user_id', Auth::id())->get();
-
-        $teacher_id=$teacher->pluck('id');
         return view('frontend.pages.teachers.teacher-homepage')->with(
             [
                 'Book'                   => $Book,
                 'teacherhomeworkdetail'  => $teacherhomeworkdetail,
                 'usersimgg'              => $usersimgg,
-                'sepbooking'             => $sepbooking,
+                'schedules'              => $sepbooking,
                 'experices'              => $experices,
                 'favsubject'             => $favsubject,
             ]

@@ -113,6 +113,7 @@
                         <a href="{{ route('studetnsHomeWork') }}">
                             <img src="{{asset('asset/images/student-homepage/homework.png')}}" alt="">
                             <p>MY<br>HOMEWORK</p>
+
                         </a>
                     </div>
 
@@ -901,6 +902,64 @@ $dateid=$Book3[8]->date;
         </section> -->
 
 
+<section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
+    style="background-image: url(images/course/course-shape.png)">
+    <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
+        style="background-image: url(images/course/course-shape.png)">
+        <div class="container">
+            <div class="teacher-homework-dash-head-div">
+                <p class="teacher-homework-dash-head">@lang('teacherhome.MY_HOMEWORK')</p>
+                <hr>
+            </div>
+            <div class="row text-center">
+                <div class="MultiCarousel" style="display: flex;
+justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
+                    <div class="MultiCarousel-inner">
+                        @foreach($studentHomeworks as $homework)
+                        <div class="item">
+                            <div class="pad15">
+                                <div class="card postion-relative">
+                                    <img class="card-img" src="  {{url('/storage/images/'.$homework->thumbnail)}}"
+                                        alt="Bologna" height="100%">
+                                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                                        <div class="topright"><span
+                                                class="exclamation-para">{{$homework->date}}</span><i
+                                                class="fa fa-exclamation" aria-hidden="true" id="exclamation-icon"></i>
+                                        </div>
+                                        <div style="margin-bottom: 217px;">
+                                            <h6 class="card-subtitle mb-2">{{$homework->subject->name}}</h6>
+                                            <p class="card-subtitle mb-3">{{$homework->teacher->fname}}</p>
+
+                                        </div>
+                                    </div>
+                                    <a data-animation="fadeInUp" data-delay="2s"
+                                        class="main-slider-btn2 postion-absolute" id="schedule-btn-teach" href="#"
+                                        style="bottom:0px;width: 100%;position:absolute;">@lang('teacherhome.LEARN_MORE')</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+
+
+
+
+                    </div>
+                    <button class="btn btn-primary leftLst">
+                        <</button> <button class="btn btn-primary rightLst">>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
+                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
+                    id="donate-register-btn">SEE ALL</a>
+            </div>
+        </div>
+
+
+
+    </section>
 
 
 
@@ -909,5 +968,4 @@ $dateid=$Book3[8]->date;
 
 
 
-
-@endsection
+    @endsection

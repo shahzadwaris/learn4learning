@@ -122,8 +122,8 @@
                     </div>
 
                     <div class="col-md-3" style="padding: 18px;">
-                        <input type="submit" data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
-                            style="background-color: #FDBF11;" />
+                        <input type="submit" value="Search" data-animation="fadeInUp" data-delay="2s"
+                            class="main-slider-btn2" style="background-color: #FDBF11; border: none;" />
                     </div>
                 </div>
 
@@ -260,7 +260,7 @@
                 </div>
                 @endforeach
                 <div class="col-12 mb-4 justify-content-center text-center mt-3" id="donate-register-btn-div">
-                    <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
+                    <a data-animation="fadeInUp" data-delay="2s" class="disable main-slider-btn2" href="#"
                         id="donate-register-btn">VIEW MORE</a>
                 </div>
             </div> <!-- course slide -->
@@ -309,6 +309,11 @@
         .thumbnail-image {
             max-height: 350px;
             max-width: 200px;
+        }
+
+        .disable {
+            pointer-events: none;
+            cursor: default;
         }
     </style>
     @endsection
