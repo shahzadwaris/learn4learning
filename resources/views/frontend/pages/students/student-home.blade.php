@@ -4,29 +4,6 @@
 @php
 $user = Auth::user();
 @endphp
-<!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
-<link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-<style type="text/css">
-    .schedules .card {
-        height: auto;
-    }
-
-    .spacing-top {
-        margin-top: 20px;
-    }
-
-    .card-img-top {
-        height: 111px;
-        width: 144px;
-    }
-</style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
         style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/student-lesson-search/banner.jpg')}}">
@@ -35,7 +12,6 @@ $user = Auth::user();
                 <div class="col-xl-12 col-lg-12">
                     <div class="slider-cont slider-cont-4 text-center">
                         <h3 class="std-welcome-msg text-white">{{$user->fname}}<br>
-
                             Welcome back!</h3>
                         <div class="row">
                             {{-- <div class="c"></div> --}}
@@ -51,7 +27,6 @@ $user = Auth::user();
                             </div>
                             <div class="col-md-2"></div>
                         </div>
-
                     </div>
                 </div>
             </div> <!-- row -->
@@ -59,9 +34,7 @@ $user = Auth::user();
     </div> <!-- single slider -->
 </section>
 <!-- Card -->
-
 {{-- dashboard section --}}
-
 <section class="dashboard-section" style="margin-top: -10%;">
     <div class="container">
         <div class="row d-flex justify-content-center text-center h-100">
@@ -72,11 +45,7 @@ $user = Auth::user();
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
-                        <?php             
-                          $usersimgg=$user;
- ?>
-                        {{-- <img src="{{url('/storage/images/'.$usersimgg[0]->thumbnail)}}" alt="stud-profile-pic">
-                        --}}
+                        <?php $usersimgg=$user; ?>
                         <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
                             alt="stud-profile-pic">
                     </div>
@@ -102,22 +71,18 @@ $user = Auth::user();
                             <p>MY<br>SCHEDULE</p>
                         </a>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-6 p-3" id="grades-div">
                         <img src="{{asset('asset/images/student-homepage/grades.png')}}" alt="">
                         <p>MY<br>GRADES</p>
                     </div>
-
                     <div class="col-6 p-3" id="homework-div">
                         <a href="{{ route('studetnsHomeWork') }}">
                             <img src="{{asset('asset/images/student-homepage/homework.png')}}" alt="">
                             <p>MY<br>HOMEWORK</p>
-
                         </a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -126,11 +91,6 @@ $user = Auth::user();
 <section id="carousel-achieve">
     <div class="container">
         <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-            <!--Controls-->
-
-            <!--/.Controls-->
-
             <!--Indicators-->
             <ol class="carousel-indicators">
                 <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
@@ -138,52 +98,29 @@ $user = Auth::user();
                 <li data-target="#multi-item-example" data-slide-to="2"></li>
             </ol>
             <!--/.Indicators-->
-
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
-
                 @foreach($MyAchivment as $MyAchivment)
-
                 <!--First slide-->
-
-
-
-
                 <div class="carousel-item active">
                     <div class="col-md-2">
                         <img class="card-img-top" src="{{url('/storage/images/'.$MyAchivment->img)}}"
                             alt="Card image cap">
-
                     </div>
-
                 </div>
-
                 <!--/.Third slide-->
-
-
                 @endforeach
             </div>
             <!--/.Slides-->
-
         </div>
         <!--/.Carousel Wrapper-->
-
-
     </div>
 </section>
-
 <!--Carousel Wrapper-->
-
-{{-- end-dashboard section --}}
-
-
 <section class="schedules">
-
     <div class="container">
-
         <h5 class="schedule-heading-teacher-homepage">My Schedule</h5>
         <hr class="teacher-home-schedule-hr">
-
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-12 col-md-8 text-center mb-2 mt-2">
@@ -192,7 +129,6 @@ $user = Auth::user();
                     <div class="col-4">
                         <!-- Card -->
                         <div class="card">
-
                             <!-- Card image -->
                             <a href="#">
                                 <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
@@ -208,148 +144,49 @@ $user = Auth::user();
                                 <br>
                             </div>
                             <!-- Card footer -->
-
                         </div>
                     </div>
                     @endforeach
-
                 </div>
             </div>
-
-
-        </div>
-
-        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div" style="margin-top: 10px">
-            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#" id="donate-register-btn">SEE
-                ALL</a>
+            <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
+                style="margin-top: 10px">
+                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
+                    id="donate-register-btn">SEE
+                    ALL</a>
+            </div>
         </div>
 
     </div>
 </section>
-
-
-<!-- <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url(images/c)"> <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg" style="background-image: url({{asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')}}">
-            <div class="container">   
-                <div class="teacher-grade-dash-head-div">
-                    <p class="teacher-grade-dash-head">MY GRADES</p>
-                    <hr>
-                </div>     
-                <div class="row">
-                    <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                        <div class="MultiCarousel-inner">
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                     </div>
-                                </div>
+<section id="course-part" class=" bg_cover gray-bg">
+    <section id="course-part" class=" bg_cover gray-bg"
+        style="background-image: url({{asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')}}">
+        <div class="container">
+            <div class="teacher-grade-dash-head-div">
+                <p class="teacher-grade-dash-head">MY GRADES</p>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 item">
+                    <div class="pad15">
+                        <div class="card box-shadow">
+                            <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
+                                id="grade-btn-teach">REPORT CARD MARCH</p>
+                            <p class="grades-details">Geography <span>A'</span></p>
+                            <p class="grades-details">Geography <span>A'</span></p>
+                            <p class="grades-details">Geography <span>A'</span></p>
+                            <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
+                                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
+                                    href="#" id="donate-register-btn">SEE ALL</a>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                     
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                     
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                     
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                    
-                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                  
-                                       </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                   
-                                      </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 item">
-                                <div class="pad15">
-                                    <div class="card box-shadow">
-                                        <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" id="grade-btn-teach">REPORT CARD MARCH</p>
-                                        <p class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>                             
-                                        <p  class="grades-details">Geography <span>A'</span></p>
-                                        <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                                            <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details" href="#" id="donate-register-btn">SEE ALL</a>
-                                        </div>                                   
-                                      </div>
-                                </div>
-                            </div>
-                            
                         </div>
-                        <button class="btn btn-primary leftLst"><</button>
-                        <button class="btn btn-primary rightLst">></button>
                     </div>
                 </div>
-            </div>           
-        </section> -->
-
-
+            </div>
+        </div>
+    </section>
+</section>
 <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
     style="background-image: url(images/course/course-shape.png)">
     <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
@@ -377,7 +214,6 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
                                         <div style="margin-bottom: 217px;">
                                             <h6 class="card-subtitle mb-2">{{$homework->subject->name}}</h6>
                                             <p class="card-subtitle mb-3">{{$homework->teacher->fname}}</p>
-
                                         </div>
                                     </div>
                                     <a data-animation="fadeInUp" data-delay="2s"
@@ -387,28 +223,43 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
                             </div>
                         </div>
                         @endforeach
-
                     </div>
                     <button class="btn btn-primary leftLst">
                         <</button> <button class="btn btn-primary rightLst">>
                     </button>
                 </div>
             </div>
-            <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
-                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
-                    id="donate-register-btn">SEE ALL</a>
-            </div>
         </div>
-
-
-
     </section>
+</section>
 
+@endsection
 
+@section('css')
+<!--====== Bootstrap css ======-->
+<link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
+<link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<style type="text/css">
+    .schedules .card {
+        height: auto;
+    }
 
+    .spacing-top {
+        margin-top: 20px;
+    }
 
+    .card-img-top {
+        height: 111px;
+        width: 144px;
+    }
 
-
-
-
-    @endsection
+    #donate-register-btn-div {
+        display: block !important;
+    }
+</style>
+@endsection

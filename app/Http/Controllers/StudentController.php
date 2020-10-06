@@ -220,8 +220,6 @@ class StudentController extends Controller
                             'lessons.id as lessonsId',
                             'lessons.user_id as teacher_id'
                         )->get();
-        // dd($MyAchivment);
-
         $studentLessons          = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
         $studentHomeWork         = Homework::whereIn('Sub_id', $studentLessons)->get()->pluck('Sub_id')->toArray();
         $studentHomeWorkSubjects = Lesson::with('teacher', 'subject')->whereIn('subject_id', $studentHomeWork)->get();
