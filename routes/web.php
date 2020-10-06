@@ -192,7 +192,7 @@ Route::group(['private'], function () {
         Route::get('view/our/student', 'TeacherController@MySubStudents')->name('Students');
         Route::get('view/Subject', 'TeacherController@MYSubjects')->name('SubjectMy');
         Route::get('View/homeWork', 'TeacherController@ViewStudentsHomeWork')->name('ViewStudentsHomeWork');
-        Route::get('View/MyAchevemnt', 'TeacherController@MyAchevemntss')->name('MyAchevemnt');
+        Route::get('View/MyAchevemnt/', 'TeacherController@MyAchevemntss')->name('MyAchevemnt');
         Route::get('View/Acheivment', 'TeacherController@AssignStudentAchevemnt')->name('AssignStudentAchevemnt');
         Route::get(
             'View/assingachevment/{sub_id}/{User_id}/{homeworkid}',
@@ -208,7 +208,7 @@ Route::group(['private'], function () {
         Route::get('/Search/Homeworks', 'TeacherController@SearchHomeworks')->name('SearchHomeworks');
 
         Route::get('/Search/Schedule', 'TeacherController@SearchSchedule')->name('SearchSchedule');
-        Route::post('/search-studetns', 'TeacherController@searchstudetns')->name('searchstudetns');
+        Route::get('/search-studetns', 'TeacherController@searchstudents')->name('searchstudents');
         Route::post('/Assign/Grade', 'TeacherController@Assign_Acivement')->name('Assign_Acivement');
         Route::get('/Account', 'TeacherController@MYaccount')->name('MYaccount');
         Route::get('/Edit/{id}', 'TeacherController@teacher_dashboard_editprofile')->name('teacher-dashboard-editprofile');

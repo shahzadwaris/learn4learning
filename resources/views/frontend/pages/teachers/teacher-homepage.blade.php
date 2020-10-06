@@ -249,8 +249,8 @@
                             <!-- Card content -->
                             <div class="card-body">
                                 <!-- Title -->
-                                <p class="teach-shed-card-content"> {{date('h:i ',strtotime($schedule->time))}}
-                                    {{$schedule->sub_name}}
+                                <p class="teach-shed-card-content"> 
+                                    {{date('h:i ',strtotime($schedule->time))}} {{$schedule->sub_name}}
                                 </p>
                                 <br>
                             </div>
