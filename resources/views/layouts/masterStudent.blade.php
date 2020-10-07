@@ -207,15 +207,15 @@
     <div class="row p-0 m-0">
         <div class="col-2"></div>
         <div class="col-8">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
             <div class="flash-message mt-5" id='success-alert'>
-                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
 
                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
                         data-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-                @endforeach
             </div>
+            @endif
+            @endforeach
         </div>
         <div class="col-2"></div>
     </div>

@@ -1,9 +1,4 @@
 @extends('layouts.master')
-@section('js')
-<!--====== Validator js ======-->
-<script src="{{asset('asset/js/jquery.validate.min.js')}}"></script>
-<script src="{{asset('asset/js/custom.js')}}"></script>
-@endsection
 @section('title','SignUp')
 @section('content')
 
@@ -46,7 +41,8 @@
                                 </div>
                                 <div style="width:100%;">
 
-                                    <a href="#" id="alreasy-account" style="color:#212529">Already have an account?</a>
+                                    <a href="{{route('login')}}" id="alreasy-account" style="color:#212529">Already have
+                                        an account?</a>
 
                                 </div>
                                 <div>
@@ -127,31 +123,9 @@
         </div>
     </div>
 </section>
-{{-- <script>
-    $(document).ready(function(){
-            $("#submit").on("click", function(){
-                var radioSelected = $("input[name=op1]").val();
-                if(radioSelected == "1"){
-                    alert('op1')
-                }else if(radioSelected == "2"){
-                    alert('op2')
-                }
-            });
-        });
-</script> --}}
 @endsection
 @section('js')
-{{----}}
-<script>
-    // $(document).ready(function(){
-    //     $("#submit").on("click", function(){
-    //         var radioSelected = $("input[name=op1]").val();
-    //         if(radioSelected == "1"){
-    //            alert('op1')
-    //         }else if(radioSelected == "2"){
-    //             alert('op2')
-    //         }
-    //     });
-    //     });
-</script>
+<!--====== Validator js ======-->
+<script src="{{asset('asset/js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('asset/js/custom.js')}}"></script>
 @endsection

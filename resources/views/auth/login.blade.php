@@ -37,7 +37,7 @@
     <div class="container">
         <div class="main-cont">
             <div class="row">
-                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                <div class="col-lg-6 d-flex pt-4 justify-content-center">
                     <div class="form-parts">
                         <div style="display:flex;width:100%;">
                             <form class="form" method="post" action="{{ route('login') }}">
@@ -88,8 +88,9 @@
 
                 </div>
                 <div class="col-lg-6 p-0">
-                    <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img src="{{asset('asset/images/students/registration-banner.png')}}">
+                    <div class="d-flex" id="submit-btn">
+                        <img class="img-responsive  "
+                            src="{{asset('asset/images/students/registration-banner_50.png')}}">
                     </div>
                 </div>
             </div>
