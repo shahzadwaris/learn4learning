@@ -95,9 +95,11 @@
                                         required="true">
                                     <label class="form-check-label text_gray" for="invalidCheck2"
                                         style="height: unset!important;width: 75%;">
-                                        By signing up, you agree to our <a href="#" id="alreasy-account"
-                                            class="text_gray">Terms and Conditions</a> and <a href="#"
-                                            id="alreasy-account" class="text_gray">Privacy Policy</a>
+                                        By signing up, you agree to our <a
+                                            href="{{route('page.show', 'terms-and-conditions')}}" id="alreasy-account"
+                                            class="text_gray">Terms and Conditions</a> and <a
+                                            href="{{route('page.show','privacy-policy')}}" id="alreasy-account"
+                                            class="text_gray">Privacy Policy</a>
                                     </label>
                                 </div>
                                 <div style="width:100%;">

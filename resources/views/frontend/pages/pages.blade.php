@@ -3,17 +3,6 @@
 
 <!--====== SEARCH BOX PART START ======-->
 @section('content')
-<style>
-    .section-title h5::before {
-        left: 12px;
-    }
-
-    .container {}
-
-    .section-title .learn-line-yellow::before {
-        background-color: #fff;
-    }
-</style>
 <div class="search-box">
     <div class="search-form">
         <div class="closebtn">
@@ -39,7 +28,7 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
                         <h1 data-animation="fadeInUp" data-delay="1s">{{$page->title}}</h1>
-                        <p data-animation="fadeInUp" data-delay="1.5s">This is Students page</p>
+                        {{-- <p data-animation="fadeInUp" data-delay="1.5s">{{}}</p> --}}
                     </div>
                 </div>
             </div> <!-- row -->

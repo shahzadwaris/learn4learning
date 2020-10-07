@@ -100,15 +100,6 @@ Route::group(['private'], function () {
         Route::get('/new-users', 'PageController@newUsers')->name('newUsers');
         Route::get('/Userid/{id}', 'PageController@Userid')->name('Userid');
 
-        //
-        Route::get('/admin/pages', "Admin\PagesController@index")->name('pages.index');
-        Route::get('/admin/pages/create', "Admin\PagesController@create")->name('pages.create');
-        Route::post('/admin/pages/store', "Admin\PagesController@store")->name('pages.store');
-        Route::get('/admin/pages/edit/{page}', "Admin\PagesController@edit")->name('pages.edit');
-        Route::post('/admin/pages/update/{page}', "Admin\PagesController@update")->name('pages.update');
-        Route::get('/admin/pages/{page}', "Admin\PagesController@destroy")->name('pages.destroy');
-        Route::get('/admin/pages/show/{page}', "Admin\PagesController@show")->name('pages.show');
-
         //                        how-it-works
 
         Route::get('/how-it-Poster', 'PageController@howItPoster')->name('howItPoster');
@@ -138,10 +129,21 @@ Route::group(['private'], function () {
         Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
         Route::post('profile/password', 'ProfileController@password')->name('profile.passwordss');
 //            });
+
+        //shahzad
         Route::get('/mail-configuration', 'Admin\EmailConfigurationController@index')->name('email-config');
         Route::post('/mail-configuration-store', 'Admin\EmailConfigurationController@store')->name('email-config.store');
         Route::post('/mail-configuration-update/{email}', 'Admin\EmailConfigurationController@update')->name('email-config.update');
         Route::get('/mail-configuration-edit/{email}', 'Admin\EmailConfigurationController@edit')->name('email-config.edit');
+
+        /** Pages */
+        Route::get('/admin/pages', "Admin\PagesController@index")->name('pages.index');
+        Route::get('/admin/pages/create', "Admin\PagesController@create")->name('pages.create');
+        Route::post('/admin/pages/store', "Admin\PagesController@store")->name('pages.store');
+        Route::get('/admin/pages/edit/{page}', "Admin\PagesController@edit")->name('pages.edit');
+        Route::post('/admin/pages/update/{page}', "Admin\PagesController@update")->name('pages.update');
+        Route::get('/admin/pages/delete/{page}', "Admin\PagesController@destroy")->name('pages.destroy');
+        Route::get('/admin/pages/show/{page}', "Admin\PagesController@show")->name('pages.show');
     });
 
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {
@@ -279,3 +281,5 @@ Route::group(['Public'], function () {
         return view('views.frontend.register.students.add-lesson');
     })->name('add-lesson');
 });
+/** shahzad */
+Route::get('/page/{page}', "Admin\PagesController@show")->name('page.show');

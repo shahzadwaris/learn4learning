@@ -1,5 +1,4 @@
 @extends('layouts.app', ['page' => __('Schedule'), 'pageSlug' => 'Schedule'])
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -16,8 +15,6 @@
                                 <a class="btn btn-primary" href="{{route('pages.create')}}">Add New</a>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -25,8 +22,8 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>No.</th>
+                                    <th>Title</th>
                                     <th>Content</th>
-                                    <th>Slug</th>
                                     <th>visibility</th>
                                     <th>Action</th>
 
@@ -36,8 +33,9 @@
                                     @foreach($pages as $key => $page)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{Str::limit($page->page, 150, '...')}}</td>
-                                        <td>{{$page->slug}}</td>
+                                        <td width="20%">{{$page->title}}</td>
+                                        <td width="50%">{{Str::limit($page->page, 150, '...')}}</td>
+
                                         <td>{{$page->visibility ? 'Public' : 'Private' }}</td>
                                         <td>
                                             <a href="{{route('pages.edit', $page->id)}}"

@@ -170,14 +170,13 @@
                             </nav>
                             <div class="login-register" style="margin-right: 30px">
 
-                                <?php $AuthCjchk= Auth::User()->id; 
-                           $getdata=DB::table('users')->where('id', $AuthCjchk)->Select('type')->get();
-                               switch ($getdata[0]->type) {
+                                <?php $user= Auth::user(); 
+                               switch ($user->type) {
                                    case 'teacher':?>
                                 <ul>
                                     <li><a style="background: none !important;color:black;">
                                             <span><a class="no-styleing" href="{{route('teacherHome')}}">
-                                                    {{Auth::user()->fname}}</span></a></li>
+                                                    {{$user->fname}}</span></a></li>
                                     <div class="dropdown">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <div class="dropdown-content">
@@ -200,7 +199,7 @@
                                     <li>
                                         <a style="background: none !important;color:black;">
                                             <span><a class="no-styleing" href="{{route('studentHome')}}">
-                                                    {{Auth::user()->fname}}</span></a></li>
+                                                    {{$user->fname}}</span></a></li>
                                     <div class="dropdown ml-auto">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <div class="dropdown-content">
@@ -216,10 +215,6 @@
                                                 style="display: none;">
                                                 @csrf
                                             </form>
-                                            {{-- <form method="post" action="{{route('logout')}}">
-                                            @csrf
-                                            <button class="btn-sm btn-outline-primary">logout</button>
-                                            </form> --}}
 
                                         </div>
                                     </div>
@@ -227,9 +222,36 @@
                                 </ul>
                                 <?php 
                                        break;
-                               }
-                   
-                             ?>
+                                       case 'admin':
+                                   ?>
+                                <ul>
+                                    <li>
+                                        <a style="background: none !important;color:black;">
+                                            <span><a class="no-styleing" href="{{route('home')}}">
+                                                    {{$user->fname}}</span></a></li>
+                                    <div class="dropdown ml-auto">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                        <div class="dropdown-content">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                                </ul>
+
+                                @php
+                                break;
+                                }
+                                @endphp
 
 
 

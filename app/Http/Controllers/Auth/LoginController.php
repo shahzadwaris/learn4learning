@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Requests\LogInRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -44,13 +43,13 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if (auth::user()['type'] == 'admin') {
+        if (Auth::user()['type'] == 'admin') {
             return redirect()->route('home');
         }
-        if (auth::user()['type'] == 'teacher') {
+        if (Auth::user()['type'] == 'teacher') {
             return redirect()->route('teacherHome');
         }
-        if (auth::user()['type'] == 'student') {
+        if (Auth::user()['type'] == 'student') {
             return redirect()->route('studentHome');
         }
     }
@@ -66,19 +65,5 @@ class LoginController extends Controller
         $request->session()->flash('message.content', 'Sorry..!Invalid Email or password..please try again.');
 
         return redirect()->back()->withInput(['email'=>$request->email]);
-
-        // $email           = $user['email'];
-        // $password        = $user['password'];
-        // $requestPassword = $request->password;
-        // if (Hash::check($requestPassword, $password) && $email) {
-        //     if ($user['approved_at'] != '') {
-        //     } else {
-
-        //     }
-        // } else {
-        //     $request->session()->flash('message.level', 'danger');
-        //     $request->session()->flash('message.content', 'Sorry..!Invalid Email or password..please try again');
-        //     return redirect()->back()->withInput(['email'=>$email]);
-        // }
     }
 }
