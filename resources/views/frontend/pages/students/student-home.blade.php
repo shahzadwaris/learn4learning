@@ -100,11 +100,11 @@ $user = Auth::user();
             <!--/.Indicators-->
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
-                @foreach($MyAchivment as $MyAchivment)
+                @foreach($MyAchivment as $Achivment)
                 <!--First slide-->
                 <div class="carousel-item active">
                     <div class="col-md-2">
-                        <img class="card-img-top" src="{{url('/storage/images/'.$MyAchivment->img)}}"
+                        <img class="card-img-top" src="{{url('/storage/images/'.$Achivment->img)}}"
                             alt="Card image cap">
                     </div>
                 </div>
@@ -173,9 +173,10 @@ $user = Auth::user();
                         <div class="card box-shadow">
                             <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                 id="grade-btn-teach">REPORT CARD MARCH</p>
-                            <p class="grades-details">Geography <span>A'</span></p>
-                            <p class="grades-details">Geography <span>A'</span></p>
-                            <p class="grades-details">Geography <span>A'</span></p>
+                            @foreach ($MyAchivment as $item)
+                            <p class="grades-details">{{$item->Subject_name}}
+                                <span>{{$item->grade == '' ? 'Not Graded Yet' : $item->grade}}</span></p>
+                            @endforeach
                             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                     href="#" id="donate-register-btn">SEE ALL</a>
@@ -201,11 +202,18 @@ $user = Auth::user();
 justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
                         @foreach($studentHomeworks as $homework)
+                        @php
+                        $done = false;
+                        if(in_array($user->id, $studentHomeWorkSubmitted))
+                        {
+                        $done = true;
+                        }
+                        @endphp
                         <div class="item">
                             <div class="pad15">
                                 <div class="card postion-relative">
-                                    <img class="card-img" src="  {{url('/storage/images/'.$homework->thumbnail)}}"
-                                        alt="Bologna" height="100%">
+                                    <img src="{{url('/storage/images/'.$homework->thumbnail)}}" class="image-card"
+                                        alt="Bologna">
                                     <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
                                         <div class="topright"><span
                                                 class="exclamation-para">{{$homework->date}}</span><i
@@ -260,6 +268,10 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
 
     #donate-register-btn-div {
         display: block !important;
+    }
+
+    .image-card {
+        max-width: 400px;
     }
 </style>
 @endsection

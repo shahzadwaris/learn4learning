@@ -2,76 +2,51 @@
 <html lang="en">
 
 <head>
-
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!--====== Title ======-->
     <title>@yield('title')</title>
-
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{asset('asset/images/logo1.png')}}" type="image/png">
-
     <!--====== Slick css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
-
     <!--====== Animate css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/animate.css')}}">
-
     <!--====== Nice Select css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/nice-select.css')}}">
-
     <!--====== Nice Number css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/jquery.nice-number.min.css')}}">
-
     <!--====== Magnific Popup css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/magnific-popup.css')}}">
-
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
-
     <!--====== Fontawesome css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}">
-
     <!--====== Default css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/default.css')}}">
-
     <!--====== Style css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/work.css')}}">
-
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
     @yield('css')
-
-
 </head>
 
 <body>
-    <!--====== PRELOADER PART START ======-->
-    <!--====== PRELOADER PART START ======-->
-    <!--====== HEADER PART START ======-->
-
     <header id="header-part" class="header-two">
         <div class="header-top d-none d-lg-block">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="header-contact">
-
-
-
-
                         </div> <!-- header contact -->
                     </div>
                     <div class="col-md-6">
                         <div class="header-right d-flex justify-content-end">
                             @if(!Auth::check())
-
-
                             <div class="social d-flex">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-envelope"></i></a></li>
@@ -94,9 +69,7 @@
                             </div>
                             @endif
                             @if(Auth::check())
-                            <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="    margin-top:px;
-">
-
+                            <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="margin-top:px;">
                                 <!-- Right Side Of Navbar -->
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
@@ -115,24 +88,16 @@
                                         </div>
                                     </li>
                                 </ul>
-
                             </nav>
                             <div class="login-register" style="margin-top: 10px">
-
                                 <ul>
-
                                     <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a>
                                     </li>
                                     <li>
-                                        {{-- <form method="post" action="{{route('logout')}}">
-                                        @csrf
-                                        <button class="btn-sm btn-outline-primary">logout</button>
-                                        </form> --}}
                                         <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             style="display: none;">
                                             @csrf
@@ -140,14 +105,12 @@
                                     </li>
                                 </ul>
                             </div>
-
                             @endif
                         </div> <!-- header right -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- header top -->
-        {{----}}
         <div class="navigation">
             <div class="container">
                 <div class="row">
@@ -163,39 +126,35 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            {{----}} <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="active" href="{{route('teacherHome')}}">@lang('home.home_menu')</a>
+                                        <a class="{{Request::routeIs('teacherHome') ? 'active' : ''}}"
+                                            href="{{route('teacherHome')}}">@lang('home.home_menu')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('teacherSchedule')}}">SCHEDULE</a>
-                                    </li>
-
-
-
-                                    <li class="nav-item">
-                                        <a href="{{route('Students')}}">STUDENT</a>
-                                    </li>
-                                    <!-- 
-                        <li class="nav-item">
-                                        <a href="{{route('getdataofstudent')}}">STUDDENTS</a>
-                          </li> -->
-
-
-
-                                    <li class="nav-item">
-                                        <a href="{{route('teacherHomeWork')}}">HOMEWORK</a>
+                                        <a class="{{Request::routeIs('teacherSchedule') ? 'active' : ''}}"
+                                            href="{{route('teacherSchedule')}}">SCHEDULE</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('MYaccount')}}">Account</a>
+                                        <a class="{{Request::routeIs('Students') ? 'active' : ''}}"
+                                            href="{{route('Students')}}">STUDENT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{route('Students')}}">MESSAGES</a>
+                                        <a class="{{Request::routeIs('teacherHomeWork') ? 'active' : ''}}"
+                                            href="{{route('teacherHomeWork')}}">HOMEWORK</a>
                                     </li>
-
                                     <li class="nav-item">
-                                        <a href="{{route('donate')}}"
+                                        <a class="{{Request::routeIs('MYaccount') ? 'active' : ''}}"
+                                            href="{{route('MYaccount')}}">Account</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="{{Request::routeIs('Students') ? 'active' : ''}}"
+                                            href="{{route('Students')}}">MESSAGES</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="{{Request::routeIs('donate') ? 'active' : ''}}"
+                                            href="{{route('donate')}}"
                                             style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
@@ -206,14 +165,12 @@
             </div> <!-- container -->
         </div>
     </header>
-    {{--content--}}
     <div class="row p-0 m-0">
         <div class="col-2"></div>
         <div class="col-8">
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
             <div class="flash-message mt-5" id='success-alert'>
-
                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
                         data-dismiss="alert" aria-label="close">&times;</a></p>
             </div>
@@ -222,14 +179,8 @@
         </div>
         <div class="col-2"></div>
     </div>
-
     @yield('content')
-    {{--content--}}
-
-    <!--====== COURSE PART ENDS ======-->
-
     <!--====== FOOTER PART START ======-->
-
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
             <div class="container">
@@ -237,63 +188,48 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">
                             <div class="logo" style="float: left;">
-
                                 <a href="{{route('homee')}}"><img src="{{asset('asset/images/footerlogo.png')}}"
                                         alt="Logo"></a>
                             </div>
-
                             <div class="right-inner-div ml-3">
-
                                 <ul style="margin-left: 23px" class="text-center">
                                     <li><a href="#">Powered by Hot Dog Solutions</a></li>
                                     <li><a href="#">Contact US</a></li>
                                     <li><a href="#">Visit our Website</a></li>
-
                                 </ul>
-
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link mt-40">
-
                             <ul class="text-center">
                                 <li><a href="#">Terms and Conditions </a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Cookies Policy</a></li>
-
                             </ul>
-
                         </div> <!-- footer link -->
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
-
                             <ul class="text-center">
                                 <li><a href="{{route('howitworks')}}">How it Works</a></li>
                                 <li><a href="{{route('teachers')}}">For Teachers</a></li>
                                 <li><a href="{{route('students')}}">For Students</a></li>
-
                             </ul>
                         </div> <!-- support -->
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-12">
                         <div class="footer-link support mt-40">
-
                             <ul class="text-center">
                                 <li><a href="{{route('parents')}}">For Parents </a></li>
                                 <li><a href="{{route('donate')}}">Donate</a></li>
                                 <li><a href="#">Contact Us</a></li>
-
                             </ul>
                         </div> <!-- support -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer top -->
-        {{----}}
         <div class="footer-copyright pt-10 pb-25">
             <div class="container">
                 <div class="row">
@@ -304,56 +240,41 @@
                             </p>
                         </div>
                     </div>
-
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer copyright -->
     </footer>
     <!--====== FOOTER PART ENDS ======-->
-
     <!--====== BACK TO TP PART START ======-->
-
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
     <!--====== jquery js ======-->
     <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script>
     {{-- <script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script> --}}
     <script src="{{asset('asset/js/jquery.min.js')}}"></script>
-
     <!--====== Bootstrap js ======-->
     <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
-
     <!--====== Slick js ======-->
     <script src="{{asset('asset/js/slick.min.js')}}"></script>
-
     <!--====== Magnific Popup js ======-->
     <script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
-
     <!--====== Counter Up js ======-->
     <script src="{{asset('asset/js/waypoints.min.js')}}"></script>
     <script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
-
     <!--====== Nice Select js ======-->
     <script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
-
     <!--====== Nice Number js ======-->
     <script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
-
     <!--====== Count Down js ======-->
     <script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
-
     <!--====== Validator js ======-->
     <script src="{{asset('asset/js/validator.min.js')}}"></script>
-
     <!--====== Ajax Contact js ======-->
     <script src="{{asset('asset/js/ajax-contact.js')}}"></script>
-
     <!--====== Main js ======-->
     <script src="{{asset('asset/js/main.js')}}"></script>
-
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
     <script src="{{asset('asset/js/map-script.js')}}"></script>
-
     <script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
     @yield('js')
     <script>
@@ -363,46 +284,33 @@
         $("#success-alert").slideUp(500);
         $('.mdb-select').materialSelect();
     });
+});
     </script>
-</body>
-
-
-<!-- Mirrored from thepixelcurve.com/html/edubin/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Jun 2020 12:44:37 GMT -->
-
-</html>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form method="post" action="{{route('Add_experience')}}" id="form">
-                @csrf
-
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="form-group">
-
-                        <input type="text" name="exp" placeholder="Enter Experience" class="form-control"
-                            required="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post" action="{{route('Add_experience')}}" id="form">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Experience</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!--                                     <div class="form-group">
-                                       
-    <input class="form-control" name="date" id="registration-date" type="date" required="true">                                   </div> -->
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
-
-                </div>
-            </form>
-
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="exp" placeholder="Enter Experience" class="form-control"
+                                required="true">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>
