@@ -202,13 +202,7 @@ $user = Auth::user();
 justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
                         @foreach($studentHomeworks as $homework)
-                        @php
-                        $done = false;
-                        if(in_array($user->id, $studentHomeWorkSubmitted))
-                        {
-                        $done = true;
-                        }
-                        @endphp
+                        {{-- {{dd($homework)}} --}}
                         <div class="item">
                             <div class="pad15">
                                 <div class="card postion-relative">

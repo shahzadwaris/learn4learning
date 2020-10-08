@@ -192,6 +192,7 @@ class TeacherController extends Controller
 
     public function teacherHomeWork()
     {
+        // dd('here');
         $auth    =Auth::user()->id;
         $Lessonss=DB::table('lessons')->where('lessons.user_id', $auth)
                     ->join('subjects', 'subjects.id', 'lessons.subject_id')
@@ -237,30 +238,34 @@ class TeacherController extends Controller
         return view('frontend.pages.teachers.teacher-homeWork')->with(['Title'=>$Title, 'Date'=>$Date,  'subjects'=>$subjects, 'Lessonss'=>$Lessonss]);
     }
 
-    public function addsubjecthomework($id)
+    public function addsubjecthomework($lesson, $subject)
     {
-        $sub_id                    =$id;
+        $sub_id                    =$subject;
         $getfurthwerdetailsdteacher=DB::table('lessons')
                                         ->join('subjects', 'subjects.id', 'lessons.subject_id')
                                         ->select('lessons.*', 'subjects.name as sub_name', 'subjects.id as subjectid')
                                         ->where('subjects.id', $sub_id)
                                         ->get();
-        return view('frontend.pages.teachers.AddHomeWorks')->with('getfurthwerdetailsdteacher', $getfurthwerdetailsdteacher);
+        return view('frontend.pages.teachers.AddHomeWorks')->with(['getfurthwerdetailsdteacher' => $getfurthwerdetailsdteacher, 'lesson' => $lesson]);
     }
 
     public function teacheraddHomework(Request $request)
     {
-        $auth=Auth::user()->id;
+        $auth        =Auth::user()->id;
+        $imageDbPath = '';
         if ($request->hasFile('img')) {
-            $imageDbPath = $this->saveDocs($request->file('img'), 2);
+            $imageDbPath = $this->saveDocs($request->file('img'), 1);
         }
-        $homeWork             = new Homework();
-        $homeWork->discription=$request->descriptions;
-        $homeWork->Sub_id     =$request->Sub_id;
-        $homeWork->date       =$request->date;
-        $homeWork->teacher_id =$auth;
-        $homeWork->document   =$imageDbPath;
-        $homeWork->save();
+        Homework::create(
+            [
+                'discription'=> $request->descriptions,
+                'Sub_id'     => $request->Sub_id,
+                'date'       => $request->date,
+                'teacher_id' => $auth,
+                'document'   => $imageDbPath,
+                'lesson_id'  => $request->lesson,
+            ]
+        );
         $request->session()->flash('message.level', 'Success');
         $request->session()->flash('message.content', 'One record Add Successfully..');
         $Lessens=DB::table('lessons')->where('lessons.user_id', $auth)

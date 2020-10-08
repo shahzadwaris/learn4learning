@@ -1,26 +1,6 @@
 @extends('layouts.master')
-<!--====== HEADER PART ENDS ======-->
-
-<!--====== SEARCH BOX PART START ======-->
 @section('content')
-<link rel="stylesheet" href="{{asset('asset/css/donate.css')}}">
-<style>
-    .section-title h5::before {
-        /* left: 12px; */
-    }
-
-    .container {}
-
-    .section-title .learn-line-yellow::before {
-        background-color: #fff;
-    }
-
-    #payment-pics {
-        padding-top: 18px;
-        padding-bottom: 30px;
-        padding-left: 0px;
-    }
-</style>
+{{-- {{dd('ere')}} --}}
 <div class="search-box">
     <div class="search-form">
         <div class="closebtn">
@@ -242,7 +222,26 @@
 
 
 @endsection
+@section('css')
+<link rel="stylesheet" href="{{asset('asset/css/donate.css')}}">
+<style>
+    .section-title h5::before {
+        /* left: 12px; */
+    }
 
+    .container {}
+
+    .section-title .learn-line-yellow::before {
+        background-color: #fff;
+    }
+
+    #payment-pics {
+        padding-top: 18px;
+        padding-bottom: 30px;
+        padding-left: 0px;
+    }
+</style>
+@endsection
 @section('js')
 <script
     src="https://www.paypal.com/sdk/js?client-id=Af_hkAJriAisK0jqeXxt1FjssUB-vYNqW8pAkvp1RFMPkpu_mKjT29aNZxj4Yvn1Mq1K4N78zIwuTvJI">

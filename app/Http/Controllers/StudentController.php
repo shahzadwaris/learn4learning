@@ -194,15 +194,16 @@ class StudentController extends Controller
                         )->get();
         $studentLessons           = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
         $studentHomeWork          = Homework::whereIn('Sub_id', $studentLessons)->get();
+        // dd($studentHomeWork);
         $studentHomeWorkSubmitted = $studentHomeWork
                                     ->filter(fn ($value) => $value->user_id != null)
                                     ->pluck('user_id')
                                     ->toArray();
+
         $studentHomeWork          = $studentHomeWork->pluck('Sub_id')->toArray();
         $studentHomeWorkSubjects  = Lesson::with('teacher', 'subject')
                                             ->whereIn('subject_id', $studentHomeWork)
                                             ->get();
-        // dd($studentHomeWorkSubjects);
         $countlessons             = count($studentLessons);
         ;
         return view('frontend.pages.students.student-home')->with(
@@ -248,13 +249,10 @@ class StudentController extends Controller
                                         $q->where('date', '>=', date('Y-d-m'));
                                     })
                                     ->get();
-
         $allSubjects = Subject::all();
         $levels      = levels::all();
-
-        $subjects = Subject::whereIn('name', $subjects)->get()->pluck('id')->toArray();
-        $lessons  = Lesson::with('teacher')->whereIn('subject_id', $subjects)->whereDate('date', '>=', now()->format('Y-m-d'))->whereTime('time', '>=', now()->format('H:i:s a'))->get();
-
+        $subjects    = Subject::whereIn('name', $subjects)->get()->pluck('id')->toArray();
+        $lessons     = Lesson::with('teacher')->whereIn('subject_id', $subjects)->whereDate('date', '>=', now()->format('Y-m-d'))->whereTime('time', '>=', now()->format('H:i:s a'))->get();
         return view('frontend.pages.students.student-schedule', compact('student', 'subjects', 'lessons', 'myLessons', 'allSubjects', 'levels'));
     }
 
@@ -267,14 +265,12 @@ class StudentController extends Controller
                     ->join('subjects', 'subjects.id', 'student_lessons.subjects_id')
                     ->select('users.*', 'subjects.id as sub_id', 'subjects.name as sub_name', 'users.id as U_id')
                     ->get();
-
         $Mysub=DB::table('student_lessons')
                     ->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
                     ->join('subjects', 'subjects.id', 'student_lessons.subjects_id')
                     ->select('subjects.name as sub_name', 'subjects.id as sub_id')
                     ->get();
-
         $Teacher=DB::table('student_lessons')
                     ->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
@@ -305,7 +301,7 @@ class StudentController extends Controller
         $teacherhomeworkdetail=DB::table('subjects')
                                ->join('homework', 'subjects.id', '=', 'homework.Sub_id')
 
-                                ->join('lessons', 'subjects.id', '=', 'lessons.subject_id')
+                               ->join('lessons', 'subjects.id', '=', 'lessons.subject_id')
 
                                 ->join('student_lessons', function ($join) {
                                     $join->on('lessons.id', '=', 'student_lessons.lesson_id');
@@ -353,8 +349,7 @@ class StudentController extends Controller
 
     public function SearchStudentHomeworks(Request $request)
     {
-        $student_iid=Auth::user()->id;
-
+        $student_iid          =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('subjects')
                                    ->join('homework', 'subjects.id', '=', 'homework.Sub_id')
 
@@ -383,34 +378,29 @@ class StudentController extends Controller
                                         'lessons.date as LesonDate',
                                         'users.fname'
                                     )
-
                                      ->where('subjects.id', $request->subject_id)
                                      ->where('lessons.id', $request->date_id)
-
                                     ->get();
-
         $Title=DB::table('student_lessons')
                                     ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
                                     ->where('student_lessons.user_id', $student_iid)->select('lessons.title', 'lessons.id')
                                     ->get();
-
         $Date=DB::table('student_lessons')
                                     ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
                                     ->where('student_lessons.user_id', $student_iid)->select('lessons.date', 'lessons.id')
                                     ->get();
-
-        $subjects=DB::table('subjects')
-                                  ->get();
-
+        $subjects    =DB::table('subjects')->get();
         $countschedle=count($teacherhomeworkdetail);
-
-        if ($countschedle >= 1) {
-            return view('frontend.pages.students.student-homework')
-                                    ->with(['teacherhomeworkdetail'=> $teacherhomeworkdetail,
-                                        'Title'                    => $Title, 'Date'=>$Date,  'subjects'=>$subjects, ]);
-        } else {
+        if ($countschedle < 1) {
             return redirect()->back();
         }
+        return view('frontend.pages.students.student-homework')
+                ->with([
+                    'teacherhomeworkdetail'    => $teacherhomeworkdetail,
+                    'Title'                    => $Title,
+                    'Date'                     => $Date,
+                    'subjects'                 => $subjects,
+                ]);
     }
 
     public function viewHomework($id)
@@ -419,18 +409,13 @@ class StudentController extends Controller
 
         $teacherhomeworkdetaild=DB::table('subjects')
                                ->join('homework', 'subjects.id', '=', 'homework.Sub_id')
-
                                 ->join('lessons', 'subjects.id', '=', 'lessons.subject_id')
-
                                 ->join('student_lessons', function ($join) {
                                     $join->on('lessons.id', '=', 'student_lessons.lesson_id');
                                 })
-
                                ->join('users', 'users.id', '=', 'homework.teacher_id')
-
                                 ->OrderBy('homework.id', 'DESC')
                                 ->where('subjects.id', $id)
-
                                 ->select(
                                     'subjects.name as subname',
                                     'subjects.id as subject_iid',
@@ -453,14 +438,14 @@ class StudentController extends Controller
                                 )
                                 ->limit(10)
                                 ->first();
-
+        // dd($teacherhomeworkdetaild);
         return view('frontend.pages.students.studentSubjectWiseDocs')->with(['teacherhomeworkdetaild'=>$teacherhomeworkdetaild, 'student_iid'=>$student_iid]);
     }
 
     public function uploadDocs(Request $request)
     {
-        $student_id=Auth::user()->id;
-
+        $student_id  =Auth::user()->id;
+        $imageDbPath = '';
         if ($request->hasFile('img')) {
             $image     = $request->file('img');
             $imageName = time() . '.' . $image->extension();
@@ -468,21 +453,17 @@ class StudentController extends Controller
             $image->move($imagePath, $imageName);
             $imageDbPath = $imageName;
         }
-
-        $homeWork             = new Homework();
-        $homeWork->discription=$request->descriptions;
-        $homeWork->Sub_id     =$request->Sub_id;
-        $homeWork->teacher_id =$request->tea_id;
-        $homeWork->user_id    =$student_id;
-
-        $homeWork->document=$imageDbPath;
+        $homeWork               = new Homework();
+        $homeWork->discription  = $request->descriptions;
+        $homeWork->Sub_id       = $request->Sub_id;
+        $homeWork->teacher_id   = $request->tea_id;
+        $homeWork->user_id      = $student_id;
+        $homeWork->lesson_id    = $request->lesson_id;
+        $homeWork->document     = $imageDbPath;
         $homeWork->save();
-
-        if ($homeWork) {
-            $request->session()->flash('message.level', 'Success');
-            $request->session()->flash('message.content', 'One record Add Successfully..');
-            return back();
-        }
+        $request->session()->flash('message.level', 'Success');
+        $request->session()->flash('message.content', 'One record Add Successfully..');
+        return back();
     }
 
     public function viewSeperatetea($id)
@@ -491,10 +472,8 @@ class StudentController extends Controller
         ->join('levels', 'levels.id', 'subject_level_details.level_id')
         ->join('subjects', 'subjects.id', 'subject_level_details.subject_id')
         ->join('users', 'users.id', 'subject_level_details.user_id')
-
         ->select('levels.name as Level_naem', 'subjects.name as subjectname', 'users.*')
         ->get();
-
         return view('frontend.pages.students.viewTeacherProfile')->with('db', $db);
     }
 
@@ -502,58 +481,54 @@ class StudentController extends Controller
     {
         $student_id=Auth::user()->id;
         $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
-
-        $DBB=DB::table('messages')->select('messages.*')
-        ->where('messages.student_id', $student_id)
-        ->where('messages.teacherId', $id)
-        ->where('messages.role', 1)
-
-        ->get();
-
+        $DBB       =DB::table('messages')->select('messages.*')
+                        ->where('messages.student_id', $student_id)
+                        ->where('messages.teacherId', $id)
+                        ->where('messages.role', 1)
+                        ->get();
         $teacher=DB::table('messages')->select('messages.*')
-             ->where('messages.student_id', $student_id)
-        ->where('messages.teacherId', $id)
-        ->where('messages.role', 0)
-
-        ->get();
-
+                    ->where('messages.student_id', $student_id)
+                    ->where('messages.teacherId', $id)
+                    ->where('messages.role', 0)
+                    ->get();
         return view('frontend.pages.students.Messages')
            ->with(['teacher_id'=> $id,
                'student_id'    => $student_id,
-               'DBB'           => $DBB, 'role'=>$role, 'teacher'=>$teacher, ]);
+               'DBB'           => $DBB,
+               'role'          => $role,
+               'teacher'       => $teacher,
+           ]);
     }
 
     public function OurMessages(Request $request)
     {
-        $role             =1;
-        $saves            =new Messages();
-        $saves->teacherId =$request->teacher_id;
-        $saves->student_id=$request->student_id;
-        $saves->messages  =$request->msg;
-        $saves->role      =$role;
-
+        $role              = 1;
+        $saves             = new Messages();
+        $saves->teacherId  = $request->teacher_id;
+        $saves->student_id = $request->student_id;
+        $saves->messages   = $request->msg;
+        $saves->role       = $role;
         $saves->save();
-
-        if ($saves) {
-            $student_id=Auth::user()->id;
-            $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
-
-            $DBB=DB::table('messages')
+        $student_id=Auth::user()->id;
+        $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
+        $DBB       =DB::table('messages')
                     ->select('messages.*')
                     ->where('messages.student_id', $student_id)
                     ->where('messages.role', 1)
                     ->get();
-            $teacher=DB::table('messages')
+        $teacher=DB::table('messages')
                         ->select('messages.*')
                         ->where('messages.student_id', $student_id)
                         ->where('messages.teacherId', $request->teacher_id)
                         ->where('messages.role', 0)
                         ->get();
-
-            return view('frontend.pages.students.Messages')
-           ->with(['teacher_id'=> $request->teacher_id,
-               'student_id'    => $request->student_id,
-               'DBB'           => $DBB, 'role'=>$role, 'teacher'=>$teacher, ]);
-        }
+        return view('frontend.pages.students.Messages')
+           ->with(['
+                teacher_id' => $request->teacher_id,
+               'student_id' => $request->student_id,
+               'DBB'        => $DBB,
+               'role'       => $role,
+               'teacher'    => $teacher,
+           ]);
     }
 }

@@ -3,23 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Exception;
+use App\Donate;
 use App\Howitwork;
 use Stripe\Customer;
 use App\Models\Lesson;
-use App\Models\Payment;
 use Stripe\Subscription;
 use App\Models\ForParent;
 use App\Models\ForStudent;
 use App\Models\ForTeacher;
 use App\ShedulePagePoster;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 class PageController extends Controller
 {
@@ -71,6 +67,13 @@ class PageController extends Controller
     public function forParent()
     {
         $data=ForParent::all();
+
+        return view('frontend.pages.parents', compact('data'));
+    }
+
+    public function donate()
+    {
+        $data=Donate::all();
 
         return view('frontend.pages.parents', compact('data'));
     }
@@ -157,7 +160,7 @@ class PageController extends Controller
 
     public function editHowItWorks(Request $request, $id)
     {
-        $data=Howitwork::where('id', $id)->update([
+        Howitwork::where('id', $id)->update([
             'title'      => $request['title'] ? $request['title'] : 'title',
             'discription'=> $request['discription'] ? $request['discription'] : 'discription',
         ]);
@@ -173,7 +176,7 @@ class PageController extends Controller
 
     public function editforTeacher(Request $request, $id)
     {
-        $data=ForTeacher::where('id', $id)->update([
+        ForTeacher::where('id', $id)->update([
             'title'      => $request['title'] ? $request['title'] : 'title',
             'discription'=> $request['discription'] ? $request['discription'] : 'discription',
         ]);
@@ -188,7 +191,7 @@ class PageController extends Controller
 
     public function editforStudent(Request $request, $id)
     {
-        $data=ForStudent::where('id', $id)->update([
+        ForStudent::where('id', $id)->update([
             'title'      => $request['title'] ? $request['title'] : 'title',
             'discription'=> $request['discription'] ? $request['discription'] : 'discription',
         ]);
@@ -203,7 +206,7 @@ class PageController extends Controller
 
     public function editforParents(Request $request, $id)
     {
-        $data=ForParent::where('id', $id)->update([
+        ForParent::where('id', $id)->update([
             'title'      => $request['title'] ? $request['title'] : 'title',
             'discription'=> $request['discription'] ? $request['discription'] : 'discription',
         ]);
@@ -225,7 +228,7 @@ class PageController extends Controller
 
     public function Userid($id)
     {
-        $user=Auth::loginUsingId($id);
+        Auth::loginUsingId($id);
     }
 
     public function newUsers()
@@ -255,7 +258,6 @@ class PageController extends Controller
             $lesssonDetail[$key]['teacher_thumbnail']=User::where('id', $lesssonDetil['user_id'])->pluck('thumbnail')->first();
             $lesssonDetail[$key]['video']            =$video;
         }
-//        dd($lesssonDetail);
         return view('frontend.pages.students.student-lesson-page', compact('lesssonDetail'));
     }
 
@@ -275,7 +277,6 @@ class PageController extends Controller
 
     public function stirpepaymentgatway(Request $request)
     {
-        // dd($request->all());
         $this->validate(request(), [
             'type'        => 'required',
             'stripeToken' => 'required',
@@ -357,77 +358,5 @@ class PageController extends Controller
         }
         $packages = ['price_1HWy6tGKdlAygQ49RNAqO5Zp', '', ''];
         return $packages[$id];
-    }
-
-    // public function stripePayment(Request $request){
-
-    public function stripePayment(Request $request)
-    {
-        try {
-            $status = \Stripe\PaymentIntent::create([
-                'amount'                   => $donate,
-                'currency'                 => 'USD',
-                'customer'                 => $user->stripe_customer_id,
-                'payment_method'           => $request->card,
-                'error_on_requires_action' => true,
-                'confirm'                  => true,
-                'setup_future_usage'       => 'on_session',
-            ]);
-        } catch (\Stripe\Exception\CardException $e) {
-            echo 'Error code is:' . $e->getError()->code;
-            $payment_intent_id = $e->getError()->payment_intent->id;
-            $payment_intent    = \Stripe\PaymentIntent::retrieve($payment_intent_id);
-            session()->flash('alert-warning', $e->message);
-            return redirect('/credits');
-        }
-
-        // $filename = Str::random(10);
-
-        // try {
-        //     $charge=Stripe::charges()->create([
-        //         'amount'        => 100,
-        //         'currency'      => 'USD',
-        //         'description'   => 'Your product info',
-        //         'source'        => $request->stripeToken,
-        //     ]);
-        // } catch (Exception $e) {
-        // }
-
-        // if ($charge > 1) {
-        //     $payment         = new Payment();
-        //     $payment->name   =$request->name;
-        //     $payment->mail   =$request->email;
-        //     $payment->address=$request->address;
-        //     $payment->city   =$request->city;
-        //     $payment->state  =$request->state;
-        //     $payment->country=$request->country;
-        //     $payment->amount =$request->total;
-        //     $payment->phone  =$request->phone;
-        //     $payment->invoice= $filename;
-        //     $payment->save();
-        //     if ($charge) {
-        //         return view('User.payment.invoiced');
-        //     }
-        // }
-    }
-
-    public function paypalpaymentgatwway()
-    {
-        return view('frontend.pages.paypalpaymentgatwways');
-    }
-
-    public function stripePost(Request $request)
-    {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create([
-            'amount'      => 100 * 100,
-            'currency'    => 'usd',
-            'source'      => $request->stripeToken,
-            'description' => 'Test payment from itsolutionstuff.com.',
-        ]);
-
-        Session::flash('success', 'Payment successful!');
-
-        return back();
     }
 }

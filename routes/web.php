@@ -188,7 +188,7 @@ Route::group(['private'], function () {
         Route::get('/view-student-profile/{id}', 'TeacherController@View_student_profile')->name('View.student.profile');
         Route::get('/message/{id}', 'TeacherController@messageStudent')->name('Contact.Student');
         Route::post('/live/message/', 'TeacherController@teacherSideMesages')->name('teacherSideMesages');
-        Route::get('/Upload/homework/{id}', 'TeacherController@addsubjecthomework')->name('addsubjecthomework');
+        Route::get('/Upload/homework/{lesson}/{subject}', 'TeacherController@addsubjecthomework')->name('addsubjecthomework');
         Route::post('/Add/homework', 'TeacherController@teacheraddHomework')->name('teacher.addHomework');
         // Route::get('/view/homework', 'TeacherController@ViewStudentHomeWork')->name('ViewStudentHomeWork');
         Route::get('view/our/student', 'TeacherController@MySubStudents')->name('Students');

@@ -21,6 +21,20 @@ class Lesson extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function getDateAttribute($value)
+    {
+        $date  = strtotime($value);
+        $today = strtotime(date('Y-m-d'));
+        if ($date == $today) {
+            return 'Due Today ' . date('m/d', strtotime($value));
+        }
+        if ($date > $today) {
+            return 'Due In ' . date('m/d', strtotime($value));
+        }
+
+        return $value;
+    }
+
     protected $dates = [
         'date',
         'time',

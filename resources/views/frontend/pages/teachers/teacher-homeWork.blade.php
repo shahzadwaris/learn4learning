@@ -112,24 +112,28 @@
 
 
 
-                        @foreach($Lessonss as $Lessens1)
+                        @foreach($Lessonss as $lesson)
 
                         <tr>
-                            <th scope="row">{{$Lessens1->sub_name}}</th>
-                            <td>{{$Lessens1->title}}</td>
-                            <td>{{$Lessens1->date}}</td>
+                            <th scope="row">{{$lesson->sub_name}}</th>
+                            <td>{{$lesson->title}}</td>
+                            <td>{{$lesson->date}}</td>
 
                             <td colspan="3">
-                                <a href="{{route('addsubjecthomework', [$Lessens1->sub_id])}}"><button type="button"
-                                        class="btn btn-indigo ml-2 btn-sm m-0" id="upload-work-btn">UPLOAD
+                                <a
+                                    href="{{route('addsubjecthomework', ['lesson' => $lesson->id,'subject' => $lesson->sub_id])}}"><button
+                                        type="button" class="btn btn-indigo ml-2 btn-sm m-0" id="upload-work-btn">UPLOAD
                                         HOMEWORK</button></a>
 
-                                <a href="{{route('addsubjecthomework', [$Lessens1->sub_id])}}"><button type="button"
-                                        class="btn btn-indigo ml-2 btn-sm m-0"
+                                <a
+                                    href="{{route('addsubjecthomework', ['lesson' => $lesson->id,'subject' => $lesson->sub_id])}}"><button
+                                        type="button" class="btn btn-indigo ml-2 btn-sm m-0"
                                         style="background-color: #ffc10e !important;" id="upload-work-btn">DOWNLOAD
                                         HOMEWORK</button></a>
-                                <a href="{{route('AssignStudentAchevemnt')}}"><button type="button"
-                                        class="btn btn-indigo  btn-default ml-2 btn-sm m-0" id="upload-work-btn">
+                                <a
+                                    href="{{route('addsubjecthomework', ['lesson' => $lesson->id,'subject' => $lesson->sub_id])}}"><button
+                                        type="button" class="btn btn-indigo  btn-default ml-2 btn-sm m-0"
+                                        id="upload-work-btn">
                                         Grade</button></a>
                             </td>
                             <!-- <td><button type="button" class="btn btn-indigo btn-sm m-0" id="ask-question-btn">ASK QUESTION</button></td>
