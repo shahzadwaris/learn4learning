@@ -189,9 +189,9 @@ $user = Auth::user();
     </section>
 </section>
 <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-    style="background-image: url(images/course/course-shape.png)">
+    style="background-image: url(/images/course/course-shape.png)">
     <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-        style="background-image: url(images/course/course-shape.png)">
+        style="background-image: url(/images/course/course-shape.png)">
         <div class="container">
             <div class="teacher-homework-dash-head-div">
                 <p class="teacher-homework-dash-head">@lang('teacherhome.MY_HOMEWORK')</p>
@@ -237,7 +237,7 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
 
 @endsection
 
-@section('css')
+@push('css')
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
 <link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
@@ -268,4 +268,4 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
         max-width: 400px;
     }
 </style>
-@endsection
+@endpush

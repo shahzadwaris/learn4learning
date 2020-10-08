@@ -174,7 +174,7 @@
 </section>
 @endsection
 
-@section('css')
+@push('css')
 <style>
     .section-title h5::before {
         left: 12px;
@@ -186,4 +186,4 @@
         background-color: #fff;
     }
 </style>
-@endsection
+@endpush

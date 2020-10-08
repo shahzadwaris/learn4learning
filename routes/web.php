@@ -153,7 +153,9 @@ Route::group(['private'], function () {
         Route::get('student/schedule', 'StudentController@student_schedule')->name('student_schedule');
         Route::get('student/homework', 'StudentController@studetnsHomeWorks')->name('studetnsHomeWork');
         Route::get('/view/teacher/{id}/', 'StudentController@viewSeperatetea')->name('viewSeperatetea');
+        Route::get('/view/our/messages', 'StudentController@viewOurMessages')->name('viewOurMessages');
         Route::get('/Messages/{id}/', 'StudentController@viewMessages')->name('viewMessages');
+        Route::get('/get/student/messages/{t_id}', 'StudentController@getStudentMessages')->name('getStudentMessages');
         Route::post('/OurMessages/', 'StudentController@OurMessages')->name('OurMessages');
         Route::get('/view/{id}', 'StudentController@viewHomework')->name('viewHomework');
         Route::post('/upload/documnet', 'StudentController@uploadDocs')->name('student.uploadDocs');
@@ -187,6 +189,7 @@ Route::group(['private'], function () {
         Route::post('/update/Lesson', 'TeacherController@EditLessons')->name('teacher.Edit.lesson');
         Route::get('/view-student-profile/{id}', 'TeacherController@View_student_profile')->name('View.student.profile');
         Route::get('/message/{id}', 'TeacherController@messageStudent')->name('Contact.Student');
+        Route::get('/get/messages/{s_id}', 'TeacherController@getMessages')->name('getMessages');
         Route::post('/live/message/', 'TeacherController@teacherSideMesages')->name('teacherSideMesages');
         Route::get('/Upload/homework/{lesson}/{subject}', 'TeacherController@addsubjecthomework')->name('addsubjecthomework');
         Route::post('/Add/homework', 'TeacherController@teacheraddHomework')->name('teacher.addHomework');

@@ -174,7 +174,7 @@
 </section>
 @endsection
 
-@section('css')
+@push('css')
 <style>
     .color-1 {
         background-color: white;
@@ -188,4 +188,4 @@
         font-weight: 300;
     }
 </style>
-@endsection
+@endpush

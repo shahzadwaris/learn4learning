@@ -4,6 +4,40 @@
 <!--====== SEARCH BOX PART START ======-->
 @section('content')
 
+    <div class="search-box">
+        <div class="search-form">
+            <div class="closebtn">
+                <span></span>
+                <span></span>
+            </div>
+            <form action="#">
+                <input type="text" placeholder="Search by keyword">
+                <button><i class="fa fa-search"></i></button>
+            </form>
+        </div> <!-- search form -->
+    </div>
+
+    <!--====== SEARCH BOX PART ENDS ======-->
+
+    <!--====== SLIDER PART START ======-->
+
+    <section id="slider-part" class="slider-active">
+        <div class="single-slider slider-4 bg_cover pt-150"
+             style="padding-bottom: 149px;padding-top: 172px;background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/students/banner.png')}}">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-9">
+                        <div class="slider-cont slider-cont-4 text-center">
+                            <h1 data-animation="fadeInUp" data-delay="1s">{{$data[0]['title']}}</h1>
+                            <p data-animation="fadeInUp" data-delay="1.5s">{{$data[0]['discription']}}</p>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- single slider -->
+    </section>
+
+
 <div class="search-box">
     <div class="search-form">
         <div class="closebtn">
@@ -36,8 +70,6 @@
         </div> <!-- container -->
     </div> <!-- single slider -->
 </section>
-
-
 
 <!--====== SLIDER PART ENDS ======-->
 
@@ -181,7 +213,7 @@
 </section>
 @endsection
 
-@section('css')
+@push('css')
 <style>
     .section-title h5::before {
         left: 0px;
@@ -193,4 +225,4 @@
         background-color: #fff;
     }
 </style>
-@endsection
+@endpush

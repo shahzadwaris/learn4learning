@@ -45,8 +45,14 @@
 
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
-
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous"
+    />
     @yield('css')
+    @stack('css')
 </head>
 
 <body>
@@ -183,7 +189,7 @@
                                         <a class="" href="#">MY ACHIEVEMENT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="" href=" #">MY MESSAGES</a>
+                                        <a class="" href="{{route('viewOurMessages')}}">MY MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="{{Request::routeIs('tudent.account') ? 'active' : ''}}"
@@ -356,9 +362,10 @@
     <script>
         // Material Select Initialization
     $(document).ready(function() {
-        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-        $("#success-alert").slideUp(500);
-        $('.mdb-select').materialSelect();
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#success-alert").slideUp(500);
+            $('.mdb-select').materialSelect();
+        });
     });
     </script>
 </body>
