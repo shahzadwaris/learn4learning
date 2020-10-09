@@ -154,8 +154,8 @@ $user = Auth::user();
             </div>
             <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
                 style="margin-top: 10px">
-                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
-                    id="donate-register-btn">SEE
+                <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
+                    href="<?php echo e(route('student_schedule')); ?>" id="donate-register-btn">SEE
                     ALL</a>
             </div>
         </div>
@@ -183,7 +183,7 @@ $user = Auth::user();
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
-                                    href="#" id="donate-register-btn">SEE ALL</a>
+                                    href="<?php echo e(route('grade.index')); ?>" id="donate-register-btn">SEE ALL</a>
                             </div>
                         </div>
                     </div>
@@ -233,6 +233,16 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
                     <button class="btn btn-primary leftLst">
                         <</button> <button class="btn btn-primary rightLst">>
                     </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
+                        style="margin-top: 10px">
+                        <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
+                            href="<?php echo e(route('studetnsHomeWork')); ?>" id="donate-register-btn">SEE
+                            ALL</a>
+                    </div>
                 </div>
             </div>
         </div>
