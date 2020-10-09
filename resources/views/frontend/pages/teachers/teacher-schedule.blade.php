@@ -65,13 +65,13 @@ $teacher = Auth::user();
                             <optgroup label="Picnic">
                                 <option value="">Find Subjects</option>
                                 @foreach($teacher->getSubjects as $subject)
-                                <option value="{{$subject->subject->id}}"
-                                    {{request()->subject_id != '' && request()->subject_id == $subject->subject->id ? 'selected' : ''  }}>
-                                    {{$subject->subject->name}}</option>
+                                    <option value="{{$subject->subject->id}}"
+                                        {{request()->subject_id != '' && request()->subject_id == $subject->subject->id ? 'selected' : ''  }}>
+                                        {{$subject->subject->name}}
+                                    </option>
                                 @endforeach
                             </optgroup>
                         </select>
-
                     </div>
 
                     <div class="col-md-3" style="padding: 18px;">
