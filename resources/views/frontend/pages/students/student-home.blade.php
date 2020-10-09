@@ -204,29 +204,49 @@ $user = Auth::user();
 justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
                         @foreach($studentHomeworks as $homework)
-                        {{-- {{dd($homework)}} --}}
-                        <div class="item">
-                            <div class="pad15">
-                                <div class="card postion-relative">
-                                    <img src="{{url('/storage/images/'.$homework->thumbnail)}}" class="image-card"
-                                        alt="Bologna">
-                                    <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
-                                        <div class="topright"><span
-                                                class="exclamation-para">{{$homework->date}}</span><i
-                                                class="fa fa-exclamation" aria-hidden="true" id="exclamation-icon"></i>
+                        @php
+                        $date = strtotime(date('Y-m-d'));
+                        $due = strtotime($homework->date);
+                        $type = 'Submiited';
+                        $status = '';
+
+                        if($date == $due)
+                        {
+                        $type = 'fa-exclamation';
+                        $styles = "background-color: #ff0000;padding: 20px 27px;border-radius: 33px;";
+                        $status = 'Due Today ' .' '. date('m/d', strtotime($homework->date));
+                        }
+                        else if($date < $due) { $type='' ; $status='Due' . date('m/d', strtotime($homework->date));
+                            $styles = "";
+                            }else{
+                            $styles = "background-color: green;
+                            padding: 20px 27px;
+                            border-radius: 33px;";
+                            $status = 'fa-check';
+                            }
+                            @endphp
+                            <div class="item">
+                                <div class="pad15">
+                                    <div class="card postion-relative">
+                                        <img src="{{url('/storage/images/'.$homework->thumbnail)}}" class="image-card"
+                                            alt="Bologna">
+                                        <div
+                                            class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                                            <div class="topright"><span class="exclamation-para">{{$status}}</span><i
+                                                    class="fa {{$type}}" aria-hidden="true" style="{{$styles}}"></i>
+                                            </div>
+                                            <div style="margin-bottom: 217px;">
+                                                <h6 class="card-subtitle mb-2">{{$homework->subject->name}}</h6>
+                                                <p class="card-subtitle mb-3">{{$homework->teacher->fname}}</p>
+                                            </div>
                                         </div>
-                                        <div style="margin-bottom: 217px;">
-                                            <h6 class="card-subtitle mb-2">{{$homework->subject->name}}</h6>
-                                            <p class="card-subtitle mb-3">{{$homework->teacher->fname}}</p>
-                                        </div>
+                                        <a data-animation="fadeInUp" data-delay="2s"
+                                            class="main-slider-btn2 postion-absolute" id="schedule-btn-teach" href="#"
+                                            style="bottom:0px;width: 100%;position:absolute;">@lang('teacherhome.LEARN_MORE')</a>
                                     </div>
-                                    <a data-animation="fadeInUp" data-delay="2s"
-                                        class="main-slider-btn2 postion-absolute" id="schedule-btn-teach" href="#"
-                                        style="bottom:0px;width: 100%;position:absolute;">@lang('teacherhome.LEARN_MORE')</a>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                            @endforeach
                     </div>
                     <button class="btn btn-primary leftLst">
                         <</button> <button class="btn btn-primary rightLst">>
