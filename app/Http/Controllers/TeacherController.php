@@ -69,12 +69,12 @@ class TeacherController extends Controller
             $imageDbPath = $this->saveDocs($request->file('thumbnail'), 2);
         }
         User::where('id', $request['user_id'])->update([
-            'description'      => $request['description'],
-            'country'          => $request['country'],
-            'fof_session'      => $request['fof_session'],
-            'educational_level'=> $request['educational_level'],
-            'profession'       => $request['profession'],
-            'experience'       => $request['experience'],
+            'description'      => $request->description,
+            'country'          => $request->country,
+            'fof_session'      => $request->fof_session,
+            'educational_level'=> $request->educational_level,
+            'profession'       => $request->profession,
+            'experience'       => $request->experience,
             'thumbnail'        => $imageDbPath,
         ]);
         return redirect()->route('teacherHome');
@@ -192,7 +192,6 @@ class TeacherController extends Controller
 
     public function teacherHomeWork()
     {
-        // dd('here');
         $auth    =Auth::user()->id;
         $Lessonss=DB::table('lessons')->where('lessons.user_id', $auth)
                     ->join('subjects', 'subjects.id', 'lessons.subject_id')
@@ -458,14 +457,14 @@ class TeacherController extends Controller
         $addlesson = Lesson::where('id', $request->Lesson_id)->update([
             'subject_id'  => $request['subject'],
             'user_id'     => Auth::id(),
-            'title'       => $request['title'],
-            'description' => $request['description'],
-            'type'        => $request['inlineRadioOptions'],
-            'date'        => $request['registration_date'],
-            'time'        => $request['registration_time'],
-            'frequency'   => $request['frequency'],
-            'link'        => $request['video'],
-            'level_id'    => $request['level_id'],
+            'title'       => $request->title,
+            'description' => $request->description,
+            'type'        => $request->inlineRadioOptions,
+            'date'        => $request->registration_date,
+            'time'        => $request->registration_time,
+            'frequency'   => $request->frequency,
+            'link'        => $request->video,
+            'level_id'    => $request->level_id,
             'document'    => $documentDbPath,
             'thumbnail'   => $imageDbPath,
         ]);
@@ -701,12 +700,12 @@ class TeacherController extends Controller
 
     public function teacherSideMesages(Request $request)
     {
-        $role             =0;
-        $saves            =new Messages();
-        $saves->teacherId =$request->teacherid;
-        $saves->student_id=$request->STU_ID;
-        $saves->messages  =$request->msg;
-        $saves->role      =$role;
+        $role             = 0;
+        $saves            = new Messages();
+        $saves->teacherId = $request->teacherid;
+        $saves->student_id= $request->STU_ID;
+        $saves->messages  = $request->msg;
+        $saves->role      = $role;
 
         $saves->save();
         $messges=DB::table('messages')->where('messages.teacherId', $request->teacherid)
@@ -771,7 +770,6 @@ class TeacherController extends Controller
 
     public function AssignStudentAchevemnt()
     {
-        // dd();
         $myid    =Auth::user()->id;
         $homework=DB::table('homework')
                     ->join('subjects', 'subjects.id', 'homeWork.Sub_id')
@@ -795,8 +793,6 @@ class TeacherController extends Controller
                         ->select('homework.*', 'homework.id as homeworkid', 'users.thumbnail', 'users.id as usrersid', 'users.fname', 'subjects.name as subjectsName', 'subjects.id as subjectsId')
                         ->first();
         $grade  = Achivnments::where(['sub_id' => $sub_id, 'Student_id' => $User_id, 'homework_id' => $homeworkid])->first();
-        // dd($viewHomeWork);
-
         return view('frontend.pages.teachers.ViewStudentrHomeWork')
                             ->with([
                                 'teacherhomeworkdetaild'=> $viewHomeWork,
@@ -851,10 +847,10 @@ class TeacherController extends Controller
     {
         $authid=Auth::user()->id;
 
-        $experinces            = new Experience();
-        $experinces->teacher_id=$authid;
-        $experinces->year      =$request->date;
-        $experinces->title     =$request->exp;
+        $experinces              = new Experience();
+        $experinces->teacher_id  = $authid;
+        $experinces->year        = $request->date;
+        $experinces->title       = $request->exp;
         $experinces->save();
         if ($experinces) {
             return redirect()->route('teacherHome');

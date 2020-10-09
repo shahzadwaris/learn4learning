@@ -479,14 +479,14 @@ class StudentController extends Controller
 
     public function viewMessages($id)
     {
-        $student_id=Auth::user()->id;
-        $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
-        $DBB       =DB::table('messages')->select('messages.*')
+        $student_id= Auth::user()->id;
+        $role      = DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
+        $DBB       = DB::table('messages')->select('messages.*')
                         ->where('messages.student_id', $student_id)
                         ->where('messages.teacherId', $id)
                         ->where('messages.role', 1)
                         ->get();
-        $teacher=DB::table('messages')->select('messages.*')
+        $teacher  = DB::table('messages')->select('messages.*')
                     ->where('messages.student_id', $student_id)
                     ->where('messages.teacherId', $id)
                     ->where('messages.role', 0)
