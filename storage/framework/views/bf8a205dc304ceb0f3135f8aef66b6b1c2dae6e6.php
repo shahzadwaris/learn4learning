@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title','Student Homepage'); ?>
 <?php $__env->startSection('content'); ?>
 <?php
@@ -191,9 +190,9 @@ $user = Auth::user();
     </section>
 </section>
 <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-    style="background-image: url(images/course/course-shape.png)">
+    style="background-image: url(/images/course/course-shape.png)">
     <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-        style="background-image: url(images/course/course-shape.png)">
+        style="background-image: url(/images/course/course-shape.png)">
         <div class="container">
             <div class="teacher-homework-dash-head-div">
                 <p class="teacher-homework-dash-head"><?php echo app('translator')->get('teacherhome.MY_HOMEWORK'); ?></p>
@@ -204,13 +203,7 @@ $user = Auth::user();
 justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
                         <?php $__currentLoopData = $studentHomeworks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $homework): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php
-                        $done = false;
-                        if(in_array($user->id, $studentHomeWorkSubmitted))
-                        {
-                        $done = true;
-                        }
-                        ?>
+                        
                         <div class="item">
                             <div class="pad15">
                                 <div class="card postion-relative">
@@ -245,7 +238,7 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('css'); ?>
+<?php $__env->startPush('css'); ?>
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homepage.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/teacher-homepage.css')); ?>">
@@ -276,5 +269,6 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
         max-width: 400px;
     }
 </style>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('layouts.masterStudent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/frontend/pages/students/student-home.blade.php ENDPATH**/ ?>

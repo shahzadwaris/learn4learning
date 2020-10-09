@@ -39,6 +39,7 @@
         crossorigin="anonymous"
     />
     @yield('css')
+    @stack('css')
 </head>
 
 <body>

@@ -39,6 +39,7 @@
         crossorigin="anonymous"
     />
     <?php echo $__env->yieldContent('css'); ?>
+    <?php echo $__env->yieldPushContent('css'); ?>
 </head>
 
 <body>

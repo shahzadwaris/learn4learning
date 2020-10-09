@@ -1,4 +1,3 @@
-
 <!--====== HEADER PART ENDS ======-->
 
 <!--====== SEARCH BOX PART START ======-->
@@ -162,7 +161,7 @@
 </section>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('css'); ?>
+<?php $__env->startPush('css'); ?>
 <style>
     .section-title h5::before {
         left: 12px;
@@ -174,5 +173,6 @@
         background-color: #fff;
     }
 </style>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopPush(); ?>
+
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/frontend/pages/parents.blade.php ENDPATH**/ ?>
