@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace App\Models;
@@ -22,3 +23,16 @@ class Homework extends Model
         return $this->hasOne(User::class, 'id', 'teacher_id');
     }
 }
+=======
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Homework extends Model
+{
+   protected $table = 'homework';
+    public $timestamps=false;
+}
+>>>>>>> fix

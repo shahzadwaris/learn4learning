@@ -196,7 +196,7 @@ class StudentController extends Controller
         $studentHomeWork          = Homework::whereIn('Sub_id', $studentLessons)->get();
         // dd($studentHomeWork);
         $studentHomeWorkSubmitted = $studentHomeWork
-                                    ->filter(fn ($value) => $value->user_id != null)
+                                    ->where('user_id' , '!=' , null)
                                     ->pluck('user_id')
                                     ->toArray();
 
@@ -477,6 +477,43 @@ class StudentController extends Controller
         return view('frontend.pages.students.viewTeacherProfile')->with('db', $db);
     }
 
+    public function viewOurMessages(){
+        // dd('teacher');
+        $student_id        =Auth::user()->id;
+        $Students=DB::table('student_lessons')
+            ->join('users', 'student_lessons.user_id', '=', 'users.id')
+            ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
+            ->join('levels', function ($join) {
+                $join->on('lessons.level_id', '=', 'levels.id');
+            })
+            ->join('subjects', function ($join) {
+                $join->on('lessons.subject_id', '=', 'subjects.id');
+            })
+            ->where('student_lessons.user_id', $student_id)
+            ->select('users.*')
+            ->OrderBy('users.id', 'DESC')
+            ->get();
+        $Subjects=DB::table('student_lessons')
+            ->join('users', 'student_lessons.user_id', '=', 'users.id')
+            ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
+            ->join('levels', function ($join) {
+                $join->on('lessons.level_id', '=', 'levels.id');
+            })
+            ->join('subjects', function ($join) {
+                $join->on('lessons.subject_id', '=', 'subjects.id');
+            })
+            ->where('student_lessons.user_id', $student_id)
+            ->select('subjects.name', 'subjects.id')
+            ->OrderBy('users.id', 'DESC')
+            ->get();
+        $Level=DB::table('levels')->get();
+
+        $data = Messages::where('to_user_id','=',$student_id)->with('from_user')
+            ->orderBy('id','DESC')->limit(5)->get();
+        return view('frontend.pages.students.myMessages')->with(
+            ['Level'=>$Level, 'Students'=>$Students, 'Subjects'=>$Subjects,'data'=>$data]);
+    }
+
     public function viewMessages($id)
     {
         $student_id= Auth::user()->id;
@@ -500,35 +537,50 @@ class StudentController extends Controller
            ]);
     }
 
+    public function getStudentMessages(){
+        $data = Messages::where('from_user_id','=',\Auth::user()->id)->orwhere('to_user_id','=',\Auth::user()->id)->get();
+        return collect([
+           'status' => true,
+           'data' => $data
+        ]);
+    }
+
     public function OurMessages(Request $request)
     {
-        $role              = 1;
-        $saves             = new Messages();
-        $saves->teacherId  = $request->teacher_id;
-        $saves->student_id = $request->student_id;
-        $saves->messages   = $request->msg;
-        $saves->role       = $role;
+        $saves            =new Messages();
+        $role             =1;
+        $saves->teacherId =$request->to_user_id;
+        $saves->student_id=$request->from_user_id;
+        $saves->messages  =$request->message;
+        $saves->to_user_id  =$request->to_user_id;
+        $saves->from_user_id  =$request->from_user_id;
+        $saves->role      =$role;
         $saves->save();
-        $student_id=Auth::user()->id;
-        $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
-        $DBB       =DB::table('messages')
-                    ->select('messages.*')
-                    ->where('messages.student_id', $student_id)
-                    ->where('messages.role', 1)
-                    ->get();
-        $teacher=DB::table('messages')
-                        ->select('messages.*')
-                        ->where('messages.student_id', $student_id)
-                        ->where('messages.teacherId', $request->teacher_id)
-                        ->where('messages.role', 0)
-                        ->get();
-        return view('frontend.pages.students.Messages')
-           ->with(['
-                teacher_id' => $request->teacher_id,
-               'student_id' => $request->student_id,
-               'DBB'        => $DBB,
-               'role'       => $role,
-               'teacher'    => $teacher,
-           ]);
+        $data = Messages::where('from_user_id','=',\Auth::user()->id)->orwhere('to_user_id','=',\Auth::user()->id)->get();
+        return collect([
+            'status' => true,
+            'data' => $data
+        ]);
+//        if ($saves) {
+//            $student_id=Auth::user()->id;
+//            $role      =DB::table('messages')->select('role')->where('messages.student_id', $student_id)->get();
+//
+//            $DBB=DB::table('messages')
+//                    ->select('messages.*')
+//                    ->where('messages.student_id', $student_id)
+//                    ->where('messages.role', 1)
+//                    ->get();
+//            $teacher=DB::table('messages')
+//                        ->select('messages.*')
+//                        ->where('messages.student_id', $student_id)
+//                        ->where('messages.teacherId', $request->teacher_id)
+//                        ->where('messages.role', 0)
+//                        ->get();
+//
+//            return view('frontend.pages.students.Messages')
+//           ->with(['teacher_id'=> $request->teacher_id,
+//               'student_id'    => $request->student_id,
+//               'DBB'           => $DBB, 'role'=>$role, 'teacher'=>$teacher, ]);
+//        }
     }
 }

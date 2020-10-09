@@ -89,7 +89,7 @@
   </div>
 </section>
 @endsection
-@section('css')
+@push('css')
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/teacher-homework-assign.css')}}">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -103,4 +103,4 @@
     color: white;
   }
 </style>
-@endsection
+@endpush

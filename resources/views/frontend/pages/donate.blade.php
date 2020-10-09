@@ -145,7 +145,7 @@
         odio tincidunt mauris</p>
 
     </div>
-    </div> <!-- container -->
+<!-- container -->
 </section>
 <!--====== CATEGORY PART START ======-->
 <section id="teachers-part" class="pt-70 pb-120 donate-sec1">
@@ -222,7 +222,7 @@
 
 
 @endsection
-@section('css')
+@push('css')
 <link rel="stylesheet" href="{{asset('asset/css/donate.css')}}">
 <style>
     .section-title h5::before {
@@ -241,7 +241,8 @@
         padding-left: 0px;
     }
 </style>
-@endsection
+@endpush
+
 @section('js')
 <script
     src="https://www.paypal.com/sdk/js?client-id=Af_hkAJriAisK0jqeXxt1FjssUB-vYNqW8pAkvp1RFMPkpu_mKjT29aNZxj4Yvn1Mq1K4N78zIwuTvJI">
@@ -272,7 +273,7 @@
         });
     });
 });
-  
+
 </script>
 <script>
     paypal.Buttons({
@@ -292,4 +293,3 @@
             }
           }).render('#paypal-button-container'); // Display payment options on your web page
 </script>
-@endsection

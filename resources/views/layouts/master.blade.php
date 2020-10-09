@@ -80,6 +80,7 @@
         }
     </style>
     @yield('css')
+    @stack('css')
 </head>
 
 <body>
@@ -170,7 +171,7 @@
                             </nav>
                             <div class="login-register" style="margin-right: 30px">
 
-                                <?php $user= Auth::user(); 
+                                <?php $user= Auth::user();
                                switch ($user->type) {
                                    case 'teacher':?>
                                 <ul>
@@ -193,7 +194,7 @@
 
                                 </ul>
                                 <?php   break;
-                                                                   
+
                               case 'student':?>
                                 <ul>
                                     <li>
@@ -220,7 +221,7 @@
                                     </div>
 
                                 </ul>
-                                <?php 
+                                <?php
                                        break;
                                        case 'admin':
                                    ?>
@@ -470,7 +471,7 @@
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
-        
+
         function filterFunction() {
         var input, filter, ul, li, a, i;
         input = document.getElementById("myInput");
