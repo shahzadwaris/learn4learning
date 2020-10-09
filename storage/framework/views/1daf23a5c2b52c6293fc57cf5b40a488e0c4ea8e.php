@@ -1,20 +1,20 @@
-@extends('layouts.masterStudent')
-@section('title','Student Homepage')
-@section('content')
-@php
+
+<?php $__env->startSection('title','Student Homepage'); ?>
+<?php $__env->startSection('content'); ?>
+<?php
 $user = Auth::user();
-@endphp
+?>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
-        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/student-lesson-search/banner.jpg')}}">
+        style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12">
                     <div class="slider-cont slider-cont-4 text-center">
-                        <h3 class="std-welcome-msg text-white">{{$user->fname}}<br>
+                        <h3 class="std-welcome-msg text-white"><?php echo e($user->fname); ?><br>
                             Welcome back!</h3>
                         <div class="row">
-                            {{-- <div class="c"></div> --}}
+                            
                             <div class="col-7 ml-5 pl-5">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="What are you looking for?">
@@ -34,7 +34,7 @@ $user = Auth::user();
     </div> <!-- single slider -->
 </section>
 <!-- Card -->
-{{-- dashboard section --}}
+
 <section class="dashboard-section" style="margin-top: -10%;">
     <div class="container">
         <div class="row d-flex justify-content-center text-center h-100">
@@ -46,15 +46,15 @@ $user = Auth::user();
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
                         <?php $usersimgg=$user; ?>
-                        <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
+                        <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
                             alt="stud-profile-pic">
                     </div>
                     <div class="col-lg-8 col-sm-12 col-xs-12">
-                        <p class="stud-name">Hi-{{$user->fname}}</p>
+                        <p class="stud-name">Hi-<?php echo e($user->fname); ?></p>
                         <p class="stud-date">23/01/2012</p><br><br>
                         <a href="#" class="stu-fav-subj-link w-100 text-left" style="">My Favourite
                             Subjects</a>
-                        <p class="stu-fav-subj-list w-100 text-left">{{$user->favorite_subject}}</p>
+                        <p class="stu-fav-subj-list w-100 text-left"><?php echo e($user->favorite_subject); ?></p>
                         <p class="points-para w-100 text-left">5000 points</p>
                     </div>
                 </div>
@@ -62,26 +62,26 @@ $user = Auth::user();
             <div class="col-6" id="std-dashboard-right">
                 <div class="row">
                     <div class="col-6 p-3" id="achieve-div">
-                        <img src="{{asset('asset/images/student-homepage/achievement.png')}}" alt="">
+                        <img src="<?php echo e(asset('asset/images/student-homepage/achievement.png')); ?>" alt="">
                         <p>MY<br>ACHIEVEMENTS</p>
                     </div>
                     <div class="col-6 p-3" id="schedule-div">
-                        <a href="{{ route('student_schedule') }}">
-                            <img src="{{asset('asset/images/student-homepage/schedule.png')}}" alt="">
+                        <a href="<?php echo e(route('student_schedule')); ?>">
+                            <img src="<?php echo e(asset('asset/images/student-homepage/schedule.png')); ?>" alt="">
                             <p>MY<br>SCHEDULE</p>
                         </a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 p-3" id="grades-div">
-                        <a href="{{ route('grade.index') }}">
-                            <img src="{{asset('asset/images/student-homepage/grades.png')}}" alt="">
+                        <a href="<?php echo e(route('grade.index')); ?>">
+                            <img src="<?php echo e(asset('asset/images/student-homepage/grades.png')); ?>" alt="">
                             <p>MY<br>GRADES</p>
                         </a>
                     </div>
                     <div class="col-6 p-3" id="homework-div">
-                        <a href="{{ route('studetnsHomeWork') }}">
-                            <img src="{{asset('asset/images/student-homepage/homework.png')}}" alt="">
+                        <a href="<?php echo e(route('studetnsHomeWork')); ?>">
+                            <img src="<?php echo e(asset('asset/images/student-homepage/homework.png')); ?>" alt="">
                             <p>MY<br>HOMEWORK</p>
                         </a>
                     </div>
@@ -102,16 +102,16 @@ $user = Auth::user();
             <!--/.Indicators-->
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
-                @foreach($MyAchivment as $Achivment)
+                <?php $__currentLoopData = $MyAchivment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Achivment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!--First slide-->
                 <div class="carousel-item active">
                     <div class="col-md-2">
-                        <img class="card-img-top" src="{{url('/storage/images/'.$Achivment->img)}}"
+                        <img class="card-img-top" src="<?php echo e(url('/storage/images/'.$Achivment->img)); ?>"
                             alt="Card image cap">
                     </div>
                 </div>
                 <!--/.Third slide-->
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
             <!--/.Slides-->
         </div>
@@ -127,28 +127,29 @@ $user = Auth::user();
             <div class="col-md-2"></div>
             <div class="col-12 col-md-8 text-center mb-2 mt-2">
                 <div class="row">
-                    @foreach ($Book as $book)
+                    <?php $__currentLoopData = $Book; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-4">
                         <!-- Card -->
                         <div class="card">
                             <!-- Card image -->
                             <a href="#">
                                 <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                                    <h4 class="card-title">{{date('l d/m',strtotime($book->date))}}</h4>
+                                    <h4 class="card-title"><?php echo e(date('l d/m',strtotime($book->date))); ?></h4>
                                 </div>
                             </a>
                             <!-- Card content -->
                             <div class="card-body">
                                 <!-- Title -->
                                 <p class="teach-shed-card-content">
-                                    {{date('h:i ',strtotime($book->time))}} {{$book->sub_name}}
+                                    <?php echo e(date('h:i ',strtotime($book->time))); ?> <?php echo e($book->sub_name); ?>
+
                                 </p>
                                 <br>
                             </div>
                             <!-- Card footer -->
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
             <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
@@ -163,7 +164,7 @@ $user = Auth::user();
 </section>
 <section id="course-part" class=" bg_cover gray-bg">
     <section id="course-part" class=" bg_cover gray-bg"
-        style="background-image: url({{asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')}}">
+        style="background-image: url(<?php echo e(asset('asset/images/teacher-homepage/grades-carousel-bgimg.png')); ?>">
         <div class="container">
             <div class="teacher-grade-dash-head-div">
                 <p class="teacher-grade-dash-head">MY GRADES</p>
@@ -175,10 +176,11 @@ $user = Auth::user();
                         <div class="card box-shadow">
                             <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                 id="grade-btn-teach">REPORT CARD MARCH</p>
-                            @foreach ($MyAchivment as $item)
-                            <p class="grades-details">{{$item->Subject_name}}
-                                <span>{{$item->grade == '' ? 'Not Graded Yet' : $item->grade}}</span></p>
-                            @endforeach
+                            <?php $__currentLoopData = $MyAchivment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <p class="grades-details"><?php echo e($item->Subject_name); ?>
+
+                                <span><?php echo e($item->grade == '' ? 'Not Graded Yet' : $item->grade); ?></span></p>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                     href="#" id="donate-register-btn">SEE ALL</a>
@@ -196,37 +198,37 @@ $user = Auth::user();
         style="background-image: url(images/course/course-shape.png)">
         <div class="container">
             <div class="teacher-homework-dash-head-div">
-                <p class="teacher-homework-dash-head">@lang('teacherhome.MY_HOMEWORK')</p>
+                <p class="teacher-homework-dash-head"><?php echo app('translator')->get('teacherhome.MY_HOMEWORK'); ?></p>
                 <hr>
             </div>
             <div class="row text-center">
                 <div class="MultiCarousel" style="display: flex;
 justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                     <div class="MultiCarousel-inner">
-                        @foreach($studentHomeworks as $homework)
-                        {{-- {{dd($homework)}} --}}
+                        <?php $__currentLoopData = $studentHomeworks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $homework): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        
                         <div class="item">
                             <div class="pad15">
                                 <div class="card postion-relative">
-                                    <img src="{{url('/storage/images/'.$homework->thumbnail)}}" class="image-card"
+                                    <img src="<?php echo e(url('/storage/images/'.$homework->thumbnail)); ?>" class="image-card"
                                         alt="Bologna">
                                     <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
                                         <div class="topright"><span
-                                                class="exclamation-para">{{$homework->date}}</span><i
+                                                class="exclamation-para"><?php echo e($homework->date); ?></span><i
                                                 class="fa fa-exclamation" aria-hidden="true" id="exclamation-icon"></i>
                                         </div>
                                         <div style="margin-bottom: 217px;">
-                                            <h6 class="card-subtitle mb-2">{{$homework->subject->name}}</h6>
-                                            <p class="card-subtitle mb-3">{{$homework->teacher->fname}}</p>
+                                            <h6 class="card-subtitle mb-2"><?php echo e($homework->subject->name); ?></h6>
+                                            <p class="card-subtitle mb-3"><?php echo e($homework->teacher->fname); ?></p>
                                         </div>
                                     </div>
                                     <a data-animation="fadeInUp" data-delay="2s"
                                         class="main-slider-btn2 postion-absolute" id="schedule-btn-teach" href="#"
-                                        style="bottom:0px;width: 100%;position:absolute;">@lang('teacherhome.LEARN_MORE')</a>
+                                        style="bottom:0px;width: 100%;position:absolute;"><?php echo app('translator')->get('teacherhome.LEARN_MORE'); ?></a>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <button class="btn btn-primary leftLst">
                         <</button> <button class="btn btn-primary rightLst">>
@@ -237,16 +239,16 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('css')
+<?php $__env->startSection('css'); ?>
 <!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
-<link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homepage.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/teacher-homepage.css')); ?>">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style type="text/css">
     .schedules .card {
@@ -270,4 +272,5 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
         max-width: 400px;
     }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.masterStudent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/frontend/pages/students/student-home.blade.php ENDPATH**/ ?>

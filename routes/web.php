@@ -167,6 +167,8 @@ Route::group(['private'], function () {
         Route::post('/student-account-update', 'StudentController@updateProfile')->name('student.account.update');
 
         Route::get('/search-subject-lessons', 'SearchController@search')->name('subjects.search');
+
+        Route::get('/student/my-grades', 'GradeController@index')->name('grade.index');
     });
 
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'teacher', 'verified']], function () {

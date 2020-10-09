@@ -1,0 +1,1 @@
+<?php echo e(dd($grades)); ?><?php /**PATH C:\wamp64\www\learnforlearning\resources\views/frontend/pages/students/grades.blade.php ENDPATH**/ ?>
