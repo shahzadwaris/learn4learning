@@ -21,10 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9a6bd8-ddb1-4a41-8681-5c1f5fb30122" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/dNRVu3tCy5gw1PMzUexSavHtsu9TOFO83QfbzS7Y" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/dNRVu3tCy5gw1PMzUexSavHtsu9TOFO83QfbzS7Y" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/e01eec5ebd3eeb84e1f73205fca0e3fd72abe7fb.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/e01eec5ebd3eeb84e1f73205fca0e3fd72abe7fb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/students/Messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/students/Messages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-schedule.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/jWZas9tj4hmTMP0tpFMSLrlYelfUgSt4XXGWJmrb" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/jWZas9tj4hmTMP0tpFMSLrlYelfUgSt4XXGWJmrb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/7e90b291ea36d303abad19b8caf9127a3e805de1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7e90b291ea36d303abad19b8caf9127a3e805de1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +217,10 @@
       <workItem from="1602218017317" duration="1497000" />
       <workItem from="1602219832677" duration="1763000" />
       <workItem from="1602221648953" duration="572000" />
+      <workItem from="1602223917015" duration="1745000" />
+      <workItem from="1602225941374" duration="2067000" />
+      <workItem from="1602228035285" duration="628000" />
+      <workItem from="1602235967905" duration="14000" />
     </task>
     <servers />
   </component>
@@ -242,9 +248,9 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="497" y="208" key="run.anything.popup/67.27.1533.873@67.27.1533.873" timestamp="1602141527150" />
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602222783492">
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602226159859">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602222783492" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602226159859" />
   </component>
 </project>
