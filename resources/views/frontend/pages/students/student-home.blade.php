@@ -191,9 +191,9 @@ $user = Auth::user();
     </section>
 </section>
 <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-    style="background-image: url(/images/course/course-shape.png)">
+    style="background-image: url(images/course/course-shape.png)">
     <section id="course-part" class="pt-115 pb-115 bg_cover gray-bg"
-        style="background-image: url(/images/course/course-shape.png)">
+        style="background-image: url(images/course/course-shape.png)">
         <div class="container">
             <div class="teacher-homework-dash-head-div">
                 <p class="teacher-homework-dash-head">@lang('teacherhome.MY_HOMEWORK')</p>
@@ -233,23 +233,13 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
                     </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
-                        style="margin-top: 10px">
-                        <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
-                            href="{{route('studetnsHomeWork')}}" id="donate-register-btn">SEE
-                            ALL</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </section>
 
 @endsection
 
-@push('css')
+@section('css')
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/student-homepage.css')}}">
 <link rel="stylesheet" href="{{asset('asset/css/teacher-homepage.css')}}">
@@ -280,4 +270,4 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
         max-width: 400px;
     }
 </style>
-@endpush
+@endsection
