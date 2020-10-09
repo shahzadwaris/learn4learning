@@ -32,12 +32,9 @@
     <link rel="stylesheet" href="{{asset('asset/css/work.css')}}">
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-        crossorigin="anonymous"
-    />
+        crossorigin="anonymous" />
     @yield('css')
     @stack('css')
 </head>
@@ -210,8 +207,9 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-link mt-40">
                             <ul class="text-center">
-                                <li><a href="#">Terms and Conditions </a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="{{route('page.show', 'terms-and-conditions')}}">Terms and Conditions </a>
+                                </li>
+                                <li><a href="{{route('page.show','privacy-policy')}}">Privacy Policy</a></li>
                                 <li><a href="#">Cookies Policy</a></li>
                             </ul>
                         </div> <!-- footer link -->

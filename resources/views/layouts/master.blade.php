@@ -377,8 +377,9 @@
                         <div class="footer-link mt-40">
 
                             <ul class="text-center">
-                                <li><a href="#">Terms and Conditions </a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="{{route('page.show', 'terms-and-conditions')}}">Terms and Conditions </a>
+                                </li>
+                                <li><a href="{{route('page.show','privacy-policy')}}">Privacy Policy</a></li>
                                 <li><a href="#">Cookies Policy</a></li>
 
                             </ul>

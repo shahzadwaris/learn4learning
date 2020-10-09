@@ -507,10 +507,10 @@ class TeacherController extends Controller
                 'users.id as user_id',
                 'subjects.name as Subject_name'
             )
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         $Students=DB::table('student_lessons')
-            ->join('users', 'student_lessons.user_id', '=', 'users.id')
+            ->join('users', 'student_lessons.user_id', '=', 'u sers.id')
             ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
             ->join('levels', function ($join) {
                 $join->on('lessons.level_id', '=', 'levels.id');
@@ -520,7 +520,7 @@ class TeacherController extends Controller
             })
             ->where('student_lessons.techer_id', $teacher_id)
             ->select('users.*')
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         $Subjects=DB::table('student_lessons')
             ->join('users', 'student_lessons.user_id', '=', 'users.id')
@@ -533,7 +533,7 @@ class TeacherController extends Controller
             })
             ->where('student_lessons.techer_id', $teacher_id)
             ->select('subjects.name', 'subjects.id')
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
 
         $Level=DB::table('levels')->get();
@@ -564,7 +564,7 @@ class TeacherController extends Controller
                 'users.id as user_id',
                 'subjects.name as Subject_name'
             )
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         $Students=DB::table('student_lessons')
             ->join('users', 'student_lessons.user_id', '=', 'users.id')
@@ -577,7 +577,7 @@ class TeacherController extends Controller
             })
             ->where('student_lessons.techer_id', $teacher_id)
             ->select('users.*')
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         $Subjects=DB::table('student_lessons')
             ->join('users', 'student_lessons.user_id', '=', 'users.id')
@@ -590,7 +590,7 @@ class TeacherController extends Controller
             })
             ->where('student_lessons.techer_id', $teacher_id)
             ->select('subjects.name as Subject_name')
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         $studetncount=count($getmystydentrecord);
         if ($studetncount > 1) {
@@ -618,7 +618,7 @@ class TeacherController extends Controller
                 'users.id as user_id',
                 'subjects.name as Subject_name'
             )
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         return view('frontend.pages.teachers.MySubjects')->with('getmySyb', $getmySyb);
     }
@@ -645,7 +645,7 @@ class TeacherController extends Controller
                 'users.id as user_id',
                 'subjects.name as Subject_name'
             )
-            ->OrderBy('users.id', 'DESC')
+            ->orderBy('users.id', 'DESC')
             ->get();
         return view('frontend.pages.teachers.mystudents')->with('getmystydentrecord', $getmystydentrecord);
     }
