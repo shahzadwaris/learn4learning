@@ -1,20 +1,19 @@
-@extends('layouts.teachersmaster')
-@section('title','Teacher Profile')
-@section('css')
+<?php $__env->startSection('title','Teacher Profile'); ?>
+<?php $__env->startSection('css'); ?>
 
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/teacher-profile.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/teacher-profile.css')); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('asset/css/mdb.min-for-teacher-homepage.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min-for-teacher-homepage.css')); ?>">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 
     <section id="slider-part" class="slider-active">
-        <div class="single-slider slider-4 bg_cover pt-150" style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/teacher-homepage/teaching_banner.jpg')}}">
+        <div class="single-slider slider-4 bg_cover pt-150" style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/teacher-homepage/teaching_banner.jpg')); ?>">
             <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9">
@@ -25,7 +24,7 @@
     </section>
     <!-- Card -->
 
-    {{-- dashboard section --}}
+    
 
      <section class="dashboard-section" id="messages">
         <div class="container">
@@ -47,20 +46,20 @@
                                             </div>
                                             <div class="messages">
                                                 <ul v-for="messages in allMessages">
-                                                    <li class="sent" v-if="messages.from_user_id == '{{\Auth::user()->id}}'">
+                                                    <li class="sent" v-if="messages.from_user_id == '<?php echo e(\Auth::user()->id); ?>'">
                                                         <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                                                        <p style="margin-inline-end: 87%;">@{{ messages.messages }}</p>
+                                                        <p style="margin-inline-end: 87%;">{{ messages.messages }}</p>
                                                     </li>
                                                     <li class="replies" v-else>
                                                         <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>@{{ messages.messages }}</p>
+                                                        <p>{{ messages.messages }}</p>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="message-input">
                                                 <div class="wrap">
-                                                   <input type="hidden" name="teacherid" value="{{$teacherid}}">
-                                                   <input type="hidden" name="STU_ID" value="{{$STU_ID}}">
+                                                   <input type="hidden" name="teacherid" value="<?php echo e($teacherid); ?>">
+                                                   <input type="hidden" name="STU_ID" value="<?php echo e($STU_ID); ?>">
                                                     <input type="text" v-model="message" placeholder="Write your message..." />
                                                     <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
                                                     <button class="submit" @click="sendMessage()" value="send"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
@@ -87,7 +86,7 @@
             max-height: 720px;
             background: #E6EAEA;
         }
-        @media screen and (max-width: 360px) {
+        @media  screen and (max-width: 360px) {
             #frame {
                 width: 100%;
                 height: 100vh;
@@ -104,7 +103,7 @@
             overflow: hidden;
             position: relative;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel {
                 width: 58px;
                 min-width: 58px;
@@ -114,7 +113,7 @@
             width: 80%;
             margin: 25px auto;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile {
                 width: 100%;
                 margin: 0 auto;
@@ -146,7 +145,7 @@
             -webkit-transition: 0.3s height ease;
             transition: 0.3s height ease;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap {
                 height: 55px;
             }
@@ -164,7 +163,7 @@
             -webkit-transition: 0.3s border ease;
             transition: 0.3s border ease;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap img {
                 width: 40px;
                 margin-left: 4px;
@@ -186,7 +185,7 @@
             float: left;
             margin-left: 15px;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap p {
                 display: none;
             }
@@ -198,7 +197,7 @@
             cursor: pointer;
             color: #435f7a;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap i.expand-button {
                 display: none;
             }
@@ -218,7 +217,7 @@
             -webkit-transition: 0.3s all ease;
             transition: 0.3s all ease;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options {
                 width: 58px;
                 margin-top: 57px;
@@ -229,7 +228,7 @@
             visibility: visible;
             margin: 75px 0 0 0;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options.active {
                 margin-top: 62px;
             }
@@ -244,7 +243,7 @@
             border-bottom: 8px solid #435f7a;
             margin: -8px 0 0 24px;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options:before {
                 margin-left: 23px;
             }
@@ -258,7 +257,7 @@
             display: block;
             cursor: pointer;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options ul li {
                 padding: 15px 0 35px 22px;
             }
@@ -273,7 +272,7 @@
             border-radius: 50%;
             margin: 5px 0 0 0;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
                 width: 14px;
                 height: 14px;
@@ -289,7 +288,7 @@
             border-radius: 50%;
             z-index: 0;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
                 height: 18px;
                 width: 18px;
@@ -298,7 +297,7 @@
         #frame #sidepanel #profile .wrap #status-options ul li p {
             padding-left: 12px;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #profile .wrap #status-options ul li p {
                 display: none;
             }
@@ -356,7 +355,7 @@
             border-bottom: 1px solid #32465a;
             font-weight: 300;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #search {
                 display: none;
             }
@@ -394,7 +393,7 @@
             overflow-y: scroll;
             overflow-x: hidden;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #contacts {
                 height: calc(100% - 149px);
                 overflow-y: scroll;
@@ -420,7 +419,7 @@
             font-size: 0.9em;
             cursor: pointer;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #contacts ul li.contact {
                 padding: 6px 0 46px 8px;
             }
@@ -440,7 +439,7 @@
             margin: 0 auto;
             position: relative;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #contacts ul li.contact .wrap {
                 width: 100%;
             }
@@ -470,7 +469,7 @@
             float: left;
             margin-right: 10px;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #contacts ul li.contact .wrap img {
                 margin-right: 0px;
             }
@@ -478,7 +477,7 @@
         #frame #sidepanel #contacts ul li.contact .wrap .meta {
             padding: 5px 0 0 0;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #contacts ul li.contact .wrap .meta {
                 display: none;
             }
@@ -523,7 +522,7 @@
             font-size: 0.85em;
             font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #bottom-bar button {
                 float: none;
                 width: 100%;
@@ -536,7 +535,7 @@
         #frame #sidepanel #bottom-bar button:nth-child(1) {
             border-right: 1px solid #2c3e50;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #bottom-bar button:nth-child(1) {
                 border-right: none;
                 border-bottom: 1px solid #2c3e50;
@@ -549,12 +548,12 @@
             margin-right: 3px;
             font-size: 1em;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #bottom-bar button i {
                 font-size: 1.3em;
             }
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame #sidepanel #bottom-bar button span {
                 display: none;
             }
@@ -566,13 +565,13 @@
             overflow: hidden;
             position: relative;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame .content {
                 width: 100%;
                 min-width: 300px !important;
             }
         }
-        @media screen and (min-width: 900px) {
+        @media  screen and (min-width: 900px) {
             #frame .content {
                 width: 100%;
             }
@@ -612,7 +611,7 @@
             overflow-y: scroll;
             overflow-x: hidden;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame .content .messages {
                 max-height: calc(100% - 105px);
             }
@@ -662,7 +661,7 @@
             max-width: 205px;
             line-height: 130%;
         }
-        @media screen and (min-width: 735px) {
+        @media  screen and (min-width: 735px) {
             #frame .content .messages ul li p {
                 max-width: 300px;
             }
@@ -685,7 +684,7 @@
             font-size: 0.8em;
             color: #32465a;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame .content .message-input .wrap input {
                 padding: 15px 32px 16px 8px;
             }
@@ -703,7 +702,7 @@
             opacity: .5;
             cursor: pointer;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame .content .message-input .wrap .attachment {
                 margin-top: 17px;
                 right: 65px;
@@ -721,7 +720,7 @@
             background: #32465a;
             color: #f5f5f5;
         }
-        @media screen and (max-width: 735px) {
+        @media  screen and (max-width: 735px) {
             #frame .content .message-input .wrap button {
                 padding: 16px 0;
             }
@@ -735,13 +734,13 @@
     </style>
     <!--Carousel Wrapper-->
 
-    {{-- end-dashboard section --}}
+    
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js" integrity="sha512-wGKmIfDWUJSUvxUfUayQPJj7ADCD60La3up0VCbq+MTFcOUQ2hlH2McnYFafHgLTsOrGwOdiHKX4p1v0BerCyQ==" crossorigin="anonymous"></script>
@@ -751,8 +750,8 @@
             el: '#messages',
             data: {
                 message:'',
-                teacher_id:'{{$teacherid}}',
-                student_id:'{{$STU_ID}}',
+                teacher_id:'<?php echo e($teacherid); ?>',
+                student_id:'<?php echo e($STU_ID); ?>',
                 allMessages:[]
             },
             methods:{
@@ -774,12 +773,12 @@
                     console.log(this.teacher_id);
                     console.log(this.student_id);
                     let data = {
-                        '_token':'{{csrf_token()}}',
+                        '_token':'<?php echo e(csrf_token()); ?>',
                         'to_user_id':this.student_id,
                         'from_user_id':this.teacher_id,
                         'message':this.message
                     };
-                    let url = '{{route('teacherSideMesages')}}';
+                    let url = '<?php echo e(route('teacherSideMesages')); ?>';
                     this.$http.post(url,data).then((response) => {
                         console.log('response');
                         console.log(response);
@@ -802,4 +801,6 @@
             }
         })
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.teachersmaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/frontend/pages/teachers/MessagesStudent.blade.php ENDPATH**/ ?>

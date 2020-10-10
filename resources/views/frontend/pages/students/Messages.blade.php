@@ -3,9 +3,7 @@
 @push('css')
     <style class="cp-pen-styles">
         #frame {
-            width: 95%;
-            min-width: 360px;
-            max-width: 1000px;
+            width: 102%;
             height: 92vh;
             min-height: 300px;
             max-height: 720px;
@@ -687,54 +685,12 @@
             <div class="row d-flex justify-content-center text-center h-100">
                 <div class="col-12" id="std-dashboard-left">
                     <div class="stu-home-dash-head-div">
-                        <p class="stu-home-dash-head-head">Student PROFILE</p>
-                        <hr>
+                        <h2>Student Chat</h2>
                     </div>
                     <div class="page-content page-container" id="page-content">
                         <div class="padding">
                             <div class="row container d-flex justify-content-center">
                                 <div class="col-md-12">
-                                    <div class="card card-bordered">
-                                        <div class="card-header">
-                                            <h4 class="card-title"><strong>Chat</strong></h4> <a class="btn btn-xs btn-secondary" href="#" data-abc="true"></a>
-                                        </div>
-                                        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
-                                            <div v-for="messages in allMessages">
-                                                <div class="media media-chat"
-                                                     v-if="messages.to_user_id == '{{\Auth::user()->id}}'">
-                                                    <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                                                    <div class="media-body">
-                                                        <p>@{{ messages.messages }}</p>
-                                                        <p class="meta"><time datetime="2018">00:12</time></p>
-                                                    </div>
-                                                </div>
-                                                <div v-else class="media media-chat media-chat-reverse">
-                                                    <div class="media-body">
-                                                        <p>@{{ messages.messages }}</p>
-                                                        <p class="meta"><time datetime="2018">00:12</time></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                                                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                                            </div>
-                                            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
-                                                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
-                                            </div>
-                                        </div>
-                                        <form method="post">
-                                            @csrf
-
-                                            <input type="hidden" name="student_id" value="{{$student_id}}">
-                                            <input type="hidden" name="teacher_id" value="{{$teacher_id}}">
-
-                                            <div class="publisher bt-1 border-light">
-                                                <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                                                <input class="publisher-input" type="text" v-model="message"  name="msg" placeholder="Write something">
-                                                <span class="publisher-btn file-group"> <i class="fa fa-paperclip file-browser"></i> <input type="file"> </span> <a class="publisher-btn" href="#" data-abc="true"><i class="fa fa-smile"></i></a>
-                                                <input type="button" class="btn btn-success" @click="sendMessage()" value="send" name="submit"></div>
-                                        </form>
-                                    </div>
                                     <div id="frame">
                                         <div class="content">
                                             <div class="contact-profile">
@@ -742,46 +698,24 @@
                                                 <p>Harvey Specter</p>
                                             </div>
                                             <div class="messages">
-                                                <ul>
-                                                    <li class="sent">
+                                                <ul v-for="messages in allMessages">
+                                                    <li class="sent" v-if="messages.to_user_id == '{{\Auth::user()->id}}'">
                                                         <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                                                        <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+                                                        <p style="margin-inline-end: 84%;">@{{ messages.messages }}</p>
                                                     </li>
-                                                    <li class="replies">
+                                                    <li class="replies" v-else>
                                                         <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>When you're backed against the wall, break the god damn thing down.</p>
-                                                    </li>
-                                                    <li class="replies">
-                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>Excuses don't win championships.</p>
-                                                    </li>
-                                                    <li class="sent">
-                                                        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                                                        <p>Oh yeah, did Michael Jordan tell you that?</p>
-                                                    </li>
-                                                    <li class="replies">
-                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>No, I told him that.</p>
-                                                    </li>
-                                                    <li class="replies">
-                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>What are your choices when someone puts a gun to your head?</p>
-                                                    </li>
-                                                    <li class="sent">
-                                                        <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                                                        <p>What are you talking about? You do what they say or they shoot you.</p>
-                                                    </li>
-                                                    <li class="replies">
-                                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                                        <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
+                                                        <p>@{{ messages.messages }}</p>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="message-input">
                                                 <div class="wrap">
-                                                    <input type="text" placeholder="Write your message..." />
+                                                    <input type="hidden" name="student_id" value="{{$student_id}}">
+                                                    <input type="hidden" name="teacher_id" value="{{$teacher_id}}">
+                                                    <input type="text" v-model="message" placeholder="Write your message..." />
                                                     <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-                                                    <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                                    <button class="submit" @click="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>

@@ -510,7 +510,7 @@ class TeacherController extends Controller
             ->orderBy('users.id', 'DESC')
             ->get();
         $Students=DB::table('student_lessons')
-            ->join('users', 'student_lessons.user_id', '=', 'u sers.id')
+            ->join('users', 'student_lessons.user_id', '=', 'users.id')
             ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
             ->join('levels', function ($join) {
                 $join->on('lessons.level_id', '=', 'levels.id');
@@ -693,6 +693,7 @@ class TeacherController extends Controller
 
     public function messageStudent($id)
     {
+        // dd(123);
         $student_id =$id;
         $teacher_id =Auth::user()->id;
         $messges    =DB::table('messages')->where('messages.teacherId', $teacher_id)->select('messages')->get();
