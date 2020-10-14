@@ -14,8 +14,12 @@
         justify-content: flex-end;
     }
     .customContainer{
-        width: 85%;
+        width:85%;
     }
+    ._inputwidth{
+        width: 100% !important;
+    }
+
 </style>
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/login2.css')); ?>">
@@ -40,20 +44,17 @@
 </section>
 
 <section class="main-section">
-    <div class="container customContainer">
+    <div class="container customContainer" style="width: 85%;">
         <div class="main-cont">
             <div class="row">
                 <div class="col-lg-6 d-flex pt-4 justify-content-center">
                     <div class="form-parts">
                         <div style="display:flex;width:100%;">
-                            <form class="form" method="post" action="<?php echo e(route('login')); ?>">
+                            <form class="form" method="post" action="<?php echo e(route('login')); ?>" style="    width: 85%;">
                                 <?php echo csrf_field(); ?>
                                 <div style="width:100%;">
                                     <h3 class="level-heading">Login</h3>
                                 </div>
-
-
-
 
                                 <?php if(session()->has('message.level')): ?>
 
@@ -97,7 +98,7 @@
                 <div class="col-lg-6 p-0">
                     <div class="d-flex" id="submit-btn">
                         <img class="img-responsive"
-                            src="<?php echo e(asset('asset/images/students/registration-banner_50.png')); ?>">
+                            src="<?php echo e(asset('asset/images/students/registration-banner_50.png')); ?>" style="width: 92%;">
                     </div>
                 </div>
             </div>

@@ -118,7 +118,7 @@
                 </div>
                 <div class="col-md-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img style="    height: 852;
+                        <img style="    height: 852px;;
     object-fit: cover;" src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
                 </div>
