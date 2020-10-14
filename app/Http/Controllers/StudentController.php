@@ -7,6 +7,7 @@ use App\Models\Lesson;
 use App\Models\levels;
 use App\Models\Subject;
 use App\Models\Homework;
+use App\Models\Achivnments;
 use App\Models\Messages;
 use Illuminate\Http\Request;
 use App\Models\StudentLesson;
@@ -149,49 +150,41 @@ class StudentController extends Controller
     public function studentHome()
     {
         $user = Auth::user();
+        $id = $user->id;
+        $Book = Lesson::getBooks($id);
+        $sepbooking = Lesson::getSepBooking($id);
+        $getdata = User::getDataUser($id);
+        $MyAchivment = Achivnments::getAchivement($id);
 
-        $Book=      DB::table('lessons')
-                        ->join('subjects', 'subjects.id', 'lessons.subject_id')
-                        ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
-                        ->select('lessons.*', 'subjects.name as sub_name', 'student_lessons.id as student_lessons_id')
-                        ->where('student_lessons.user_id', $user->id)
-                        ->get();
-        $sepbooking=DB::table('lessons')
-                        ->join('levels', 'levels.id', '=', 'lessons.level_id')
-                        ->join('subjects', 'subjects.id', 'lessons.subject_id', 'lessons.id ')
-                        ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
-                        ->where('student_lessons.user_id', $user->id)
-                        ->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
-                        ->get();
-        $getdata=   DB::table('users')
-                        ->join('student_lessons', 'users.id', 'student_lessons.techer_id')
-                        ->select('student_lessons.*', 'users.*')
-                        ->where('student_lessons.user_id', $user->id)
-                        ->get();
-        $MyAchivment=DB::table('achivnments')
-                        ->join('subjects', 'subjects.id', '=', 'achivnments.sub_id')
-                        ->join('homework', 'homework.id', '=', 'achivnments.homework_id')
-                        ->join('users', 'users.id', 'achivnments.Student_id')
-                        ->where('homework.user_id', $user->id)
-                        ->select('subjects.name as Subject_name', 'homework.title as H_title', 'homework.discription as homeworkDescriptions', 'users.fname as username', 'achivnments.*')
-                        ->orderBy('achivnments.id', 'DESC', 'achivnments.img')
-                        ->get();
-        $getuserimg=DB::table('users')
-                        ->join('lessons', 'users.id', 'lessons.user_id')
-                        ->join('subjects', function ($join) {
-                            $join->on('lessons.subject_id', 'subjects.id');
-                        })
-                        ->select(
-                            'users.thumbnail as userthamnail',
-                            'lessons.title',
-                            'lessons.description',
-                            'lessons.date',
-                            'lessons.thumbnail',
-                            'subjects.name as subjectname',
-                            'lessons.time',
-                            'lessons.id as lessonsId',
-                            'lessons.user_id as teacher_id'
-                        )->get();
+        // $Book=      DB::table('lessons')
+        //                 ->join('subjects', 'subjects.id', 'lessons.subject_id')
+        //                 ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
+        //                 ->select('lessons.*', 'subjects.name as sub_name', 'student_lessons.id as student_lessons_id')
+        //                 ->where('student_lessons.user_id', $user->id)
+        //                 ->get();
+        // $sepbooking=DB::table('lessons')
+        //                 ->join('levels', 'levels.id', '=', 'lessons.level_id')
+        //                 ->join('subjects', 'subjects.id', 'lessons.subject_id', 'lessons.id ')
+        //                 ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
+        //                 ->where('student_lessons.user_id', $user->id)
+        //                 ->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
+        //                 ->get();    
+        // $getdata = DB::table('users')
+        //                 ->join('student_lessons', 'users.id', 'student_lessons.techer_id')
+        //                 ->select('student_lessons.*', 'users.*')
+        //                 ->where('student_lessons.user_id', $user->id)
+        //                 ->get();
+        // $MyAchivment=DB::table('achivnments')
+        //                 ->join('subjects', 'subjects.id', '=', 'achivnments.sub_id')
+        //                 ->join('homework', 'homework.id', '=', 'achivnments.homework_id')
+        //                 ->join('users', 'users.id', 'achivnments.Student_id')
+        //                 ->where('homework.user_id', $user->id)
+        //                 ->select('subjects.name as Subject_name', 'homework.title as H_title', 'homework.discription as homeworkDescriptions', 'users.fname as username', 'achivnments.*')
+        //                 ->orderBy('achivnments.id', 'DESC', 'achivnments.img')
+        //                 ->get();
+        $getuserimg = User::getUser(); 
+
+
         $studentLessons           = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
         $studentHomeWork          = Homework::whereIn('Sub_id', $studentLessons)->get();
         // dd($studentHomeWork);
@@ -199,7 +192,6 @@ class StudentController extends Controller
                                     ->where('user_id', '!=', null)
                                     ->pluck('user_id')
                                     ->toArray();
-
         $studentHomeWork          = $studentHomeWork->pluck('Sub_id')->toArray();
         $studentHomeWorkSubjects  = Lesson::with('teacher', 'subject')
                                             ->whereIn('subject_id', $studentHomeWork)

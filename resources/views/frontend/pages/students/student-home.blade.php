@@ -141,7 +141,7 @@ $user = Auth::user();
                             <div class="card-body">
                                 <!-- Title -->
                                 <p class="teach-shed-card-content">
-                                    {{date('h:i ',strtotime($book->time))}} {{$book->sub_name}}
+                                    {{date('h:i ',strtotime($book->time))}} {{$book->subject->name}}
                                 </p>
                                 <br>
                             </div>

@@ -553,9 +553,9 @@ div#std-dashboard-right {
 #std-dashboard-left .row .col-lg-4 img {
     border-radius: 100%;
     object-fit: cover;
-    max-width: 217px;
-    height: 180px;
-    width: 180px;
+    /*max-width: 217px;*/
+    /*height: 180px;*/
+    /*width: 180px;*/
     border: 6px solid white;
 }
 

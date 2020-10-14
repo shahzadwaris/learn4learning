@@ -140,7 +140,7 @@ $user = Auth::user();
                             <div class="card-body">
                                 <!-- Title -->
                                 <p class="teach-shed-card-content">
-                                    <?php echo e(date('h:i ',strtotime($book->time))); ?> <?php echo e($book->sub_name); ?>
+                                    <?php echo e(date('h:i ',strtotime($book->time))); ?> <?php echo e($book->subject->name); ?>
 
                                 </p>
                                 <br>

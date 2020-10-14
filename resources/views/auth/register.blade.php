@@ -118,7 +118,8 @@
                 </div>
                 <div class="col-md-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img src="{{asset('asset/images/students/registration-banner.png')}}">
+                        <img style="    height: 852;
+    object-fit: cover;" src="{{asset('asset/images/students/registration-banner.png')}}">
                     </div>
                 </div>
             </div>

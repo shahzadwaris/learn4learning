@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd(123);
         $totalteacher=DB::table('users')->select('type')->where('type', 'teacher')->get();
         $teacher=count($totalteacher);
     

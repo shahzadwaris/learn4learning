@@ -240,6 +240,7 @@ class PageController extends Controller
     public function adminUsersApprove($id)
     {
         User::where('id', $id)->update([
+            
             'approved_at'=> Carbon::now(),
         ]);
 

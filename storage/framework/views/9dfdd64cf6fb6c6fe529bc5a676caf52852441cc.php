@@ -181,7 +181,7 @@
                                             href="<?php echo e(route('studetnsHomeWork')); ?>">MY HOMEWORK</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="" href="#">MY ACHIEVEMENT</a>
+                                        <a class="" href="<?php echo e(route('MyAchevemnt')); ?>">MY ACHIEVEMENT</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="" href="<?php echo e(route('viewOurMessages')); ?>">MY MESSAGES</a>

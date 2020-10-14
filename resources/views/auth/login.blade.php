@@ -10,6 +10,12 @@
     .text_gray {
         color: #737171 !important;
     }
+    #submit-btn{
+        justify-content: flex-end;
+    }
+    .customContainer{
+        width: 85%;
+    }
 </style>
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/login2.css')}}">
@@ -34,7 +40,7 @@
 </section>
 
 <section class="main-section">
-    <div class="container">
+    <div class="container customContainer">
         <div class="main-cont">
             <div class="row">
                 <div class="col-lg-6 d-flex pt-4 justify-content-center">
@@ -89,7 +95,7 @@
                 </div>
                 <div class="col-lg-6 p-0">
                     <div class="d-flex" id="submit-btn">
-                        <img class="img-responsive  "
+                        <img class="img-responsive"
                             src="{{asset('asset/images/students/registration-banner_50.png')}}">
                     </div>
                 </div>

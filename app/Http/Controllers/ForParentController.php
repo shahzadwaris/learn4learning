@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class ForParentController extends Controller
 {
-    public function push(){
+    public function push()
+    {
         event(new MyEvent('hello world'));
     }
 }

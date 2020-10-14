@@ -93,6 +93,7 @@ class TeacherController extends Controller
 
     public function teacherHome()
     {
+        // dd(1234);
         $auth                 =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('homework')
             ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
@@ -117,12 +118,12 @@ class TeacherController extends Controller
             ->limit(10)
             ->get();
 
-        $usersimgg=           DB::table('users')
+        $usersimgg=DB::table('users')
             ->where('users.id', $auth)
             ->select('users.*')
             ->get();
 
-        $favsubject=          DB::table('subject_level_details')
+        $favsubject=DB::table('subject_level_details')
             ->where('subject_level_details.user_id', $auth)
             ->join('users', 'users.id', 'subject_level_details.user_id')
             ->join('levels', 'levels.id', 'subject_level_details.level_id')
@@ -130,7 +131,7 @@ class TeacherController extends Controller
             ->select('subject_level_details.field', 'subjects.name as subject_name', 'levels.name as level_name')
             ->get();
 
-        $Book=               DB::table('lessons')
+        $Book=DB::table('lessons')
             ->join('levels', 'levels.id', '=', 'lessons.level_id')
             ->join('subjects', 'subjects.id', 'lessons.subject_id', 'lessons.id ')
             ->join('users', 'users.id', 'lessons.user_id')
@@ -138,7 +139,7 @@ class TeacherController extends Controller
             ->select('users.*', 'lessons.id as lessonsid', 'lessons.*', 'users.thumbnail as USerthumbnail', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
             ->get();
 
-        $sepbooking=          DB::table('lessons')
+        $sepbooking=DB::table('lessons')
             ->join('subjects', 'subjects.id', 'lessons.subject_id', 'lessons.id ')
 
             ->where('lessons.user_id', $auth)
@@ -148,21 +149,19 @@ class TeacherController extends Controller
 
             ->get();
 
-        $experices=           DB::table('experiences')
+        $experices=DB::table('experiences')
             ->where('experiences.teacher_id', $auth)
             ->select('experiences.*')
             ->limit(5)
             ->get();
-        return view('frontend.pages.teachers.teacher-homepage')->with(
-            [
+        return view('frontend.pages.teachers.teacher-homepage')->with([
                 'Book'                   => $Book,
                 'teacherhomeworkdetail'  => $teacherhomeworkdetail,
                 'usersimgg'              => $usersimgg,
                 'schedules'              => $sepbooking,
                 'experices'              => $experices,
                 'favsubject'             => $favsubject,
-            ]
-        );
+        ]);
     }
 
     public function teacher_edit_profile()
@@ -758,6 +757,7 @@ class TeacherController extends Controller
 
     public function MyAchevemntss()
     {
+        // dd(123);
         $auth   =Auth::user()->id;
         $Lessens=DB::table('lessons')->where('lessons.user_id', $auth)
             ->join('subjects', 'subjects.id', 'lessons.subject_id')
@@ -780,10 +780,10 @@ class TeacherController extends Controller
     {
         $myid    =Auth::user()->id;
         $homework=DB::table('homework')
-            ->join('subjects', 'subjects.id', 'homeWork.Sub_id')
+            ->join('subjects', 'subjects.id', 'homework.id')
             ->where('homework.teacher_id', $myid)
             ->join('users', 'users.id', 'homework.user_id')
-            ->select('users.fname', 'users.id as User_id', 'homework.*', 'subjects.name as  subjectname', 'subjects.id as sub_id', 'homework.id as homeworkid')
+            ->select('users.fname', 'users.id as User_id', 'homework.*', 'subjects.name as  subjectname', 'subjects.id as sub_id', 'homework.id as homework.id')
             ->get();
         return view('frontend.pages.teachers.ViewSepStudents')->with('homework', $homework);
     }

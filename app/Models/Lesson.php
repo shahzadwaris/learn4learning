@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\User;
+use App\Models\StudentLesson;
+use App\Models\levels as Levels;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +17,35 @@ class Lesson extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+
+    public function student_lessons()
+    {
+        return $this->hasOne(StudentLesson::class, 'lesson_id','id');
+    }
+
+    public function levels()
+    {
+        return $this->hasMany(Levels::class, 'id','level_id');
+    }
+
+
+    public static function getBooks($id){
+        return self::with(['subject','student_lessons' => function($q) use ($id) {
+            $q->where('user_id',$id);
+        }])->whereHas('student_lessons', function($q) use ($id) {
+            $q->where('user_id',$id);
+        })->get();
+    }
+
+    public static function getSepBooking($id){
+        return self::with(['levels','subject','student_lessons' => function($q) use ($id) {
+            $q->where('user_id',$id);
+        }])->whereHas('student_lessons', function($q) use ($id) {
+            $q->where('user_id',$id);
+        })->get();
+    }
+
+
 
     public function teacher()
     {

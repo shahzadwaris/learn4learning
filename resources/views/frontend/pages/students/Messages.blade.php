@@ -686,6 +686,7 @@
                 <div class="col-12" id="std-dashboard-left">
                     <div class="stu-home-dash-head-div">
                         <h2>Student Chat</h2>
+                        
                     </div>
                     <div class="page-content page-container" id="page-content">
                         <div class="padding">
@@ -728,7 +729,7 @@
             </div>
         </div>
     </section>
-
+    
 
     <style type="text/css">
         .card-bordered {
