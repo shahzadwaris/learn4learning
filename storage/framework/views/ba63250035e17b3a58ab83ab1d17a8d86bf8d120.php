@@ -46,7 +46,7 @@
         }
         .customForm{
             width: 100%;
-                padding-left: 25px;
+                padding-left: 5px;
                  padding-right: 5px;
         }
     }
