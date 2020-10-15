@@ -36,7 +36,7 @@
     color: #fff;
     border: 0px;
     ">
-        <a  href="<?php echo e(route('verifiedSuccess')); ?>" style="     background: #176795; color: #fff;
+        <a  href="<?php echo e(route('verify',[$user_id])); ?>" style="     background: #176795; color: #fff;
         border:0px;
         border-radius: 10px;
         padding: 15px;
@@ -48,6 +48,7 @@
     text-align: left;">
         <h4>If you did not create an account, no further action is required.
         </h4>
+        <a href="<?php echo e(route('verify',[$user_id])); ?>"><?php echo e(route('verify',[$user_id])); ?></a>
         <p>
             Regards,<br><br>
             Learn4Learning

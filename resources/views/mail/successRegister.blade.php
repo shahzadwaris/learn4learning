@@ -46,8 +46,8 @@
     <div style="    width: 100%;
     margin: 0 auto;
     text-align: left;">
-        <h4>If you did not create an account, no further action is required.
-        </h4>
+{{--        <h4>If you did not create an account, no further action is required.--}}
+{{--        </h4>--}}
         <p>
             Regards,<br><br>
             Learn4Learning

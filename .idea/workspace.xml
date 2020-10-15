@@ -21,9 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9a6bd8-ddb1-4a41-8681-5c1f5fb30122" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/AXC484qLhtjJf9o16XRv871g5MSz6oDES3Hiy3gk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/successRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/successRegister.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/Br8fJPSepDOu5Yq8HfVEtpHFj6su2t6qIAZKw6mt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/EFlPLx0jrxf7evNrr8Nwuvq5Z3D49asaB36RMf9X" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/N7pVENCF2QVFuKsRCW0RGEgI1AkQjJuYwFRFRzXn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/fAgTN5H84BZbwsvzwzph50iL549fPkrQiU9OmtNM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/pGQs6iH8GiwdVTW46zjebwCVygbC7DeawDsYeFDE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/5f5fc9a2edf176f628a0776dee44f4c6f23f6c6a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5f5fc9a2edf176f628a0776dee44f4c6f23f6c6a.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +231,9 @@
       <workItem from="1602741669728" duration="1789000" />
       <workItem from="1602743483374" duration="1788000" />
       <workItem from="1602745299328" duration="1797000" />
-      <workItem from="1602747124646" duration="364000" />
+      <workItem from="1602747124646" duration="429000" />
+      <workItem from="1602747609462" duration="691000" />
+      <workItem from="1602749585732" duration="21000" />
     </task>
     <servers />
   </component>
@@ -259,9 +265,9 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="497" y="208" key="run.anything.popup/67.27.1533.873@67.27.1533.873" timestamp="1602141527150" />
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602746486131">
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602747736272">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602746486131" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602747736272" />
   </component>
 </project>
