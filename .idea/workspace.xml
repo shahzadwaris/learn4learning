@@ -20,24 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b9a6bd8-ddb1-4a41-8681-5c1f5fb30122" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/successRegister.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/login2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/css/login2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/masterStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/masterStudent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/text/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/mail/text/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/43/e5/43e5f63c7804b969402e8ae2b0c9987d4cde59d7" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/43/e5/43e5f63c7804b969402e8ae2b0c9987d4cde59d7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/9b/e2/9be2a0d21b85995c87bb4da7c250a9c33f0f80bf" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/9b/e2/9be2a0d21b85995c87bb4da7c250a9c33f0f80bf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/AXC484qLhtjJf9o16XRv871g5MSz6oDES3Hiy3gk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +226,8 @@
       <workItem from="1602739858616" duration="1787000" />
       <workItem from="1602741669728" duration="1789000" />
       <workItem from="1602743483374" duration="1788000" />
-      <workItem from="1602745299328" duration="1301000" />
+      <workItem from="1602745299328" duration="1797000" />
+      <workItem from="1602747124646" duration="364000" />
     </task>
     <servers />
   </component>
