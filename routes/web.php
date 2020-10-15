@@ -8,6 +8,12 @@ Route::get('locale/{locale}', function ($locale) {
     return redirect()->back();
 });
 
+Route::get('verifiedSuccess','UserController@verifiedSuccess')->name('verifiedSuccess');
+
+Route::get('/email/design', function (){
+    return view('mail.successRegister');
+});
+
 Route::group(['Public'], function () {
     Route::get('/', 'UserController@homePage')->name('homee');
     Route::get('/for-parents', 'PageController@forParent')->name('parents');
@@ -36,7 +42,6 @@ Route::group(['Public'], function () {
     /**
      * register pages for students
      */
-
     Route::get('register/students/profile', function () {
         return view('auth.students.student-profile');
     })->name('studentprofile');

@@ -10,46 +10,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>@yield('title')</title>
+    <title><?php echo $__env->yieldContent('title'); ?></title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{asset('asset/images/logo1.png')}}" type="image/png">
+    <link rel="shortcut icon" href="<?php echo e(asset('asset/images/logo1.png')); ?>" type="image/png">
 
     <!--====== Slick css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/slick.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/slick.css')); ?>">
 
     <!--====== Animate css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/animate.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/animate.css')); ?>">
 
     <!--====== Nice Select css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/nice-select.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/nice-select.css')); ?>">
 
     <!--====== Nice Number css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/jquery.nice-number.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/jquery.nice-number.min.css')); ?>">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/magnific-popup.css')); ?>">
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/bootstrap.min.css')); ?>">
 
     <!--====== Fontawesome css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/font-awesome.min.css')); ?>">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/default.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/default.css')); ?>">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('asset/css/work.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/work.css')); ?>">
 
     <!--====== Responsive css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/responsive.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" />
-    @yield('css')
-    @stack('css')
+    <?php echo $__env->yieldContent('css'); ?>
+    <?php echo $__env->yieldPushContent('css'); ?>
 </head>
 
 <body>
@@ -63,12 +63,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="header-contact">
-                            {{----}}
+                            
                         </div> <!-- header contact -->
                     </div>
                     <div class="col-md-6">
                         <div class="header-right d-flex justify-content-end">
-                            @if(!Auth::check())
+                            <?php if(!Auth::check()): ?>
 
 
                             <div class="social d-flex">
@@ -86,15 +86,15 @@
                             </div> <!-- social -->
                             <div class="login-register">
                                 <ul>
-                                    <li><a href="{{ route('login') }}"
-                                            class="{{Request::routeIs('login') ? 'active' : ''}}"
+                                    <li><a href="<?php echo e(route('login')); ?>"
+                                            class="<?php echo e(Request::routeIs('login') ? 'active' : ''); ?>"
                                             style="background: none !important;color:black;">SIGN IN</a></li>
-                                    <li><a href="{{ route('register') }}"
-                                            class="{{Request::routeIs('register') ? 'active' : ''}}">SIGN UP</a></li>
+                                    <li><a href="<?php echo e(route('register')); ?>"
+                                            class="<?php echo e(Request::routeIs('register') ? 'active' : ''); ?>">SIGN UP</a></li>
                                 </ul>
                             </div>
-                            @endif
-                            @if(Auth::check())
+                            <?php endif; ?>
+                            <?php if(Auth::check()): ?>
                             <nav class="navbar navbar-expand-md navbar-light navbar-laravel " style="    margin-top:px;
 ">
 
@@ -104,14 +104,14 @@
                                         <a id="navbarDropdown" style="color: black" class="nav-link dropdown-toggle"
                                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false" v-pre>
-                                            @lang('home.Language') <span class="caret"></span>
+                                            <?php echo app('translator')->get('home.Language'); ?> <span class="caret"></span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ url('/locale/en') }}"><img
-                                                    src="{{asset('asset/images/flag/us.png')}}" width="30px"
+                                            <a class="dropdown-item" href="<?php echo e(url('/locale/en')); ?>"><img
+                                                    src="<?php echo e(asset('asset/images/flag/us.png')); ?>" width="30px"
                                                     height="20x"> English</a>
-                                            <a class="dropdown-item" href="{{ url('/locale/fr') }}"><img
-                                                    src="{{asset('asset/images/flag/fr.png')}}" width="30px"
+                                            <a class="dropdown-item" href="<?php echo e(url('/locale/fr')); ?>"><img
+                                                    src="<?php echo e(asset('asset/images/flag/fr.png')); ?>" width="30px"
                                                     height="20x"> French</a>
                                         </div>
                                     </li>
@@ -121,40 +121,38 @@
 
                             <div class="login-register" style="margin-top: 10px">
                                 <ul>
-                                    <li><a style="background: none !important;color:black;">{{Auth::user()->fname}}</a>
+                                    <li><a style="background: none !important;color:black;"><?php echo e(Auth::user()->fname); ?></a>
                                     </li>
                                     <li>
-                                        {{-- <form method="post" action="{{route('logout')}}">
-                                        @csrf
-                                        <button class="btn-sm btn-outline-primary">logout</button>
-                                        </form> --}}
-                                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                                        
+                                        <a class="btn btn-primary" href="<?php echo e(route('logout')); ?>"
                                             onclick="event.preventDefault();
                                                                                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            <?php echo e(__('Logout')); ?>
+
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                                             style="display: none;">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                         </form>
                                     </li>
                                 </ul>
                             </div>
-                            @endif
+                            <?php endif; ?>
                         </div> <!-- header right -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- header top -->
-        {{----}}
+        
         <div class="navigation">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="{{route('homee')}}">
-                                <img src="{{asset('asset/images/logo1.png')}}" alt="Logo">
+                            <a class="navbar-brand" href="<?php echo e(route('homee')); ?>">
+                                <img src="<?php echo e(asset('asset/images/logo1.png')); ?>" alt="Logo">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -163,39 +161,39 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            {{----}}
+                            
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('studentHome') ? 'active' : ''}}"
-                                            href="{{route('studentHome')}}">Home</a>
+                                        <a class="<?php echo e(Request::routeIs('studentHome') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('studentHome')); ?>">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('student_schedule') ? 'active' : ''}}"
-                                            href="{{route('student_schedule')}}">MY SCHEDULE</a>
+                                        <a class="<?php echo e(Request::routeIs('student_schedule') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('student_schedule')); ?>">MY SCHEDULE</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('My_subjects') ? 'active' : ''}}"
-                                            href="{{route('My_subjects')}}">MY SUBJECTS</a>
+                                        <a class="<?php echo e(Request::routeIs('My_subjects') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('My_subjects')); ?>">MY SUBJECTS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('studetnsHomeWork') ? 'active' : ''}}"
-                                            href="{{route('studetnsHomeWork')}}">MY HOMEWORK</a>
+                                        <a class="<?php echo e(Request::routeIs('studetnsHomeWork') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('studetnsHomeWork')); ?>">MY HOMEWORK</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="" href="# ">MY ACHIEVEMENT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="" href="{{route('viewOurMessages')}}">MY MESSAGES</a>
+                                        <a class="" href="<?php echo e(route('viewOurMessages')); ?>">MY MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('tudent.account') ? 'active' : ''}}"
-                                            href="{{route('student.account')}}">MY ACCOUNT</a>
+                                        <a class="<?php echo e(Request::routeIs('tudent.account') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('student.account')); ?>">MY ACCOUNT</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('donate') ? 'active' : ''}}"
-                                            href="{{route('donate')}}"
+                                        <a class="<?php echo e(Request::routeIs('donate') ? 'active' : ''); ?>"
+                                            href="<?php echo e(route('donate')); ?>"
                                             style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
@@ -206,23 +204,23 @@
             </div> <!-- container -->
         </div>
     </header>
-    {{--content--}}
+    
     <div class="row p-0 m-0">
         <div class="col-2"></div>
         <div class="col-8">
-            @if(Session::has('success-alert-message'))
+            <?php if(Session::has('success-alert-message')): ?>
             <div class="flash-message mt-5" id='success-alert'>
 
-                <p class="alert alert-success">{{ Session::get('success-alert-message') }} <a href="#" class="close"
+                <p class="alert alert-success"><?php echo e(Session::get('success-alert-message')); ?> <a href="#" class="close"
                         data-dismiss="alert" aria-label="close">&times;</a></p>
             </div>
-            @endif
+            <?php endif; ?>
         </div>
         <div class="col-2"></div>
     </div>
 
-    @yield('content')
-    {{--content--}}
+    <?php echo $__env->yieldContent('content'); ?>
+    
 
     <!--====== COURSE PART ENDS ======-->
 
@@ -236,7 +234,7 @@
                         <div class="footer-section-wrap footer-link mt-40">
                             <div class="logo" style="float: left;">
 
-                                <a href="{{route('homee')}}"><img src="{{asset('asset/images/footerlogo.png')}}"
+                                <a href="<?php echo e(route('homee')); ?>"><img src="<?php echo e(asset('asset/images/footerlogo.png')); ?>"
                                         alt="Logo"></a>
                             </div>
 
@@ -258,9 +256,9 @@
                         <div class="footer-link mt-40">
 
                             <ul class="text-center">
-                                <li><a href="{{route('page.show', 'terms-and-conditions')}}">Terms and Conditions </a>
+                                <li><a href="<?php echo e(route('page.show', 'terms-and-conditions')); ?>">Terms and Conditions </a>
                                 </li>
-                                <li><a href="{{route('page.show','privacy-policy')}}">Privacy Policy</a></li>
+                                <li><a href="<?php echo e(route('page.show','privacy-policy')); ?>">Privacy Policy</a></li>
                                 <li><a href="#">Cookies Policy</a></li>
 
                             </ul>
@@ -271,9 +269,9 @@
                         <div class="footer-link support mt-40">
 
                             <ul class="text-center">
-                                <li><a href="{{route('howitworks')}}">How it Works</a></li>
-                                <li><a href="{{route('teachers')}}">For Teachers</a></li>
-                                <li><a href="{{route('students')}}">For Students</a></li>
+                                <li><a href="<?php echo e(route('howitworks')); ?>">How it Works</a></li>
+                                <li><a href="<?php echo e(route('teachers')); ?>">For Teachers</a></li>
+                                <li><a href="<?php echo e(route('students')); ?>">For Students</a></li>
 
                             </ul>
                         </div> <!-- support -->
@@ -282,8 +280,8 @@
                         <div class="footer-link support mt-40">
 
                             <ul class="text-center">
-                                <li><a href="{{route('parents')}}">For Parents </a></li>
-                                <li><a href="{{route('donate')}}">Donate</a></li>
+                                <li><a href="<?php echo e(route('parents')); ?>">For Parents </a></li>
+                                <li><a href="<?php echo e(route('donate')); ?>">Donate</a></li>
                                 <li><a href="#">Contact Us</a></li>
 
                             </ul>
@@ -292,14 +290,14 @@
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- footer top -->
-        {{----}}
+        
         <div class="footer-copyright pt-10 pb-25">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="copyright  text-center pt-15">
-                            <p>&copy;@lang('footer.footer_info')
-                                &nbsp; - &nbsp; @lang('footer.Designed_by') <span>Rkixtech</span>
+                            <p>&copy;<?php echo app('translator')->get('footer.footer_info'); ?>
+                                &nbsp; - &nbsp; <?php echo app('translator')->get('footer.Designed_by'); ?> <span>Rkixtech</span>
                             </p>
                         </div>
                     </div>
@@ -314,47 +312,47 @@
 
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
     <!--====== jquery js ======-->
-    <script src="{{asset('asset/js/vendor/modernizr-3.6.0.min.js')}}"></script>
-    {{-- <script src="{{asset('asset/js/vendor/jquery-1.12.4.min.js')}}"></script> --}}
-    <script src="{{asset('asset/js/jquery.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/vendor/modernizr-3.6.0.min.js')); ?>"></script>
+    
+    <script src="<?php echo e(asset('asset/js/jquery.min.js')); ?>"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/bootstrap.min.js')); ?>"></script>
 
     <!--====== Slick js ======-->
-    <script src="{{asset('asset/js/slick.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/slick.min.js')); ?>"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="{{asset('asset/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/jquery.magnific-popup.min.js')); ?>"></script>
 
     <!--====== Counter Up js ======-->
-    <script src="{{asset('asset/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('asset/js/jquery.counterup.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/waypoints.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('asset/js/jquery.counterup.min.js')); ?>"></script>
 
     <!--====== Nice Select js ======-->
-    <script src="{{asset('asset/js/jquery.nice-select.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/jquery.nice-select.min.js')); ?>"></script>
 
     <!--====== Nice Number js ======-->
-    <script src="{{asset('asset/js/jquery.nice-number.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/jquery.nice-number.min.js')); ?>"></script>
 
     <!--====== Count Down js ======-->
-    <script src="{{asset('asset/js/jquery.countdown.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/jquery.countdown.min.js')); ?>"></script>
 
     <!--====== Validator js ======-->
-    <script src="{{asset('asset/js/validator.min.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/validator.min.js')); ?>"></script>
 
     <!--====== Ajax Contact js ======-->
-    <script src="{{asset('asset/js/ajax-contact.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/ajax-contact.js')); ?>"></script>
 
     <!--====== Main js ======-->
-    <script src="{{asset('asset/js/main.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/main.js')); ?>"></script>
 
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
-    <script src="{{asset('asset/js/map-script.js')}}"></script>
+    <script src="<?php echo e(asset('asset/js/map-script.js')); ?>"></script>
 
     <script src="https://kit.fontawesome.com/0141eabd3d.js" crossorigin="anonymous"></script>
-    @yield('js')
+    <?php echo $__env->yieldContent('js'); ?>
     <script>
         // Material Select Initialization
     $(document).ready(function() {
@@ -369,3 +367,4 @@
 
 
 </html>
+<?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/layouts/masterStudent.blade.php ENDPATH**/ ?>

@@ -6,12 +6,14 @@ use App\User;
 use App\Models\Lesson;
 use App\Models\levels;
 use App\Models\Subject;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\CreateUserRequest;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -73,12 +75,20 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Auth::login($u);
-        event(new Registered($u));
+//        event(new Registered($u));
+        $senderEmail = 'alimughal5566@gmail.com';
+        $senderName  ='Learn4Learning';
+        $userEmail = $request->email;
 
+        Mail::send('mail.successRegister', array('url','url'), function ($message) use ($senderEmail, $senderName , $userEmail) {
+            $message->from($senderEmail, $senderName , $userEmail);
+            $message->to($userEmail)
+                ->subject('Verify Email Address');
+        });
         $data       =['msg'=>' please verify your self', 'userId'=>$u->id];
         $level      = levels::all();
         $user_id    = $u->id;
-        session()->flash('alert-success', "Please verify your email We've sent you a link.");
+        session()->flash('success-alert-message-teac', "Please verify your email We've sent you a link.");
 
         if ($u->type == 'teacher') {
             $subjects    = Subject::all();
@@ -185,6 +195,18 @@ class UserController extends Controller
             $request->session()->flash('message.content', 'You have Upated password Successfully');
 
             return back();
+        }
+    }
+
+    public function verifiedSuccess(){
+        $user = Auth::user();
+        User::where('id','=',$user->id)->update([
+           'email_verified_at' => Carbon::now()
+        ]);
+        if($user->type == 'teacher') {
+            return redirect('/teacher-home')->with('success-alert-message-teac','Email verified successfully!');
+        } else {
+            return redirect('/students/Home')->with('success-alert-message','Email verified successfully!');
         }
     }
 }
