@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class StudentLesson extends Model
 {
@@ -20,6 +21,7 @@ class StudentLesson extends Model
     }
     public static function getSubject()
     {
+        $auth   =Auth::user()->id;
         return \DB::table('student_lessons')
                     ->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
@@ -30,6 +32,7 @@ class StudentLesson extends Model
 
     public static function getLesson()
     {
+        $auth   =Auth::user()->id;
         return \DB::table('student_lessons')
                     ->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
@@ -40,6 +43,7 @@ class StudentLesson extends Model
 
     public static function getTeacher()
     {
+        $auth   =Auth::user()->id;
         return \DB::table('student_lessons')
                     ->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
@@ -50,6 +54,7 @@ class StudentLesson extends Model
 
     public static function getStudent()
     {
+        $auth   =Auth::user()->id;
         return \DB::table('student_lessons')->where('student_lessons.techer_id', $request->teacher_id)->where('student_lessons.user_id', $auth)
                     ->join('users', 'users.id', 'student_lessons.techer_id')
                     ->join('subjects', 'student_lessons.subjects_id', 'subjects.id')
@@ -72,5 +77,57 @@ class StudentLesson extends Model
                                 ->where('student_lessons.user_id', $student_iid)->select('lessons.date', 'lessons.id')
                                 ->get();
 
+    }
+
+    public static function getTitleStudent()
+    {
+        $student_iid=Auth::user()->id;
+        return \DB::table('student_lessons')
+                                    ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
+                                    ->where('student_lessons.user_id', $student_iid)->select('lessons.title', 'lessons.id')
+                                    ->get();
+    }
+
+    public static function getDataSearch()
+    {
+         $student_iid=Auth::user()->id;
+        return \DB::table('student_lessons')
+                                    ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
+                                    ->where('student_lessons.user_id', $student_iid)->select('lessons.date', 'lessons.id')
+                                    ->get();
+    }
+
+    public static function getStudentLesson()
+    {
+        return \DB::table('student_lessons')
+            ->join('users', 'student_lessons.user_id', '=', 'users.id')
+            ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
+            ->join('levels', function ($join) {
+                $join->on('lessons.level_id', '=', 'levels.id');
+            })
+            ->join('subjects', function ($join) {
+                $join->on('lessons.subject_id', '=', 'subjects.id');
+            })
+            ->where('student_lessons.user_id', $student_id)
+            ->select('users.*')
+            ->orderBy('users.id', 'DESC')
+            ->get();
+    }
+
+    public static function getLessonData()
+    {
+        return \DB::table('student_lessons')
+            ->join('users', 'student_lessons.user_id', '=', 'users.id')
+            ->join('lessons', 'student_lessons.lesson_id', '=', 'lessons.id')
+            ->join('levels', function ($join) {
+                $join->on('lessons.level_id', '=', 'levels.id');
+            })
+            ->join('subjects', function ($join) {
+                $join->on('lessons.subject_id', '=', 'subjects.id');
+            })
+            ->where('student_lessons.user_id', $student_id)
+            ->select('subjects.name', 'subjects.id')
+            ->orderBy('users.id', 'DESC')
+            ->get();
     }
 }

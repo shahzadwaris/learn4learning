@@ -183,15 +183,14 @@
                       <tbody>
                         <?php $__currentLoopData = $teacherhomeworkdetail; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teacherhomeworkdetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-
-                          <th scope="row"><?php echo e($teacherhomeworkdetail->subname); ?></th>
-                          <td><?php echo e($teacherhomeworkdetail->Tilte_Lessons); ?></td>
-                          <td><?php echo e($teacherhomeworkdetail->homeDate); ?></td>
+                          <th scope="row"><?php echo e($teacherhomeworkdetail->name); ?></th>
+                          <td><?php echo e($teacherhomeworkdetail->getTitle($teacherhomeworkdetail->id)); ?></td>
+                          <td><?php echo e($teacherhomeworkdetail->getDate($teacherhomeworkdetail->id)); ?></td>
 
 
                      
                           <td>    
-                           <a href="<?php echo e(route('viewHomework', [$teacherhomeworkdetail->subject_iid])); ?>">
+                           <a href="<?php echo e(url('/view/{id}', [$teacherhomeworkdetail->subject_iid])); ?>">
                            <button type="button" class="btn btn-indigo btn-sm m-0" id="upload-work-btn">View HOMEWORK</button>     </a></td>
                      
 

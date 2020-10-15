@@ -27,4 +27,14 @@ class SubjectLevelDetail extends Model
     {
         return $this->belongsTo(levels::class, 'level_id');
     }
+
+    public static function getSubjectLevel()
+    {
+        return \DB::table('subject_level_details')->where('subject_level_details.user_id', $id)
+        ->join('levels', 'levels.id', 'subject_level_details.level_id')
+        ->join('subjects', 'subjects.id', 'subject_level_details.subject_id')
+        ->join('users', 'users.id', 'subject_level_details.user_id')
+        ->select('levels.name as Level_naem', 'subjects.name as subjectname', 'users.*')
+        ->get();
+    }
 }

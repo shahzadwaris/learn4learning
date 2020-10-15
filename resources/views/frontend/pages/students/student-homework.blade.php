@@ -183,15 +183,14 @@
                       <tbody>
                         @foreach($teacherhomeworkdetail as $teacherhomeworkdetail)
                         <tr>
-
-                          <th scope="row">{{$teacherhomeworkdetail->subname}}</th>
-                          <td>{{$teacherhomeworkdetail->Tilte_Lessons}}</td>
-                          <td>{{$teacherhomeworkdetail->homeDate}}</td>
+                          <th scope="row">{{$teacherhomeworkdetail->name}}</th>
+                          <td>{{$teacherhomeworkdetail->getTitle($teacherhomeworkdetail->id)}}</td>
+                          <td>{{$teacherhomeworkdetail->getDate($teacherhomeworkdetail->id)}}</td>
 
 
                      
                           <td>    
-                           <a href="{{ route('viewHomework', [$teacherhomeworkdetail->subject_iid])}}">
+                           <a href="{{ url('/view/{id}', [$teacherhomeworkdetail->subject_iid])}}">
                            <button type="button" class="btn btn-indigo btn-sm m-0" id="upload-work-btn">View HOMEWORK</button>     </a></td>
                      
 

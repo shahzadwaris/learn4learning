@@ -1,7 +1,56 @@
 
 <?php $__env->startSection('title','SignUp'); ?>
 <?php $__env->startSection('content'); ?>
+<style>
+    .gray_font {
+        color: #737171 !important;
+        letter-spacing: 2px;
+    }
 
+    .text_gray {
+        color: #737171 !important;
+    }
+    #submit-btn{
+        justify-content: flex-end;
+    }
+    .customContainer{
+        width:85%;
+    }
+    ._inputwidth{
+        width: 100% !important;
+    }
+    .customForm{
+        width: 100%;
+    }
+
+
+    @media (max-width: 991px) {
+        #submit-btn {
+            justify-content: flex-end;
+            display: none !important;
+        }
+    }
+    @media (max-width: 575px) {
+        .main-cont .row {
+            margin-right: 0px !important;
+            box-shadow: 0px 0px 10px -3px black;
+            background: white;
+            margin-top: 154px !important;
+            position: relative;
+            margin-left: auto;
+        }
+        .customContainer{
+            width:100%;
+            padding-left: 0px !important;
+            padding-right: 0px !important
+        }
+        .customForm{
+            width: 100%;
+                padding-left: 25px;
+                 padding-right: 5px;
+        }
+    }
+</style>
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/register2.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
@@ -34,7 +83,7 @@
 
                         <div style="display:flex;width:100%;">
 
-                            <form method="post" action="<?php echo e(url('/signup')); ?>" id="form" class="_regForm">
+                            <form method="post" action="<?php echo e(url('/signup')); ?>" id="form" class="_regForm customForm    ">
                                 <?php echo csrf_field(); ?>
                                 <div style="width:100%;" class="m-0">
                                     <h3 class="level-heading pb-2">GETTING STARTED</h3>
