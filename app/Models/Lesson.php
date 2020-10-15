@@ -28,8 +28,8 @@ class Lesson extends Model
         return $this->hasMany(Levels::class, 'id','level_id');
     }
 
-
-    public static function getBooks($id){
+    public static function getBooks($id)
+    {
         return self::with(['subject','student_lessons' => function($q) use ($id) {
             $q->where('user_id',$id);
         }])->whereHas('student_lessons', function($q) use ($id) {

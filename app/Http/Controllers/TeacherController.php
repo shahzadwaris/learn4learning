@@ -64,7 +64,6 @@ class TeacherController extends Controller
 
     public function getteacherProfile(Request $request)
     {
-        dd($request->all());
         $imageDbPath=null;
         if ($request->hasFile('thumbnail')) {
             $imageDbPath = $this->saveDocs($request->file('thumbnail'), 2);
