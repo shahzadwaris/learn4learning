@@ -21,12 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9a6bd8-ddb1-4a41-8681-5c1f5fb30122" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/students/Messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/students/Messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-schedule.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/jWZas9tj4hmTMP0tpFMSLrlYelfUgSt4XXGWJmrb" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/jWZas9tj4hmTMP0tpFMSLrlYelfUgSt4XXGWJmrb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/7e90b291ea36d303abad19b8caf9127a3e805de1.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/7e90b291ea36d303abad19b8caf9127a3e805de1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/successRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/successRegister.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/Br8fJPSepDOu5Yq8HfVEtpHFj6su2t6qIAZKw6mt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/EFlPLx0jrxf7evNrr8Nwuvq5Z3D49asaB36RMf9X" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/N7pVENCF2QVFuKsRCW0RGEgI1AkQjJuYwFRFRzXn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/fAgTN5H84BZbwsvzwzph50iL549fPkrQiU9OmtNM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/pGQs6iH8GiwdVTW46zjebwCVygbC7DeawDsYeFDE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/5f5fc9a2edf176f628a0776dee44f4c6f23f6c6a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5f5fc9a2edf176f628a0776dee44f4c6f23f6c6a.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,9 +178,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mail" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/mail" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -221,6 +227,13 @@
       <workItem from="1602225941374" duration="2067000" />
       <workItem from="1602228035285" duration="628000" />
       <workItem from="1602235967905" duration="14000" />
+      <workItem from="1602739858616" duration="1787000" />
+      <workItem from="1602741669728" duration="1789000" />
+      <workItem from="1602743483374" duration="1788000" />
+      <workItem from="1602745299328" duration="1797000" />
+      <workItem from="1602747124646" duration="429000" />
+      <workItem from="1602747609462" duration="691000" />
+      <workItem from="1602749585732" duration="21000" />
     </task>
     <servers />
   </component>
@@ -244,13 +257,17 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="567" y="146" width="523" height="633" key="RollbackChangesDialog/67.27.1533.873@67.27.1533.873" timestamp="1602218922916" />
+    <state x="524" y="201" width="650" height="548" key="find.popup" timestamp="1602742271890">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="524" y="201" width="650" height="548" key="find.popup/67.27.1533.873@67.27.1533.873" timestamp="1602742271890" />
     <state x="497" y="208" key="run.anything.popup" timestamp="1602141527150">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="497" y="208" key="run.anything.popup/67.27.1533.873@67.27.1533.873" timestamp="1602141527150" />
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602226159859">
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602747736272">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602226159859" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602747736272" />
   </component>
 </project>

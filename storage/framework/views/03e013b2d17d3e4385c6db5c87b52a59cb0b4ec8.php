@@ -6,7 +6,7 @@
 </head>
 <body>
 <style>
-@media only screen and (max-width: 600px) {
+@media  only screen and (max-width: 600px) {
 .inner-body {
 width: 100% !important;
 }
@@ -16,7 +16,7 @@ width: 100% !important;
 }
 }
 
-@media only screen and (max-width: 500px) {
+@media  only screen and (max-width: 500px) {
 .button {
 width: 100% !important;
 }
@@ -27,7 +27,8 @@ width: 100% !important;
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-{{ $header ?? '' }}
+<?php echo e($header ?? ''); ?>
+
 
 <!-- Email Body -->
 <tr>
@@ -36,19 +37,23 @@ width: 100% !important;
 <!-- Body content -->
 <tr>
 <td class="content-cell">
-{{ Illuminate\Mail\Markdown::parse($slot) }}
+<?php echo e(Illuminate\Mail\Markdown::parse($slot)); ?>
 
-{{ $subcopy ?? '' }}
+
+<?php echo e($subcopy ?? ''); ?>
+
 </td>
 </tr>
 </table>
 </td>
 </tr>
 
-{{ $footer ?? '' }}
+<?php echo e($footer ?? ''); ?>
+
 </table>
 </td>
 </tr>
 </table>
 </body>
 </html>
+<?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/layout.blade.php ENDPATH**/ ?>
