@@ -110,8 +110,6 @@
                     </thead>
                     <tbody>
 
-
-
                         @foreach($Lessonss as $lesson)
 
                         <tr>

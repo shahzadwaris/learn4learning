@@ -60,10 +60,32 @@
             display: inline-block;
             margin-right: 20px;
         }
-
+        .dropdown-content > form {
+            margin-bottom: 0px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .btn-outline-primary{
+            color: #000;
+            background-color: transparent;
+            background-image: none;
+            cursor: pointer;
+            border-color: #ffc10e;
+        }
+        .btn-outline-primary:hover{
+            cursor: pointer;
+            color: #ffc10e;
+            background-color: transparent;
+            background-image: none;
+            border-color: #ffc10e;
+        }
         .dropdown-content {
+            cursor: pointer;
             display: none;
+            padding: 17px 6px;
             position: absolute;
+            right: 0px;
+            /*top: 20px;*/
             border: 1px solid #ffc10e;
             background-color: white;
             min-width: 120px;
@@ -77,6 +99,12 @@
 
         .error {
             color: red;
+        }
+        @media (max-width: 500px) {
+            .footer-link ul li {
+                line-height: 35px;
+                text-align: left;
+            }
         }
     </style>
     <?php echo $__env->yieldContent('css'); ?>
@@ -349,7 +377,7 @@
 
     <!--====== FOOTER PART START ======-->
 
-    <footer id="footer-part">
+    <footer id="footer-part customFooter">
         <div class="footer-top pt-40 pb-70">
             <div class="container">
                 <div class="row">
@@ -492,4 +520,5 @@
         </script>
 </body>
 
-</html><?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/layouts/master.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/layouts/master.blade.php ENDPATH**/ ?>

@@ -93,7 +93,7 @@ class TeacherController extends Controller
 
     public function teacherHome()
     {
-        // dd(1234);
+        dd(1234);
         $auth                 =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('homework')
             ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
@@ -191,6 +191,7 @@ class TeacherController extends Controller
 
     public function teacherHomeWork()
     {
+        // dd(123);
         $auth    =Auth::user()->id;
         $Lessonss=DB::table('lessons')->where('lessons.user_id', $auth)
             ->join('subjects', 'subjects.id', 'lessons.subject_id')

@@ -125,12 +125,12 @@
                         <optgroup label="Picnic">
                         <?php 
                                                          if(@$Title){
-                                                        $aray1=[];
-                                                        $arraytypes=[];  ?>
-                                                        <?php foreach (@$Title as $key => $Title) {
-                                                        if(count($aray1)==0){
-                                                        array_push($aray1,$Title);
-                                                        array_push($arraytypes,$Title->title);
+                                                            $aray1=[];
+                                                            $arraytypes=[];  ?>
+                          <?php foreach (@$Title as $key => $Title) {
+                                        if(count($aray1)==0){
+                                              array_push($aray1,$Title);
+                                              array_push($arraytypes,$Title->title);
 
                                                         }else{
                                                             if(!in_array($Title->title, $arraytypes)){

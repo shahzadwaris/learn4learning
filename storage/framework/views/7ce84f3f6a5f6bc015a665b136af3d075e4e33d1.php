@@ -33,7 +33,7 @@
     @media (max-width: 575px) {
         .main-cont .row {
             margin-right: 0px !important;
-            box-shadow: 0px 0px 10px -3px black;
+            box-shadow: 0px 0px 0px -3px black !important;
             background: white;
             margin-top: 0px !important;
             position: relative;
@@ -62,8 +62,6 @@
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
                         <h1 data-animation="fadeInUp" data-delay="1s">LOGIN</h1>
-                        <p data-animation="fadeInUp" data-delay="1.5s">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                             consequat.</p>
                     </div>
@@ -74,7 +72,7 @@
 </section>
 
 <section class="main-section">
-    <div class="container customContainer" style="width: 82%;">
+    <div class="container customContainer">
         <div class="main-cont">
             <div class="row">
                 <div class="col-lg-6 d-flex pt-4 justify-content-center" style="display: flex; align-items: center;">

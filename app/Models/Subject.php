@@ -23,7 +23,7 @@ class Subject extends Model
     }
 
 
-    public static function getSubject()
+    public static function getSubject($id)
     {
     	return \DB::table('subjects')
                                ->join('homework', 'subjects.id', '=', 'homework.Sub_id')
@@ -34,7 +34,7 @@ class Subject extends Model
                                     $join->on('lessons.id', '=', 'student_lessons.lesson_id');
                                 })
 
-                                ->where('student_lessons.user_id', $student_iid)
+                                ->where('student_lessons.user_id', $id)
 
                                ->join('users', 'users.id', '=', 'homework.teacher_id')
 
@@ -126,6 +126,7 @@ class Subject extends Model
 
     public static function getHomeWork()
     {
+        // return Subject::with('homework','lessons'.'student_lessons')
     	return \DB::table('subjects')
                                ->join('homework', 'subjects.id', '=', 'homework.Sub_id')
                                 ->join('lessons', 'subjects.id', '=', 'lessons.subject_id')

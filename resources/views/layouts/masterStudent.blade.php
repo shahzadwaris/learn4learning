@@ -50,6 +50,14 @@
         crossorigin="anonymous" />
     @yield('css')
     @stack('css')
+    <style>
+         @media (max-width: 500px) {
+            .footer-link ul li {
+                line-height: 35px;
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 
 <body>

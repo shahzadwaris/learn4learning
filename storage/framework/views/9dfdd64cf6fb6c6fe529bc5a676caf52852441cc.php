@@ -208,15 +208,13 @@
     <div class="row p-0 m-0">
         <div class="col-2"></div>
         <div class="col-8">
-            <?php $__currentLoopData = ['danger', 'warning', 'success', 'info']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $msg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php if(Session::has('alert-' . $msg)): ?>
+            <?php if(Session::has('success-alert-message')): ?>
             <div class="flash-message mt-5" id='success-alert'>
 
-                <p class="alert alert-<?php echo e($msg); ?>"><?php echo e(Session::get('alert-' . $msg)); ?> <a href="#" class="close"
+                <p class="alert alert-success"><?php echo e(Session::get('success-alert-message')); ?> <a href="#" class="close"
                         data-dismiss="alert" aria-label="close">&times;</a></p>
             </div>
             <?php endif; ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <div class="col-2"></div>
     </div>
@@ -368,4 +366,5 @@
 
 
 
-</html><?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/layouts/masterStudent.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/layouts/masterStudent.blade.php ENDPATH**/ ?>

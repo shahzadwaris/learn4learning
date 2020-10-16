@@ -62,20 +62,22 @@ class StudentLesson extends Model
                     ->get();
     }
 
-    public static function getTitle()
+    public static function getTitle($id)
     {
-        return \DB::table('student_lessons')
-                                ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
-                                ->where('student_lessons.user_id', $student_iid)->select('lessons.title', 'lessons.id')
-                                ->get();
+        return self::with('lesson')->where('user_id','=',$id)->get();
+        // return \DB::table('student_lessons')
+        //                         ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
+        //                         ->where('student_lessons.user_id', $id)->select('lessons.title', 'lessons.id')
+        //                         ->get();
     }
 
-    public static function getData()
+    public static function getData($id)
     {
-        return \DB::table('student_lessons')
-                                ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
-                                ->where('student_lessons.user_id', $student_iid)->select('lessons.date', 'lessons.id')
-                                ->get();
+        return self::with('lesson')->where('user_id','=',$id)->get();
+        // return \DB::table('student_lessons')
+        //                         ->join('lessons', 'lessons.id', 'student_lessons.lesson_id')
+        //                         ->where('student_lessons.user_id', $id)->select('lessons.date', 'lessons.id')
+        //                         ->get();
 
     }
 

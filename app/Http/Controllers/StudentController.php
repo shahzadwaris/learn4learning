@@ -266,11 +266,11 @@ class StudentController extends Controller
     public function studetnsHomeWorks()
     {
         $student_iid=Auth::user()->id;
-        $teacherhomeworkdetail=Subject::getSubject();
-        $Title=StudentLesson::getTitle();
-        $Date=StudentLesson::getData();
-        $subjects=Subject::getSubjectData();
+        $teacherhomeworkdetail=Subject::getSubject($student_iid);
 
+        $Title=StudentLesson::getTitle($student_iid);
+        $Date=StudentLesson::getData($student_iid);
+        $subjects=Subject::getSubjectData($student_iid);
         return view('frontend.pages.students.student-homework')
     ->with(['teacherhomeworkdetail'=> $teacherhomeworkdetail,
         'Title'                    => $Title, 'Date'=>$Date,  'subjects'=>$subjects, ]);
@@ -305,7 +305,7 @@ class StudentController extends Controller
         $student_iid=Auth::user()->id;
 
         $teacherhomeworkdetaild=Subject::getHomeWork();
-        // dd($teacherhomeworkdetaild);
+        dd($teacherhomeworkdetaild);
         return view('frontend.pages.students.studentSubjectWiseDocs')->with(['teacherhomeworkdetaild'=>$teacherhomeworkdetaild, 'student_iid'=>$student_iid]);
     }
 

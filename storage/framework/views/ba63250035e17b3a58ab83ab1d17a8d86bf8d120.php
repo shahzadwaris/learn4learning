@@ -2,6 +2,9 @@
 <?php $__env->startSection('title','SignUp'); ?>
 <?php $__env->startSection('content'); ?>
 <style>
+    #customFooter{
+        
+    }
     .gray_font {
         color: #737171 !important;
         letter-spacing: 2px;
@@ -33,7 +36,7 @@
     @media (max-width: 575px) {
         .main-cont .row {
             margin-right: 0px !important;
-            box-shadow: 0px 0px 10px -3px black;
+            box-shadow: 0px 0px 0px -3px black !important;
             background: white;
             margin-top: 154px !important;
             position: relative;
@@ -57,7 +60,7 @@
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
-        <div class="container">
+        <div class="container customContainer">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">

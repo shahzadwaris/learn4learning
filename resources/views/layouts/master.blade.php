@@ -100,6 +100,12 @@
         .error {
             color: red;
         }
+        @media (max-width: 500px) {
+            .footer-link ul li {
+                line-height: 35px;
+                text-align: left;
+            }
+        }
     </style>
     @yield('css')
     @stack('css')
@@ -369,7 +375,7 @@
 
     <!--====== FOOTER PART START ======-->
 
-    <footer id="footer-part">
+    <footer id="footer-part customFooter">
         <div class="footer-top pt-40 pb-70">
             <div class="container">
                 <div class="row">
