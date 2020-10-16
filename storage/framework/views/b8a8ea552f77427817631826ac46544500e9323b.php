@@ -80,7 +80,7 @@
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
                         <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-3">
+                            <div class="col-3 customStyleResponsive">
                                 <!-- Card -->
                                 <div class="card">
                                     <!-- Card image -->

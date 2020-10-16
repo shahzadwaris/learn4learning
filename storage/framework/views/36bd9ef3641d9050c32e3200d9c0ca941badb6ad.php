@@ -1,12 +1,9 @@
-
-
-@extends('layouts.master')
-@section('title','SignUp')
-@section('content')
+<?php $__env->startSection('title','SignUp'); ?>
+<?php $__env->startSection('content'); ?>
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/register2.css')}}">
-    <link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/register2.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150">
@@ -34,32 +31,32 @@
 
                             <div style="display:flex;width:100%;">
 
-                                <form  method="post" action="{{route ('editteacherprofile')}}" id="form">
-                                    @csrf
+                                <form  method="post" action="<?php echo e(route ('editteacherprofile')); ?>" id="form">
+                                    <?php echo csrf_field(); ?>
                                     <div style="width:100%;">
                                         <h3 class="level-heading" >Edit Profile</h3>
                                     </div>
 
 
-                                    @if(count($errors))
+                                    <?php if(count($errors)): ?>
                                         <div class="form-group">
                                             <div class="alert alert-danger">
                                                 <ul>
-                                                    @foreach($errors->all() as $error)
-                                                        <li>{{$error}}</li>
-                                                    @endforeach
+                                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <li><?php echo e($error); ?></li>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </ul>
                                             </div>
                                         </div>
-                                    @endif
+                                    <?php endif; ?>
                                     <div style="width:100%;">
-                                        <input name="fname" autofocus placeholder="First Name" value="{{$getrecord[0]->fname}}" required="true">
+                                        <input name="fname" autofocus placeholder="First Name" value="<?php echo e($getrecord[0]->fname); ?>" required="true">
                                     </div>
                                     <div style="width:100%;">
-                                        <input name="lname" autofocus placeholder="Last Name" value="{{$getrecord[0]->lname}}" required="true">
+                                        <input name="lname" autofocus placeholder="Last Name" value="<?php echo e($getrecord[0]->lname); ?>" required="true">
                                     </div>
                                     <div style="width:100%;">
-                                        <input type = "email" name="email" placeholder="Email Address" value="{{$getrecord[0]->email}}" required="true">
+                                        <input type = "email" name="email" placeholder="Email Address" value="<?php echo e($getrecord[0]->email); ?>" required="true">
 
                                     </div>
 
@@ -86,7 +83,7 @@
                     </div>
                     <div class="col-md-6 setImagePadEdit">
                         <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                            <img src="{{asset('asset/images/students/registration-banner.png')}}">
+                            <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                         </div>
                     </div>
                 </div>
@@ -105,9 +102,9 @@
             });
         });
     </script>
-@endsection
-@section('js')
-    {{----}}
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+    
     <script>
         $(document).ready(function(){
             $("#submit").on("click", function(){
@@ -120,7 +117,9 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/frontend/pages/editTeacherProfile.blade.php ENDPATH**/ ?>

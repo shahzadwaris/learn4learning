@@ -81,7 +81,7 @@
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
                         @foreach ($schedules as $schedule)
-                            <div class="col-3">
+                            <div class="col-3 customStyleResponsive">
                                 <!-- Card -->
                                 <div class="card">
                                     <!-- Card image -->

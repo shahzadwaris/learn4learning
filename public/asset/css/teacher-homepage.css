@@ -13,9 +13,9 @@
 }
 
 .main-section {
-    
+
 padding-top: 80px;
-    
+
 padding-bottom: 80px;
 }
 
@@ -73,9 +73,9 @@ button.btn.btn-primary.active{
 }
 
 .level-heading-courses{
-    
+
 text-align: center;
-    
+
 color: #036893;
 }
 
@@ -85,12 +85,12 @@ display: flex;
 }
 
 .main-slider-btn2{
-    
+
 background-color: #ffc10e;
 }
 
 #course-part{
-    
+
 padding-bottom: 26px;
 }
 
@@ -107,9 +107,9 @@ padding-bottom: 26px;
 }
 
 .schedules{
-    
+
 padding-top: 70px;
-    
+
 padding-bottom: 70px;
 }
 
@@ -185,12 +185,12 @@ padding-bottom: 39px;
 }
 
 #std-dashboard-left{
-    
+
 background-color: #036893;
 }
 
 #stud-profile-pic{
-    
+
 border-radius: 110px;
 }
 
@@ -208,16 +208,16 @@ text-align: left;
 }
 
 .stud-date{
-    
+
 color: white;
-    
+
 text-align: left;
 }
 
 .stu-fav-subj-link{
-    
+
 color: white;
-    
+
 text-decoration: underline;
 }
 
@@ -227,7 +227,7 @@ text-decoration: underline;
 }
 
 .stu-fav-subj-list{
-    
+
 color: white;
 }
 
@@ -243,18 +243,18 @@ color: white;
     margin-bottom: initial;
 }
 
-#std-dashboard-right{    
-    margin-top: auto;    
+#std-dashboard-right{
+    margin-top: auto;
     margin-bottom: auto;
 }
 
 .dashboard-section{margin-top: -217px;}
 
-.points-para{    
-    color: white;    
-    font-weight: 700;    
-    font-size: 21px;    
-    letter-spacing: 2px;    
+.points-para{
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 2px;
     padding-top: 35px;
 }
 
@@ -268,30 +268,30 @@ padding-bottom: 30px;
 }
 
 #schedule-div{
-    
+
 background-color: #efefef;
-    
+
 padding-top: 30px;
-    
+
 padding-bottom: 30px;
 }
 
 
 #grades-div{
-    
+
 background-color: #efefef;
-    
+
 padding-top: 30px;
-    
+
 padding-bottom: 30px;
 }
 
 #homework-div{
-    
+
 background-color: #facd5f;
-    
+
 padding-top: 30px;
-    
+
 padding-bottom: 30px;
 }
 
@@ -315,9 +315,9 @@ padding-bottom: 30px;
 }
 
 .teacher-measages{
-    
+
 font-weight: 600;
-    
+
 color: white;
 }
 
@@ -346,8 +346,8 @@ color: white;
 }
 
 .teach-shed-card-content{
-    font-weight: 600;    
-    padding-top: 10px;    
+    font-weight: 600;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 
@@ -376,7 +376,7 @@ color: white;
 }
 
 .teacher-homework-dash-div{
-    
+
 }
 
 .teacher-homework-dash-div hr{
@@ -392,7 +392,7 @@ color: white;
     .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
     .MultiCarousel .leftLst { left:0; }
     .MultiCarousel .rightLst { right:0; }
-    
+
         .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
 
 button.btn.btn-secondary {
@@ -420,17 +420,17 @@ button.btn.btn-secondary {
 }
 
 .exclamation-para{
-    
+
 font-weight: 800;
-    
+
 font-size: 15px;
-    
+
 color: red;
-    
+
 background-color: white;
-    
+
 padding: 8px 15px 5px 12px;
-    
+
 margin-right: -9px;
 }
 
@@ -563,4 +563,35 @@ section.dashboard-section {}
 
 section.dashboard-section .container {
     width: 85%;
+}
+
+@media (max-width: 575px) {
+    section.dashboard-section .container {
+        width: 100%;
+        padding: 0px;
+    }
+    .teacher-home-schedule-hr {
+        border-top: 1px solid #006796;
+        margin-top: -22px;
+        width: 100%;
+    }
+    .footer-link ul li {
+        line-height: 35px;
+        text-align: left;
+    }
+    .dashboard-section{margin-top: 0px !important;}
+    .std-welcome-msg {
+        color: #020101;
+        line-height: 40px;
+        text-align: center;
+        padding-bottom: 23px;
+        letter-spacing: 2px;
+        margin-left: 0px !important;
+    }
+    .customStyleResponsive{
+        width: 100%;
+        flex:100%;
+        max-width: 100%;
+        margin-bottom: 5px;
+    }
 }

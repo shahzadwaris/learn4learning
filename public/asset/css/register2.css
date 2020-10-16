@@ -46,12 +46,12 @@
   margin-right: 0px !important;
   box-shadow: 0px 0px 10px -3px black;
   background: white;
-  margin-top: -283px;
+  margin-top: -175px;
   position: relative;
   margin-left: auto;
 }
 .submit-button{
-  text-align: end;    
+  text-align: end;
   padding-top: 57px;
 }
 
@@ -105,7 +105,7 @@ form > p:last-of-type > a{
   padding: 10px 25px;
   background:  silver;
   border-radius:  28px;
-  font-size: 12px; 
+  font-size: 12px;
 }
 
 .term{
@@ -169,4 +169,65 @@ button.btn.btn-primary.active{
     padding: 85px!important;
     padding-left: 125px!important;
   }
+}
+.setImagePadEdit{
+    padding: 0px;
+}
+.customContainer {
+    width: 80%;
+}
+form > div {
+    float: left;
+    margin-bottom: 54px;
+}
+@media (max-width: 768px) {
+    .setImagePadEdit{
+        display: none;
+        padding: 0px;
+    }
+    .customSetW{
+        flex:100%;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media (max-width: 575px) {
+
+    .customContainer {
+        width: 100% ;
+        padding: 0px !important;
+    }
+    #alreasy-account {
+        text-decoration: underline;
+        color: #737171 !important;
+         letter-spacing: 0px;
+    }
+    form {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 25px;
+        border-radius: 5px;
+        position: relative;
+        font-family: 'Libre Franklin', sans-serif;
+    }
+    form > div {
+        float: left;
+        margin-bottom: 54px;
+    }
+    .main-cont .row {
+        margin-right: 0px !important;
+        box-shadow: 0px 0px 10px -3px black;
+        background: white;
+        margin-top: 0px !important;
+        position: relative;
+        margin-left: auto;
+    }
+    .setImagePadEdit{
+        display: none;
+        padding: 0px;
+    }
+    .main-section {
+        position: relative;
+        bottom: 0px !important;
+    }
 }
