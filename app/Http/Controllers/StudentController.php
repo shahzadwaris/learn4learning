@@ -28,7 +28,6 @@ class StudentController extends Controller
 
     public function saveNewSubject(Request $request)
     {
-        // dd($request->all());
         $user_id=$request['user_id'];
         $count  = Subject::where('name', $request->subject)->where('level_id', $request->level_id)->count();
         if ($count == 0) {
@@ -74,7 +73,6 @@ class StudentController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // dd($request->all());
         $user = User::where('id', $request['user_id'])->first();
         if ($request->hasFile('thumbnail')) {
             $image     = $request->file('thumbnail');
@@ -105,7 +103,6 @@ class StudentController extends Controller
 
     public function getProfile(Request $request)
     {
-        // dd($request->all());
         if ($request->hasFile('thumbnail')) {
             $image     = $request->file('thumbnail');
             $imageName = time() . '.' . $image->extension();
@@ -187,13 +184,13 @@ class StudentController extends Controller
         $studentLessons           = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
         $studentHomeWork          = Homework::whereIn('Sub_id', $studentLessons)->get();
         $studentHomeWorkSubmitted = $studentHomeWork
-                                    ->where('user_id', '!=', null)
-                                    ->pluck('user_id')
-                                    ->toArray();
+            ->where('user_id', '!=', null)
+            ->pluck('user_id')
+            ->toArray();
         $studentHomeWork          = $studentHomeWork->pluck('Sub_id')->toArray();
         $studentHomeWorkSubjects  = Lesson::with('teacher', 'subject')
-                                            ->whereIn('subject_id', $studentHomeWork)
-                                            ->get();
+            ->whereIn('subject_id', $studentHomeWork)
+            ->get();
         $countlessons             = count($studentLessons);
         return view('frontend.pages.students.student-home')->with(
             [
@@ -230,15 +227,14 @@ class StudentController extends Controller
 
     public function student_schedule()
     {
-        // dd(123);
         $student     = Auth::user();
         $subjects    = $student->helpSubjects;
         $subjects    = explode(',', $subjects);
         $myLessons   = StudentLesson::with('lesson.subject')->where('user_id', $student->id)
-                                    ->whereHas('lesson', function ($q) {
-                                        $q->where('date', '>=', date('Y-d-m'));
-                                    })
-                                    ->get();
+            ->whereHas('lesson', function ($q) {
+                $q->where('date', '>=', date('Y-d-m'));
+            })
+            ->get();
         $allSubjects = Subject::all();
         $levels      = levels::all();
         $subjects    = Subject::whereIn('name', $subjects)->get()->pluck('id')->toArray();
@@ -248,9 +244,7 @@ class StudentController extends Controller
 
     public function My_subjects()
     {
-        // dd(123);
         $subject=StudentLesson::getSubject();
-        // dd($subject);
         $Mysub=StudentLesson::getLesson();
         $Teacher=StudentLesson::getTeacher();
         $level=Levels::getLevel();
@@ -272,32 +266,28 @@ class StudentController extends Controller
         $Date=StudentLesson::getData($student_iid);
         $subjects=Subject::getSubjectData($student_iid);
         return view('frontend.pages.students.student-homework')
-    ->with(['teacherhomeworkdetail'=> $teacherhomeworkdetail,
-        'Title'                    => $Title, 'Date'=>$Date,  'subjects'=>$subjects, ]);
+            ->with(['teacherhomeworkdetail'=> $teacherhomeworkdetail,
+                'Title'                    => $Title, 'Date'=>$Date,  'subjects'=>$subjects, ]);
     }
 
     public function SearchStudentHomeworks(Request $request)
     {
-        // dd($request->all());
         $id          =Auth::user()->id;
         $teacherhomeworkdetail=Subject::getSearchStudent($id,$request);
         $Title=StudentLesson::getTitleStudent($id);
-        // dd($Title);
         $Date=StudentLesson::getDataSearch($id);
-        // dd($Date);
         $subjects    =Subject::getDataSearchStudent($id);
-        // dd($subjects);
         $countschedle=count($teacherhomeworkdetail);
         if ($countschedle < 1) {
             return redirect()->back();
         }
         return view('frontend.pages.students.student-homework')
-                ->with([
-                    'teacherhomeworkdetail'    => $teacherhomeworkdetail,
-                    'Title'                    => $Title,
-                    'Date'                     => $Date,
-                    'subjects'                 => $subjects,
-                ]);
+            ->with([
+                'teacherhomeworkdetail'    => $teacherhomeworkdetail,
+                'Title'                    => $Title,
+                'Date'                     => $Date,
+                'subjects'                 => $subjects,
+            ]);
     }
 
     public function viewHomework($id)
@@ -354,18 +344,17 @@ class StudentController extends Controller
 
     public function viewMessages($id)
     {
-        // dd(123);
         $student_id= Auth::user()->id;
         $role      = Messages::getMessages();
         $DBB       = Messages::getMessagesData();
         $teacher  = Messages::getMessagesTeacher();
         return view('frontend.pages.students.Messages')
-           ->with(['teacher_id'=> $id,
-               'student_id'    => $student_id,
-               'DBB'           => $DBB,
-               'role'          => $role,
-               'teacher'       => $teacher,
-           ]);
+            ->with(['teacher_id'=> $id,
+                'student_id'    => $student_id,
+                'DBB'           => $DBB,
+                'role'          => $role,
+                'teacher'       => $teacher,
+            ]);
     }
 
     public function getStudentMessages()
