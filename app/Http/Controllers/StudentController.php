@@ -163,7 +163,7 @@ class StudentController extends Controller
         //                 ->join('student_lessons', 'lessons.id', 'student_lessons.lesson_id')
         //                 ->where('student_lessons.user_id', $user->id)
         //                 ->select('lessons.id as lessonsid', 'lessons.*', 'subjects.id as subjects_id', 'subjects.name as sub_name', 'levels.id as levelid', 'levels.name as level_name')
-        //                 ->get();    
+        //                 ->get();
         // $getdata = DB::table('users')
         //                 ->join('student_lessons', 'users.id', 'student_lessons.techer_id')
         //                 ->select('student_lessons.*', 'users.*')
@@ -183,7 +183,7 @@ class StudentController extends Controller
         $sepbooking = Lesson::getSepBooking($id);
         $getdata = User::getDataUser($id);
         $MyAchivment = Achivnments::getAchivement($id);
-        $getuserimg = User::getUser(); 
+        $getuserimg = User::getUser();
         $studentLessons           = StudentLesson::where('user_id', $user->id)->get()->pluck('subjects_id')->toArray();
         $studentHomeWork          = Homework::whereIn('Sub_id', $studentLessons)->get();
         $studentHomeWorkSubmitted = $studentHomeWork
@@ -268,7 +268,6 @@ class StudentController extends Controller
     {
         $student_iid=Auth::user()->id;
         $teacherhomeworkdetail=Subject::getSubject($student_iid);
-
         $Title=StudentLesson::getTitle($student_iid);
         $Date=StudentLesson::getData($student_iid);
         $subjects=Subject::getSubjectData($student_iid);
@@ -342,12 +341,10 @@ class StudentController extends Controller
 
     public function viewOurMessages()
     {
-        // dd('teacher');
         $student_id        =Auth::user()->id;
-        $Students          =StudentLesson::getStudentLesson();
-        $Subjects=StudentLesson::getLessonData();
-        $Level=StudentLesson::getStudentLevel();
-
+        $Students          =StudentLesson::getStudentLesson($student_id);
+        $Subjects=StudentLesson::getLessonData($student_id);
+        $Level= levels::all();
         $data = Messages::where('to_user_id', '=', $student_id)->with('from_user')
             ->orderBy('id', 'DESC')->limit(5)->get();
         return view('frontend.pages.students.myMessages')->with(

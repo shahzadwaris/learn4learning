@@ -99,7 +99,7 @@ class StudentLesson extends Model
                                     ->get();
     }
 
-    public static function getStudentLesson()
+    public static function getStudentLesson($id)
     {
         return \DB::table('student_lessons')
             ->join('users', 'student_lessons.user_id', '=', 'users.id')
@@ -110,13 +110,13 @@ class StudentLesson extends Model
             ->join('subjects', function ($join) {
                 $join->on('lessons.subject_id', '=', 'subjects.id');
             })
-            ->where('student_lessons.user_id', $student_id)
+            ->where('student_lessons.user_id', $id)
             ->select('users.*')
             ->orderBy('users.id', 'DESC')
             ->get();
     }
 
-    public static function getLessonData()
+    public static function getLessonData($id)
     {
         return \DB::table('student_lessons')
             ->join('users', 'student_lessons.user_id', '=', 'users.id')
@@ -127,7 +127,7 @@ class StudentLesson extends Model
             ->join('subjects', function ($join) {
                 $join->on('lessons.subject_id', '=', 'subjects.id');
             })
-            ->where('student_lessons.user_id', $student_id)
+            ->where('student_lessons.user_id', $id)
             ->select('subjects.name', 'subjects.id')
             ->orderBy('users.id', 'DESC')
             ->get();

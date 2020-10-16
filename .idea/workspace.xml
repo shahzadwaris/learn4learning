@@ -21,18 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9a6bd8-ddb1-4a41-8681-5c1f5fb30122" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/StudentLesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StudentLesson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Subject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subject.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/asset/css/register2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/css/register2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/asset/css/teacher-homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset/css/teacher-homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/editTeacherProfile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/editTeacherProfile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/teachers/teacher-homepage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/teachersmaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/UFd8o6DBKm2nhaSRlKY0FtDf8vNDCJfoVr7AZIjx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/t1WwDqwqi4vxNk81NSZfDxzTXKWcASDxrBFFYB6y" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/4c5968027d8add3be246de319aa489932ba810a9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4c5968027d8add3be246de319aa489932ba810a9.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5ce01aa7d4f52ad60f9c226047992436832374f6.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/88eb0a5f512e73dd1af5b1a3725b11ff2bf67905.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/b8a8ea552f77427817631826ac46544500e9323b.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b8a8ea552f77427817631826ac46544500e9323b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/students/student-homework.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/students/student-homework.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/69655c9e5becd341f09144a26b65604711518b1f.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/69655c9e5becd341f09144a26b65604711518b1f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bf8a205dc304ceb0f3135f8aef66b6b1c2dae6e6.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +236,7 @@
       <workItem from="1602747609462" duration="691000" />
       <workItem from="1602749585732" duration="21000" />
       <workItem from="1602838739819" duration="1094000" />
+      <workItem from="1602854371520" duration="1179000" />
     </task>
     <servers />
   </component>
@@ -271,9 +268,9 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="497" y="208" key="run.anything.popup/67.27.1533.873@67.27.1533.873" timestamp="1602141527150" />
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602839283056">
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1602855344063">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
-    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602839283056" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1602855344063" />
   </component>
 </project>

@@ -1,16 +1,15 @@
-@extends('layouts.masterStudent')
-@section('title','Student Homework')
-@section('content')
+<?php $__env->startSection('title','Student Homework'); ?>
+<?php $__env->startSection('content'); ?>
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="{{asset('asset/css/student-homework.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homework.css')); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 
 
     <section id="slider-part" class="slider-active">
-        <div class="single-slider slider-4 bg_cover pt-150" style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/student-lesson-search/banner.jpg')}}">
+        <div class="single-slider slider-4 bg_cover pt-150" style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
             <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9">
@@ -45,8 +44,8 @@
 <section class="admission-row pb-120" id="std-homework-find-lesson-sec">
     <div class="container">
         <div class="row justify-content-center">
-            <form class="search_form" action="{{route('SearchStudentHomeworks')}}" method="post">
-            @csrf
+            <form class="search_form" action="<?php echo e(route('SearchStudentHomeworks')); ?>" method="post">
+            <?php echo csrf_field(); ?>
                 <div class="row">
                   <div class="col-md-3" style="padding: 18px;">
                   <select class="selectpicker" name="date_id">
@@ -75,9 +74,9 @@
 
                                 <option value="">Find Date</option>
 
-                                @foreach($aray1 as $Date)
-                                   <option value="{{$Date->id}}">{{$Date->date}}</option>
-                                   @endforeach
+                                <?php $__currentLoopData = $aray1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Date): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                   <option value="<?php echo e($Date->id); ?>"><?php echo e($Date->date); ?></option>
+                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                    <?php      }       ?>
                         </optgroup>
                       </select>
@@ -111,9 +110,9 @@
 
                                 <option value="">Find Subjects</option>
 
-                                @foreach($aray1 as $subjects)
-                                   <option value="{{$subjects->id}}">{{$subjects->name}}</option>
-                                   @endforeach
+                                <?php $__currentLoopData = $aray1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subjects): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                   <option value="<?php echo e($subjects->id); ?>"><?php echo e($subjects->name); ?></option>
+                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                    <?php      }       ?>
                         </optgroup>
                     </select>
@@ -147,9 +146,9 @@
 
                                 <option value="">Find Title</option>
 
-                                @foreach($aray1 as $Title)
-                                   <option value="{{$Title->id}}">{{$Title->title}}</option>
-                                   @endforeach
+                                <?php $__currentLoopData = $aray1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Title): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                   <option value="<?php echo e($Title->id); ?>"><?php echo e($Title->title); ?></option>
+                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                    <?php      }       ?>
                       </select>
                   </div>
@@ -181,22 +180,22 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($teacherhomeworkdetail as $teacherhomeworkdetail)
+                        <?php $__currentLoopData = $teacherhomeworkdetail; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teacherhomeworkdetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                          <th scope="row">{{$teacherhomeworkdetail->name}}</th>
-                          <td>{{$teacherhomeworkdetail->getTitle($teacherhomeworkdetail->id)}}</td>
-                          <td>{{$teacherhomeworkdetail->getDate($teacherhomeworkdetail->id)}}</td>
+                          <th scope="row"><?php echo e($teacherhomeworkdetail->name); ?></th>
+                          <td><?php echo e($teacherhomeworkdetail->getTitle($teacherhomeworkdetail->id)); ?></td>
+                          <td><?php echo e($teacherhomeworkdetail->getDate($teacherhomeworkdetail->id)); ?></td>
 
 
 
                           <td>
-                           <a href="{{ url('/view/{id}', [$teacherhomeworkdetail->subject_iid])}}">
+                           <a href="<?php echo e(url('/view/{id}', [$teacherhomeworkdetail->subject_iid])); ?>">
                            <button type="button" class="btn btn-indigo btn-sm m-0" id="upload-work-btn">View HOMEWORK</button>     </a></td>
 
 
 
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -213,4 +212,6 @@
         </div> <!-- container -->
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.masterStudent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/frontend/pages/students/student-homework.blade.php ENDPATH**/ ?>

@@ -1,13 +1,65 @@
 <?php $__env->startSection('title','SignUp'); ?>
 <?php $__env->startSection('content'); ?>
+<style>
+    #customFooter{
 
+    }
+    .gray_font {
+        color: #737171 !important;
+        letter-spacing: 2px;
+    }
+
+    .text_gray {
+        color: #737171 !important;
+    }
+    #submit-btn{
+        justify-content: flex-end;
+    }
+    .customContainer{
+        width:85%;
+    }
+    ._inputwidth{
+        width: 100% !important;
+    }
+    .customForm{
+        width: 100%;
+    }
+
+
+    @media (max-width: 991px) {
+        #submit-btn {
+            justify-content: flex-end;
+            display: none !important;
+        }
+    }
+    @media (max-width: 575px) {
+        .main-cont .row {
+            margin-right: 0px !important;
+            box-shadow: 0px 0px 0px -3px black !important;
+            background: white;
+            margin-top: 154px !important;
+            position: relative;
+            margin-left: auto;
+        }
+        .customContainer{
+            width:100%;
+            padding-left: 0px !important;
+            padding-right: 0px !important
+        }
+        .customForm{
+            width: 100%;
+                padding-left: 5px;
+                 padding-right: 5px;
+        }
+    }
+</style>
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/register2.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
-        <div class="container">
+        <div class="container customContainer">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9">
                     <div class="slider-cont slider-cont-4 text-center">
@@ -28,12 +80,12 @@
     <div class="container" style="width:85%">
         <div class="main-cont">
             <div class="row">
-                <div class="col-md-6 d-flex align-items-center justify-content-center p-0">
+                <div class="col-md-6 d-flex align-items-center justify-content-center p-0 customWidthR">
                     <div class="form-parts">
 
                         <div style="display:flex;width:100%;">
 
-                            <form method="post" action="<?php echo e(url('/signup')); ?>" id="form" class="_regForm">
+                            <form method="post" action="<?php echo e(url('/signup')); ?>" id="form" class="_regForm customForm    ">
                                 <?php echo csrf_field(); ?>
                                 <div style="width:100%;" class="m-0">
                                     <h3 class="level-heading pb-2">GETTING STARTED</h3>
@@ -71,19 +123,9 @@
                                 <?php endif; ?>
                                 <div style="width:100%;">
                                     <input name="fname" id="fname" autofocus placeholder="First Name" required="true">
-                                    <label class="fname-error error"></label>
-                                    <?php if($errors->has('fname')): ?>
-                                        <div class="text-danger"><?php echo e($errors->first('fname')); ?></div>
-
-                                    <?php endif; ?>
                                 </div>
                                 <div style="width:100%;">
                                     <input name="lname" id="lname" autofocus placeholder="Last Name" required="true">
-                                    <label class="lname-error error"></label>
-                                    <?php if($errors->has('lname')): ?>
-                                        <div class="text-danger"><?php echo e($errors->first('lname')); ?></div>
-
-                                    <?php endif; ?>
                                 </div>
                                 <div style="width:100%;">
                                     <input type="email" name="email" id="email" placeholder="Email Address"
@@ -96,13 +138,8 @@
                                 </div>
 
                                 <div style="width:100%;">
-                                    <input type="password" id="password" min="8" name="password" placeholder="Choose a Password"
+                                    <input type="password" id="password" name="password" placeholder="Choose a Password"
                                         required="true">
-                                    <label class="password-error error"></label>
-                                    <?php if($errors->has('password')): ?>
-                                        <div class="text-danger"><?php echo e($errors->first('password')); ?></div>
-
-                                    <?php endif; ?>
                                 </div>
                                 <div style="width:100%;">
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck2"
@@ -132,7 +169,7 @@
                 </div>
                 <div class="col-md-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img style="    height: 852px;;
+                        <img style="    height: 100%;
     object-fit: cover;" src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
                 </div>

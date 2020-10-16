@@ -3,7 +3,7 @@
 @section('content')
 <style>
     #customFooter{
-        
+
     }
     .gray_font {
         color: #737171 !important;
@@ -81,7 +81,7 @@
     <div class="container" style="width:85%">
         <div class="main-cont">
             <div class="row">
-                <div class="col-md-6 d-flex align-items-center justify-content-center p-0">
+                <div class="col-md-6 d-flex align-items-center justify-content-center p-0 customWidthR">
                     <div class="form-parts">
 
                         <div style="display:flex;width:100%;">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-md-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img style="    height: 852px;;
+                        <img style="    height: 100%;
     object-fit: cover;" src="{{asset('asset/images/students/registration-banner.png')}}">
                     </div>
                 </div>
