@@ -65,6 +65,23 @@ class UserController extends Controller
         return response()->json(['found' => 'n']);
     }
 
+    public function resendEmailAddress(){
+        $user = Auth::user()->email;
+        $senderEmail = 'alimughal5566@gmail.com';
+        $senderName  ='Learn4Learning';
+        $userEmail = $user;
+
+        Mail::send('mail.successRegister', array('url','url'), function ($message) use ($senderEmail, $senderName , $userEmail) {
+            $message->from($senderEmail, $senderName , $userEmail);
+            $message->to($userEmail)
+                ->subject('Verify Email Address');
+        });
+        return collect([
+            'status' => true,
+            'message' => 'email re-send successfully'
+        ]);
+    }
+
     protected function add_user(CreateUserRequest $request)
     {
         $u = User::create([

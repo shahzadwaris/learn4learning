@@ -35,103 +35,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="main-section">
     <form action="<?php echo e(route('teacherSubjects')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <div class="container" style="width:80%">
+        <div class="container customContaine" style="width:80%">
 
             <div class="main-cont">
 
@@ -242,8 +149,51 @@
 </section>
 
 
+<!-- Modal -->
+<?php if(\Auth::user()->email_verified_at == ''): ?>
+    <div id="myModal" style="    display: flex;
+    align-items: center;" class="modal" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+          </div>
+          <div class="modal-footer">
+            <button onclick="resendEmail()" class="btn btn-success">Resend Email</button>
+         </div>
+        </div>
+      </div>
+    </div>
+<?php endif; ?>
 <script>
+    function resendEmail(){
+
+        let url = '<?php echo e(route('resendEmailAddress')); ?>';
+        $.ajax({
+
+            url:url,
+            method:'GET',
+
+            success: function(response) {
+                console.log('response');
+                console.log(response);
+                alert(response.message);
+            },
+
+            error: function(error) {
+                console.log('error');
+                console.log(error);
+            }
+
+        });
+
+    }
+
     function saveSubject(lever_id) {
             var subject = document.getElementById('subject');
             if(subject.value === ''){
@@ -271,6 +221,11 @@
 </script>
 
 <script type="text/javascript">
+    $('#myModal').modal('show');
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     // <img style="height: 40px"src="<?php echo e(asset("asset/images/flag/minus.png")); ?>"/></a>
 $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation

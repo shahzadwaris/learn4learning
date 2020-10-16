@@ -37,14 +37,6 @@
         crossorigin="anonymous" />
     <?php echo $__env->yieldContent('css'); ?>
     <?php echo $__env->yieldPushContent('css'); ?>
-    <style>
-         @media (max-width: 500px) {
-            .footer-link ul li {
-                line-height: 35px;
-                text-align: left;
-            }
-        }
-    </style>
 </head>
 
 <body>

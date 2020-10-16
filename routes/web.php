@@ -9,6 +9,7 @@ Route::get('locale/{locale}', function ($locale) {
 });
 
 Route::get('verifiedSuccess','UserController@verifiedSuccess')->name('verifiedSuccess');
+Route::get('/resend-email','UserController@resendEmailAddress')->name('resendEmailAddress');
 
 Route::get('/email/design', function (){
     return view('mail.successRegister');

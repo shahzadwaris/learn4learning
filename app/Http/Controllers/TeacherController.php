@@ -177,13 +177,13 @@ class TeacherController extends Controller
             $imageDbPath = $this->saveDocs($request->file('thumbnail'), 2);
         }
         Auth::user()->update([
-            'description'       => $request->description,
-            'educational_level' => $request->educational_level,
-            'country'           => $request->country,
-            'profession'        => $request->profession,
-            'experience'        => $request->experience,
-            'fof_session'       => $request->fof_session,
-            'thumbnail'         => $imageDbPath,
+            'description'       => isset($request->description) ? $request->description : Auth::user()->description ,
+            'educational_level' => isset($request->educational_level) ? $request->educational_level : Auth::user()->educational_level,
+            'country'           => isset($request->country) ? $request->country : Auth::user()->country ,
+            'profession'        => isset($request->profession) ? $request->profession : Auth::user()->profession,
+            'experience'        => isset($request->experience) ? $request->experience : Auth::user()->experience,
+            'fof_session'       => isset($request->fof_session) ? $request->fof_session : Auth::user()->fof_session,
+            'thumbnail'         => isset($imageDbPath) ? $imageDbPath : Auth::user()->thumbnail,
         ]);
         return redirect()->route('teacherHome');
     }

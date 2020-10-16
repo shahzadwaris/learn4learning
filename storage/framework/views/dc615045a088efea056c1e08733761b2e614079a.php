@@ -108,8 +108,6 @@
                     </thead>
                     <tbody>
 
-
-
                         <?php $__currentLoopData = $Lessonss; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lesson): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                         <tr>
