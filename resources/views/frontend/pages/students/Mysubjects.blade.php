@@ -2,6 +2,16 @@
 @section('title','Student Homework')
 @section('content')
 
+<style>
+  @media (max-width: 991px)
+    {
+        #std-homework-find-lesson-sec{
+
+            width: 100%;
+        }
+    }
+</style>
+
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/student-homework.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">

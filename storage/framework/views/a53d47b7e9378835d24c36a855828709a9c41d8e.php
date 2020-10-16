@@ -2,6 +2,16 @@
 <?php $__env->startSection('title','Student Homework'); ?>
 <?php $__env->startSection('content'); ?>
 
+<style>
+  @media (max-width: 991px)
+    {
+        #std-homework-find-lesson-sec{
+
+            width: 100%;
+        }
+    }
+</style>
+
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homework.css')); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">

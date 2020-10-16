@@ -3,6 +3,77 @@
 <?php
 $user = Auth::user();
 ?>
+<style>
+    .customFaCheck{
+        font-size: 173px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+    #achieve-div{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+    @media (max-width: 991px) {
+        #achieve-div{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex: 100%;
+            max-width: 100%;
+        }
+        div#std-dashboard-right{
+            flex: 100%;
+            max-width: 100%;
+        }
+        #std-dashboard-left{
+            flex: 100%;
+            max-width: 100%;
+        }
+        #schedule-div{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex: 100%;
+            max-width: 100%;
+        }
+        #grades-div{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex: 100%;
+            max-width: 100%;
+        }
+        #homework-div{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex: 100%;
+            max-width: 100%;
+        }
+
+    }
+    @media (max-width: 575px) {
+        .customFieldSearch{
+            max-width: 100%;
+            margin: 0px !important;
+            width: 100%;
+            flex: 100%;
+            padding: 0px !important;
+        }
+        .customClassMySch{
+            flex:100%;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+</style>    
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
         style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
@@ -14,7 +85,7 @@ $user = Auth::user();
                             Welcome back!</h3>
                         <div class="row">
                             
-                            <div class="col-7 ml-5 pl-5">
+                            <div class="col-7 ml-5 pl-5 customFieldSearch">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="What are you looking for?">
                                     <div class="input-group-append">
@@ -61,7 +132,7 @@ $user = Auth::user();
             <div class="col-6" id="std-dashboard-right">
                 <div class="row">
                     <div class="col-6 p-3" id="achieve-div">
-                        <img src="<?php echo e(asset('asset/images/student-homepage/achievement.png')); ?>" alt="">
+                       <i class="far fa-check-circle customFaCheck"></i>
                         <p>MY<br>ACHIEVEMENTS</p>
                     </div>
                     <div class="col-6 p-3" id="schedule-div">
@@ -127,7 +198,7 @@ $user = Auth::user();
             <div class="col-12 col-md-8 text-center mb-2 mt-2">
                 <div class="row">
                     <?php $__currentLoopData = $Book; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-4">
+                    <div class="col-4 customClassMySch">
                         <!-- Card -->
                         <div class="card">
                             <!-- Card image -->

@@ -2,6 +2,15 @@
 <?php $__env->startSection('title','level'); ?>
 <?php $__env->startSection('content'); ?>
 
+<style>
+    @media (max-width: 991px)
+    {
+        .customSetting{
+
+            width: 100%;
+        }
+    }
+</style>
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
@@ -36,7 +45,6 @@
                     style="color: #006796;font-size: 28px;letter-spacing: 3px;">Your Scheduled Lessons</h5>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col-md-2"></div>
@@ -80,7 +88,7 @@
 </section>
 
 
-<section class="admission-row pb-120">
+<section class="admission-row pb-120 customSetting">
     <div class="container p-5 bg_cover gray-bg">
         <div class="row">
             <div class="col-12 text-center">

@@ -230,6 +230,7 @@ class StudentController extends Controller
 
     public function student_schedule()
     {
+        // dd(123);
         $student     = Auth::user();
         $subjects    = $student->helpSubjects;
         $subjects    = explode(',', $subjects);
