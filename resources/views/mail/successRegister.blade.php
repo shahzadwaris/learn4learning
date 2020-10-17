@@ -36,7 +36,7 @@
     color: #fff;
     border: 0px;
     ">
-        <a  href="{{route('verifiedSuccess')}}" style="     background: #176795; color: #fff;
+        <a  href="{{$url}}" style="     background: #176795; color: #fff;
         border:0px;
         border-radius: 10px;
         padding: 15px;
@@ -46,8 +46,6 @@
     <div style="    width: 100%;
     margin: 0 auto;
     text-align: left;">
-{{--        <h4>If you did not create an account, no further action is required.--}}
-{{--        </h4>--}}
         <p>
             Regards,<br><br>
             Learn4Learning

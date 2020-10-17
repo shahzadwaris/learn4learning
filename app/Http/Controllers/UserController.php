@@ -67,15 +67,14 @@ class UserController extends Controller
 
     public function resendEmailAddress(){
         $user = Auth::user()->email;
-        $senderEmail = 'alimughal5566@gmail.com';
-        $senderName  ='Learn4Learning';
         $userEmail = $user;
-
-        Mail::send('mail.successRegister', array('url','url'), function ($message) use ($senderEmail, $senderName , $userEmail) {
-            $message->from($senderEmail, $senderName , $userEmail);
-            $message->to($userEmail)
-                ->subject('Verify Email Address');
-        });
+        if(Auth::user()->type == 'teacher') {
+            $url = route('verifiedSuccess');
+            $this->sendMail($url,$userEmail);
+        } else {
+            $url = route('verifiedStudentSuccess');
+            $this->sendMail($url,$userEmail);
+        }
         return collect([
             'status' => true,
             'message' => 'email re-send successfully'
@@ -84,6 +83,19 @@ class UserController extends Controller
 
     protected function add_user(CreateUserRequest $request)
     {
+        $u = $this->createUser($request);
+        if ($u->type == 'teacher') {
+            $url = route('verifiedSuccess');
+            $this->sendMail($url,$request->email);
+            return redirect()->route('teacher-verify-email');
+        } else {
+            $url = route('verifiedStudentSuccess');
+            $this->sendMail($url,$request->email);
+            return redirect()->route('student-verify-email');
+        }
+    }
+
+    public function createUser($request){
         $u = User::create([
             'fname'    => $request->fname,
             'lname'    => $request->lname,
@@ -92,29 +104,18 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Auth::login($u);
-//        event(new Registered($u));
+        return $u;
+    }
+
+    public function sendMail($url,$email){
         $senderEmail = 'alimughal5566@gmail.com';
         $senderName  ='Learn4Learning';
-        $userEmail = $request->email;
-
-        Mail::send('mail.successRegister', array('url','url'), function ($message) use ($senderEmail, $senderName , $userEmail) {
+        $userEmail = $email;
+        Mail::send('mail.successRegister', array('url',$url), function ($message) use ($senderEmail, $senderName , $userEmail) {
             $message->from($senderEmail, $senderName , $userEmail);
             $message->to($userEmail)
                 ->subject('Verify Email Address');
         });
-        $data       =['msg'=>' please verify your self', 'userId'=>$u->id];
-        $level      = levels::all();
-        $user_id    = $u->id;
-        session()->flash('success-alert-message-teac', "Please verify your email We've sent you a link.");
-
-        if ($u->type == 'teacher') {
-            $subjects    = Subject::all();
-            $no_of_chunk = $subjects->count() / 2;
-            $subjects    = $subjects->chunk($no_of_chunk);
-            return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
-        } else {
-            return view('auth.students.student-level', compact('level', 'user_id'));
-        }
     }
 
     public function showForm()
@@ -220,8 +221,12 @@ class UserController extends Controller
         User::where('id','=',$user->id)->update([
            'email_verified_at' => Carbon::now()
         ]);
+        $subjects    = Subject::all();
+        $no_of_chunk = $subjects->count() / 2;
+        $subjects    = $subjects->chunk($no_of_chunk);
+        $user_id = \Auth::user()->id;
         if($user->type == 'teacher') {
-            return redirect('/teacher-home')->with('success-alert-message-teac','Email verified successfully!');
+            return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
         } else {
             return redirect('/students/Home')->with('success-alert-message','Email verified successfully!');
         }

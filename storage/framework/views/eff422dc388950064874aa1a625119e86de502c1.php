@@ -5,8 +5,8 @@
 <style>
   @media (max-width: 991px)
     {
-        #std-homework-find-lesson-sec{
-
+        #std-homework-find-lesson-sec
+        {
             width: 100%;
         }
     }

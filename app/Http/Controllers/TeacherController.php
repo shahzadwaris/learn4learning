@@ -45,6 +45,9 @@ class TeacherController extends Controller
                 }
             }
         }
+        if(is_null($request->subject)) {
+            return back()->with('error_message','please first select subject');
+        }
         foreach ($request->subject as $subject) {
             if (!$subject) {
                 continue;
@@ -93,7 +96,6 @@ class TeacherController extends Controller
 
     public function teacherHome()
     {
-        // dd(1234);
         $auth                 =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('homework')
             ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
@@ -906,7 +908,6 @@ class TeacherController extends Controller
     public function _EditTeacherProfile()
     {
         $teacherdata=User::where('id', auth::user()->id)->first();
-
         return view('frontend.pages.teachers.edit-teacher-profile', compact('teacherdata'));
     }
 }

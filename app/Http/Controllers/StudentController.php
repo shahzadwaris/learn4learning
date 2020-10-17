@@ -54,6 +54,9 @@ class StudentController extends Controller
     public function getSubjects(Request $request)
     {
         $user_id     = $request->user_id;
+        if(is_null($request->subjects)) {
+            return back()->with('error_message_sec','please select subject');
+        }
         foreach ($request->subjects as $subject) {
             if ($subject == '00_other_id') {
                 foreach ($request->field as $s) {

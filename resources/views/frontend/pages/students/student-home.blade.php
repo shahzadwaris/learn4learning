@@ -75,7 +75,7 @@ $user = Auth::user();
             margin-bottom: 5px;
         }
     }
-</style>    
+</style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
         style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/student-lesson-search/banner.jpg')}}">
@@ -117,7 +117,9 @@ $user = Auth::user();
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
-                        <?php $usersimgg=$user; ?>
+                        @php
+                            $usersimgg = $user;
+                        @endphp
                         <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
                             alt="stud-profile-pic">
                     </div>
@@ -199,7 +201,10 @@ $user = Auth::user();
             <div class="col-md-2"></div>
             <div class="col-12 col-md-8 text-center mb-2 mt-2">
                 <div class="row">
-                    @foreach ($Book as $book)
+                    @if(count($Book) == 0)
+                        <h1 style="color:#ffc10e;text-align: center;width: 100%;">No Schedule Found</h1>
+                    @else
+                        @foreach ($Book as $book)
                     <div class="col-4 customClassMySch">
                         <!-- Card -->
                         <div class="card">
@@ -221,14 +226,17 @@ $user = Auth::user();
                         </div>
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
+            @if(count($Book) != 0)
             <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
                 style="margin-top: 10px">
                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
                     href="{{route('student_schedule')}}" id="donate-register-btn">SEE
                     ALL</a>
             </div>
+            @endif
         </div>
 
     </div>
@@ -247,14 +255,20 @@ $user = Auth::user();
                         <div class="card box-shadow">
                             <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                 id="grade-btn-teach">REPORT CARD MARCH</p>
+                            @if(count($MyAchivment) == 0)
+                                <h1 style="width: 100%;text-align: center;color:#ffc10e;">No Achivements Found</h1>
+                            @else
                             @foreach ($MyAchivment as $item)
                             <p class="grades-details">{{$item->Subject_name}}
                                 <span>{{$item->grade == '' ? 'Not Graded Yet' : $item->grade}}</span></p>
                             @endforeach
+                            @endif
+                            @if(count($MyAchivment) != 0)
                             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                     href="{{route('grade.index')}}" id="donate-register-btn">SEE ALL</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,13 @@
 <?php $__env->startSection('title','Student Homework'); ?>
 <?php $__env->startSection('content'); ?>
+<style>
+    @media( max-width: 377px)
+    {
+        #std-homework-table-sec{
+            width: 100%;
+        }
+    }
+</style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
         style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
@@ -95,7 +103,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="table-responsive table-home-assign">
-                <table class="table">
+                <table class="table-responsive">
                     <thead>
                         <tr>
                             <th scope="col" class="table-heading">SUBJECT</th>
@@ -107,8 +115,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
-
 
                         <?php $__currentLoopData = $Lessonss; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lesson): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 

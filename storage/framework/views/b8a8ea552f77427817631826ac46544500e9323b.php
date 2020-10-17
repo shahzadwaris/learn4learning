@@ -79,7 +79,10 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
-                        <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if(count($schedules) == 0): ?>
+                            <h1 style="width:100%;color:#ffc10e;">No Schedule Found</h1>
+                        <?php else: ?>
+                            <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-3 customStyleResponsive">
                                 <!-- Card -->
                                 <div class="card">
@@ -102,13 +105,16 @@
                                 </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
+            <?php if(count($schedules) != 0): ?>
             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div" style="margin-top: 10px">
                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="<?php echo e(url('teacher-schedule')); ?>"
                    id="donate-register-btn">SEE ALL</a>
             </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -122,6 +128,9 @@
                     <hr>
                 </div>
                 <div class="row">
+                    <?php if(count($teacherhomeworkdetail) == 0): ?>
+                        <h1 style="width: 100%; color:#fff; text-align: center;">No Home Work Found</h1>
+                    <?php else: ?>
                     <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                         <div class="MultiCarousel-inner">
                             <?php $__currentLoopData = $teacherhomeworkdetail; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $teacherhomeworkdetail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -150,11 +159,14 @@
                             <</button> <button class="btn btn-primary rightLst">>
                         </button>
                     </div>
+                    <?php endif; ?>
                 </div>
+                <?php if(count($teacherhomeworkdetail) != 0): ?>
                 <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                     <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
                        id="donate-register-btn">SEE ALL</a>
                 </div>
+                <?php endif; ?>
             </div>
         </section>
 <?php $__env->stopSection(); ?>

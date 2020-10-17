@@ -1,11 +1,20 @@
-
 <?php $__env->startSection('title','level'); ?>
 <?php $__env->startSection('content'); ?>
-
-
-
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/students-level.css')); ?>">
+<style>
+    .customStyleBtn{
+        background-color:#ffc10e !important;
+        color:#fff;
+        border-radius: 5px;
+        border: 0px !important;
+    }
+    .alert-danger {
+        color: #fff !important;
+        background-color: #ffc10e !important;
+        border-color: #ffc10e !important;
+    }
+</style>
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -25,10 +34,8 @@
     </div> <!-- single slider -->
 </section>
 
-
-
 <section class="main-section">
-    <div class="container">
+    <div class="container customContaine">
         <div class="main-cont">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -49,7 +56,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-6 p-0">
+                <div class="col-md-6 p-0 responsiveHide">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
                         <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
@@ -59,5 +66,61 @@
     </div>
 </section>
 
+<!-- Modal -->
+<?php if(\Auth::user()->email_verified_at == ''): ?>
+    <div id="myModal" style=" width: 100%;
+    background: #5555;   display: flex;
+    align-items: center;" class="modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
+                        <i class="fa fa-refresh fa-spin" id="fa-faSpin" style="display: none"></i>
+                        Resend Email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    function resendEmail(){
+        $('#fa-faSpin').show();
+        let url = '<?php echo e(route('resendEmailAddress')); ?>';
+        $.ajax({
+            url:url,
+            method:'GET',
+            success: function(response) {
+                console.log('response');
+                console.log(response);
+                $('#fa-faSpin').hide();
+                toastr.success('email resend successfully please check you email address..!');
+            },
+            error: function(error) {
+                console.log('error');
+                console.log(error);
+                $('#fa-faSpin').hide();
+            }
+        });
+
+    }
+
+    $('#myModal').modal('show');
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+</script>
+
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/auth/students/student-level.blade.php ENDPATH**/ ?>

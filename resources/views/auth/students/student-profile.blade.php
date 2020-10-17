@@ -75,15 +75,11 @@
                                 <div class="file-field">
 
                                     <div class="btn btn-unique btn-sm float-left"
-                                        style="background-color: #939191!important">
-
-                                        <span class="gray_font" style="color: #fff!important">Choose files</span>
-
+                                        style="background-color: #fff!important; width: 100px;height: 100px; padding: 5px;border-radius: 100px;">
                                         <input type="file" name="thumbnail" onchange="readURL(this);" required="true"
                                             accept="image/x-png,image/gif,image/jpeg">
                                         <div id="blah"></div>
                                     </div>
-
 
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text"
@@ -199,7 +195,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#blah').html('<img id="blah" src="'+e.target.result+'" style="height:50px;" alt="your image" />')
+                    $('#blah').html('<img id="blah" src="'+e.target.result+'" style="object-fit:cover;height:100px;width: 100px;border-radius: 100px;" alt="your image" />')
                 };
 
                 reader.readAsDataURL(input.files[0]);

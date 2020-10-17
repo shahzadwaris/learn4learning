@@ -1,7 +1,6 @@
 @extends('layouts.teachersmaster')
 @section('title','Teacher Homepage')
 @section('content')
-<!-- dd{{123}} -->
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150"
              style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url({{asset('asset/images/teacher-homepage/teaching_banner.jpg')}}">
@@ -81,7 +80,10 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
-                        @foreach ($schedules as $schedule)
+                        @if(count($schedules) == 0)
+                            <h1 style="width:100%;color:#ffc10e;">No Schedule Found</h1>
+                        @else
+                            @foreach ($schedules as $schedule)
                             <div class="col-3 customStyleResponsive">
                                 <!-- Card -->
                                 <div class="card">
@@ -103,13 +105,16 @@
                                 </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
+            @if(count($schedules) != 0)
             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div" style="margin-top: 10px">
                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="{{ url('teacher-schedule') }}"
                    id="donate-register-btn">SEE ALL</a>
             </div>
+            @endif
         </div>
     </section>
 
@@ -123,6 +128,9 @@
                     <hr>
                 </div>
                 <div class="row">
+                    @if(count($teacherhomeworkdetail) == 0)
+                        <h1 style="width: 100%; color:#fff; text-align: center;">No Home Work Found</h1>
+                    @else
                     <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                         <div class="MultiCarousel-inner">
                             @foreach($teacherhomeworkdetail as $teacherhomeworkdetail)
@@ -151,11 +159,14 @@
                             <</button> <button class="btn btn-primary rightLst">>
                         </button>
                     </div>
+                    @endif
                 </div>
+                @if(count($teacherhomeworkdetail) != 0)
                 <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                     <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2" href="#"
                        id="donate-register-btn">SEE ALL</a>
                 </div>
+                @endif
             </div>
         </section>
 @endsection

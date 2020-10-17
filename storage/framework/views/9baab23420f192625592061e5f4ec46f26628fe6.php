@@ -1,6 +1,5 @@
-@extends('layouts.master')
-@section('title','level')
-@section('content')
+<?php $__env->startSection('title','level'); ?>
+<?php $__env->startSection('content'); ?>
 
 <style>
     #img_url {
@@ -39,8 +38,8 @@
 </style>
 
 <!--====== Bootstrap css ======-->
-<link rel="stylesheet" href="{{asset('asset/css/teachers-profile.css')}}">
-<link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/teachers-profile.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -59,8 +58,8 @@
         </div> <!-- container -->
     </div> <!-- single slider -->
 </section>
-{{----}}
-{{----}}
+
+
 
 <section class="main-section">
     <div class="container">
@@ -70,8 +69,8 @@
                     <div class="form-parts">
                         <h3 class="level-heading">Let's Build your Profile</h3>
                         <div style="display:flex;width:100%;">
-                            <form action="{{url('get-teacher-profile')}}" method="post" enctype="multipart/form-data">
-                                @csrf
+                            <form action="<?php echo e(url('get-teacher-profile')); ?>" method="post" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
 
                                 <div style="padding-right: 50px">
                                     <p class="gray_font">Profile Picture</p>
@@ -117,21 +116,8 @@
                                 <div style="width:100%;">
                                     <input class="_inputwidth" name="experience" placeholder="Experience">
                                 </div>
-                                {{-- <div style="width:100%;">
-                                        <select class="mdb-select _inputwidth" name="favorite_subject" searchable="Search here.." required="true">
-                                            <option value="" disabled selected>My Favourite Subjects</option>
-                                            @foreach($allSubjects as $subjects)
-                                                <option value="{{$subjects->id}}">{{$subjects->name}}</option>
-                                @endforeach
-                                </select>
-                        </div> --}}
-                        {{-- <div style="width:100%;">
-                                        <select class="mdb-select _inputwidth" name="fof_session" searchable="Search here.." required="true">
-                                            <option value="" disabled selected>Available for 1:1</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">NO</option>
-                                        </select>
-                                    </div> --}}
+                                
+                        
                         <div class="d-flex" style="width: 100%">
                             <p class="gray_font">Open 1:1 Tuition </p>
                             <div class="custom-control custom-radio ml-3">
@@ -149,10 +135,10 @@
                         <button type="submit" class="btn btn-primary active" style="box-shadow: unset;">SAVE</button>
                         <button type="button" class="btn btn-primary active _skip_btn"
                             style=" background-color: #ff000000!important;box-shadow: unset;">
-                            <a href="{{route('skip')}}"
+                            <a href="<?php echo e(route('skip')); ?>"
                                 style="color: gray;text-decoration: underline;"><b>SKIP</b></a></button>
 
-                        <input type="hidden" name="user_id" value="{{ $user_id }}">
+                        <input type="hidden" name="user_id" value="<?php echo e($user_id); ?>">
                         </form>
                     </div>
                 </div>
@@ -160,14 +146,14 @@
             </div>
             <div class="col-lg-6 p-0">
                 <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                    <img src="{{asset('asset/images/students/registration-banner.png')}}">
+                    <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                 </div>
             </div>
         </div>
     </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
@@ -187,3 +173,5 @@
             }
         }
 </script>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/auth/teachers/teacher-profile.blade.php ENDPATH**/ ?>

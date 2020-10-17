@@ -35,9 +35,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+    <style>
+        #toast-container > .toast-success {
+            background-color:#ffc10e !important;
+            color: #fff !important;
+        }
+        #course-part {
+            padding-bottom: 0px !important;
+        }
+    </style>
     <?php echo $__env->yieldContent('css'); ?>
     <?php echo $__env->yieldPushContent('css'); ?>
 </head>
+
+<style>
+
+      @media( max-width: 575px)
+      {
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: left;
+        }
+        .customTFooter{
+            padding: 0px;
+        }
+      }
+
+</style>
 
 <body>
     <header id="header-part" class="header-two">
@@ -186,7 +211,7 @@
     <!--====== FOOTER PART START ======-->
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
-            <div class="container">
+            <div class="container customTFooter">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">
@@ -213,7 +238,7 @@
                             </ul>
                         </div> <!-- footer link -->
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12" customSideLeft>
                         <div class="footer-link support mt-40">
                             <ul class="text-center">
                                 <li><a href="<?php echo e(route('howitworks')); ?>">How it Works</a></li>
@@ -316,6 +341,6 @@
         </div>
     </div>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 </html>
 <?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/layouts/teachersmaster.blade.php ENDPATH**/ ?>

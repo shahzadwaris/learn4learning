@@ -1,11 +1,21 @@
 @extends('layouts.master')
 @section('title','level')
 @section('content')
-
-
-
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/students-level.css')}}">
+<style>
+    .customStyleBtn{
+        background-color:#ffc10e !important;
+        color:#fff;
+        border-radius: 5px;
+        border: 0px !important;
+    }
+    .alert-danger {
+        color: #fff !important;
+        background-color: #ffc10e !important;
+        border-color: #ffc10e !important;
+    }
+</style>
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -24,8 +34,6 @@
         </div> <!-- container -->
     </div> <!-- single slider -->
 </section>
-{{----}}
-{{----}}
 
 <section class="main-section">
     <div class="container customContaine">
@@ -61,30 +69,33 @@
 
 <!-- Modal -->
 @if(\Auth::user()->email_verified_at == '')
-    <div id="myModal" style="    display: flex;
-    align-items: center;width: 100%;
-    background: #5555;" class="modal" role="dialog">
-      <div class="modal-dialog">
+    <div id="myModal" style=" width: 100%;
+    background: #5555;   display: flex;
+    align-items: center;" class="modal" role="dialog">
+        <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
-          </div>
-          <div class="modal-body">
-            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
-          </div>
-          <div class="modal-footer">
-            <button onclick="resendEmail()" class="btn btn-success">Resend Email</button>
-         </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
+                        <i class="fa fa-refresh fa-spin" id="fa-faSpin" style="display: none"></i>
+                        Resend Email
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 @endif
 
 <script>
     function resendEmail(){
-
+        $('#fa-faSpin').show();
         let url = '{{ route('resendEmailAddress') }}';
         $.ajax({
             url:url,
@@ -92,11 +103,13 @@
             success: function(response) {
                 console.log('response');
                 console.log(response);
-                alert(response.message);
+                $('#fa-faSpin').hide();
+                toastr.success('email resend successfully please check you email address..!');
             },
             error: function(error) {
                 console.log('error');
                 console.log(error);
+                $('#fa-faSpin').hide();
             }
         });
 

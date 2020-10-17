@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title','level'); ?>
 <?php $__env->startSection('js'); ?>
 <script src="<?php echo e(asset('asset/js/custom.js')); ?>"></script>
@@ -11,6 +10,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/subjects-form-boxes.css')); ?>">
+<style>
+    .customStyleBtn{
+        background-color:#ffc10e !important;
+        color:#fff;
+        border-radius: 5px;
+    }
+    .alert-danger {
+        color: #fff !important;
+        background-color: #ffc10e !important;
+        border-color: #ffc10e !important;
+    }
+</style>
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -35,107 +46,20 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="main-section">
     <form action="<?php echo e(route('teacherSubjects')); ?>" method="post" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <div class="container" style="width:80%">
+        <div class="container customContaine" style="width:80%">
 
             <div class="main-cont">
 
                 <div class="row">
+                    <?php if(session()->has('error_message')): ?>
+                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; color: #fff !important; background-color: red !important;">
+                            <?php echo e(session()->get('error_message')); ?>
+
+                        </div>
+                    <?php endif; ?>
                     <div class="col-md">
                         <h3 class="level-heading">WHAT SUBJECTS DO YOU WANT TO TEACH?</h3>
                     </div>
@@ -242,8 +166,53 @@
 </section>
 
 
+<!-- Modal -->
+<?php if(\Auth::user()->email_verified_at == ''): ?>
+    <div id="myModal" style=" width: 100%;
+    background: #5555;   display: flex;
+    align-items: center;" class="modal" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+          </div>
+          <div class="modal-footer">
+            <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
+                <i class="fa fa-refresh fa-spin" id="fa-faSpin" style="display: none"></i>
+                Resend Email
+            </button>
+         </div>
+        </div>
+      </div>
+    </div>
+<?php endif; ?>
 <script>
+    function resendEmail(){
+        $('#fa-faSpin').show();
+        let url = '<?php echo e(route('resendEmailAddress')); ?>';
+        $.ajax({
+            url:url,
+            method:'GET',
+            success: function(response) {
+                console.log('response');
+                console.log(response);
+                $('#fa-faSpin').hide();
+                toastr.success('email resend successfully please check you email address..!');
+            },
+            error: function(error) {
+                console.log('error');
+                console.log(error);
+                $('#fa-faSpin').hide();
+            }
+        });
+
+    }
+
     function saveSubject(lever_id) {
             var subject = document.getElementById('subject');
             if(subject.value === ''){
@@ -271,23 +240,28 @@
 </script>
 
 <script type="text/javascript">
+    $('#myModal').modal('show');
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
     // <img style="height: 40px"src="<?php echo e(asset("asset/images/flag/minus.png")); ?>"/></a>
 $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html 
+    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html
     var x = 1; //Initial field counter is 1
-    
+
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(x < maxField){ 
+        if(x < maxField){
             x++; //Increment field counter
             $(wrapper).append(fieldHTML); //Add field html
         }
     });
-    
+
     //Once remove button is clicked
     $(wrapper).on('click', '.remove_button', function(e){
         e.preventDefault();
@@ -297,4 +271,5 @@ $(document).ready(function(){
 });
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.teachersmaster', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/auth/teachers/teacher-subjects.blade.php ENDPATH**/ ?>

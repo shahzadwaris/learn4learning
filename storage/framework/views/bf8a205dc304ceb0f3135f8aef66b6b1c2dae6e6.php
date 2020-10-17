@@ -60,6 +60,7 @@ $user = Auth::user();
     }
     @media (max-width: 575px) {
         .customFieldSearch{
+            padding: 0px;
             max-width: 100%;
             margin: 0px !important;
             width: 100%;
@@ -73,7 +74,7 @@ $user = Auth::user();
             margin-bottom: 5px;
         }
     }
-</style>    
+</style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
         style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url(<?php echo e(asset('asset/images/student-lesson-search/banner.jpg')); ?>">
@@ -115,7 +116,9 @@ $user = Auth::user();
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
-                        <?php $usersimgg=$user; ?>
+                        <?php
+                            $usersimgg = $user;
+                        ?>
                         <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
                             alt="stud-profile-pic">
                     </div>
@@ -197,7 +200,10 @@ $user = Auth::user();
             <div class="col-md-2"></div>
             <div class="col-12 col-md-8 text-center mb-2 mt-2">
                 <div class="row">
-                    <?php $__currentLoopData = $Book; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if(count($Book) == 0): ?>
+                        <h1 style="color:#ffc10e;text-align: center;width: 100%;">No Schedule Found</h1>
+                    <?php else: ?>
+                        <?php $__currentLoopData = $Book; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-4 customClassMySch">
                         <!-- Card -->
                         <div class="card">
@@ -220,14 +226,17 @@ $user = Auth::user();
                         </div>
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </div>
             </div>
+            <?php if(count($Book) != 0): ?>
             <div class="col-12 col-12 justify-content-center text-center" id="donate-register-btn-div"
                 style="margin-top: 10px">
                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2"
                     href="<?php echo e(route('student_schedule')); ?>" id="donate-register-btn">SEE
                     ALL</a>
             </div>
+            <?php endif; ?>
         </div>
 
     </div>
@@ -246,15 +255,21 @@ $user = Auth::user();
                         <div class="card box-shadow">
                             <p data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                 id="grade-btn-teach">REPORT CARD MARCH</p>
+                            <?php if(count($MyAchivment) == 0): ?>
+                                <h1 style="width: 100%;text-align: center;color:#ffc10e;">No Achivements Found</h1>
+                            <?php else: ?>
                             <?php $__currentLoopData = $MyAchivment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <p class="grades-details"><?php echo e($item->Subject_name); ?>
 
                                 <span><?php echo e($item->grade == '' ? 'Not Graded Yet' : $item->grade); ?></span></p>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
+                            <?php if(count($MyAchivment) != 0): ?>
                             <div class="col-12 col-12 justify-content-center" id="donate-register-btn-div">
                                 <a data-animation="fadeInUp" data-delay="2s" class="main-slider-btn2 grades-details"
                                     href="<?php echo e(route('grade.index')); ?>" id="donate-register-btn">SEE ALL</a>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -363,4 +378,5 @@ justify-content: center;" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
     }
 </style>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.masterStudent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/frontend/pages/students/student-home.blade.php ENDPATH**/ ?>

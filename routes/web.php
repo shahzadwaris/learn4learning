@@ -8,7 +8,6 @@ Route::get('locale/{locale}', function ($locale) {
     return redirect()->back();
 });
 
-Route::get('verifiedSuccess','UserController@verifiedSuccess')->name('verifiedSuccess');
 Route::get('/resend-email','UserController@resendEmailAddress')->name('resendEmailAddress');
 
 Route::get('/email/design', function (){
@@ -90,7 +89,7 @@ Route::group(['private'], function () {
     Route::get('/denied', function () {
         return 'denied';
     })->name('denied');
-
+    /// admin routes
     Route::group(['Admin', 'middleware' => 'CheckUserType:' . 'admin'], function () {
         Route::get('/home', 'HomeController@index')->name('home');
 
@@ -152,6 +151,10 @@ Route::group(['private'], function () {
         Route::get('/admin/pages/show/{page}', "Admin\PagesController@show")->name('pages.show');
     });
 
+
+    //student routes
+    Route::get('student-select-subjects','UserController@verifiedStudentSuccess')->name('verifiedStudentSuccess');
+    Route::get('/student-verify-email','HomeController@verifyEmailAddress')->name('student-verify-email');
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {
         Route::get('/students/lesssn', 'StudentController@studentLessson')->name('studentLessson');
         Route::get('/students/Home', 'StudentController@studentHome')->name('studentHome');
@@ -179,6 +182,10 @@ Route::group(['private'], function () {
         Route::get('/student/my-grades', 'GradeController@index')->name('grade.index');
     });
 
+
+    // teachers routes
+    Route::get('teacher-select-subjects','UserController@verifiedSuccess')->name('verifiedSuccess');
+    Route::get('/teacher-verify-email','HomeController@verifyEmailAddress')->name('teacher-verify-email');
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'teacher', 'verified']], function () {
         Route::get('/teacher-add-lesson', 'TeacherController@teacherAddLesson')->name('teacherAddLesson');
         Route::get('/teacher-home', 'TeacherController@teacherHome')->name('teacherHome');

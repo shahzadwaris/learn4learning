@@ -51,10 +51,49 @@
     <?php echo $__env->yieldContent('css'); ?>
     <?php echo $__env->yieldPushContent('css'); ?>
     <style>
-         @media (max-width: 500px) {
+         @media (max-width: 575px) {
             .footer-link ul li {
                 line-height: 35px;
                 text-align: left;
+            }
+            .cContainerFS{
+                padding: 0px;
+            }
+            .stud-name {
+                color: white;
+                font-weight: 700;
+                font-size: 29px;
+                letter-spacing: 2px;
+                text-align: center;
+            }
+            .stud-date {
+                color: white;
+                text-align: center;
+            }
+            .stu-fav-subj-link {
+                color: white;
+                text-decoration: underline;
+                text-align: center !important;
+            }
+            .stu-fav-subj-list {
+                color: white;
+                text-align: center !important;
+            }
+            .points-para {
+                color: white;
+                font-weight: 700;
+                font-size: 21px;
+                letter-spacing: 2px;
+                padding-top: 35px;
+                text-align: center !important;
+            }
+            .stu-home-dash-head-head {
+                font-weight: 700;
+                color: white;
+                font-size: 22px;
+                letter-spacing: 2px;
+                text-align: center;
+                padding-top: 39px;
             }
         }
     </style>
@@ -236,7 +275,7 @@
 
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
-            <div class="container">
+            <div class="container cContainerFS">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">

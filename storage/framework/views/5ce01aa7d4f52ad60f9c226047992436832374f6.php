@@ -105,6 +105,19 @@
                 line-height: 35px;
                 text-align: left;
             }
+            .cuContainerM {
+                padding: 0px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+    <style>
+        #toast-container > .toast-success {
+            background-color:#ffc10e !important;
+            color: #fff !important;
+        }
+        #course-part {
+            padding-bottom: 0px !important;
         }
     </style>
     <?php echo $__env->yieldContent('css'); ?>
@@ -379,7 +392,7 @@
 
     <footer id="footer-part customFooter">
         <div class="footer-top pt-40 pb-70">
-            <div class="container">
+            <div class="container cuContainerM">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">
@@ -519,6 +532,6 @@
             }
         </script>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 </html>
 <?php /**PATH /home/mustafa/Desktop/rikxtech/learnforlearning/resources/views/layouts/master.blade.php ENDPATH**/ ?>
