@@ -151,7 +151,8 @@
 
 <!-- Modal -->
 <?php if(\Auth::user()->email_verified_at == ''): ?>
-    <div id="myModal" style="    display: flex;
+    <div id="myModal" style=" width: 100%;
+    background: #5555;   display: flex;
     align-items: center;" class="modal" role="dialog">
       <div class="modal-dialog">
 
@@ -175,21 +176,17 @@
 
         let url = '<?php echo e(route('resendEmailAddress')); ?>';
         $.ajax({
-
             url:url,
             method:'GET',
-
             success: function(response) {
                 console.log('response');
                 console.log(response);
                 alert(response.message);
             },
-
             error: function(error) {
                 console.log('error');
                 console.log(error);
             }
-
         });
 
     }

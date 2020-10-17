@@ -63,7 +63,7 @@
 
 
 <section class="main-section">
-    <div class="container">
+    <div class="container customContainer">
         <div class="main-cont">
             <div class="row">
                 <div class="col-lg-6 d-flex align-items-center justify-content-center p-5">
@@ -84,15 +84,15 @@
                                 <div class="file-field">
 
                                     <div class="btn btn-unique btn-sm float-left"
-                                        style="background-color: #939191!important">
-
-                                        <span class="gray_font" style="color: #fff!important">Choose files</span>
-
+                                        style="padding:5px;border-radius:50px;background-color: transparent !important">
                                         <input type="file" name="thumbnail" onchange="readURL(this);"
                                             accept="image/x-png,image/gif,image/jpeg">
                                         <div id="blah">
                                             <?php if( !empty($user->thumbnail) ): ?>
-                                            <img src="/storage/images/<?php echo e($user->thumbnail); ?>" style="height:50px;"
+                                            <img src="/storage/images/<?php echo e($user->thumbnail); ?>" style="    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    object-fit: cover;"
                                                 alt="your image" />
                                             <?php endif; ?>
 
@@ -166,9 +166,9 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 p-0">
+                <div class="col-lg-6 p-0 customImgAS">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
+                        <img class="sAImg" src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
                 </div>
             </div>

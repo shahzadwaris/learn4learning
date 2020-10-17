@@ -105,6 +105,9 @@
                 line-height: 35px;
                 text-align: left;
             }
+            .cuContainerM {
+                padding: 0px;
+            }
         }
     </style>
     <?php echo $__env->yieldContent('css'); ?>
@@ -379,7 +382,7 @@
 
     <footer id="footer-part customFooter">
         <div class="footer-top pt-40 pb-70">
-            <div class="container">
+            <div class="container cuContainerM">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">

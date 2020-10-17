@@ -35,7 +35,7 @@
   margin-right: 0px !important;
   box-shadow: 0px 0px 10px -3px black;
   background: white;
-  margin-top: -283px;
+  margin-top: -175px;
   position: relative;
   margin-left: auto;
 }
@@ -158,5 +158,38 @@ button.btn.btn-primary.active{
 @media screen and (min-width: 769px) and (max-width: 992px){
   ._inputwidth{
       width: 50%;
+  }
+}
+
+.customContainer{
+  width: 80%;
+}
+.sAImg {
+  object-fit: cover;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .customImgAS{
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .main-cont .row {
+    margin-right: 0px !important;
+    box-shadow: 0px 0px 10px -3px black;
+    background: white;
+    margin-top: 0px !important;
+    position: relative;
+    margin-left: auto;
+  }
+  .main-section {
+      position: relative;
+      bottom: 0px;
+  }
+  .customContainer{
+    padding: 0px !important;
+    width: 100%;
   }
 }

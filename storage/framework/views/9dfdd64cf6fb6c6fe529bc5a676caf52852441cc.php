@@ -87,6 +87,14 @@
                 padding-top: 35px;
                 text-align: center !important;
             }
+            .stu-home-dash-head-head {
+                font-weight: 700;
+                color: white;
+                font-size: 22px;
+                letter-spacing: 2px;
+                text-align: center;
+                padding-top: 39px;
+            }
         }
     </style>
 </head>

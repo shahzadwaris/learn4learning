@@ -1,9 +1,8 @@
-
 <?php $__env->startSection('title','SignUp'); ?>
 <?php $__env->startSection('content'); ?>
 <style>
     #customFooter{
-        
+
     }
     .gray_font {
         color: #737171 !important;
@@ -81,7 +80,7 @@
     <div class="container" style="width:85%">
         <div class="main-cont">
             <div class="row">
-                <div class="col-md-6 d-flex align-items-center justify-content-center p-0">
+                <div class="col-md-6 d-flex align-items-center justify-content-center p-0 customWidthR">
                     <div class="form-parts">
 
                         <div style="display:flex;width:100%;">
@@ -170,7 +169,7 @@
                 </div>
                 <div class="col-md-6 p-0">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
-                        <img style="    height: 852px;;
+                        <img style="    height: 100%;
     object-fit: cover;" src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
                 </div>
@@ -184,4 +183,5 @@
 <script src="<?php echo e(asset('asset/js/jquery.validate.min.js')); ?>"></script>
 <script src="<?php echo e(asset('asset/js/custom.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/auth/register.blade.php ENDPATH**/ ?>
