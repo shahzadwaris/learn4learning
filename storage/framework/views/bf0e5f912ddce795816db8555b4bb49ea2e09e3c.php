@@ -39,6 +39,21 @@
     <?php echo $__env->yieldPushContent('css'); ?>
 </head>
 
+<style>
+    
+      @media( max-width: 575px)
+      {
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: left;
+        }
+        .customTFooter{
+            padding: 0px;
+        }
+      }
+
+</style>
+
 <body>
     <header id="header-part" class="header-two">
         <div class="header-top d-none d-lg-block">
@@ -186,7 +201,7 @@
     <!--====== FOOTER PART START ======-->
     <footer id="footer-part">
         <div class="footer-top pt-40 pb-70">
-            <div class="container">
+            <div class="container customTFooter">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="footer-section-wrap footer-link mt-40">
@@ -213,7 +228,7 @@
                             </ul>
                         </div> <!-- footer link -->
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12" customSideLeft>
                         <div class="footer-link support mt-40">
                             <ul class="text-center">
                                 <li><a href="<?php echo e(route('howitworks')); ?>">How it Works</a></li>

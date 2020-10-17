@@ -61,6 +61,7 @@ $user = Auth::user();
     }
     @media (max-width: 575px) {
         .customFieldSearch{
+            padding: 0px;
             max-width: 100%;
             margin: 0px !important;
             width: 100%;

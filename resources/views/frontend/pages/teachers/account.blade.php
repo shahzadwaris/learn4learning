@@ -20,6 +20,12 @@
         .slick-track{
             height: 700px;
         }
+        @media(max-width: 991px)
+        {
+            #customFooter{
+                width: 102%;
+            }
+        }
     </style>    
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150" style="background-repeat: no-repeat; background:linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url({{asset('asset/images/teacher-homepage/teaching_banner.jpg')}}">

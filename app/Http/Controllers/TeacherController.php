@@ -868,6 +868,7 @@ class TeacherController extends Controller
 
     public function MYaccount()
     {
+        // dd(123);
         $teacherdata=User::with('subject_level_details')->where('id', Auth::user()->id)->first();
 
         return view('frontend.pages.teachers.account', compact('teacherdata'));
