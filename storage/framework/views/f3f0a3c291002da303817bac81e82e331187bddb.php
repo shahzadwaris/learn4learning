@@ -1,5 +1,6 @@
 <?php $__env->startSection('title','Teacher Homepage'); ?>
 <?php $__env->startSection('content'); ?>
+<!-- dd<?php echo e(123); ?> -->
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150"
              style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url(<?php echo e(asset('asset/images/teacher-homepage/teaching_banner.jpg')); ?>">

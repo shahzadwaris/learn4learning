@@ -1,4 +1,22 @@
 <?php $__env->startSection('content'); ?>
+<style>
+    .activeClass
+    {
+        background: #fff;
+        color: #555;
+        border: 1px solid #ffc10e;
+    }
+
+    @media(max-width: 768px)
+    {
+        .customField
+        {
+            max-width: 100%;
+            flex: 100%;
+        }
+    }
+
+</style>    
 
 <div class="search-box">
     <div class="search-form">
@@ -86,28 +104,29 @@
             </div>
 
             <div class="row" id="payment-btns">
+                <input type="hidden" name="price" id="appendVal">
                 <div class="col-md-2.4" style="padding: 10px">
                     <label href="#">
-                        <input type="radio" value="5" name="donate" type="name">
-                        <label href="#" class="donation-btns">£5</label>
+                        <input type="hidden" value="5" name="donate" type="name">
+                        <label href="#"  id="a1" class="donation-btns" onclick="selectType('a')">£5</label>
                     </label>
                 </div>
                 <div class="col-md-2.4" style="padding: 10px">
                     <label href="#">
-                        <input type="radio" value="10" name="donate" type="name">
-                        <label href="#" class="donation-btns">£10</label>
+                        <input type="hidden" value="10" name="donate" type="name">
+                        <label href="#" id="a2" class="donation-btns" onclick="selectType('b')">£10</label>
                     </label>
                 </div>
                 <div class="col-md-2.4" style="padding: 10px">
                     <label href="#">
-                        <input type="radio" value="20" name="donate" type="name">
-                        <label href="#" class="donation-btns">£20</label>
+                        <input type="hidden" value="20" name="donate" type="name">
+                        <label href="#" id="a3" class="donation-btns" onclick="selectType('c')">£20</label>
                     </label>
                 </div>
                 <div class="col-md-2.4" style="padding: 10px">
                     <label href="#">
-                        <input type="radio" value="50" name="donate" type="name">
-                        <label href="#" class="donation-btns">£50</label>
+                        <input type="hidden" value="50" name="donate" type="name">
+                        <label href="#" id="a4" class="donation-btns" onclick="selectType('d')">£50</label>
                     </label>
                 </div>
 
@@ -115,7 +134,7 @@
 
             <div class="row" id="payment-pics">
                 
-            <div class="col-4">
+            <div class="col-4 customField">
                 <div class="form-group">
                     <label for="">Card Holder Name</label>
                     <input type="text" class="form-control" id="card_holder_name" name="card_holder_name"
@@ -248,6 +267,39 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="<?php echo e(asset('asset/js/stripe.js')); ?>"></script>
 <script>
+
+    function selectType(val) {
+        if(val == 'a') {
+            $('#a1').addClass('activeClass');
+            $('#a2').removeClass('activeClass');
+            $('#a3').removeClass('activeClass');
+            $('#a4').removeClass('activeClass');
+            $('#appendVal').val(10);
+        }
+        if(val == 'b') {
+            $('#a1').removeClass('activeClass');
+            $('#a2').addClass('activeClass');
+            $('#a3').removeClass('activeClass');
+            $('#a4').removeClass('activeClass');
+            $('#appendVal').val(20);
+        }
+        if(val == 'c') {
+            $('#a1').removeClass('activeClass');
+            $('#a2').removeClass('activeClass');   
+            $('#a3').addClass('activeClass');   
+            $('#a4').removeClass('activeClass');   
+            $('#appendVal').val(30);
+        }
+        if(val == 'd') {
+            $('#a1').removeClass('activeClass');
+            $('#a2').removeClass('activeClass');   
+            $('#a3').removeClass('activeClass');   
+            $('#a4').addClass('activeClass');   
+            $('#appendVal').val(40);
+        }
+    }
+
+
     $(function() {
     $('form.require-validation').bind('submit', function(e) {
         var $form = $(e.target).closest('form'),
@@ -271,7 +323,6 @@
         });
     });
 });
-
 </script>
 <script>
     paypal.Buttons({
@@ -279,7 +330,7 @@
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: document.querySelector('input[name="donate"]:checked').value
+                    value: document.querySelector('input[name="price"]').value
                   }
                 }]
               });

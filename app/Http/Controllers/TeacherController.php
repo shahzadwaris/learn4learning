@@ -93,6 +93,7 @@ class TeacherController extends Controller
 
     public function teacherHome()
     {
+        // dd(1234);
         $auth                 =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('homework')
             ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
