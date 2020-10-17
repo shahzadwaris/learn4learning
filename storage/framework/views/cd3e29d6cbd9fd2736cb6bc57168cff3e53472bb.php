@@ -28,7 +28,7 @@
 
 
 <section class="main-section">
-    <div class="container">
+    <div class="container customContaine">
         <div class="main-cont">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -49,7 +49,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-6 p-0">
+                <div class="col-md-6 p-0 responsiveHide">
                     <div class="d-flex align-items-center justify-content-center" id="submit-btn">
                         <img src="<?php echo e(asset('asset/images/students/registration-banner.png')); ?>">
                     </div>
@@ -58,6 +58,55 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<?php if(\Auth::user()->email_verified_at == ''): ?>
+    <div id="myModal" style="    display: flex;
+    align-items: center;" class="modal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+          </div>
+          <div class="modal-footer">
+            <button onclick="resendEmail()" class="btn btn-success">Resend Email</button>
+         </div>
+        </div>
+      </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    function resendEmail(){
+
+        let url = '<?php echo e(route('resendEmailAddress')); ?>';
+        $.ajax({
+            url:url,
+            method:'GET',
+            success: function(response) {
+                console.log('response');
+                console.log(response);
+                alert(response.message);
+            },
+            error: function(error) {
+                console.log('error');
+                console.log(error);
+            }
+        });
+
+    }
+
+    $('#myModal').modal('show');
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+</script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/auth/students/student-level.blade.php ENDPATH**/ ?>

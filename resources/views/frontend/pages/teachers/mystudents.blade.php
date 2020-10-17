@@ -1,6 +1,14 @@
 @extends('layouts.teachersmaster')
 @section('title','Student Homework')
 @section('content')
+<style>
+    @media( max-width: 991px)
+    {
+        #std-homework-find-lesson-sec{
+            width: 100%;
+        }
+    }
+</style>
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{asset('asset/css/student-homework.css')}}">

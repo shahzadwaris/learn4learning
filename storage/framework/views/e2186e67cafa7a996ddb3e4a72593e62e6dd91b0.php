@@ -1,5 +1,13 @@
 <?php $__env->startSection('title','Student Homework'); ?>
 <?php $__env->startSection('content'); ?>
+<style>
+    @media( max-width: 991px)
+    {
+        #std-homework-find-lesson-sec{
+            width: 100%;
+        }
+    }
+</style>
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="<?php echo e(asset('asset/css/student-homework.css')); ?>">
