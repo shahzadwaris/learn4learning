@@ -74,6 +74,10 @@ $user = Auth::user();
             margin-bottom: 5px;
         }
     }
+    .customStyleImage{
+        width: 140px;
+        height: 140px;
+    }
 </style>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150"
@@ -120,7 +124,7 @@ $user = Auth::user();
                             $usersimgg = $user;
                         ?>
                         <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
-                            alt="stud-profile-pic">
+                            alt="stud-profile-pic" class="customStyleImage">
                     </div>
                     <div class="col-lg-8 col-sm-12 col-xs-12">
                         <p class="stud-name">Hi-<?php echo e($user->fname); ?></p>

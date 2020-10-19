@@ -8,14 +8,25 @@
         background-color:#ffc10e !important;
         color:#fff;
         border-radius: 5px;
-        border: 0px !important;
     }
     .alert-danger {
         color: #fff !important;
         background-color: #ffc10e !important;
         border-color: #ffc10e !important;
     }
+    footer {
+        border-top: 1px solid #ededed;
+        padding: 0px 0;
+    }
 </style>
+@php
+    $emailVerified = \Auth::user()->email_verified_at;
+    if(isset($verified)) {
+        $emailVerified = isset($emailVerified) ? $emailVerified : $verified;
+    } else {
+        $emailVerified = $emailVerified;
+    }
+@endphp
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -68,7 +79,7 @@
 </section>
 
 <!-- Modal -->
-@if(\Auth::user()->email_verified_at == '')
+@if(!$emailVerified)
     <div id="myModal" style=" width: 100%;
     background: #5555;   display: flex;
     align-items: center;" class="modal" role="dialog">
@@ -80,7 +91,10 @@
                     <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+                    <p>Please First Verify Email Address.We Send You An Verification Email.Or You Can Change Your Email Address</p>
+                    <div class="row">
+                        <input type="email" class="form-control" placeholder="Enter Your Email..." name="email" id="emailAddress" value="" />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
@@ -95,8 +109,10 @@
 
 <script>
     function resendEmail(){
+        let email = $('#emailAddress').val();
+        email = email ? email : 'null';
         $('#fa-faSpin').show();
-        let url = '{{ route('resendEmailAddress') }}';
+        let url = '/resend-email/'+email;
         $.ajax({
             url:url,
             method:'GET',

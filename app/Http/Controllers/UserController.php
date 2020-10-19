@@ -231,11 +231,12 @@ class UserController extends Controller
         $no_of_chunk = $subjects->count() / 2;
         $subjects    = $subjects->chunk($no_of_chunk);
         $user_id = \Auth::user()->id;
+        $level      = levels::all();
         $verified = 'true';
         if($user->type == 'teacher') {
             return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id','verified'));
         } else {
-            return redirect('/students/Home')->with('success-alert-message','Email verified successfully!');
+            return view('auth.students.student-level', compact('level', 'user_id','verified'));
         }
     }
 }

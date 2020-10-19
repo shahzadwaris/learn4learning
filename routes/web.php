@@ -153,7 +153,7 @@ Route::group(['private'], function () {
 
 
     //student routes
-    Route::get('student-select-subjects','UserController@verifiedStudentSuccess')->name('verifiedStudentSuccess');
+    Route::get('student-select-subjects','UserController@verifiedSuccess')->name('verifiedStudentSuccess');
     Route::get('/student-verify-email','HomeController@verifyEmailAddress')->name('student-verify-email');
     Route::group(['Admin', 'middleware' => ['CheckUserType:' . 'student', 'verified']], function () {
         Route::get('/students/lesssn', 'StudentController@studentLessson')->name('studentLessson');

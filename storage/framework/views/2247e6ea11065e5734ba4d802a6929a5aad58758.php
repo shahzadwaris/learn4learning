@@ -80,7 +80,6 @@
                                         <div id="blah"></div>
                                     </div>
 
-
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text"
                                             placeholder="Upload one or more files">
@@ -168,7 +167,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#blah').html('<img id="blah" src="'+e.target.result+'" style="height:100px;width: 100px;border-radius: 100px;" alt="your image" />')
+                    $('#blah').html('<img id="blah" src="'+e.target.result+'" style="object-fit:cover;height:100px;width: 100px;border-radius: 100px;" alt="your image" />')
                 };
 
                 reader.readAsDataURL(input.files[0]);
