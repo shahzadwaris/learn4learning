@@ -82,6 +82,24 @@
               width: 100%;
           }
       }
+      @media(max-width: 575px) {
+        .logo {
+            text-align: center;
+            float: unset !important;
+            margin-bottom: 8px; 
+        }
+        .footer-link ul {
+            width: 100%;
+            float: unset !important;
+            overflow: hidden;
+            margin-left: 0px !important;
+            text-align: center !important;
+        }
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: center;
+        }
+      }
 </style>
 
 <body>

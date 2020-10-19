@@ -130,6 +130,24 @@
                 width: 100%;
             }
         }
+         @media(max-width: 575px) {
+        .logo {
+            text-align: center;
+            float: unset !important;
+            margin-bottom: 8px; 
+        }
+        .footer-link ul {
+            width: 100%;
+            float: unset !important;
+            overflow: hidden;
+            margin-left: 0px !important;
+            text-align: center !important;
+        }
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: center;
+        }
+      }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
     <style>

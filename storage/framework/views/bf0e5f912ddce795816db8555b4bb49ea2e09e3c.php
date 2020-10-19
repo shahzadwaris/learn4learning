@@ -35,12 +35,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+    <style>
+        #toast-container > .toast-success {
+            background-color:#ffc10e !important;
+            color: #fff !important;
+        }
+        #course-part {
+            padding-bottom: 0px !important;
+        }
+    </style>
     <?php echo $__env->yieldContent('css'); ?>
     <?php echo $__env->yieldPushContent('css'); ?>
 </head>
 
 <style>
-    
+
       @media( max-width: 575px)
       {
         .footer-link ul li {
@@ -51,7 +61,45 @@
             padding: 0px;
         }
       }
-
+      .customClass{
+          margin: 2px 2px 2px 2px;
+      }
+      .navigation .navbar .navbar-nav li {
+          position: relative;
+          display: flex;
+          align-items: center;
+      }
+      @media (max-width: 991px) {
+          .navigation .navbar .navbar-nav li {
+              position: relative;
+              display: flex;
+              align-items: center;
+              width: 100%;
+              justify-content: center;
+          }
+          .customClass{
+              margin: 2px 2px 2px 2px;
+              width: 100%;
+          }
+      }
+      @media(max-width: 575px) {
+        .logo {
+            text-align: center;
+            float: unset !important;
+            margin-bottom: 8px; 
+        }
+        .footer-link ul {
+            width: 100%;
+            float: unset !important;
+            overflow: hidden;
+            margin-left: 0px !important;
+            text-align: center !important;
+        }
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: center;
+        }
+      }
 </style>
 
 <body>
@@ -173,9 +221,9 @@
                                             href="<?php echo e(route('Students')); ?>">MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="<?php echo e(Request::routeIs('donate') ? 'active' : ''); ?>"
+                                        <a class="<?php echo e(Request::routeIs('donate') ? 'active' : ''); ?> customClass"
                                             href="<?php echo e(route('donate')); ?>"
-                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
+                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
                             </div>
@@ -331,6 +379,6 @@
         </div>
     </div>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 </html>
 <?php /**PATH /home/mahad/Desktop/learnforlearning/resources/views/layouts/teachersmaster.blade.php ENDPATH**/ ?>
