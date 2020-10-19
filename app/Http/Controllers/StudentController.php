@@ -150,6 +150,7 @@ class StudentController extends Controller
 
     public function studentHome()
     {
+        // dd(123);
 
         // $Book=      DB::table('lessons')
         //                 ->join('subjects', 'subjects.id', 'lessons.subject_id')

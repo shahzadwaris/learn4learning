@@ -1,6 +1,12 @@
 @extends('layouts.teachersmaster')
 @section('title','Teacher Homepage')
 @section('content')
+<style>
+    .customStyle{
+        width: 140px;
+        height: 140px;
+    }
+</style>
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150"
              style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url({{asset('asset/images/teacher-homepage/teaching_banner.jpg')}}">
@@ -29,7 +35,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <img src="{{url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )}}"
-                                 alt="stud-profile-pic">
+                                 alt="stud-profile-pic" class="customStyle">
                         </div>
                         <div class="col-lg-8 col-sm-12 col-xs-12">
                             <p class="stud-name pb-3">{{Auth::user()->fname}}-{{Auth::user()->lname}}</p>
