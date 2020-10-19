@@ -111,7 +111,7 @@ class UserController extends Controller
         $senderEmail = 'alimughal5566@gmail.com';
         $senderName  ='Learn4Learning';
         $userEmail = $email;
-        Mail::send('mail.successRegister', array('url',$url), function ($message) use ($senderEmail, $senderName , $userEmail) {
+        Mail::send('mail.successRegister', array('url' => $url), function ($message) use ($senderEmail, $senderName , $userEmail) {
             $message->from($senderEmail, $senderName , $userEmail);
             $message->to($userEmail)
                 ->subject('Verify Email Address');
