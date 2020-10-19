@@ -36,7 +36,7 @@
     color: #fff;
     border: 0px;
     ">
-        <a  href="{{$url}}" style="     background: #176795; color: #fff;
+        <a  href="{{$url}}" style="     background: #ffc10e; color: #fff;
         border:0px;
         border-radius: 10px;
         padding: 15px;

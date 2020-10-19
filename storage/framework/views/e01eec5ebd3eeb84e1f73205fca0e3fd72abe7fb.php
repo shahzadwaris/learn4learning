@@ -61,7 +61,45 @@
             padding: 0px;
         }
       }
-
+      .customClass{
+          margin: 2px 2px 2px 2px;
+      }
+      .navigation .navbar .navbar-nav li {
+          position: relative;
+          display: flex;
+          align-items: center;
+      }
+      @media (max-width: 991px) {
+          .navigation .navbar .navbar-nav li {
+              position: relative;
+              display: flex;
+              align-items: center;
+              width: 100%;
+              justify-content: center;
+          }
+          .customClass{
+              margin: 2px 2px 2px 2px;
+              width: 100%;
+          }
+      }
+      @media(max-width: 575px) {
+        .logo {
+            text-align: center;
+            float: unset !important;
+            margin-bottom: 8px; 
+        }
+        .footer-link ul {
+            width: 100%;
+            float: unset !important;
+            overflow: hidden;
+            margin-left: 0px !important;
+            text-align: center !important;
+        }
+        .footer-link ul li {
+            line-height: 35px;
+            text-align: center;
+        }
+      }
 </style>
 
 <body>
@@ -183,9 +221,9 @@
                                             href="<?php echo e(route('Students')); ?>">MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="<?php echo e(Request::routeIs('donate') ? 'active' : ''); ?>"
+                                        <a class="<?php echo e(Request::routeIs('donate') ? 'active' : ''); ?> customClass"
                                             href="<?php echo e(route('donate')); ?>"
-                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
+                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
                             </div>

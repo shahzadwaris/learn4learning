@@ -49,7 +49,7 @@
         a.no-styleing {
             background: none;
             border: none;
-            background: white !important;
+            background: #ffffff !important;
             color: black;
             color: black !important;
         }
@@ -134,7 +134,7 @@
         .logo {
             text-align: center;
             float: unset !important;
-            margin-bottom: 8px; 
+            margin-bottom: 8px;
         }
         .footer-link ul {
             width: 100%;

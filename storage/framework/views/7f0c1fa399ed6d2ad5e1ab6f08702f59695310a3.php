@@ -21,8 +21,19 @@
         background-color: #ffc10e !important;
         border-color: #ffc10e !important;
     }
+    footer {
+        border-top: 1px solid #ededed;
+        padding: 0px 0;
+    }
 </style>
-
+<?php
+    $emailVerified = \Auth::user()->email_verified_at;
+    if(isset($verified)) {
+        $emailVerified = isset($emailVerified) ? $emailVerified : $verified;
+    } else {
+        $emailVerified = $emailVerified;
+    }
+?>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
         <div class="container">
@@ -54,8 +65,8 @@
             <div class="main-cont">
 
                 <div class="row">
-                    <?php if(session()->has('error_message')): ?>
-                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; color: #fff !important; background-color: red !important;">
+                     <?php if(session()->has('error_message')): ?>
+                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; text-transform: capitalize;">
                             <?php echo e(session()->get('error_message')); ?>
 
                         </div>
@@ -65,7 +76,7 @@
                     </div>
 
                     <?php $__currentLoopData = $subjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sub_chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-6 <?php echo e($key+2%2==0 ? '_regSubLP': '_regSubRP'); ?>">
+                    <div class="col-lg-6">
                         <?php $__currentLoopData = $sub_chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <div class="form-parts">
@@ -110,11 +121,6 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </label>
@@ -125,8 +131,8 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-        <div class="col-lg-6 _regSubLP">
+
+        <div class="col-lg-6 _regSubLP" style="padding-left:0px;">
             <div class="col-md-12 d-flex align-items-center justify-content-center">
                 <div class="form-parts">
                     <div class="step">
@@ -145,8 +151,8 @@
         </div>
         <div class="col-md-6"></div>
 
-        <div class="col-lg-6 _regSubLP">
-            <div class="col-md-12 d-flex align-items-center justify-content-center">
+        <div class="col-lg-12 text-left" style="padding-left:40px">
+            <div class="col-md-12 d-flex">
                 <div class="form-parts">
                     <div class="step">
                         <button type="submit" class="btn btn-primary active justify-content-center"
@@ -155,8 +161,6 @@
                 </div>
             </div>
         </div>
-
-        
         </div>
         <input type="hidden" name="user_id" value="<?php echo e($user_id); ?>">
 
@@ -167,7 +171,7 @@
 
 
 <!-- Modal -->
-<?php if(\Auth::user()->email_verified_at == ''): ?>
+<?php if(!$emailVerified): ?>
     <div id="myModal" style=" width: 100%;
     background: #5555;   display: flex;
     align-items: center;" class="modal" role="dialog">
@@ -176,10 +180,13 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
+            <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
           </div>
           <div class="modal-body">
-            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+            <p>Please First Verify Email Address.We Send You An Verification Email.Or You Can Change Your Email Address</p>
+              <div class="row">
+                   <input type="email" class="form-control" placeholder="Enter Your Email..." name="email" id="emailAddress" value="" />
+              </div>
           </div>
           <div class="modal-footer">
             <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
@@ -193,8 +200,10 @@
 <?php endif; ?>
 <script>
     function resendEmail(){
+        let email = $('#emailAddress').val();
+        email = email ? email : 'null';
         $('#fa-faSpin').show();
-        let url = '<?php echo e(route('resendEmailAddress')); ?>';
+        let url = '/resend-email/'+email;
         $.ajax({
             url:url,
             method:'GET',
@@ -245,14 +254,12 @@
         backdrop: 'static',
         keyboard: false
     })
-    // <img style="height: 40px"src="<?php echo e(asset("asset/images/flag/minus.png")); ?>"/></a>
 $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
     var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html
     var x = 1; //Initial field counter is 1
-
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields

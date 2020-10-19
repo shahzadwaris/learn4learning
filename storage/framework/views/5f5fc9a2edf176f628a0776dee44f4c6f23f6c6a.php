@@ -36,7 +36,7 @@
     color: #fff;
     border: 0px;
     ">
-        <a  href="<?php echo e(route('verifiedSuccess')); ?>" style="     background: #176795; color: #fff;
+        <a  href="<?php echo e($url); ?>" style="     background: #ffc10e; color: #fff;
         border:0px;
         border-radius: 10px;
         padding: 15px;
@@ -46,8 +46,6 @@
     <div style="    width: 100%;
     margin: 0 auto;
     text-align: left;">
-
-
         <p>
             Regards,<br><br>
             Learn4Learning

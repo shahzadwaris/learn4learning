@@ -65,7 +65,12 @@ class UserController extends Controller
         return response()->json(['found' => 'n']);
     }
 
-    public function resendEmailAddress(){
+    public function resendEmailAddress($email){
+        if($email) {
+            User::where('id','=',Auth::user()->id)->update([
+               'email' => $email
+            ]);
+        }
         $user = Auth::user()->email;
         $userEmail = $user;
         if(Auth::user()->type == 'teacher') {
@@ -226,8 +231,9 @@ class UserController extends Controller
         $no_of_chunk = $subjects->count() / 2;
         $subjects    = $subjects->chunk($no_of_chunk);
         $user_id = \Auth::user()->id;
+        $verified = 'true';
         if($user->type == 'teacher') {
-            return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id'));
+            return view('auth.teachers.teacher-subjects', compact('subjects', 'user_id','verified'));
         } else {
             return redirect('/students/Home')->with('success-alert-message','Email verified successfully!');
         }

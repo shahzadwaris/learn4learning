@@ -29,6 +29,11 @@
 </style>
 @php
     $emailVerified = \Auth::user()->email_verified_at;
+    if(isset($verified)) {
+        $emailVerified = isset($emailVerified) ? $emailVerified : $verified;
+    } else {
+        $emailVerified = $emailVerified;
+    }
 @endphp
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -115,11 +120,6 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </label>
@@ -130,7 +130,7 @@
                         @endforeach
                     </div>
                     @endforeach
-                   
+
         <div class="col-lg-6 _regSubLP" style="padding-left:0px;">
             <div class="col-md-12 d-flex align-items-center justify-content-center">
                 <div class="form-parts">
@@ -182,7 +182,10 @@
             <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
           </div>
           <div class="modal-body">
-            <p>Please First Verify Email Address.We Send You An Verification Email.</p>
+            <p>Please First Verify Email Address.We Send You An Verification Email.Or You Can Change Your Email Address</p>
+              <div class="row">
+                   <input type="email" class="form-control" placeholder="Enter Your Email..." name="email" id="emailAddress" value="" />
+              </div>
           </div>
           <div class="modal-footer">
             <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
@@ -196,8 +199,10 @@
 @endif
 <script>
     function resendEmail(){
+        let email = $('#emailAddress').val();
+        email = email ? email : 'null';
         $('#fa-faSpin').show();
-        let url = '{{ route('resendEmailAddress') }}';
+        let url = '/resend-email/'+email;
         $.ajax({
             url:url,
             method:'GET',
@@ -248,23 +253,21 @@
         backdrop: 'static',
         keyboard: false
     })
-    // <img style="height: 40px"src="{{asset("asset/images/flag/minus.png")}}"/></a>
 $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html 
+    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html
     var x = 1; //Initial field counter is 1
-    
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(x < maxField){ 
+        if(x < maxField){
             x++; //Increment field counter
             $(wrapper).append(fieldHTML); //Add field html
         }
     });
-    
+
     //Once remove button is clicked
     $(wrapper).on('click', '.remove_button', function(e){
         e.preventDefault();

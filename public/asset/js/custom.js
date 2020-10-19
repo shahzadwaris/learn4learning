@@ -22,7 +22,7 @@ $(function () {
         $(".email-error").html('');
     });
     var id = 1;
-    var otherData = '<table id="lavel_table">' +
+    var otherData = '<table id="lavel_table-1">' +
         '                                    <div id="a00_other_id" class="">' +
         '                                        <div class="field_wrapper add_top_20">' +
         '                                            <div>' +
@@ -67,6 +67,7 @@ $(function () {
         '                                                    style="color:black;text-decoration: underline;font-size: 15px">' +
         '                                                    ADD MORE' +
         '                                                </a>' +
+        '                                                </a>' +
         '                                            </div>' +
         '                                        </div>' +
         '                                    </div>' +
@@ -75,23 +76,26 @@ $(function () {
 
 
     //techer checkboxes
+    $("#others").html(otherData);
+    $("#others").hide();
     $("._regSubLP").on('click', '#other', function (e) {
-        $("#others").append(otherData);
+        $("#others").toggle();
     });
     $("._regSubLP").on('click', '.add_button', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
         $("input[name='others[]']").each(function () {
+            console.log("$.trim($(this).val())");
+            console.log($.trim($(this).val()));
             if ($.trim($(this).val()) == "") {
                 $(this).css('border', '1px solid red');
                 $(this).css('color', 'red');
-
             } else {
                 $(this).css('border', '1px solid #ced4da');
                 $(this).css('color', 'black');
                 id++;
-                $("#others").append('<table id="lavel_table">' +
-                    '                                    <div id="a00_other_id" class="">' +
+                $("#others").append('<div id="table-responsive-'+id+'"><table id="lavel_table-'+id+'">' +
+                    '                                    <div id="a00_other_id'+id+'" class="">' +
                     '                                        <div class="field_wrapper add_top_20">' +
                     '                                            <div>' +
                     '                                                <input type="text" name="others[]" id = "other' + id + '" placeholder="Other Subject"' +
@@ -135,11 +139,26 @@ $(function () {
                     '                                                    style="color:black;text-decoration: underline;font-size: 15px">' +
                     '                                                    ADD MORE' +
                     '                                                </a>' +
+                    '                                                <a href="#"' +
+                    '                                                    class="remove_button mt-3 mb-2 d-flex justify-content-end"' +
+                    '                                                    title="Remove field" data-id = "' + id + '"' +
+                    '                                                    style="color:black;text-decoration: underline;font-size: 15px">' +
+                    '                                                    REMOVE' +
                     '                                            </div>' +
                     '                                        </div>' +
                     '                                    </div>' +
-                    '                                </table>');
+                    '                                </table></div>');
             }
         });
+    });
+
+    $("._regSubLP").on('click', '.remove_button', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('data-id');
+        console.log('id');
+        console.log(id);
+        $('#table-responsive-'+id).remove();
+        $('#a00_other_id'+id).remove();
+        $('#lavel_table-'+id).remove();
     });
 });

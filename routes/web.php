@@ -8,7 +8,7 @@ Route::get('locale/{locale}', function ($locale) {
     return redirect()->back();
 });
 
-Route::get('/resend-email','UserController@resendEmailAddress')->name('resendEmailAddress');
+Route::get('/resend-email/{email}','UserController@resendEmailAddress')->name('resendEmailAddress');
 
 Route::get('/email/design', function (){
     return view('mail.successRegister');
