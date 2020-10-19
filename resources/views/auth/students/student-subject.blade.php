@@ -2,12 +2,19 @@
 @section('title','level')
 @section('content')
 
+
 <!--====== Bootstrap css ======-->
 <link rel="stylesheet" href="{{asset('asset/css/teachers-subjects.css')}}">
 <link href="http://www.ansonika.com/potenza/css/style.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{{asset('asset/css/mdb.min.css')}}">
 <link rel="stylesheet" href="{{asset('asset/css/subjects-form-boxes.css')}}">
+<style>
+    footer {
+        border-top: 1px solid #ededed;
+        padding: 0px 0;
+    }
+</style>
 
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
@@ -35,7 +42,7 @@
 
                 <div class="row">
                     @if(session()->has('error_message_sec'))
-                        <div class="alert alert-danger" style="color: #fff !important; background-color: red !important; text-align: center;width:100%;">
+                        <div class="alert alert-danger" style="color: #fff !important; text-transform:capitalize; background-color: #ffc10e !important; text-align: center;width:100%;">
                             {{session()->get('error_message_sec')}}
                         </div>
                     @endif
