@@ -36,8 +36,6 @@
     color: #fff;
     border: 0px;
     ">
-    <?php echo e(dd($url)); ?>
-
         <a  href="<?php echo e($url); ?>" style="     background: #176795; color: #fff;
         border:0px;
         border-radius: 10px;

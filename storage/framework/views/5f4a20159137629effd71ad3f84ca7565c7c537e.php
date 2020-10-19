@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title','level'); ?>
 <?php $__env->startSection('js'); ?>
 <script src="<?php echo e(asset('asset/js/custom.js')); ?>"></script>
@@ -11,7 +10,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/mdb.min.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('asset/css/subjects-form-boxes.css')); ?>">
-
+<style>
+    .customStyleBtn{
+        background-color:#ffc10e !important;
+        color:#fff;
+        border-radius: 5px;
+    }
+    .alert-danger {
+        color: #fff !important;
+        background-color: #ffc10e !important;
+        border-color: #ffc10e !important;
+    }
+    footer {
+        border-top: 1px solid #ededed;
+        padding: 0px 0;
+    }
+</style>
+<?php
+    $emailVerified = \Auth::user()->email_verified_at;
+?>
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
         <div class="container">
@@ -43,12 +60,18 @@
             <div class="main-cont">
 
                 <div class="row">
+                     <?php if(session()->has('error_message')): ?>
+                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; text-transform: capitalize;">
+                            <?php echo e(session()->get('error_message')); ?>
+
+                        </div>
+                    <?php endif; ?>
                     <div class="col-md">
                         <h3 class="level-heading">WHAT SUBJECTS DO YOU WANT TO TEACH?</h3>
                     </div>
 
                     <?php $__currentLoopData = $subjects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $sub_chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="col-lg-6 <?php echo e($key+2%2==0 ? '_regSubLP': '_regSubRP'); ?>">
+                    <div class="col-lg-6">
                         <?php $__currentLoopData = $sub_chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$sub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <div class="form-parts">
@@ -108,8 +131,8 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-        <div class="col-lg-6 _regSubLP">
+                   
+        <div class="col-lg-6 _regSubLP" style="padding-left:0px;">
             <div class="col-md-12 d-flex align-items-center justify-content-center">
                 <div class="form-parts">
                     <div class="step">
@@ -128,8 +151,8 @@
         </div>
         <div class="col-md-6"></div>
 
-        <div class="col-lg-6 _regSubLP">
-            <div class="col-md-12 d-flex align-items-center justify-content-center">
+        <div class="col-lg-12 text-left" style="padding-left:40px">
+            <div class="col-md-12 d-flex">
                 <div class="form-parts">
                     <div class="step">
                         <button type="submit" class="btn btn-primary active justify-content-center"
@@ -138,8 +161,6 @@
                 </div>
             </div>
         </div>
-
-        
         </div>
         <input type="hidden" name="user_id" value="<?php echo e($user_id); ?>">
 
@@ -150,7 +171,7 @@
 
 
 <!-- Modal -->
-<?php if(\Auth::user()->email_verified_at == ''): ?>
+<?php if(!$emailVerified): ?>
     <div id="myModal" style=" width: 100%;
     background: #5555;   display: flex;
     align-items: center;" class="modal" role="dialog">
@@ -159,13 +180,16 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title alert alert-danger" style="width:100%;">Verifiy Email Address</h4>
+            <h4 class="modal-title alert alert-danger" style="width:100%;">Verify Email Address</h4>
           </div>
           <div class="modal-body">
             <p>Please First Verify Email Address.We Send You An Verification Email.</p>
           </div>
           <div class="modal-footer">
-            <button onclick="resendEmail()" class="btn btn-success">Resend Email</button>
+            <button onclick="resendEmail()" class="btn btn-success customStyleBtn">
+                <i class="fa fa-refresh fa-spin" id="fa-faSpin" style="display: none"></i>
+                Resend Email
+            </button>
          </div>
         </div>
       </div>
@@ -173,7 +197,7 @@
 <?php endif; ?>
 <script>
     function resendEmail(){
-
+        $('#fa-faSpin').show();
         let url = '<?php echo e(route('resendEmailAddress')); ?>';
         $.ajax({
             url:url,
@@ -181,11 +205,13 @@
             success: function(response) {
                 console.log('response');
                 console.log(response);
-                alert(response.message);
+                $('#fa-faSpin').hide();
+                toastr.success('email resend successfully please check you email address..!');
             },
             error: function(error) {
                 console.log('error');
                 console.log(error);
+                $('#fa-faSpin').hide();
             }
         });
 

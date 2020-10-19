@@ -217,6 +217,7 @@ class UserController extends Controller
     }
 
     public function verifiedSuccess(){
+        // dd(123);
         $user = Auth::user();
         User::where('id','=',$user->id)->update([
            'email_verified_at' => Carbon::now()

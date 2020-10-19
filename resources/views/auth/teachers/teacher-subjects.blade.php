@@ -22,8 +22,14 @@
         background-color: #ffc10e !important;
         border-color: #ffc10e !important;
     }
+    footer {
+        border-top: 1px solid #ededed;
+        padding: 0px 0;
+    }
 </style>
-
+@php
+    $emailVerified = \Auth::user()->email_verified_at;
+@endphp
 <section id="slider-part" class="slider-active">
     <div class="single-slider slider-4 bg_cover pt-150">
         <div class="container">
@@ -55,8 +61,8 @@
             <div class="main-cont">
 
                 <div class="row">
-                    @if(session()->has('error_message'))
-                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; color: #fff !important; background-color: red !important;">
+                     @if(session()->has('error_message'))
+                        <div class="alert alert-danger" style="text-align:center;width:100%;border:0px !important; text-transform: capitalize;">
                             {{session()->get('error_message')}}
                         </div>
                     @endif
@@ -65,7 +71,7 @@
                     </div>
 
                     @foreach($subjects as $key => $sub_chunk)
-                    <div class="col-lg-6 {{ $key+2%2==0 ? '_regSubLP': '_regSubRP' }}">
+                    <div class="col-lg-6">
                         @foreach($sub_chunk as $key=>$sub)
                         <div class="col-md-12 d-flex align-items-center justify-content-center">
                             <div class="form-parts">
@@ -124,18 +130,8 @@
                         @endforeach
                     </div>
                     @endforeach
-                    {{--  <div class="form-group col-md-6 d-flex align-items-center justify-content-center">
-                        <div class="form-parts">
-                            <label class="add_top_20">Other</label>
-                            <div class="field_wrapper">
-                                <div>
-                                    <input type="text" name="field" class="form-control"  value=""/>
-                                    <a href="javascript:void(0);" class="add_button"  title="Add field"><img style="height: 40px" src="{{asset('asset/images/flag/plus.png')}}"/></a>
-                </div>
-            </div>
-        </div>
-        </div> --}}
-        <div class="col-lg-6 _regSubLP">
+                   
+        <div class="col-lg-6 _regSubLP" style="padding-left:0px;">
             <div class="col-md-12 d-flex align-items-center justify-content-center">
                 <div class="form-parts">
                     <div class="step">
@@ -154,8 +150,8 @@
         </div>
         <div class="col-md-6"></div>
 
-        <div class="col-lg-6 _regSubLP">
-            <div class="col-md-12 d-flex align-items-center justify-content-center">
+        <div class="col-lg-12 text-left" style="padding-left:40px">
+            <div class="col-md-12 d-flex">
                 <div class="form-parts">
                     <div class="step">
                         <button type="submit" class="btn btn-primary active justify-content-center"
@@ -164,14 +160,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="col-md-12 row" style="background-color: unset;box-shadow: none;margin-top: unset;margin-left: unset;padding-bottom: unset;position: unset;margin-right: unset !important;background: none;">
-
-                        <div class="col-md-6 mt-4 _regSubLP" style="text-align: left">
-                            <button type="submit" class="btn btn-primary active justify-content-center" style="align-content: center;">Register</button>
-                        </div>
-                        <div class="col-md-6"></div>
-                    </div> --}}
         </div>
         <input type="hidden" name="user_id" value="{{$user_id}}">
 
@@ -182,7 +170,7 @@
 
 {{--    new form--}}
 <!-- Modal -->
-@if(\Auth::user()->email_verified_at == '')
+@if(!$emailVerified)
     <div id="myModal" style=" width: 100%;
     background: #5555;   display: flex;
     align-items: center;" class="modal" role="dialog">
@@ -265,18 +253,18 @@ $(document).ready(function(){
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
     var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html
+    var fieldHTML = '<div><input type="text" placeholder="Other Subject" style="position: relative;opacity: 1;cursor: revert;" name="field_name[]" class="form-control"  value=""/><a href="javascript:void(0);" class="remove_button mt-3 mb-2 d-flex justify-content-end" style="color:black;text-decoration: underline;font-size: 15px">DROP FIELD</div>'; //New input field html 
     var x = 1; //Initial field counter is 1
-
+    
     //Once add button is clicked
     $(addButton).click(function(){
         //Check maximum number of input fields
-        if(x < maxField){
+        if(x < maxField){ 
             x++; //Increment field counter
             $(wrapper).append(fieldHTML); //Add field html
         }
     });
-
+    
     //Once remove button is clicked
     $(wrapper).on('click', '.remove_button', function(e){
         e.preventDefault();
