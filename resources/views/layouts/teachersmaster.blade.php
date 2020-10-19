@@ -61,7 +61,27 @@
             padding: 0px;
         }
       }
-
+      .customClass{
+          margin: 2px 2px 2px 2px;
+      }
+      .navigation .navbar .navbar-nav li {
+          position: relative;
+          display: flex;
+          align-items: center;
+      }
+      @media (max-width: 991px) {
+          .navigation .navbar .navbar-nav li {
+              position: relative;
+              display: flex;
+              align-items: center;
+              width: 100%;
+              justify-content: center;
+          }
+          .customClass{
+              margin: 2px 2px 2px 2px;
+              width: 100%;
+          }
+      }
 </style>
 
 <body>
@@ -182,9 +202,9 @@
                                             href="{{route('Students')}}">MESSAGES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="{{Request::routeIs('donate') ? 'active' : ''}}"
+                                        <a class="{{Request::routeIs('donate') ? 'active' : ''}} customClass"
                                             href="{{route('donate')}}"
-                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;margin: 19px 2px 2px 2px;color: white;border-radius: 6px;">DONATE</a>
+                                            style="background-color: #ffc10e;padding: 12px 40px 12px 40px;color: white;border-radius: 6px;">DONATE</a>
                                     </li>
                                 </ul>
                             </div>
