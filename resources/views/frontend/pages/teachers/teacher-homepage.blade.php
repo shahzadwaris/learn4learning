@@ -6,6 +6,30 @@
         width: 140px;
         height: 140px;
     }
+    .customAlertDAngerContainer{
+        display: flex;
+        justify-content: center;
+    }
+    .customDanger{
+        background-color: #ffc10e;
+        color: #fff;
+        width: 100%;
+        font-size: 1rem;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+    }
+    .customAlertDAnger{
+        background-color: #ffc10e;
+        color: #fff;
+        width: 100%;
+        font-size: 1rem;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+    }
+    .customDangerContainer{
+        display: flex;
+        justify-content: center;
+    }
 </style>
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150"
@@ -87,7 +111,13 @@
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
                         @if(count($schedules) == 0)
-                            <h1 style="width:100%;color:#ffc10e;">No Schedule Found</h1>
+                            <div class="alert alert-danger customDanger">
+                                <div class="container customDangerContainer">
+                                    <div class="alert-icon">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    </div>&nbsp;&nbsp;&nbsp;No Schedule Found
+                                </div>
+                            </div>
                         @else
                             @foreach ($schedules as $schedule)
                             <div class="col-3 customStyleResponsive">
@@ -135,7 +165,14 @@
                 </div>
                 <div class="row">
                     @if(count($teacherhomeworkdetail) == 0)
-                        <h1 style="width: 100%; color:#fff; text-align: center;">No Home Work Found</h1>
+                        <div class="alert alert-danger customAlertDAnger">
+                            <div class="container customAlertDAngerContainer">
+                                <div class="alert-icon">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;No Home Work Found
+                            </div>
+                        </div>
                     @else
                     <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                         <div class="MultiCarousel-inner">

@@ -1,5 +1,35 @@
 <?php $__env->startSection('title','Teacher Homepage'); ?>
 <?php $__env->startSection('content'); ?>
+<style>
+    .customStyle{
+        width: 140px;
+        height: 140px;
+    }
+    .customAlertDAngerContainer{
+        display: flex;
+        justify-content: center;
+    }
+    .customDanger{
+        background-color: #ffc10e;
+        color: #fff;
+        width: 100%;
+        font-size: 1rem;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+    }
+    .customAlertDAnger{
+        background-color: #ffc10e;
+        color: #fff;
+        width: 100%;
+        font-size: 1rem;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+    }
+    .customDangerContainer{
+        display: flex;
+        justify-content: center;
+    }
+</style>
     <section id="slider-part" class="slider-active">
         <div class="single-slider slider-4 bg_cover pt-150"
              style="padding-top: 238px;padding-bottom: 238px;background-repeat: no-repeat; background:linear-gradient(rgb(0 0 0 / 17%) 100%, rgb(0 0 0 / 16%) 100%), url(<?php echo e(asset('asset/images/teacher-homepage/teaching_banner.jpg')); ?>">
@@ -28,7 +58,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <img src="<?php echo e(url('/storage/images/'. (!empty($usersimgg[0]->thumbnail) ? $usersimgg[0]->thumbnail : 'default.png') )); ?>"
-                                 alt="stud-profile-pic">
+                                 alt="stud-profile-pic" class="customStyle">
                         </div>
                         <div class="col-lg-8 col-sm-12 col-xs-12">
                             <p class="stud-name pb-3"><?php echo e(Auth::user()->fname); ?>-<?php echo e(Auth::user()->lname); ?></p>
@@ -80,7 +110,13 @@
                 <div class="col-md-8 col-12 text-center mb-2 mt-2">
                     <div class="row">
                         <?php if(count($schedules) == 0): ?>
-                            <h1 style="width:100%;color:#ffc10e;">No Schedule Found</h1>
+                            <div class="alert alert-danger customDanger">
+                                <div class="container customDangerContainer">
+                                    <div class="alert-icon">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    </div>&nbsp;&nbsp;&nbsp;No Schedule Found
+                                </div>
+                            </div>
                         <?php else: ?>
                             <?php $__currentLoopData = $schedules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schedule): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-3 customStyleResponsive">
@@ -129,7 +165,14 @@
                 </div>
                 <div class="row">
                     <?php if(count($teacherhomeworkdetail) == 0): ?>
-                        <h1 style="width: 100%; color:#fff; text-align: center;">No Home Work Found</h1>
+                        <div class="alert alert-danger customAlertDAnger">
+                            <div class="container customAlertDAngerContainer">
+                                <div class="alert-icon">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;No Home Work Found
+                            </div>
+                        </div>
                     <?php else: ?>
                     <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                         <div class="MultiCarousel-inner">

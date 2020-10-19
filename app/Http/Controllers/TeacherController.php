@@ -30,7 +30,7 @@ class TeacherController extends Controller
         $user_id     = $request->user_id;
         $allSubjects = Subject::all();
         $subjects    = $allSubjects->pluck('name')->toArray();
-        if ($request->others) {
+        if (isset($request->others) && count($request->others) > 1) {
             foreach ($request->others as $key => $subject) {
                 if (!in_array($subject, $subjects)) {
                     $s = Subject::create([
@@ -96,7 +96,6 @@ class TeacherController extends Controller
 
     public function teacherHome()
     {
-        // dd(123);
         $auth                 =Auth::user()->id;
         $teacherhomeworkdetail=DB::table('homework')
             ->join('subjects', 'subjects.id', '=', 'homework.Sub_id')
